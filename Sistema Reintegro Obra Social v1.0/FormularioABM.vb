@@ -204,7 +204,7 @@ Public Class FormularioABM
 
     End Sub
 
-
+    'nuevo coment
     '************************ confirmar alta reintegro! ********************
     Private Sub botonConfirmarAlta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonConfirmarAlta.Click
         ' If (Trim(txtDetalle.Text) = "") Or (Trim(txtImporte.Text) = "") Or (Trim(txtFechaSolicitud.Text) = "") Or (Trim(txtFechaReintegro.Text) = "") Or (Trim(txtAutorizante.Text) = "") Then
