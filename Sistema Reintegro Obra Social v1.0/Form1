@@ -1,0 +1,70 @@
+﻿Imports MySql.Data.MySqlClient
+Imports System.Data.SqlClient
+Imports System.IO
+Imports System.Drawing.Imaging
+
+Public Class Main
+    Dim Conex As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+    Dim da As MySqlDataAdapter
+    Dim dt As DataTable
+    Dim sql As String
+    Dim comando As MySqlCommand
+
+
+    'BOTONES
+    Private Sub MostrarDatos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Call mostrarlosdatos()
+    End Sub
+
+    Private Sub BuscarDatos_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        Call buscarlosdatos()
+    End Sub
+
+
+
+    'Metodo Llena Datos en GridVIEW
+    Private Sub mostrarlosdatos()
+        Try
+            sql = "select Cuil,ApellidoNombre,Urgara from beneficiarios"
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            Datos.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    'Metodo Busca DATOS SEGUN Parametros
+    Private Sub buscarlosdatos()
+        Try
+            sql = "select Cuil,ApellidoNombre,Urgara from beneficiarios"
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            Datos.DataSource = dt
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Datos_RowEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs)
+        sql = Datos.Rows(e.RowIndex).Cells(0).Value.ToString
+    End Sub
+
+
+    Private Sub botonABM_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonABM.Click
+        FormularioABM.Show()
+    End Sub
+
+
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+
+    End Sub
+
+    Private Sub botonConsultas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonConsultas.Click
+        Consulta.Show()
+    End Sub
+End Class
