@@ -53,7 +53,7 @@ Partial Class MenuPrincipal
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.BackColor = System.Drawing.Color.SteelBlue
+        Me.MenuStrip1.BackColor = System.Drawing.Color.LightSteelBlue
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.DatosToolStripMenuItem, Me.ReintegrosToolStripMenuItem, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -63,6 +63,7 @@ Partial Class MenuPrincipal
         '
         'ArchivoToolStripMenuItem
         '
+        Me.ArchivoToolStripMenuItem.BackColor = System.Drawing.Color.LightSteelBlue
         Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IngresarAlSistemaToolStripMenuItem, Me.UsersSoloAdminToolStripMenuItem, Me.SalirToolStripMenuItem})
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(60, 20)
@@ -167,7 +168,7 @@ Partial Class MenuPrincipal
         '
         Me.SoporteToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.SoporteToolStripMenuItem.Name = "SoporteToolStripMenuItem"
-        Me.SoporteToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SoporteToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.SoporteToolStripMenuItem.Text = "Soporte"
         '
         'lblUser
@@ -274,7 +275,7 @@ Partial Class MenuPrincipal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Urgara_Gestion
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(1588, 709)
         Me.Controls.Add(Me.minutos)
         Me.Controls.Add(Me.horas)

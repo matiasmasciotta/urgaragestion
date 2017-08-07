@@ -8,7 +8,7 @@ Imports System.Drawing.Imaging
 Imports System.Drawing.Printing
 
 Public Class ConsultaSolicitudReintegro
-    Dim Conex As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+    Dim Conex As New MySqlConnection(CADENABASE2)
     Dim da As MySqlDataAdapter
     Dim dt As DataTable
     Dim sql As String
@@ -150,7 +150,7 @@ Public Class ConsultaSolicitudReintegro
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
         Dim SQL2 As String
-        Dim MiConexion2 As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+        Dim MiConexion2 As New MySqlConnection(CADENABASE2)
         Dim Rs2 As MySqlDataReader
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2
@@ -177,7 +177,7 @@ Public Class ConsultaSolicitudReintegro
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
         Dim SQL2 As String
-        Dim MiConexion2 As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+        Dim MiConexion2 As New MySqlConnection(CADENABASE2)
         Dim Rs2 As MySqlDataReader
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2

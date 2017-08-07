@@ -3,7 +3,7 @@ Imports System.IO
 Imports System.Drawing.Imaging
 
 Public Class NuevoReintegro
-    Dim Conex As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+    Dim Conex As New MySqlConnection(CADENABASE2)
     Dim da As MySqlDataAdapter
     Dim dt As DataTable
     Dim sql As String
@@ -124,7 +124,7 @@ Public Class NuevoReintegro
         'Dim vardire As String = "C:\Users\Matias Masciotta\Pictures\urgara.jpeg"
         Dim varobs As String = "SIN OBSERVACIONES"
         Dim varfec As String = "0000-00-00"
-        Using con_insert As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+        Using con_insert As New MySqlConnection(CADENABASE2)
             Dim cmdinsert As New MySqlCommand
             Dim varimp As Double = Convert.ToDouble(txtImporte.Text)
 
@@ -428,6 +428,10 @@ Public Class NuevoReintegro
     End Function
 
     Private Sub Panel5_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel5.Paint
+
+    End Sub
+
+    Private Sub Panel4_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel4.Paint
 
     End Sub
 End Class

@@ -23,12 +23,24 @@
     End Sub
 
     Private Sub MenuPrincipal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'LLAMO AL FICHERO TXT donde apunta la base
+        CADENABASE2 = My.Computer.FileSystem.ReadAllText("C:\SROS\CADENABASE.txt").ToString
         segundos.Text = Int(DateTime.Now.Second)
         minutos.Text = Int(DateTime.Now.Minute)
         horas.Text = Int(DateTime.Now.Hour)
         Timer1.Enabled = True
         'effecIn()
         apagarBotones()
+        MsgBox(CADENABASE2)
+
+            '****************si quiero sobreescribirlo********
+            'Dim obj As Object
+            'Dim archivo As Object
+            'obj = CreateObject("Scripting.FileSystemObject")
+            'archivo = obj.CreateTextFile("C:\texto.txt")
+            'archivo.WriteLine("Esta es la linea 1")
+            'archivo.WriteLine("Esta es la linea 2")
+            'archivo.close()
     End Sub
 
 

@@ -3,7 +3,7 @@ Imports System.IO
 
 'FORMULARIO ABM VARIABLES PUBLICAS
 Public Class FormularioABM
-    Dim Conex As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+    Dim Conex As New MySqlConnection(CADENABASE2)
     Dim da As MySqlDataAdapter
     Dim dt As DataTable
     Dim sql As String
@@ -274,7 +274,7 @@ Public Class FormularioABM
     '*********************** update parameters **************************************************************************************************************************************************************************
     Private Sub update_to()
         'Dim vardire As String = "C:\Users\Matias Masciotta\Pictures\urgara.jpeg"
-        Using con_insert As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+        Using con_insert As New MySqlConnection(CADENABASE2)
             Dim cmdinsert As New MySqlCommand
             With cmdinsert
                 .Connection = con_insert
@@ -316,5 +316,9 @@ Public Class FormularioABM
 
     Private Sub opBuscarNombre_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opBuscarNombre.CheckedChanged
         buscarlosdatos()
+    End Sub
+
+    Private Sub Panel2_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel2.Paint
+
     End Sub
 End Class

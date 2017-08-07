@@ -4,6 +4,11 @@ Module Module1
     Public VariableGlobalSeccional As Integer
     Public variableControl As Integer = 0
 
+    'FICHERO TXT BASE *********lee ***
+    Public CADENABASE2 As String
+
+
+
     ' Funcion para convertir imagen del picture box a bits y jpeg
     Public Function DeImagen_a_Bytes(ByVal Imagen As Image) As Byte()
         If Not Imagen Is Nothing Then

@@ -4,7 +4,8 @@ Imports System.Security.Cryptography
 
 
 Public Class Login
-    Dim Conex As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+
+    Dim Conex As New MySqlConnection(CADENABASE2)
     Dim da As MySqlDataAdapter
     Dim dt As DataTable
     Dim sql As String
@@ -46,8 +47,9 @@ Public Class Login
             Else
                 'MsgBox("Ingreso!", vbInformation)
                 'Si el usuario es correcto busca los datos de ROL de usuario para darle privilegios
+               
                 Dim SQL2 As String
-                Dim MiConexion2 As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+                Dim MiConexion2 As New MySqlConnection(CADENABASE2)
                 Dim Rs2 As MySqlDataReader
                 Dim Com2 As New MySqlCommand
                 Com2.Connection = MiConexion2
@@ -159,11 +161,15 @@ Public Class Login
 
 
 
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
+    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub
 
     Private Sub ProgressBar1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProgressBar1.Click
+
+    End Sub
+
+    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
 
     End Sub
 End Class

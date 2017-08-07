@@ -7,7 +7,7 @@ Imports System.Data
 
 
 Public Class Consulta
-    Dim Conex As New MySqlConnection("data source=localhost;user id=root; password='root'; database=dbsocial")
+    Dim Conex As New MySqlConnection(CADENABASE2)
     Dim da As MySqlDataAdapter
     Dim dt As DataTable
     Dim sql As String
