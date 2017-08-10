@@ -275,7 +275,7 @@ Partial Class MenuPrincipal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Urgara_Gestion
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(1588, 709)
         Me.Controls.Add(Me.minutos)
         Me.Controls.Add(Me.horas)
@@ -288,7 +288,7 @@ Partial Class MenuPrincipal
         Me.Controls.Add(Me.Label3)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "MenuPrincipal"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Menu Principal"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.MenuStrip1.ResumeLayout(False)

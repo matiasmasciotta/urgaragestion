@@ -34,7 +34,6 @@ Public Class FormularioABM
         opBuscarDNI.Checked = True
         booModificacion = False
         botonModificarBeneficiario.Enabled = False
-        botonEliminarBeneficiario.Enabled = False
         mostrarlosdatos()
         boo = False
         cont = 0
@@ -174,7 +173,7 @@ Public Class FormularioABM
         Catch
         End Try
         botonModificarBeneficiario.Enabled = True
-        botonEliminarBeneficiario.Enabled = True
+
     End Sub
 
 
@@ -230,7 +229,6 @@ Public Class FormularioABM
 
     'UPDATE TABLA BENEFICIARIOS
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
-
         ' updatebeneficiarios()
         update_to()
         buscarlosdatos()
@@ -318,7 +316,4 @@ Public Class FormularioABM
         buscarlosdatos()
     End Sub
 
-    Private Sub Panel2_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel2.Paint
-
-    End Sub
 End Class

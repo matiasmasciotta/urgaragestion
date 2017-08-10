@@ -253,6 +253,46 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property rec2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("rec2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property recazul() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("recazul", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property recazulss() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("recazulss", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property recnegro() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("recnegro", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property rojo__verde_iconos_ok_ok_no_17_1106090017() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("rojo--verde-iconos-ok-ok-no_17-1106090017", resourceCulture)

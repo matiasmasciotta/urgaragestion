@@ -129,11 +129,11 @@ Public Class Login
     End Sub
 
     Private Sub Login_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
-
+        txtUser.Focus()
     End Sub
     '*************************************************************************************************************************
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.TopMost = True
+        'Me.TopMost = True
         Try
             sql = "select Codigo_Usuario,Constraseña,ApellidoNombre,Tipo_Usuario,Codigo_Seccional from usuarios_reintegros"
             da = New MySqlDataAdapter(sql, Conex)
@@ -143,6 +143,7 @@ Public Class Login
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+        txtUser.Focus()
     End Sub
 
     Private Sub BotonCancelar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonCancelar.Click
@@ -172,4 +173,6 @@ Public Class Login
     Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
 
     End Sub
+
+ 
 End Class

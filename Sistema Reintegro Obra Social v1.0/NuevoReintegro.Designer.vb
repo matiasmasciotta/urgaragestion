@@ -25,8 +25,18 @@ Partial Class NuevoReintegro
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.GridViewSubsidios = New System.Windows.Forms.DataGridView()
+        Me.txtSubsidio = New System.Windows.Forms.TextBox()
+        Me.opSubsidio = New System.Windows.Forms.RadioButton()
+        Me.opReintegro = New System.Windows.Forms.RadioButton()
+        Me.txtAlias = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.txtCBU = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.lblitem = New System.Windows.Forms.Label()
         Me.lblcontadoritems = New System.Windows.Forms.Label()
@@ -77,6 +87,7 @@ Partial Class NuevoReintegro
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel5.SuspendLayout()
+        CType(Me.GridViewSubsidios, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -89,7 +100,7 @@ Partial Class NuevoReintegro
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(613, 303)
+        Me.Label10.Location = New System.Drawing.Point(658, 277)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(314, 16)
         Me.Label10.TabIndex = 23
@@ -98,6 +109,14 @@ Partial Class NuevoReintegro
         'Panel5
         '
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel5.Controls.Add(Me.GridViewSubsidios)
+        Me.Panel5.Controls.Add(Me.txtSubsidio)
+        Me.Panel5.Controls.Add(Me.opSubsidio)
+        Me.Panel5.Controls.Add(Me.opReintegro)
+        Me.Panel5.Controls.Add(Me.txtAlias)
+        Me.Panel5.Controls.Add(Me.Label16)
+        Me.Panel5.Controls.Add(Me.txtCBU)
+        Me.Panel5.Controls.Add(Me.Label15)
         Me.Panel5.Controls.Add(Me.Label7)
         Me.Panel5.Controls.Add(Me.lblitem)
         Me.Panel5.Controls.Add(Me.lblcontadoritems)
@@ -114,10 +133,107 @@ Partial Class NuevoReintegro
         Me.Panel5.Controls.Add(Me.Label13)
         Me.Panel5.Controls.Add(Me.Label12)
         Me.Panel5.Controls.Add(Me.Label11)
-        Me.Panel5.Location = New System.Drawing.Point(483, 312)
+        Me.Panel5.Location = New System.Drawing.Point(483, 296)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(709, 337)
+        Me.Panel5.Size = New System.Drawing.Size(709, 353)
         Me.Panel5.TabIndex = 24
+        '
+        'GridViewSubsidios
+        '
+        Me.GridViewSubsidios.BackgroundColor = System.Drawing.Color.DarkGray
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridViewSubsidios.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        Me.GridViewSubsidios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridViewSubsidios.DefaultCellStyle = DataGridViewCellStyle2
+        Me.GridViewSubsidios.GridColor = System.Drawing.SystemColors.ActiveCaption
+        Me.GridViewSubsidios.Location = New System.Drawing.Point(177, 46)
+        Me.GridViewSubsidios.MultiSelect = False
+        Me.GridViewSubsidios.Name = "GridViewSubsidios"
+        Me.GridViewSubsidios.ReadOnly = True
+        Me.GridViewSubsidios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.GridViewSubsidios.Size = New System.Drawing.Size(311, 92)
+        Me.GridViewSubsidios.TabIndex = 8
+        '
+        'txtSubsidio
+        '
+        Me.txtSubsidio.Location = New System.Drawing.Point(212, 92)
+        Me.txtSubsidio.Name = "txtSubsidio"
+        Me.txtSubsidio.ReadOnly = True
+        Me.txtSubsidio.Size = New System.Drawing.Size(100, 20)
+        Me.txtSubsidio.TabIndex = 24
+        '
+        'opSubsidio
+        '
+        Me.opSubsidio.AutoSize = True
+        Me.opSubsidio.Location = New System.Drawing.Point(141, 93)
+        Me.opSubsidio.Name = "opSubsidio"
+        Me.opSubsidio.Size = New System.Drawing.Size(65, 17)
+        Me.opSubsidio.TabIndex = 23
+        Me.opSubsidio.TabStop = True
+        Me.opSubsidio.Text = "Subsidio"
+        Me.opSubsidio.UseVisualStyleBackColor = True
+        '
+        'opReintegro
+        '
+        Me.opReintegro.AutoSize = True
+        Me.opReintegro.Location = New System.Drawing.Point(36, 91)
+        Me.opReintegro.Name = "opReintegro"
+        Me.opReintegro.Size = New System.Drawing.Size(71, 17)
+        Me.opReintegro.TabIndex = 22
+        Me.opReintegro.TabStop = True
+        Me.opReintegro.Text = "Reintegro"
+        Me.opReintegro.UseVisualStyleBackColor = True
+        '
+        'txtAlias
+        '
+        Me.txtAlias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAlias.Location = New System.Drawing.Point(343, 138)
+        Me.txtAlias.MaxLength = 80
+        Me.txtAlias.Name = "txtAlias"
+        Me.txtAlias.Size = New System.Drawing.Size(188, 22)
+        Me.txtAlias.TabIndex = 7
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(292, 140)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(54, 16)
+        Me.Label16.TabIndex = 20
+        Me.Label16.Text = "ALIAS:"
+        '
+        'txtCBU
+        '
+        Me.txtCBU.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCBU.Location = New System.Drawing.Point(93, 138)
+        Me.txtCBU.MaxLength = 22
+        Me.txtCBU.Name = "txtCBU"
+        Me.txtCBU.Size = New System.Drawing.Size(196, 22)
+        Me.txtCBU.TabIndex = 6
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(50, 141)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(43, 16)
+        Me.Label15.TabIndex = 18
+        Me.Label15.Text = "CBU:"
         '
         'Label7
         '
@@ -188,9 +304,9 @@ Partial Class NuevoReintegro
         'DateTimePicker1
         '
         Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(187, 135)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(460, 93)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(257, 22)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(244, 22)
         Me.DateTimePicker1.TabIndex = 8
         '
         'Label3
@@ -207,13 +323,13 @@ Partial Class NuevoReintegro
         Me.txtObservacionesCarga.Location = New System.Drawing.Point(108, 168)
         Me.txtObservacionesCarga.Name = "txtObservacionesCarga"
         Me.txtObservacionesCarga.Size = New System.Drawing.Size(424, 20)
-        Me.txtObservacionesCarga.TabIndex = 6
+        Me.txtObservacionesCarga.TabIndex = 8
         '
         'txtFechaSolicitud
         '
         Me.txtFechaSolicitud.Enabled = False
         Me.txtFechaSolicitud.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaSolicitud.Location = New System.Drawing.Point(313, 103)
+        Me.txtFechaSolicitud.Location = New System.Drawing.Point(573, 69)
         Me.txtFechaSolicitud.Name = "txtFechaSolicitud"
         Me.txtFechaSolicitud.Size = New System.Drawing.Size(131, 22)
         Me.txtFechaSolicitud.TabIndex = 5
@@ -221,7 +337,7 @@ Partial Class NuevoReintegro
         'txtImporte
         '
         Me.txtImporte.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtImporte.Location = New System.Drawing.Point(313, 71)
+        Me.txtImporte.Location = New System.Drawing.Point(573, 45)
         Me.txtImporte.Name = "txtImporte"
         Me.txtImporte.Size = New System.Drawing.Size(131, 22)
         Me.txtImporte.TabIndex = 4
@@ -229,7 +345,7 @@ Partial Class NuevoReintegro
         'txtDetalle
         '
         Me.txtDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDetalle.Location = New System.Drawing.Point(3, 38)
+        Me.txtDetalle.Location = New System.Drawing.Point(3, 22)
         Me.txtDetalle.Name = "txtDetalle"
         Me.txtDetalle.Size = New System.Drawing.Size(701, 22)
         Me.txtDetalle.TabIndex = 3
@@ -238,7 +354,7 @@ Partial Class NuevoReintegro
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(166, 106)
+        Me.Label13.Location = New System.Drawing.Point(426, 72)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(141, 16)
         Me.Label13.TabIndex = 2
@@ -248,7 +364,7 @@ Partial Class NuevoReintegro
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(243, 74)
+        Me.Label12.Location = New System.Drawing.Point(503, 48)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(64, 16)
         Me.Label12.TabIndex = 1
@@ -258,7 +374,7 @@ Partial Class NuevoReintegro
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(14, 19)
+        Me.Label11.Location = New System.Drawing.Point(14, 4)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(62, 16)
         Me.Label11.TabIndex = 0
@@ -313,23 +429,23 @@ Partial Class NuevoReintegro
         'GridView
         '
         Me.GridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridView.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridView.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridView.DefaultCellStyle = DataGridViewCellStyle4
         Me.GridView.GridColor = System.Drawing.SystemColors.ActiveCaption
         Me.GridView.Location = New System.Drawing.Point(3, 35)
         Me.GridView.MultiSelect = False
@@ -568,7 +684,7 @@ Partial Class NuevoReintegro
         Me.lblNumeroReintegro.AutoSize = True
         Me.lblNumeroReintegro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNumeroReintegro.ForeColor = System.Drawing.Color.Maroon
-        Me.lblNumeroReintegro.Location = New System.Drawing.Point(491, 300)
+        Me.lblNumeroReintegro.Location = New System.Drawing.Point(494, 284)
         Me.lblNumeroReintegro.Name = "lblNumeroReintegro"
         Me.lblNumeroReintegro.Size = New System.Drawing.Size(65, 16)
         Me.lblNumeroReintegro.TabIndex = 36
@@ -584,7 +700,7 @@ Partial Class NuevoReintegro
         Me.Button4.Location = New System.Drawing.Point(535, 659)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(144, 31)
-        Me.Button4.TabIndex = 15
+        Me.Button4.TabIndex = 10
         Me.Button4.Text = "Generar Solicitud!"
         Me.Button4.UseVisualStyleBackColor = True
         '
@@ -609,18 +725,19 @@ Partial Class NuevoReintegro
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.txtCUIL)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.Label10)
         Me.KeyPreview = True
         Me.Name = "NuevoReintegro"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "+ Nuevo Reintegro"
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        CType(Me.GridViewSubsidios, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
@@ -686,4 +803,12 @@ Partial Class NuevoReintegro
     Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents txtAlias As System.Windows.Forms.TextBox
+    Friend WithEvents Label16 As System.Windows.Forms.Label
+    Friend WithEvents txtCBU As System.Windows.Forms.TextBox
+    Friend WithEvents Label15 As System.Windows.Forms.Label
+    Friend WithEvents opSubsidio As System.Windows.Forms.RadioButton
+    Friend WithEvents opReintegro As System.Windows.Forms.RadioButton
+    Friend WithEvents GridViewSubsidios As System.Windows.Forms.DataGridView
+    Friend WithEvents txtSubsidio As System.Windows.Forms.TextBox
 End Class

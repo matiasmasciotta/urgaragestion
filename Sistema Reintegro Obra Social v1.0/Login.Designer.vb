@@ -34,18 +34,18 @@ Partial Class Login
         Me.txtTipoUsuario = New System.Windows.Forms.TextBox()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.BotonAceptar = New System.Windows.Forms.Button()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txtUser
         '
         Me.txtUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUser.Location = New System.Drawing.Point(97, 11)
+        Me.txtUser.Location = New System.Drawing.Point(91, 9)
         Me.txtUser.MaxLength = 8
         Me.txtUser.Name = "txtUser"
         Me.txtUser.Size = New System.Drawing.Size(134, 21)
@@ -54,7 +54,7 @@ Partial Class Login
         'txtPass
         '
         Me.txtPass.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPass.Location = New System.Drawing.Point(97, 43)
+        Me.txtPass.Location = New System.Drawing.Point(91, 39)
         Me.txtPass.Name = "txtPass"
         Me.txtPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPass.Size = New System.Drawing.Size(134, 21)
@@ -63,10 +63,10 @@ Partial Class Login
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.BackColor = System.Drawing.Color.Red
+        Me.Label1.BackColor = System.Drawing.Color.Black
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label1.Location = New System.Drawing.Point(11, 15)
+        Me.Label1.Location = New System.Drawing.Point(5, 13)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(82, 15)
         Me.Label1.TabIndex = 3
@@ -75,10 +75,10 @@ Partial Class Login
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.Color.Red
+        Me.Label2.BackColor = System.Drawing.Color.Black
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.Label2.Location = New System.Drawing.Point(25, 46)
+        Me.Label2.Location = New System.Drawing.Point(19, 42)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(70, 15)
         Me.Label2.TabIndex = 4
@@ -88,7 +88,7 @@ Partial Class Login
         '
         Me.BotonCancelar.AutoEllipsis = True
         Me.BotonCancelar.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.BotonCancelar.Location = New System.Drawing.Point(255, 137)
+        Me.BotonCancelar.Location = New System.Drawing.Point(270, 137)
         Me.BotonCancelar.Name = "BotonCancelar"
         Me.BotonCancelar.Size = New System.Drawing.Size(98, 25)
         Me.BotonCancelar.TabIndex = 5
@@ -97,24 +97,24 @@ Partial Class Login
         '
         'TempUser
         '
-        Me.TempUser.Location = New System.Drawing.Point(373, 119)
+        Me.TempUser.Location = New System.Drawing.Point(411, 119)
         Me.TempUser.Name = "TempUser"
-        Me.TempUser.Size = New System.Drawing.Size(84, 20)
+        Me.TempUser.Size = New System.Drawing.Size(70, 20)
         Me.TempUser.TabIndex = 7
         Me.TempUser.Visible = False
         '
         'TempPass
         '
-        Me.TempPass.Location = New System.Drawing.Point(373, 119)
+        Me.TempPass.Location = New System.Drawing.Point(411, 119)
         Me.TempPass.Name = "TempPass"
-        Me.TempPass.Size = New System.Drawing.Size(84, 20)
+        Me.TempPass.Size = New System.Drawing.Size(70, 20)
         Me.TempPass.TabIndex = 8
         Me.TempPass.Visible = False
         '
         'GridView
         '
         Me.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridView.Location = New System.Drawing.Point(15, 224)
+        Me.GridView.Location = New System.Drawing.Point(12, 211)
         Me.GridView.Name = "GridView"
         Me.GridView.Size = New System.Drawing.Size(61, 37)
         Me.GridView.TabIndex = 9
@@ -122,21 +122,34 @@ Partial Class Login
         '
         'txtTipoUsuario
         '
-        Me.txtTipoUsuario.Location = New System.Drawing.Point(373, 119)
+        Me.txtTipoUsuario.Location = New System.Drawing.Point(411, 119)
         Me.txtTipoUsuario.Name = "txtTipoUsuario"
-        Me.txtTipoUsuario.Size = New System.Drawing.Size(82, 20)
+        Me.txtTipoUsuario.Size = New System.Drawing.Size(70, 20)
         Me.txtTipoUsuario.TabIndex = 10
         Me.txtTipoUsuario.Visible = False
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(109, 181)
+        Me.ProgressBar1.Location = New System.Drawing.Point(108, 177)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(311, 15)
         Me.ProgressBar1.TabIndex = 11
         '
         'Timer1
         '
+        '
+        'Panel1
+        '
+        Me.Panel1.BackColor = System.Drawing.Color.Black
+        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.Label2)
+        Me.Panel1.Controls.Add(Me.txtPass)
+        Me.Panel1.Controls.Add(Me.txtUser)
+        Me.Panel1.ForeColor = System.Drawing.SystemColors.Control
+        Me.Panel1.Location = New System.Drawing.Point(136, 63)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(232, 69)
+        Me.Panel1.TabIndex = 13
         '
         'BotonAceptar
         '
@@ -151,34 +164,21 @@ Partial Class Login
         '
         'PictureBox2
         '
-        Me.PictureBox2.BackColor = System.Drawing.Color.Crimson
-        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.ovv
-        Me.PictureBox2.Location = New System.Drawing.Point(15, 8)
+        Me.PictureBox2.BackColor = System.Drawing.Color.DimGray
+        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.rec2
+        Me.PictureBox2.Location = New System.Drawing.Point(12, -20)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(493, 253)
+        Me.PictureBox2.Size = New System.Drawing.Size(493, 284)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox2.TabIndex = 12
         Me.PictureBox2.TabStop = False
-        '
-        'Panel1
-        '
-        Me.Panel1.BackColor = System.Drawing.Color.Red
-        Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.Label2)
-        Me.Panel1.Controls.Add(Me.txtPass)
-        Me.Panel1.Controls.Add(Me.txtUser)
-        Me.Panel1.ForeColor = System.Drawing.SystemColors.Control
-        Me.Panel1.Location = New System.Drawing.Point(125, 56)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(240, 75)
-        Me.Panel1.TabIndex = 13
         '
         'Login
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.Crimson
-        Me.ClientSize = New System.Drawing.Size(516, 276)
+        Me.BackColor = System.Drawing.Color.DimGray
+        Me.ClientSize = New System.Drawing.Size(516, 273)
         Me.ControlBox = False
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.ProgressBar1)
@@ -193,11 +193,11 @@ Partial Class Login
         Me.Name = "Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
-        Me.TransparencyKey = System.Drawing.Color.Crimson
+        Me.TransparencyKey = System.Drawing.Color.DimGray
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

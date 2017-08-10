@@ -31,7 +31,6 @@ Partial Class FormularioABM
         Me.OK = New System.Windows.Forms.Button()
         Me.opBuscarNombre = New System.Windows.Forms.RadioButton()
         Me.opBuscarDNI = New System.Windows.Forms.RadioButton()
-        Me.botonEliminarBeneficiario = New System.Windows.Forms.Button()
         Me.botonModificarBeneficiario = New System.Windows.Forms.Button()
         Me.botonAgregarBeneficiario = New System.Windows.Forms.Button()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -125,20 +124,19 @@ Partial Class FormularioABM
         Me.Panel2.Controls.Add(Me.OK)
         Me.Panel2.Controls.Add(Me.opBuscarNombre)
         Me.Panel2.Controls.Add(Me.opBuscarDNI)
-        Me.Panel2.Controls.Add(Me.botonEliminarBeneficiario)
         Me.Panel2.Controls.Add(Me.botonModificarBeneficiario)
         Me.Panel2.Controls.Add(Me.botonAgregarBeneficiario)
         Me.Panel2.Controls.Add(Me.Label18)
         Me.Panel2.Controls.Add(Me.GridView)
         Me.Panel2.Location = New System.Drawing.Point(5, 65)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(525, 587)
+        Me.Panel2.Size = New System.Drawing.Size(525, 573)
         Me.Panel2.TabIndex = 4
         '
         'CANCELAR
         '
         Me.CANCELAR.BackColor = System.Drawing.Color.Chocolate
-        Me.CANCELAR.Location = New System.Drawing.Point(397, 547)
+        Me.CANCELAR.Location = New System.Drawing.Point(397, 516)
         Me.CANCELAR.Name = "CANCELAR"
         Me.CANCELAR.Size = New System.Drawing.Size(123, 38)
         Me.CANCELAR.TabIndex = 9
@@ -149,7 +147,7 @@ Partial Class FormularioABM
         'OK
         '
         Me.OK.BackColor = System.Drawing.Color.MediumSeaGreen
-        Me.OK.Location = New System.Drawing.Point(397, 512)
+        Me.OK.Location = New System.Drawing.Point(275, 516)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(123, 38)
         Me.OK.TabIndex = 8
@@ -181,22 +179,12 @@ Partial Class FormularioABM
         Me.opBuscarDNI.Text = "CUIL/D.N.I."
         Me.opBuscarDNI.UseVisualStyleBackColor = True
         '
-        'botonEliminarBeneficiario
-        '
-        Me.botonEliminarBeneficiario.BackColor = System.Drawing.Color.Tomato
-        Me.botonEliminarBeneficiario.Location = New System.Drawing.Point(397, 486)
-        Me.botonEliminarBeneficiario.Name = "botonEliminarBeneficiario"
-        Me.botonEliminarBeneficiario.Size = New System.Drawing.Size(123, 24)
-        Me.botonEliminarBeneficiario.TabIndex = 5
-        Me.botonEliminarBeneficiario.Text = "Eliminar"
-        Me.botonEliminarBeneficiario.UseVisualStyleBackColor = False
-        '
         'botonModificarBeneficiario
         '
         Me.botonModificarBeneficiario.BackColor = System.Drawing.Color.LightSkyBlue
-        Me.botonModificarBeneficiario.Location = New System.Drawing.Point(118, 486)
+        Me.botonModificarBeneficiario.Location = New System.Drawing.Point(181, 486)
         Me.botonModificarBeneficiario.Name = "botonModificarBeneficiario"
-        Me.botonModificarBeneficiario.Size = New System.Drawing.Size(284, 24)
+        Me.botonModificarBeneficiario.Size = New System.Drawing.Size(339, 24)
         Me.botonModificarBeneficiario.TabIndex = 4
         Me.botonModificarBeneficiario.Text = "Modificar "
         Me.botonModificarBeneficiario.UseVisualStyleBackColor = False
@@ -206,7 +194,7 @@ Partial Class FormularioABM
         Me.botonAgregarBeneficiario.BackColor = System.Drawing.Color.MediumTurquoise
         Me.botonAgregarBeneficiario.Location = New System.Drawing.Point(3, 486)
         Me.botonAgregarBeneficiario.Name = "botonAgregarBeneficiario"
-        Me.botonAgregarBeneficiario.Size = New System.Drawing.Size(117, 24)
+        Me.botonAgregarBeneficiario.Size = New System.Drawing.Size(181, 24)
         Me.botonAgregarBeneficiario.TabIndex = 3
         Me.botonAgregarBeneficiario.Text = "Agregar Beneficiario"
         Me.botonAgregarBeneficiario.UseVisualStyleBackColor = False
@@ -543,7 +531,8 @@ Partial Class FormularioABM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1150, 664)
+        Me.BackColor = System.Drawing.Color.Gainsboro
+        Me.ClientSize = New System.Drawing.Size(1077, 664)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.botonConfirmarAlta)
@@ -595,7 +584,6 @@ Partial Class FormularioABM
     Friend WithEvents comboSexo As System.Windows.Forms.ComboBox
     Friend WithEvents txtMail As System.Windows.Forms.TextBox
     Friend WithEvents txtTelefono As System.Windows.Forms.TextBox
-    Friend WithEvents botonEliminarBeneficiario As System.Windows.Forms.Button
     Friend WithEvents botonModificarBeneficiario As System.Windows.Forms.Button
     Friend WithEvents botonAgregarBeneficiario As System.Windows.Forms.Button
     Friend WithEvents botonConfirmarAlta As System.Windows.Forms.Button

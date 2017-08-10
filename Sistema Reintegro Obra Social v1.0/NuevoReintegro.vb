@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports System.IO
 Imports System.Drawing.Imaging
-
+Imports System.Windows.Forms.Keys
 Public Class NuevoReintegro
     Dim Conex As New MySqlConnection(CADENABASE2)
     Dim da As MySqlDataAdapter
@@ -22,12 +22,13 @@ Public Class NuevoReintegro
 
     'LOAD FORMULARIO NUEVO REINTEGRO
     Private Sub NuevoReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        opReintegro.Checked = True
         lblNumeroReintegro.Text = VariableGlobalUsuario
         opBuscarDNI.Checked = True
         txtFechaSolicitud.Text = DateTime.Now.Year & "-" & DateTime.Now.Month & "-" & DateTime.Now.Day
         apagaDatosOperacion()
+        llenaGridSubsidios()
         txtBusqueda.Focus()
-
     End Sub
 
 
@@ -90,6 +91,7 @@ Public Class NuevoReintegro
         Catch
         End Try
         prendeDatosOperacion()
+        GridViewSubsidios.Visible = False
         'GridView.Enabled = True
         txtDetalle.Focus()
 
@@ -112,6 +114,7 @@ Public Class NuevoReintegro
         Catch
         End Try
         prendeDatosOperacion()
+        GridViewSubsidios.Visible = False
         'GridView.Enabled = False
         txtDetalle.Focus()
     End Sub
@@ -131,135 +134,323 @@ Public Class NuevoReintegro
             With cmdinsert
                 .Connection = con_insert
                 .CommandType = CommandType.Text
-                Select Case (clbimagen.Items.Count)
-                    '?codus,?codben,?fecsol,?det,?imp,?obsc,?img1,?img2,?img3,?img4,?img5,?audmed,?porcaudmed,?obsam,?est,?aut,?acargo,?fecreint,?porcreint,?valfinal
-                    Case 0
-                        .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`Observaciones_Carga`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?obsc,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
-                        .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
-                        .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
-                        .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
-                        .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
-                        .Parameters.AddWithValue("?imp", varimp)
-                        .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
-                        .Parameters.AddWithValue("?audmed", Int(0))
-                        .Parameters.AddWithValue("?porcaudmed", Int(0))
-                        .Parameters.AddWithValue("?obsam", varobs)
-                        .Parameters.AddWithValue("?est", Int(0))
-                        .Parameters.AddWithValue("?obscomision", varobs)
-                        .Parameters.AddWithValue("?aut", varobs)
-                        .Parameters.AddWithValue("?acargo", Int(-1))
-                        .Parameters.AddWithValue("?fecreint", varfec)
-                        .Parameters.AddWithValue("?porcreint", Int(0))
-                        .Parameters.AddWithValue("?valfinal", Int(0))
-                    Case 1
-                        .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`Observaciones_Carga`,`Imagen1`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?obsc,?img1,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
-                        .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
-                        .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
-                        .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
-                        .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
-                        .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
-                        .Parameters.AddWithValue("?imp", varimp)
-                        .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
-                        .Parameters.AddWithValue("?audmed", Int(0))
-                        .Parameters.AddWithValue("?porcaudmed", Int(0))
-                        .Parameters.AddWithValue("?obsam", varobs)
-                        .Parameters.AddWithValue("?est", Int(0))
-                        .Parameters.AddWithValue("?obscomision", varobs)
-                        .Parameters.AddWithValue("?aut", varobs)
-                        .Parameters.AddWithValue("?acargo", Int(-1))
-                        .Parameters.AddWithValue("?fecreint", varfec)
-                        .Parameters.AddWithValue("?porcreint", Int(0))
-                        .Parameters.AddWithValue("?valfinal", Int(0))
-                    Case 2
-                        .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?obsc,?img1,?img2,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
-                        .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
-                        .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
-                        .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
-                        .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
-                        .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
-                        .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
-                        .Parameters.AddWithValue("?imp", varimp)
-                        .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
-                        .Parameters.AddWithValue("?audmed", Int(0))
-                        .Parameters.AddWithValue("?porcaudmed", Int(0))
-                        .Parameters.AddWithValue("?obsam", varobs)
-                        .Parameters.AddWithValue("?est", Int(0))
-                        .Parameters.AddWithValue("?obscomision", varobs)
-                        .Parameters.AddWithValue("?aut", varobs)
-                        .Parameters.AddWithValue("?acargo", Int(-1))
-                        .Parameters.AddWithValue("?fecreint", varfec)
-                        .Parameters.AddWithValue("?porcreint", Int(0))
-                        .Parameters.AddWithValue("?valfinal", Int(0))
+                'OPTION REINTEGRO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                Dim vartiporeintegro As Integer
+                If opReintegro.Checked = True Then
+                    vartiporeintegro = 0
+                    Select Case (clbimagen.Items.Count)
+                        '?codus,?codben,?fecsol,?det,?imp,?obsc,?img1,?img2,?img3,?img4,?img5,?audmed,?porcaudmed,?obsam,?est,?aut,?acargo,?fecreint,?porcreint,?valfinal
+                        Case 0
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", 0)
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
+                        Case 1
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`Imagen1`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", 0)
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
+                        Case 2
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", 0)
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
 
-                    Case 3
-                        .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Imagen3`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?obsc,?img1,?img2,?img3,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
-                        .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
-                        .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
-                        .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
-                        .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
-                        .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
-                        .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
-                        .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
-                        .Parameters.AddWithValue("?imp", varimp)
-                        .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
-                        .Parameters.AddWithValue("?audmed", Int(0))
-                        .Parameters.AddWithValue("?porcaudmed", Int(0))
-                        .Parameters.AddWithValue("?obsam", varobs)
-                        .Parameters.AddWithValue("?est", Int(0))
-                        .Parameters.AddWithValue("?obscomision", varobs)
-                        .Parameters.AddWithValue("?aut", varobs)
-                        .Parameters.AddWithValue("?acargo", Int(-1))
-                        .Parameters.AddWithValue("?fecreint", varfec)
-                        .Parameters.AddWithValue("?porcreint", Int(0))
-                        .Parameters.AddWithValue("?valfinal", Int(0))
+                        Case 3
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Imagen3`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?img3,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
+                            .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", 0)
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
 
-                    Case 4
-                        .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Imagen3`,`Imagen4`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?obsc,?img1,?img2,?img3,?img4,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
-                        .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
-                        .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
-                        .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
-                        .Parameters.AddWithValue("?img4", DeImagen_a_Bytes(clbimagen.Items.Item(3)))
-                        .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
-                        .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
-                        .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
-                        .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
-                        .Parameters.AddWithValue("?imp", varimp)
-                        .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
-                        .Parameters.AddWithValue("?audmed", Int(0))
-                        .Parameters.AddWithValue("?porcaudmed", Int(0))
-                        .Parameters.AddWithValue("?obsam", varobs)
-                        .Parameters.AddWithValue("?est", Int(0))
-                        .Parameters.AddWithValue("?obscomision", varobs)
-                        .Parameters.AddWithValue("?aut", varobs)
-                        .Parameters.AddWithValue("?acargo", Int(-1))
-                        .Parameters.AddWithValue("?fecreint", varfec)
-                        .Parameters.AddWithValue("?porcreint", Int(0))
-                        .Parameters.AddWithValue("?valfinal", Int(0))
+                        Case 4
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Imagen3`,`Imagen4`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?img3,?img4,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
+                            .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
+                            .Parameters.AddWithValue("?img4", DeImagen_a_Bytes(clbimagen.Items.Item(3)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", 0)
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
 
-                    Case 5
-                        .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Imagen3`,`Imagen4`,`Imagen5`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?obsc,?img1,?img2,?img3,?img4,?img5,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
-                        .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
-                        .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
-                        .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
-                        .Parameters.AddWithValue("?img4", DeImagen_a_Bytes(clbimagen.Items.Item(3)))
-                        .Parameters.AddWithValue("?img5", DeImagen_a_Bytes(clbimagen.Items.Item(4)))
-                        .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
-                        .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
-                        .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
-                        .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
-                        .Parameters.AddWithValue("?imp", varimp)
-                        .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
-                        .Parameters.AddWithValue("?audmed", Int(0))
-                        .Parameters.AddWithValue("?porcaudmed", Int(0))
-                        .Parameters.AddWithValue("?obsam", varobs)
-                        .Parameters.AddWithValue("?est", Int(0))
-                        .Parameters.AddWithValue("?obscomision", varobs)
-                        .Parameters.AddWithValue("?aut", varobs)
-                        .Parameters.AddWithValue("?acargo", Int(-1))
-                        .Parameters.AddWithValue("?fecreint", varfec)
-                        .Parameters.AddWithValue("?porcreint", Int(0))
-                        .Parameters.AddWithValue("?valfinal", Int(0))
-                End Select
+                        Case 5
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Imagen3`,`Imagen4`,`Imagen5`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?img3,?img4,?img5,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
+                            .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
+                            .Parameters.AddWithValue("?img4", DeImagen_a_Bytes(clbimagen.Items.Item(3)))
+                            .Parameters.AddWithValue("?img5", DeImagen_a_Bytes(clbimagen.Items.Item(4)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", 0)
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
+                    End Select
+                End If
+                'OPTION SUBSIDIO <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+                If opSubsidio.Checked = True Then
+                    vartiporeintegro = 1
+                    Select Case (clbimagen.Items.Count)
+                        '?codus,?codben,?fecsol,?det,?imp,?obsc,?img1,?img2,?img3,?img4,?img5,?audmed,?porcaudmed,?obsam,?est,?aut,?acargo,?fecreint,?porcreint,?valfinal
+                        Case 0
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", Int(txtSubsidio.Text))
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
+                        Case 1
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`Imagen1`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", Int(txtSubsidio.Text))
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
+                        Case 2
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", Int(txtSubsidio.Text))
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
+
+                        Case 3
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Imagen3`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?img3,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
+                            .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", Int(txtSubsidio.Text))
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
+
+                        Case 4
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Imagen3`,`Imagen4`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?img3,?img4,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
+                            .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
+                            .Parameters.AddWithValue("?img4", DeImagen_a_Bytes(clbimagen.Items.Item(3)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", Int(txtSubsidio.Text))
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
+
+                        Case 5
+                            .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Imagen3`,`Imagen4`,`Imagen5`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?img3,?img4,?img5,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal)"
+                            .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
+                            .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
+                            .Parameters.AddWithValue("?img4", DeImagen_a_Bytes(clbimagen.Items.Item(3)))
+                            .Parameters.AddWithValue("?img5", DeImagen_a_Bytes(clbimagen.Items.Item(4)))
+                            .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
+                            .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
+                            .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
+                            .Parameters.AddWithValue("?det", txtDetalle.Text.ToString)
+                            .Parameters.AddWithValue("?imp", varimp)
+                            .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
+                            .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                            .Parameters.AddWithValue("?tiporeintegro", Int(vartiporeintegro))
+                            .Parameters.AddWithValue("?idsub", Int(txtSubsidio.Text))
+                            .Parameters.AddWithValue("?obsc", txtObservacionesCarga.Text)
+                            .Parameters.AddWithValue("?audmed", Int(0))
+                            .Parameters.AddWithValue("?porcaudmed", Int(0))
+                            .Parameters.AddWithValue("?obsam", varobs)
+                            .Parameters.AddWithValue("?est", Int(0))
+                            .Parameters.AddWithValue("?obscomision", varobs)
+                            .Parameters.AddWithValue("?aut", varobs)
+                            .Parameters.AddWithValue("?acargo", Int(-1))
+                            .Parameters.AddWithValue("?fecreint", varfec)
+                            .Parameters.AddWithValue("?porcreint", Int(0))
+                            .Parameters.AddWithValue("?valfinal", Int(0))
+                    End Select
+
+
+                End If
             End With
             Try
                 con_insert.Open()
@@ -280,6 +471,9 @@ Public Class NuevoReintegro
         txtImporte.Text = ""
         txtFechaSolicitud.Text = ""
         txtObservacionesCarga.Text = ""
+        txtCBU.Text = ""
+        txtAlias.Text = ""
+        txtSubsidio.Text = ""
         txtDetalle.Focus()
     End Sub
 
@@ -360,7 +554,7 @@ Public Class NuevoReintegro
 
     'BOTON ACEPTAR --> GENERA NUEVA SOLICITUD DE REINTEGRO
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        If (Trim(txtDetalle.Text) = "") Or (Trim(txtImporte.Text) = "") Or (Trim(txtFechaSolicitud.Text) = "") Then
+        If (Trim(txtDetalle.Text) = "") Or (Trim(txtImporte.Text) = "") Or (Trim(txtFechaSolicitud.Text) = "") Or (Trim(txtCBU.Text) = "") Or (Trim(txtAlias.Text) = "") Then
             MsgBox("Por favor Complete todos los datos de la Operacion", vbExclamation, "Faltan Datos")
         Else
             Try
@@ -374,7 +568,9 @@ Public Class NuevoReintegro
                 apagaDatosOperacion()
                 lblPicture.Image = Nothing
                 botonQuitarImagen.Visible = False
+                txtSubsidio.Visible = False
                 txtBusqueda.Focus()
+
             Catch ex As Exception
                 MsgBox(ex.Message)
             End Try
@@ -411,7 +607,6 @@ Public Class NuevoReintegro
     'CONTROLA QUE EL TEXTBOX DE IMPORTE SOLO ADMITA NUMEROS POR TECLADO
     Private Sub txtImporte_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtImporte.KeyPress
         e.Handled = NumericOnly(e.KeyChar)
-
         '  If (e.KeyChar =) Then
         '  Me.Close()
     End Sub
@@ -426,13 +621,73 @@ Public Class NuevoReintegro
             Return True
         End If
     End Function
-
-    Private Sub Panel5_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel5.Paint
-
+    
+    Private Sub llenaGridSubsidios()
+        Try
+            sql = "SELECT id_subsidio,detalle,importe FROM tipo_subsidio"
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridViewSubsidios.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+    Private Sub opSubsidio_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opSubsidio.CheckedChanged
+        GridViewSubsidios.Visible = True
+        txtSubsidio.Visible = True
     End Sub
 
-    Private Sub Panel4_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel4.Paint
-
+    Private Sub opReintegro_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opReintegro.CheckedChanged
+        GridViewSubsidios.Visible = False
+        txtSubsidio.Visible = False
+        txtImporte.Text = ""
+        txtImporte.Focus()
     End Sub
+
+
+    Private Sub GridViewSubsidios_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridViewSubsidios.CellClick
+        Try
+            txtSubsidio.Text = Me.GridViewSubsidios.Rows(e.RowIndex).Cells(0).Value
+            txtImporte.Text = Me.GridViewSubsidios.Rows(e.RowIndex).Cells(2).Value
+        Catch
+        End Try
+    End Sub
+
+    Private Sub GridViewSubsidios_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridViewSubsidios.CellContentClick
+        Try
+            txtSubsidio.Text = Me.GridViewSubsidios.Rows(e.RowIndex).Cells(0).Value
+            txtImporte.Text = Me.GridViewSubsidios.Rows(e.RowIndex).Cells(2).Value
+        Catch
+        End Try
+    End Sub
+
+    Private Sub GridViewSubsidios_CellMouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles GridViewSubsidios.CellMouseDoubleClick
+        GridViewSubsidios.Visible = False
+        Try
+            txtSubsidio.Text = Me.GridViewSubsidios.Rows(e.RowIndex).Cells(0).Value
+            txtImporte.Text = Me.GridViewSubsidios.Rows(e.RowIndex).Cells(2).Value
+        Catch
+        End Try
+    End Sub
+
+    Private Sub txtSubsidio_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles txtSubsidio.DoubleClick
+        GridViewSubsidios.Visible = True
+    End Sub
+
+    Private Sub txtCBU_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtCBU.KeyPress
+        'SOLO ADMITE NUMEROS CBU *******
+        If InStr("0123456789", e.KeyChar) = False Then
+            If (Asc(e.KeyChar)) <> 8 Then
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub GridViewSubsidios_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles GridViewSubsidios.KeyPress
+        If Asc(e.KeyChar) = 13 Then
+            GridViewSubsidios.Visible = False
+        End If
+        End Sub
 End Class
 
