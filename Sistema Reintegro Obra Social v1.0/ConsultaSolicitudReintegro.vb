@@ -19,7 +19,6 @@ Public Class ConsultaSolicitudReintegro
     Dim rollbackFechaSolicitud As String
     Dim varCodigoreintegro As String
 
-
     Private Sub ConsultaSolicitudReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         GridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         apagaFecha()
@@ -36,7 +35,6 @@ Public Class ConsultaSolicitudReintegro
         'col.DefaultCellStyle.WrapMode = DataGridViewTriState.True
     End Sub
 
-
     'Metodo llena grid boo
     Private Sub llenarGridCompleto() '>>>>>>>>>>>
         Try
@@ -47,7 +45,6 @@ Public Class ConsultaSolicitudReintegro
                     "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
                     "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional.ToString & "') AND (Auditor_Medico = 0)"
-
             'SI QUIERO VER SOLO LO QUE CARGA EL USUARIO LOGUEADO
             'sql = "SELECT Codigo_Reintegro,Codigo_Beneficiario,Fecha_Solicitud,Detalle,Importe,Observaciones_Carga,Imagen1" & _
             '         " FROM reintegros WHERE Codigo_Usuario = '" & VariableGlobalUsuario.ToString & "'"
@@ -55,12 +52,10 @@ Public Class ConsultaSolicitudReintegro
             dt = New DataTable
             da.Fill(dt)
             GridView1.DataSource = dt
-
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
-
 
     'CHECK DE FECHA ACTIVADO O DESACTIVADO
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles checkFecha.CheckedChanged
@@ -183,7 +178,6 @@ Public Class ConsultaSolicitudReintegro
                 clbimagen.Items.Add(bitmap)
             End If
         Next
-
         Try
             'arreglo fecha
             lblfe1.Text = Me.GridView1.Rows(e.RowIndex).Cells(3).Value
@@ -281,7 +275,6 @@ Public Class ConsultaSolicitudReintegro
         End Try
     End Sub
     '*******************************************************************************************************************************************************
-
     'VISTA PREVIA DEL PICTUREBOX AL SELECCIONAR EN EL COMBOLIST
     Private Sub clbimagen_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles clbimagen.SelectedIndexChanged
         Try
@@ -289,7 +282,6 @@ Public Class ConsultaSolicitudReintegro
         Catch ex As Exception
         End Try
     End Sub
-
     Private Sub GridView1_CellContextMenuStripChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellContextMenuStripChanged
         clbimagen.Items.Clear()
         clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridView1.Rows(e.RowIndex).Cells(10).Value))
@@ -298,17 +290,11 @@ Public Class ConsultaSolicitudReintegro
         clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridView1.Rows(e.RowIndex).Cells(13).Value))
         clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridView1.Rows(e.RowIndex).Cells(14).Value))
     End Sub
-
-
-
     'doble click en imagen --- IMPRIMIR
     Private Sub lblPicture_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lblPicture.DoubleClick
         FormularioImagen.PictureBox1.Image = Me.lblPicture.Image
         FormularioImagen.Show()
     End Sub
-
-
-
     Private Sub ImprimirGrafico(ByVal sender As Object, ByVal e As PrintPageEventArgs)
         ' recuperar la imagen del PictureBox
         Dim oImagenBmp As Bitmap = Me.lblPicture.Image
@@ -320,10 +306,9 @@ Public Class ConsultaSolicitudReintegro
         e.MarginBounds.Width, _
         e.MarginBounds.Height)
     End Sub
-
-    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        ' e.Graphics.DrawImage(lblPicture.Image, 10, 20, 900, 920)
-    End Sub
+    '  Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
+    ' e.Graphics.DrawImage(lblPicture.Image, 10, 20, 900, 920)
+    'End Sub
 
     'IMPRIMIR
     Private Sub imprimir()
@@ -334,11 +319,10 @@ Public Class ConsultaSolicitudReintegro
         Else
         End If
     End Sub
-
     Private Sub EnabledTextOff()
         txtDetalle.Enabled = False
         txtImporte.Enabled = False
-        txtObservacionesCarga.Enabled=False
+        txtObservacionesCarga.Enabled = False
         txtFechaSolicitud.Enabled = False
         DateTimePicker3.Enabled = False
         txtCBU.Enabled = False
@@ -426,7 +410,6 @@ Public Class ConsultaSolicitudReintegro
                 .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
                 .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
                 .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
-
             End With
             Try
                 con_insert.Open()

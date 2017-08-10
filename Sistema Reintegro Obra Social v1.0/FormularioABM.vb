@@ -15,9 +15,7 @@ Public Class FormularioABM
     Dim cont As Integer
     Dim controlDNI As Boolean
     Dim controlNombre As Boolean
-
-    Private Property prog As Integer
-
+    'Private Property prog As Integer
     'boton Cancelar
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         If booModificacion = False Then
@@ -26,7 +24,6 @@ Public Class FormularioABM
             apagarTextBox()
             booModificacion = False
         End If
-
     End Sub
 
     'CUANDO CARGA EL FORMULARIO ABM **************************
@@ -43,7 +40,6 @@ Public Class FormularioABM
         'deshabilito los textbox
         apagarTextBox()
         botonConfirmarAlta.Enabled = False
-
     End Sub
 
     '@Metodo Deshabilita Los TextBox de Datos Personales (BENEFICIARIOS)
@@ -85,31 +81,9 @@ Public Class FormularioABM
         txtMail.Enabled = True
     End Sub
 
-    '@metodo blanquea TextBox de Operacion Reintegro
-    Public Sub limpiarDatosOperacion()
-        'txtDetalle.Text = ""
-        'txtImporte.Text = ""
-        'txtFechaSolicitud.Text = ""
-        'txtFechaReintegro.Text = ""
-        'txtAutorizante.Text = ""
-    End Sub
-
     'CUANDO COMIENZO A ESCRIBIR EN EL TEXTBOX DE BUSQUEDA ********************************
     Private Sub txtBusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBusqueda.TextChanged
-        'If txtBusqueda.Text = "" Then
-        ' botonModificarBeneficiario.Enabled = False
-        ' mostrarlosdatos()
-        ' If boo = False Then
-        ' txtBusqueda.Focus()
-        ' End If
-        ' Else
-        ' botonModificarBeneficiario.Enabled = True
-        ' If boo = False Then
-        ' opBuscarDNI.Select()
-        ' boo = True
-        ' End If
         buscarlosdatos()
-        ' End If
     End Sub
 
     '@Metodo Llena Datos en GridVIEW
@@ -145,10 +119,6 @@ Public Class FormularioABM
         End Try
     End Sub
 
-
-
-
-
     'LLENA LOS TEXTBOX CON LOS DATOS DE LA SELECCION DEL GRIDVIEW **************************
     Private Sub GridView_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView.CellClick
         Try
@@ -176,7 +146,6 @@ Public Class FormularioABM
 
     End Sub
 
-
     Private Sub botonModificarBeneficiario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonModificarBeneficiario.Click
         booModificacion = True
         'BOTON MODIFICAR --> HABILITA LOS TEXTBOX
@@ -195,36 +164,12 @@ Public Class FormularioABM
 
     Private Sub txtDetalle_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         Me.botonConfirmarAlta.Enabled = True
-        'If Trim(txtDetalle.Text) = "" Then
         botonConfirmarAlta.Enabled = False
-        'Else
-        'botonConfirmarAlta.Enabled = True
-        'End If
-
     End Sub
 
-    'nuevo coment
-    '************************ confirmar alta reintegro! ********************
-    Private Sub botonConfirmarAlta_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonConfirmarAlta.Click
-        ' If (Trim(txtDetalle.Text) = "") Or (Trim(txtImporte.Text) = "") Or (Trim(txtFechaSolicitud.Text) = "") Or (Trim(txtFechaReintegro.Text) = "") Or (Trim(txtAutorizante.Text) = "") Then
-        ' MsgBox("Llenar todos los campos del Reintegro por favor", vbExclamation, "Faltan Datos")
-        ' Else
-        ' MsgBox("Generando nuevo registro en la tabla Reintegros!", vbInformation)
-        ' limpiarDatosOperacion()
-        ' End If
-    End Sub
-
-
-
-
-
-    Private Sub botonImagen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
-
-    Private Function Imagen_Bytes(ByVal image As Image) As Byte()
-        Throw New NotImplementedException
-    End Function
+    ' Private Function Imagen_Bytes(ByVal image As Image) As Byte()
+    '     Throw New NotImplementedException
+    ' End Function
 
 
     'UPDATE TABLA BENEFICIARIOS
@@ -305,9 +250,6 @@ Public Class FormularioABM
     End Sub
     '**********************************************************************************************************************************************************************************************************
 
-
-
-
     Private Sub opBuscarDNI_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opBuscarDNI.CheckedChanged
         buscarlosdatos()
     End Sub
@@ -315,5 +257,6 @@ Public Class FormularioABM
     Private Sub opBuscarNombre_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opBuscarNombre.CheckedChanged
         buscarlosdatos()
     End Sub
+
 
 End Class

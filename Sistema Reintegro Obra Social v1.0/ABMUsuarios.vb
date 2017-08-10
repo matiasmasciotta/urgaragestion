@@ -10,19 +10,11 @@ Public Class ABMUsuarios
     Dim comando As MySqlCommand
     Dim varControlPass As Boolean = False
     '************
-
     Dim sql2 As String
-
     Dim cm2 As MySqlCommand
     Dim da2 As MySqlDataAdapter
     Dim ds2 As DataSet
-
     '********
-
-    Private Sub GridView_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView.CellContentClick
-
-    End Sub
-
     Private Sub ABMUsuarios_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'carga grid usuarios
         cargaUsuarios()
@@ -48,15 +40,12 @@ Public Class ABMUsuarios
             MsgBox(ex.Message)
         End Try
     End Sub
-
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonSalir.Click
         Me.Close()
     End Sub
-
     Private Sub BotonNuevoUsuario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         prendeDatos()
     End Sub
-
     'Prende los Datos de nuevo USUARIO
     Private Sub prendeDatos()
         PictureBox1.Visible = True
@@ -78,9 +67,7 @@ Public Class ABMUsuarios
         comboROL.Visible = True
         comboSeccional.Visible = True
         botonConfirmaUser.Visible = True
-
     End Sub
-
     Private Sub apagaDatos()
         PictureBox1.Visible = False
         lbldni.Visible = False
@@ -103,20 +90,12 @@ Public Class ABMUsuarios
         comboSeccional.Visible = False
         botonConfirmaUser.Visible = False
     End Sub
-
-
-
-
-
-
     'metodo Carga SECCIONALES a combo
     'Private Sub cargaComboSeccionales()
     '    Dim sec As Array
     '  End Sub
-
     ' Private Sub cargaComboTipoDeUsuarios()
     'End Sub
-
     'Click en Grid --> llena Combobox Seccionales
     Private Sub DataGridSeccionales_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridSeccionales.CellContentClick
         Try
@@ -127,9 +106,6 @@ Public Class ABMUsuarios
     Private Sub DataGridSeccionales_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridSeccionales.CellClick
         comboSeccional.Text = Me.DataGridSeccionales.Rows(e.RowIndex).Cells(0).Value
     End Sub
-
-
-
     'Click en Grid --> llena ComboBox TIPO USUARIO
     Private Sub DataGridTiposUsuarios_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridRol.CellContentClick
         Try
@@ -140,15 +116,12 @@ Public Class ABMUsuarios
     Private Sub DataGridRol_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridRol.CellClick
         comboROL.Text = Me.DataGridRol.Rows(e.RowIndex).Cells(0).Value
     End Sub
-
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonConfirmaUser.Click
         agregarUser()
     End Sub
-
     Private Sub botonAgregarBeneficiario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonAgregaUsuario.Click
         prendeDatos()
     End Sub
-
     'definicion metodo agregar user
     Private Sub agregarUser()
         'boton confirmar user
@@ -183,14 +156,12 @@ Public Class ABMUsuarios
                         PictureBox1.Visible = False
                         cargaUsuarios()
                         'GridView.DataSource = dt
-
                     Else
                         MsgBox("Las Pass no coinciden.", vbExclamation)
                     End If
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 End Try
-
             End If
             apagaDatos()
             GridView.Refresh()
@@ -207,10 +178,7 @@ Public Class ABMUsuarios
         txtPass2.Text = ""
         comboROL.Text = ""
         comboSeccional.Text = ""
-
     End Sub
-
-
     'CONTROLA LAS 2 PASS
     Private Sub txtPass2_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPass2.TextChanged
         Dim i As Integer
@@ -228,12 +196,6 @@ Public Class ABMUsuarios
             End If
         Next
     End Sub
-
-    Private Sub txtPass_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtPass.TextChanged
-        'PictureBox1.Image = WindowsApplication1.My.Resources.Resources.images
-    End Sub
-
-
     'Funcion de encriptado ********************************************************************************************
     Private Sub MD5EncryptPass(ByVal StrPass As String)
         Dim md5 As New MD5CryptoServiceProvider
@@ -242,15 +204,12 @@ Public Class ABMUsuarios
         Dim i As Integer
         txtPass.Text = ""
         bytValue = System.Text.Encoding.UTF8.GetBytes(StrPass)
-
         bytHash = md5.ComputeHash(bytValue)
         md5.Clear()
-
         For i = 0 To bytHash.Length - 1
             txtPass.Text &= bytHash(i).ToString("x").PadLeft(2, "0")
         Next
     End Sub
-
     Private Sub cargaUsuarios()
         Try
             sql = "SELECT USUARIOS_REINTEGROS.CODIGO_USUARIO,CONSTRASEÑA,USUARIOS_REINTEGROS.APELLIDONOMBRE,USUARIOS_REINTEGROS.CODIGO_SECCIONAL,SECCIONALES.DESCRIPCION,USUARIOS_REINTEGROS.TIPO_USUARIO FROM USUARIOS_REINTEGROS,SECCIONALES WHERE (/*ID-ID*/USUARIOS_REINTEGROS.CODIGO_SECCIONAL = SECCIONALES.CODIGO)"
@@ -262,7 +221,6 @@ Public Class ABMUsuarios
             MsgBox(ex.Message)
         End Try
     End Sub
-
 End Class
 
 

@@ -12,9 +12,9 @@
         FormularioABM.Show()
     End Sub
 
-    Private Sub ConsultarReintegrosPendientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultarReintegrosPendientesToolStripMenuItem.Click
-        Consulta.Show()
-    End Sub
+    'Private Sub ConsultarReintegrosPendientesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ConsultarReintegrosPendientesToolStripMenuItem.Click
+    'Consulta.Show()
+    'End Sub
 
     Private Sub IngresarAlSistemaToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles IngresarAlSistemaToolStripMenuItem.Click
         'poner recurso de audio
@@ -33,14 +33,14 @@
         apagarBotones()
         MsgBox(CADENABASE2)
 
-            '****************si quiero sobreescribirlo********
-            'Dim obj As Object
-            'Dim archivo As Object
-            'obj = CreateObject("Scripting.FileSystemObject")
-            'archivo = obj.CreateTextFile("C:\texto.txt")
-            'archivo.WriteLine("Esta es la linea 1")
-            'archivo.WriteLine("Esta es la linea 2")
-            'archivo.close()
+        '****************si quiero sobreescribirlo********
+        'Dim obj As Object
+        'Dim archivo As Object
+        'obj = CreateObject("Scripting.FileSystemObject")
+        'archivo = obj.CreateTextFile("C:\texto.txt")
+        'archivo.WriteLine("Esta es la linea 1")
+        'archivo.WriteLine("Esta es la linea 2")
+        'archivo.close()
     End Sub
 
 

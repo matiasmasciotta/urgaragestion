@@ -16,10 +16,6 @@ Public Class NuevoReintegro
         txtBusqueda.Focus()
     End Sub
 
-    Private Sub NuevoReintegro_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles Me.KeyPress
-    
-    End Sub
-
     'LOAD FORMULARIO NUEVO REINTEGRO
     Private Sub NuevoReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         opReintegro.Checked = True
@@ -31,13 +27,10 @@ Public Class NuevoReintegro
         txtBusqueda.Focus()
     End Sub
 
-
     'EVENTO TEXT BUSQUEDA CHANGUED
     Private Sub txtBusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBusqueda.TextChanged
         buscarlosdatos()
     End Sub
-
-
 
     '[] DEFINICION DE METODO BUSCARLOSDATOS()
     Private Sub buscarlosdatos()
@@ -621,7 +614,7 @@ Public Class NuevoReintegro
             Return True
         End If
     End Function
-    
+
     Private Sub llenaGridSubsidios()
         Try
             sql = "SELECT id_subsidio,detalle,importe FROM tipo_subsidio"
@@ -688,6 +681,6 @@ Public Class NuevoReintegro
         If Asc(e.KeyChar) = 13 Then
             GridViewSubsidios.Visible = False
         End If
-        End Sub
+    End Sub
 End Class
 

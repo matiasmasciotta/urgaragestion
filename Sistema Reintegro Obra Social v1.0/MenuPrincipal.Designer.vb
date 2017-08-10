@@ -89,7 +89,7 @@ Partial Class MenuPrincipal
         '
         'ABMUSUARIOSToolStripMenuItem
         '
-        Me.ABMUSUARIOSToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.URGARA_chaleco
+        Me.ABMUSUARIOSToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.Lupita
         Me.ABMUSUARIOSToolStripMenuItem.Name = "ABMUSUARIOSToolStripMenuItem"
         Me.ABMUSUARIOSToolStripMenuItem.Size = New System.Drawing.Size(243, 22)
         Me.ABMUSUARIOSToolStripMenuItem.Text = "Examinar Usuarios (Solo Admin)"
@@ -97,7 +97,7 @@ Partial Class MenuPrincipal
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.BackColor = System.Drawing.Color.CornflowerBlue
-        Me.SalirToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.login_icon
+        Me.SalirToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.Salida
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
         Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
         Me.SalirToolStripMenuItem.Text = "Salir"
@@ -152,7 +152,7 @@ Partial Class MenuPrincipal
         'ConsultarReintegrosPendientesToolStripMenuItem
         '
         Me.ConsultarReintegrosPendientesToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ConsultarReintegrosPendientesToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.images__1_
+        Me.ConsultarReintegrosPendientesToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.Lupita
         Me.ConsultarReintegrosPendientesToolStripMenuItem.Name = "ConsultarReintegrosPendientesToolStripMenuItem"
         Me.ConsultarReintegrosPendientesToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
         Me.ConsultarReintegrosPendientesToolStripMenuItem.Text = "Consultar Reintegros Pendientes"
@@ -187,7 +187,7 @@ Partial Class MenuPrincipal
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources._69kkll
+        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.ovalito
         Me.PictureBox1.Location = New System.Drawing.Point(1408, 30)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(33, 36)
@@ -274,7 +274,7 @@ Partial Class MenuPrincipal
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Urgara_Gestion
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LogoUrgara
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
         Me.ClientSize = New System.Drawing.Size(1588, 709)
         Me.Controls.Add(Me.minutos)

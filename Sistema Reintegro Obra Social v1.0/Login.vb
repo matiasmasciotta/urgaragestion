@@ -99,7 +99,7 @@ Public Class Login
                 txtPass.Enabled = False
                 Timer1.Start()
                 MenuPrincipal.lblUser.Text = "Ingreso - " & DateTime.Now.Date
-                MenuPrincipal.PictureBox1.Image = WindowsApplication1.My.Resources.Resources.oval_23967_960_720
+                MenuPrincipal.PictureBox1.Image = WindowsApplication1.My.Resources.Resources.OvaVerde
                 MenuPrincipal.lblUser.ForeColor = Color.Green
                 MenuPrincipal.IngresarAlSistemaToolStripMenuItem.Text = "Salir para Cerrar Sesion"
                 MenuPrincipal.IngresarAlSistemaToolStripMenuItem.Enabled = False
@@ -159,20 +159,7 @@ Public Class Login
         End If
     End Sub
 
-
-
-
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+    Private Sub txtUser_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtUser.TextChanged
 
     End Sub
-
-    Private Sub ProgressBar1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ProgressBar1.Click
-
-    End Sub
-
-    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
-
-    End Sub
-
- 
 End Class
