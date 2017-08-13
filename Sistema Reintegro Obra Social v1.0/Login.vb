@@ -2,6 +2,8 @@
 Imports System.IO
 Imports System.Security.Cryptography
 
+'juan pedro 13800267
+'Clave0267
 
 Public Class Login
 
@@ -160,6 +162,10 @@ Public Class Login
     End Sub
 
     Private Sub txtUser_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtUser.TextChanged
+
+    End Sub
+
+    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
 
     End Sub
 End Class

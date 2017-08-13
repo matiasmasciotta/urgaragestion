@@ -7,7 +7,7 @@ Imports System.Data
 Imports System.Drawing.Imaging
 Imports System.Drawing.Printing
 
-Public Class ConsultaSolicitudReintegro
+Public Class ConsultaTotal
     Dim Conex As New MySqlConnection(CADENABASE2)
     Dim da As MySqlDataAdapter
     Dim dt As DataTable
@@ -18,12 +18,19 @@ Public Class ConsultaSolicitudReintegro
     Dim rollbackCarga As String
     Dim rollbackFechaSolicitud As String
     Dim varCodigoreintegro As String
+    Dim varOPREINTEGRO As String
+    Dim varOPAUDITORMEDICO As String
+    Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
+                                "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
+                                "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio "
+    Dim c As Integer = 0
 
-    Private Sub ConsultaSolicitudReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        GridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+
+    Private Sub ConsultaTotal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        opSubsidios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         apagaFecha()
         llenarGridCompleto()
-        txtBeneficiario.Focus()
+        'txtBeneficiario.Focus()
         txtFechaDesde.Enabled = False
         txtFechaHasta.Enabled = False
         'GridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -38,20 +45,12 @@ Public Class ConsultaSolicitudReintegro
     'Metodo llena grid boo
     Private Sub llenarGridCompleto() '>>>>>>>>>>>
         Try
-            'SI QUIERO VER LO QUE CARGAN TODOS LOS USUARIOS DE ESA SECCIONAL (TODOS LOS USER DE ESA SECCIONAL)
-            sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
-                    "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
-                    "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
-                    "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
-                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
-                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional.ToString & "') AND (Auditor_Medico = 0)"
-            'SI QUIERO VER SOLO LO QUE CARGA EL USUARIO LOGUEADO
-            'sql = "SELECT Codigo_Reintegro,Codigo_Beneficiario,Fecha_Solicitud,Detalle,Importe,Observaciones_Carga,Imagen1" & _
-            '         " FROM reintegros WHERE Codigo_Usuario = '" & VariableGlobalUsuario.ToString & "'"
+            'TRAE TODOS LOS REINTEGROS PENDIENTES
+            sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario)"
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
-            GridView1.DataSource = dt
+            opSubsidios.DataSource = dt
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -59,6 +58,7 @@ Public Class ConsultaSolicitudReintegro
 
     'CHECK DE FECHA ACTIVADO O DESACTIVADO
     Private Sub CheckBox1_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles checkFecha.CheckedChanged
+        todosLosIF()
         If checkFecha.Checked = True Then
             'MsgBox("CHECK ACTIVO FECHA", vbInformation)
             prendeFecha()
@@ -97,54 +97,164 @@ Public Class ConsultaSolicitudReintegro
         Me.Close()
     End Sub
 
+    'funcion if reintegro o subsidio
+    Private Sub ifReintegroOSubsidio()
+        If (opReintegro.Checked = True) And (opSubsidio.Checked = False) Then
+            varOPREINTEGRO = " AND (tipo_reintegro = 0) "
+        End If
+        If (opReintegro.Checked = True) And (opSubsidio.Checked = True) Then
+            varOPREINTEGRO = "AND (tipo_reintegro = 0 or tipo_reintegro = 1)"
+        End If
+        If (opReintegro.Checked = False) And (opSubsidio.Checked = True) Then
+            varOPREINTEGRO = " AND (tipo_reintegro = 1) "
+        End If
+        If (opReintegro.Checked = False) And (opSubsidio.Checked = False) Then
+            varOPREINTEGRO = "AND (tipo_reintegro = 0 or tipo_reintegro = 1)"
+        End If
+
+    End Sub
+    'clic en reintegro
+    Private Sub opReintegro_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opReintegro.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+    'clic en subsidio
+    Private Sub opSubsidio_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opSubsidio.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'escribo en el buscador
     Private Sub txtBeneficiario_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBeneficiario.TextChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'funcion if auditor medico
+    Private Sub ifAuditorMedico()
+        varOPAUDITORMEDICO = ""
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False And opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 0)"
+        End If
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 0 or auditor_medico = 1)"
+        End If
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1)"
+        End If
+
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 0 or auditor_medico = 2)"
+        End If
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 0 or auditor_medico = 1 or auditor_medico = 2)"
+        End If
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1 or auditor_medico = 2)"
+        End If
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND auditor_medico = 2"
+        End If
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico=0 or auditor_medico = 1 or auditor_medico = 2)"
+        End If
+    End Sub
+
+    'TODOS LOS IF CHECK
+    Private Sub todosLosIF()
+        ifReintegroOSubsidio()
+        ifAuditorMedico()
+    End Sub
+
+    'click auditor medico pendiente
+    Private Sub opPendienteAuditor_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opPendienteAuditor.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'clic auditor medico aprobado
+    Private Sub opAuditorMedicoSI_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opAuditorMedicoSI.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'clic en auditor rechazado
+    Private Sub opAuditorRechazado_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opAuditorRechazado.CheckedChanged
+        todosLosIF()
         BuscarDato()
     End Sub
 
     Private Sub BuscarDato()
         Try
             If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
+                sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario) " & _
+                        " and Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' " & varOPREINTEGRO & varOPAUDITORMEDICO
+            Else
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario) " & _
+                        " and Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' " & _
+                   "AND (Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' " & _
+                   "AND '" & txtFechaHasta.Text.ToString & "')" & varOPREINTEGRO & varOPAUDITORMEDICO
+            End If
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            opSubsidios.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        c = c + 1
+    End Sub
+    Private Sub BuscarDatoFecha()
+        Try
+            If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
                 sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
                     "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
                     "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
                     "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
-                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) AND USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "' AND Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%'"
+                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%'"
             Else
 
                 sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
                     "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
                     "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
                     "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
-                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) AND USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "' AND Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' AND (Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "')"
+                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' AND (Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "')"
+
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
-            GridView1.DataSource = dt
+            opSubsidios.DataSource = dt
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
 
     Private Sub txtFechaHasta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFechaHasta.TextChanged
+        todosLosIF()
         BuscarDato()
     End Sub
 
     Private Sub txtFechaDesde_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFechaDesde.TextChanged
+        todosLosIF()
         BuscarDato()
     End Sub
 
     Private Sub DateTimePicker1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker1.ValueChanged
+        todosLosIF()
         txtFechaDesde.Text = DateTimePicker1.Value.Year & "-" & DateTimePicker1.Value.Month & "-" & DateTimePicker1.Value.Day
         txtFechaHasta.Text = DateTimePicker2.Value.Year & "-" & DateTimePicker2.Value.Month & "-" & DateTimePicker2.Value.Day
         BuscarDato()
     End Sub
 
     Private Sub DateTimePicker2_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker2.ValueChanged
+        todosLosIF()
         txtFechaDesde.Text = DateTimePicker1.Value.Year & "-" & DateTimePicker1.Value.Month & "-" & DateTimePicker1.Value.Day
         txtFechaHasta.Text = DateTimePicker2.Value.Year & "-" & DateTimePicker2.Value.Month & "-" & DateTimePicker2.Value.Day
         BuscarDato()
     End Sub
+
+
     'metodo limpia fecha
     Private Sub limpiafechas()
         txtFechaDesde.Text = ""
@@ -153,7 +263,7 @@ Public Class ConsultaSolicitudReintegro
 
     '*******************************************************************************************************************************************************
     'click en celda llena listbox con imagenes
-    Private Sub GridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellClick
+    Private Sub GridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles opSubsidios.CellClick
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
         Dim SQL2 As String
@@ -162,8 +272,8 @@ Public Class ConsultaSolicitudReintegro
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2
         MiConexion2.Open()
-        varCodigoreintegro = Int(Me.GridView1.Rows(e.RowIndex).Cells(1).Value)
-        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView1.Rows(e.RowIndex).Cells(1).Value & "'"
+        varCodigoreintegro = Int(Me.opSubsidios.Rows(e.RowIndex).Cells(1).Value)
+        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.opSubsidios.Rows(e.RowIndex).Cells(1).Value & "'"
         Com2 = New MySqlCommand(SQL2, MiConexion2)
         Rs2 = Com2.ExecuteReader()
         Rs2.Read()
@@ -180,26 +290,26 @@ Public Class ConsultaSolicitudReintegro
         Next
         Try
             'arreglo fecha
-            lblfe1.Text = Me.GridView1.Rows(e.RowIndex).Cells(3).Value
+            lblfe1.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(3).Value
             Dim fechacreacion As Date
             fechacreacion = lblfe1.Text
             lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
             'af
-            txtDetalle.Text = Me.GridView1.Rows(e.RowIndex).Cells(4).Value
+            txtDetalle.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(4).Value
             rollbackDetalle = txtDetalle.Text
-            txtImporte.Text = Me.GridView1.Rows(e.RowIndex).Cells(5).Value
+            txtImporte.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(5).Value
             rollbackImporte = txtImporte.Text
-            txtObservacionesCarga.Text = Me.GridView1.Rows(e.RowIndex).Cells(6).Value
-            txtCBU.Text = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
-            txtAlias.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
+            txtObservacionesCarga.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(6).Value
+            txtCBU.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(15).Value
+            txtAlias.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(16).Value
             'si es 0 es reintegro
-            If (Me.GridView1.Rows(e.RowIndex).Cells(17).Value) = 0 Then
+            If (Me.opSubsidios.Rows(e.RowIndex).Cells(17).Value) = 0 Then
                 lblTipoReintegro.Text = "ES REINTEGRO"
             End If
             'si es 1 es subsidio
-            If (Me.GridView1.Rows(e.RowIndex).Cells(17).Value) = 1 Then
-                If (Me.GridView1.Rows(e.RowIndex).Cells(18).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
-                If (Me.GridView1.Rows(e.RowIndex).Cells(18).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            If (Me.opSubsidios.Rows(e.RowIndex).Cells(17).Value) = 1 Then
+                If (Me.opSubsidios.Rows(e.RowIndex).Cells(18).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.opSubsidios.Rows(e.RowIndex).Cells(18).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
             End If
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
@@ -212,7 +322,7 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
     'click en celda llena listbox con imagenes
-    Private Sub GridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellContentClick
+    Private Sub GridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles opSubsidios.CellContentClick
         'lleno listbox con imagenes de la base *************************************************
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
@@ -222,8 +332,8 @@ Public Class ConsultaSolicitudReintegro
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2
         MiConexion2.Open()
-        varCodigoreintegro = Int(Me.GridView1.Rows(e.RowIndex).Cells(1).Value)
-        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView1.Rows(e.RowIndex).Cells(1).Value & "'"
+        varCodigoreintegro = Int(Me.opSubsidios.Rows(e.RowIndex).Cells(1).Value)
+        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.opSubsidios.Rows(e.RowIndex).Cells(1).Value & "'"
         Com2 = New MySqlCommand(SQL2, MiConexion2)
         Rs2 = Com2.ExecuteReader()
         Rs2.Read()
@@ -243,27 +353,27 @@ Public Class ConsultaSolicitudReintegro
         'llena textbox con datos de operacion
         Try
             'arreglo fecha al inverso
-            lblfe1.Text = Me.GridView1.Rows(e.RowIndex).Cells(3).Value
+            lblfe1.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(3).Value
             Dim fechacreacion As Date
             fechacreacion = lblfe1.Text
             lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
             'label reintegro o subsidio
 
-            txtDetalle.Text = Me.GridView1.Rows(e.RowIndex).Cells(4).Value
+            txtDetalle.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(4).Value
             rollbackDetalle = txtDetalle.Text
-            txtImporte.Text = Me.GridView1.Rows(e.RowIndex).Cells(5).Value
+            txtImporte.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(5).Value
             rollbackImporte = txtImporte.Text
-            txtObservacionesCarga.Text = Me.GridView1.Rows(e.RowIndex).Cells(6).Value
-            txtCBU.Text = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
-            txtAlias.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
+            txtObservacionesCarga.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(6).Value
+            txtCBU.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(15).Value
+            txtAlias.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(16).Value
             'si es 0 es reintegro
-            If (Me.GridView1.Rows(e.RowIndex).Cells(17).Value) = 0 Then
+            If (Me.opSubsidios.Rows(e.RowIndex).Cells(17).Value) = 0 Then
                 lblTipoReintegro.Text = "ES REINTEGRO"
             End If
             'si es 1 es subsidio
-            If (Me.GridView1.Rows(e.RowIndex).Cells(17).Value) = 1 Then
-                If (Me.GridView1.Rows(e.RowIndex).Cells(18).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
-                If (Me.GridView1.Rows(e.RowIndex).Cells(18).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            If (Me.opSubsidios.Rows(e.RowIndex).Cells(17).Value) = 1 Then
+                If (Me.opSubsidios.Rows(e.RowIndex).Cells(18).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.opSubsidios.Rows(e.RowIndex).Cells(18).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
             End If
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
@@ -282,13 +392,13 @@ Public Class ConsultaSolicitudReintegro
         Catch ex As Exception
         End Try
     End Sub
-    Private Sub GridView1_CellContextMenuStripChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellContextMenuStripChanged
+    Private Sub GridView1_CellContextMenuStripChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles opSubsidios.CellContextMenuStripChanged
         clbimagen.Items.Clear()
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridView1.Rows(e.RowIndex).Cells(10).Value))
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridView1.Rows(e.RowIndex).Cells(11).Value))
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridView1.Rows(e.RowIndex).Cells(12).Value))
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridView1.Rows(e.RowIndex).Cells(13).Value))
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridView1.Rows(e.RowIndex).Cells(14).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(10).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(11).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(12).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(13).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(14).Value))
     End Sub
     'doble click en imagen --- IMPRIMIR
     Private Sub lblPicture_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lblPicture.DoubleClick
@@ -354,7 +464,7 @@ Public Class ConsultaSolicitudReintegro
 
     Private Sub botonModificaSolicitud_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonModificaSolicitud.Click
         botonModificaSolicitud.Enabled = False
-        GridView1.Enabled = False
+        opSubsidios.Enabled = False
         EnabledTextOn()
         PrendeBotones()
     End Sub
@@ -364,7 +474,7 @@ Public Class ConsultaSolicitudReintegro
         ApagaBotones()
         rollbackearDatos()
         botonModificaSolicitud.Enabled = True
-        GridView1.Enabled = True
+        opSubsidios.Enabled = True
     End Sub
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
@@ -382,7 +492,7 @@ Public Class ConsultaSolicitudReintegro
             rollbackearDatos()
             botonModificaSolicitud.Enabled = True
         End If
-        GridView1.Enabled = True
+        opSubsidios.Enabled = True
     End Sub
     Private Sub rollbackearDatos()
         txtDetalle.Text = rollbackDetalle.ToString
@@ -461,49 +571,8 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
 
-    Private Sub lblfe1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblfe1.Click
 
-    End Sub
-    Private Sub lblfe2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblfe2.Click
 
-    End Sub
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
 
-    End Sub
-    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
 
-    End Sub
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-
-    End Sub
-    Private Sub lblPicture_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblPicture.Click
-
-    End Sub
-    Private Sub Label5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label5.Click
-
-    End Sub
-    Private Sub lblTipoReintegro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblTipoReintegro.Click
-
-    End Sub
-    Private Sub botonImagen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonImagen.Click
-
-    End Sub
-    Private Sub Label10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label10.Click
-
-    End Sub
-    Private Sub botonQuitarImagen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonQuitarImagen.Click
-
-    End Sub
-    Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label4.Click
-
-    End Sub
-    Private Sub Panel5_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel5.Paint
-
-    End Sub
 End Class
-
-
-
-
-
-

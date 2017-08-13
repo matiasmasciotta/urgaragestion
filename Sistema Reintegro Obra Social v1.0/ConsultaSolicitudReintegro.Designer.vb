@@ -247,9 +247,6 @@ Partial Class ConsultaSolicitudReintegro
         Me.clbimagen.Size = New System.Drawing.Size(250, 96)
         Me.clbimagen.TabIndex = 24
         '
-        'PrintDocument1
-        '
-        '
         'Label4
         '
         Me.Label4.AutoSize = True

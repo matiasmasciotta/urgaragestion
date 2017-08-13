@@ -76,4 +76,12 @@
     Private Sub SoporteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SoporteToolStripMenuItem.Click
         soporte.Show()
     End Sub
+
+    Private Sub ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.Click
+        ConsultaTotal.Show()
+    End Sub
+
+    Private Sub DatosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DatosToolStripMenuItem.Click
+
+    End Sub
 End Class

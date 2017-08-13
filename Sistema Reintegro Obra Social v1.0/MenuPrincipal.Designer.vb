@@ -106,8 +106,8 @@ Partial Class MenuPrincipal
         '
         Me.DatosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExaminarBeneficiariosToolStripMenuItem, Me.ExaminarSolicitudDeReintegroToolStripMenuItem, Me.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem})
         Me.DatosToolStripMenuItem.Name = "DatosToolStripMenuItem"
-        Me.DatosToolStripMenuItem.Size = New System.Drawing.Size(49, 20)
-        Me.DatosToolStripMenuItem.Text = "Datos"
+        Me.DatosToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
+        Me.DatosToolStripMenuItem.Text = "Consultas"
         '
         'ExaminarBeneficiariosToolStripMenuItem
         '
@@ -138,8 +138,8 @@ Partial Class MenuPrincipal
         '
         Me.ReintegrosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarSolicitudDeReintegroToolStripMenuItem, Me.ConsultarReintegrosPendientesToolStripMenuItem})
         Me.ReintegrosToolStripMenuItem.Name = "ReintegrosToolStripMenuItem"
-        Me.ReintegrosToolStripMenuItem.Size = New System.Drawing.Size(75, 20)
-        Me.ReintegrosToolStripMenuItem.Text = "Reintegros"
+        Me.ReintegrosToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
+        Me.ReintegrosToolStripMenuItem.Text = "Solicitud"
         '
         'GenerarSolicitudDeReintegroToolStripMenuItem
         '
