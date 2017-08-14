@@ -18,8 +18,9 @@ Public Class ConsultaTotal
     Dim rollbackCarga As String
     Dim rollbackFechaSolicitud As String
     Dim varCodigoreintegro As String
-    Dim varOPREINTEGRO As String
-    Dim varOPAUDITORMEDICO As String
+    Dim varOPREINTEGRO As String = " "
+    Dim varOPAUDITORMEDICO As String = " "
+    Dim varOPCOMISION As String = " "
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                                 "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
                                 "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio "
@@ -27,7 +28,7 @@ Public Class ConsultaTotal
 
 
     Private Sub ConsultaTotal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        opSubsidios.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        GridViewReintegros.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         apagaFecha()
         llenarGridCompleto()
         'txtBeneficiario.Focus()
@@ -50,7 +51,7 @@ Public Class ConsultaTotal
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
-            opSubsidios.DataSource = dt
+            GridViewReintegros.DataSource = dt
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -99,20 +100,125 @@ Public Class ConsultaTotal
 
     'funcion if reintegro o subsidio
     Private Sub ifReintegroOSubsidio()
+        varOPREINTEGRO = ""
         If (opReintegro.Checked = True) And (opSubsidio.Checked = False) Then
             varOPREINTEGRO = " AND (tipo_reintegro = 0) "
         End If
         If (opReintegro.Checked = True) And (opSubsidio.Checked = True) Then
-            varOPREINTEGRO = "AND (tipo_reintegro = 0 or tipo_reintegro = 1)"
+            varOPREINTEGRO = " "
         End If
         If (opReintegro.Checked = False) And (opSubsidio.Checked = True) Then
             varOPREINTEGRO = " AND (tipo_reintegro = 1) "
         End If
         If (opReintegro.Checked = False) And (opSubsidio.Checked = False) Then
-            varOPREINTEGRO = "AND (tipo_reintegro = 0 or tipo_reintegro = 1)"
+            varOPREINTEGRO = ""
         End If
 
     End Sub
+ 
+
+    'funcion if auditor medico
+    Private Sub ifAuditorMedico()
+        varOPAUDITORMEDICO = ""
+        'PENDIENTE AUDITOR MEDICO (AUDITOR MEDICO APROBADO)
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False And opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " "
+        End If
+        'PENDIENTE DE AUDITOR MEDICO Y APROBADOS
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1) "
+        End If
+        'SOLO APROBADOS POR AUDITOR MEDICO
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1) "
+        End If
+        'PENDIENTE DE AUDITOR MEDICO Y RECHAZADOS
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 2) "
+        End If
+        'PENDIENTES - APROBADOS Y RECHAZADOS
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1 or auditor_medico = 2) "
+        End If
+        'APROBADOS Y RECHAZADOS POR AUDITOR MEDICO
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1 or auditor_medico = 2) "
+        End If
+        'SOLO RECHAZADOS POR AUDITOR MEDICO
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 2) "
+        End If
+        'APARECEN TODOS LOS REGISTROS SIN FILTRO --> TODAS LAS SOLICITUDES DE REINTEGRO PENDIENTES DE APROBACION PARA AUDITOR
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " "
+        End If
+    End Sub
+
+    'funcion if de comision directiva
+    Private Sub ifComision()
+        varOPCOMISION = ""
+        'PENDIENTE COMISION (AUDITOR MEDICO APROBADO)
+        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = False) Then
+            varOPCOMISION = " "
+            opAuditorMedicoSI.Checked = True
+        End If
+
+        'PENDIENTE DE COMISION Y APROBADOS
+        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = False) Then
+            varOPCOMISION = " AND (Estado = 1) "
+        End If
+        'SOLO APROBADOS POR COMISION
+        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = False) Then
+            varOPCOMISION = " AND (Estado = 1) "
+        End If
+        'RECHAZADOS por comision
+        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = False) Then
+            varOPCOMISION = " AND (Estado = 2) "
+
+        End If
+        'APROBADOS Y RECHAZADOS
+        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = False) Then
+            varOPCOMISION = " AND (Estado = 1) or (Estado = 2) "
+        End If
+
+        'APARECEN TODOS LOS REGISTROS SIN FILTRO --> PERO SI APROBADOS POR AUDITOR MEDICO
+        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = False) Then
+            varOPCOMISION = " "
+        End If
+        'LOS APROBADOS POR COMISION Y LOS PAGADOS OK
+        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = True) Then
+            varOPCOMISION = " AND (Estado = 1) or (Estado = 3) "
+        End If
+        'PENDIENTES DE COMISION, LOS RECHAZADOS Y LOS PAGADOS
+        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = True) Then
+            varOPCOMISION = " AND (Estado = 2) or (Estado = 3) "
+        End If
+        'LOS PAGADOS
+        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = True) Then
+            varOPCOMISION = " AND (Estado = 3) "
+
+        End If
+        'LOS APROBADOS POR COMISION, LOS RECHAZADOS Y LOS PAGADOS
+        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = True) Then
+            varOPCOMISION = " AND (Estado=1) or (Estado = 2) or (Estado = 3) "
+
+        End If
+        'LOS APROBADOS POR COMISION Y PAGADOS OK >>><<<
+        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = True) Then
+            varOPCOMISION = " AND (Estado=1) or (Estado = 3) "
+        End If
+        'LOS RECHAZADOS Y LOS PAGADOS OK
+        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = True) Then
+            varOPCOMISION = " AND (Estado=2) or (Estado = 3) "
+
+        End If
+        'TODOS LOS PAGADOS
+        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = True) Then
+            varOPCOMISION = " AND (Estado=3) "
+        End If
+
+    End Sub
+
     'clic en reintegro
     Private Sub opReintegro_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opReintegro.CheckedChanged
         todosLosIF()
@@ -128,42 +234,6 @@ Public Class ConsultaTotal
     Private Sub txtBeneficiario_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBeneficiario.TextChanged
         todosLosIF()
         BuscarDato()
-    End Sub
-
-    'funcion if auditor medico
-    Private Sub ifAuditorMedico()
-        varOPAUDITORMEDICO = ""
-        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False And opAuditorRechazado.Checked = False) Then
-            varOPAUDITORMEDICO = " AND (auditor_medico = 0)"
-        End If
-        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = False) Then
-            varOPAUDITORMEDICO = " AND (auditor_medico = 0 or auditor_medico = 1)"
-        End If
-        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = False) Then
-            varOPAUDITORMEDICO = " AND (auditor_medico = 1)"
-        End If
-
-        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = True) Then
-            varOPAUDITORMEDICO = " AND (auditor_medico = 0 or auditor_medico = 2)"
-        End If
-        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
-            varOPAUDITORMEDICO = " AND (auditor_medico = 0 or auditor_medico = 1 or auditor_medico = 2)"
-        End If
-        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
-            varOPAUDITORMEDICO = " AND (auditor_medico = 1 or auditor_medico = 2)"
-        End If
-        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = True) Then
-            varOPAUDITORMEDICO = " AND auditor_medico = 2"
-        End If
-        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = False) Then
-            varOPAUDITORMEDICO = " AND (auditor_medico=0 or auditor_medico = 1 or auditor_medico = 2)"
-        End If
-    End Sub
-
-    'TODOS LOS IF CHECK
-    Private Sub todosLosIF()
-        ifReintegroOSubsidio()
-        ifAuditorMedico()
     End Sub
 
     'click auditor medico pendiente
@@ -184,25 +254,70 @@ Public Class ConsultaTotal
         BuscarDato()
     End Sub
 
+    'clic en comision pendiente
+    Private Sub opComisionPendientes_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionPendientes.CheckedChanged
+        If opComisionPendientes.Checked = True Then
+            opAuditorMedicoSI.Checked = True
+        Else
+        End If
+        todosLosIF()
+        'BuscarDato()
+    End Sub
+
+    'clic en comision aprobada
+    Private Sub opComisionAprobados_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionAprobados.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+
+    End Sub
+
+    'clic en comision rechazada
+    Private Sub opComisionRechazados_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionRechazados.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'clic en pago pendiente
+    Private Sub opPagoPendiente_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opPagoPendiente.CheckedChanged
+        If opPagoPendiente.Checked = True Then
+            opComisionAprobados.Checked = True
+            'opAuditorMedicoSI.Checked = True
+        Else
+        End If
+        todosLosIF()
+        'BuscarDato()
+    End Sub
+
+    'clic en pagados
+    Private Sub opPAGADO_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opPAGADO.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    '<<<<<<<<<<>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<>>>>>> LLAMA A TODOS LOS IF CHECK >>>>>>>>>>>>>>><<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>><<<<<<<<<<
+    Private Sub todosLosIF()
+        ifReintegroOSubsidio()
+        ifAuditorMedico()
+        ifComision()
+    End Sub
     Private Sub BuscarDato()
         Try
             If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
                 sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario) " & _
-                        " and Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' " & varOPREINTEGRO & varOPAUDITORMEDICO
+                        " and Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION
             Else
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario) " & _
                         " and Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' " & _
                    "AND (Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' " & _
-                   "AND '" & txtFechaHasta.Text.ToString & "')" & varOPREINTEGRO & varOPAUDITORMEDICO
+                   "AND '" & txtFechaHasta.Text.ToString & "')" & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
-            opSubsidios.DataSource = dt
+            GridViewReintegros.DataSource = dt
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
-        c = c + 1
     End Sub
     Private Sub BuscarDatoFecha()
         Try
@@ -224,7 +339,7 @@ Public Class ConsultaTotal
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
-            opSubsidios.DataSource = dt
+            GridViewReintegros.DataSource = dt
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
@@ -263,7 +378,7 @@ Public Class ConsultaTotal
 
     '*******************************************************************************************************************************************************
     'click en celda llena listbox con imagenes
-    Private Sub GridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles opSubsidios.CellClick
+    Private Sub GridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridViewReintegros.CellClick
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
         Dim SQL2 As String
@@ -272,8 +387,8 @@ Public Class ConsultaTotal
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2
         MiConexion2.Open()
-        varCodigoreintegro = Int(Me.opSubsidios.Rows(e.RowIndex).Cells(1).Value)
-        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.opSubsidios.Rows(e.RowIndex).Cells(1).Value & "'"
+        varCodigoreintegro = Int(Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value)
+        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value & "'"
         Com2 = New MySqlCommand(SQL2, MiConexion2)
         Rs2 = Com2.ExecuteReader()
         Rs2.Read()
@@ -290,26 +405,26 @@ Public Class ConsultaTotal
         Next
         Try
             'arreglo fecha
-            lblfe1.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(3).Value
+            lblfe1.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(3).Value
             Dim fechacreacion As Date
             fechacreacion = lblfe1.Text
             lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
             'af
-            txtDetalle.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(4).Value
+            txtDetalle.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(4).Value
             rollbackDetalle = txtDetalle.Text
-            txtImporte.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(5).Value
+            txtImporte.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(5).Value
             rollbackImporte = txtImporte.Text
-            txtObservacionesCarga.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(6).Value
-            txtCBU.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(15).Value
-            txtAlias.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(16).Value
+            txtObservacionesCarga.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(6).Value
+            txtCBU.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(10).Value
+            txtAlias.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(11).Value
             'si es 0 es reintegro
-            If (Me.opSubsidios.Rows(e.RowIndex).Cells(17).Value) = 0 Then
+            If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(12).Value) = 0 Then
                 lblTipoReintegro.Text = "ES REINTEGRO"
             End If
             'si es 1 es subsidio
-            If (Me.opSubsidios.Rows(e.RowIndex).Cells(17).Value) = 1 Then
-                If (Me.opSubsidios.Rows(e.RowIndex).Cells(18).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
-                If (Me.opSubsidios.Rows(e.RowIndex).Cells(18).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(12).Value) = 1 Then
+                If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
             End If
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
@@ -322,7 +437,7 @@ Public Class ConsultaTotal
     End Sub
 
     'click en celda llena listbox con imagenes
-    Private Sub GridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles opSubsidios.CellContentClick
+    Private Sub GridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridViewReintegros.CellContentClick
         'lleno listbox con imagenes de la base *************************************************
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
@@ -332,8 +447,8 @@ Public Class ConsultaTotal
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2
         MiConexion2.Open()
-        varCodigoreintegro = Int(Me.opSubsidios.Rows(e.RowIndex).Cells(1).Value)
-        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.opSubsidios.Rows(e.RowIndex).Cells(1).Value & "'"
+        varCodigoreintegro = Int(Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value)
+        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value & "'"
         Com2 = New MySqlCommand(SQL2, MiConexion2)
         Rs2 = Com2.ExecuteReader()
         Rs2.Read()
@@ -353,27 +468,27 @@ Public Class ConsultaTotal
         'llena textbox con datos de operacion
         Try
             'arreglo fecha al inverso
-            lblfe1.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(3).Value
+            lblfe1.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(3).Value
             Dim fechacreacion As Date
             fechacreacion = lblfe1.Text
             lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
             'label reintegro o subsidio
 
-            txtDetalle.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(4).Value
+            txtDetalle.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(4).Value
             rollbackDetalle = txtDetalle.Text
-            txtImporte.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(5).Value
+            txtImporte.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(5).Value
             rollbackImporte = txtImporte.Text
-            txtObservacionesCarga.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(6).Value
-            txtCBU.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(15).Value
-            txtAlias.Text = Me.opSubsidios.Rows(e.RowIndex).Cells(16).Value
+            txtObservacionesCarga.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(6).Value
+            txtCBU.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(10).Value
+            txtAlias.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(11).Value
             'si es 0 es reintegro
-            If (Me.opSubsidios.Rows(e.RowIndex).Cells(17).Value) = 0 Then
+            If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(12).Value) = 0 Then
                 lblTipoReintegro.Text = "ES REINTEGRO"
             End If
             'si es 1 es subsidio
-            If (Me.opSubsidios.Rows(e.RowIndex).Cells(17).Value) = 1 Then
-                If (Me.opSubsidios.Rows(e.RowIndex).Cells(18).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
-                If (Me.opSubsidios.Rows(e.RowIndex).Cells(18).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(12).Value) = 1 Then
+                If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
             End If
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
@@ -392,13 +507,13 @@ Public Class ConsultaTotal
         Catch ex As Exception
         End Try
     End Sub
-    Private Sub GridView1_CellContextMenuStripChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles opSubsidios.CellContextMenuStripChanged
+    Private Sub GridView1_CellContextMenuStripChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridViewReintegros.CellContextMenuStripChanged
         clbimagen.Items.Clear()
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(10).Value))
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(11).Value))
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(12).Value))
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(13).Value))
-        clbimagen.Items.Add(DeImagen_a_Bytes(Me.opSubsidios.Rows(e.RowIndex).Cells(14).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridViewReintegros.Rows(e.RowIndex).Cells(10).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridViewReintegros.Rows(e.RowIndex).Cells(11).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridViewReintegros.Rows(e.RowIndex).Cells(12).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridViewReintegros.Rows(e.RowIndex).Cells(13).Value))
+        clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridViewReintegros.Rows(e.RowIndex).Cells(14).Value))
     End Sub
     'doble click en imagen --- IMPRIMIR
     Private Sub lblPicture_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lblPicture.DoubleClick
@@ -464,7 +579,7 @@ Public Class ConsultaTotal
 
     Private Sub botonModificaSolicitud_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonModificaSolicitud.Click
         botonModificaSolicitud.Enabled = False
-        opSubsidios.Enabled = False
+        GridViewReintegros.Enabled = False
         EnabledTextOn()
         PrendeBotones()
     End Sub
@@ -474,7 +589,7 @@ Public Class ConsultaTotal
         ApagaBotones()
         rollbackearDatos()
         botonModificaSolicitud.Enabled = True
-        opSubsidios.Enabled = True
+        GridViewReintegros.Enabled = True
     End Sub
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
@@ -492,7 +607,7 @@ Public Class ConsultaTotal
             rollbackearDatos()
             botonModificaSolicitud.Enabled = True
         End If
-        opSubsidios.Enabled = True
+        GridViewReintegros.Enabled = True
     End Sub
     Private Sub rollbackearDatos()
         txtDetalle.Text = rollbackDetalle.ToString
@@ -570,9 +685,15 @@ Public Class ConsultaTotal
         End Using
     End Sub
 
-
-
-
-
-
+    Private Sub botonLimpiarFiltros_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonLimpiarFiltros.Click
+        opReintegro.Checked = False
+        opSubsidio.Checked = False
+        opAuditorMedicoSI.Checked = False
+        opAuditorRechazado.Checked = False
+        opComisionAprobados.Checked = False
+        opComisionPendientes.Checked = False
+        opComisionRechazados.Checked = False
+        opPagoPendiente.Checked = False
+        opPAGADO.Checked = False
+    End Sub
 End Class
