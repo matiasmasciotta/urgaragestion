@@ -31,7 +31,7 @@
         Timer1.Enabled = True
         'effecIn()
         apagarBotones()
-        MsgBox(CADENABASE2)
+        'MsgBox(CADENABASE2)
 
         '****************si quiero sobreescribirlo********
         'Dim obj As Object

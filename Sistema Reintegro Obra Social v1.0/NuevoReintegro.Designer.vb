@@ -86,6 +86,12 @@ Partial Class NuevoReintegro
         Me.Button4 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.txtTipoCuenta = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.txtCuilPago = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.Panel5.SuspendLayout()
         CType(Me.GridViewSubsidios, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -99,17 +105,20 @@ Partial Class NuevoReintegro
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(658, 277)
+        Me.Label10.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(658, 272)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(314, 16)
+        Me.Label10.Size = New System.Drawing.Size(246, 12)
         Me.Label10.TabIndex = 23
         Me.Label10.Text = "Datos Para la Solicitud del Nuevo Reintegro"
         '
         'Panel5
         '
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel5.Controls.Add(Me.GridViewSubsidios)
+        Me.Panel5.Controls.Add(Me.txtTipoCuenta)
+        Me.Panel5.Controls.Add(Me.Label17)
+        Me.Panel5.Controls.Add(Me.txtCuilPago)
+        Me.Panel5.Controls.Add(Me.Label19)
         Me.Panel5.Controls.Add(Me.txtSubsidio)
         Me.Panel5.Controls.Add(Me.opSubsidio)
         Me.Panel5.Controls.Add(Me.opReintegro)
@@ -133,9 +142,10 @@ Partial Class NuevoReintegro
         Me.Panel5.Controls.Add(Me.Label13)
         Me.Panel5.Controls.Add(Me.Label12)
         Me.Panel5.Controls.Add(Me.Label11)
-        Me.Panel5.Location = New System.Drawing.Point(483, 296)
+        Me.Panel5.Controls.Add(Me.ShapeContainer1)
+        Me.Panel5.Location = New System.Drawing.Point(483, 287)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(709, 353)
+        Me.Panel5.Size = New System.Drawing.Size(709, 362)
         Me.Panel5.TabIndex = 24
         '
         'GridViewSubsidios
@@ -159,7 +169,7 @@ Partial Class NuevoReintegro
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.GridViewSubsidios.DefaultCellStyle = DataGridViewCellStyle2
         Me.GridViewSubsidios.GridColor = System.Drawing.SystemColors.ActiveCaption
-        Me.GridViewSubsidios.Location = New System.Drawing.Point(177, 46)
+        Me.GridViewSubsidios.Location = New System.Drawing.Point(594, 237)
         Me.GridViewSubsidios.MultiSelect = False
         Me.GridViewSubsidios.Name = "GridViewSubsidios"
         Me.GridViewSubsidios.ReadOnly = True
@@ -169,7 +179,7 @@ Partial Class NuevoReintegro
         '
         'txtSubsidio
         '
-        Me.txtSubsidio.Location = New System.Drawing.Point(212, 92)
+        Me.txtSubsidio.Location = New System.Drawing.Point(212, 45)
         Me.txtSubsidio.Name = "txtSubsidio"
         Me.txtSubsidio.ReadOnly = True
         Me.txtSubsidio.Size = New System.Drawing.Size(100, 20)
@@ -178,9 +188,10 @@ Partial Class NuevoReintegro
         'opSubsidio
         '
         Me.opSubsidio.AutoSize = True
-        Me.opSubsidio.Location = New System.Drawing.Point(141, 93)
+        Me.opSubsidio.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.opSubsidio.Location = New System.Drawing.Point(141, 46)
         Me.opSubsidio.Name = "opSubsidio"
-        Me.opSubsidio.Size = New System.Drawing.Size(65, 17)
+        Me.opSubsidio.Size = New System.Drawing.Size(70, 16)
         Me.opSubsidio.TabIndex = 23
         Me.opSubsidio.TabStop = True
         Me.opSubsidio.Text = "Subsidio"
@@ -189,9 +200,10 @@ Partial Class NuevoReintegro
         'opReintegro
         '
         Me.opReintegro.AutoSize = True
-        Me.opReintegro.Location = New System.Drawing.Point(36, 91)
+        Me.opReintegro.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.opReintegro.Location = New System.Drawing.Point(59, 46)
         Me.opReintegro.Name = "opReintegro"
-        Me.opReintegro.Size = New System.Drawing.Size(71, 17)
+        Me.opReintegro.Size = New System.Drawing.Size(78, 16)
         Me.opReintegro.TabIndex = 22
         Me.opReintegro.TabStop = True
         Me.opReintegro.Text = "Reintegro"
@@ -199,55 +211,56 @@ Partial Class NuevoReintegro
         '
         'txtAlias
         '
-        Me.txtAlias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAlias.Location = New System.Drawing.Point(343, 138)
+        Me.txtAlias.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAlias.Location = New System.Drawing.Point(365, 108)
         Me.txtAlias.MaxLength = 80
         Me.txtAlias.Name = "txtAlias"
-        Me.txtAlias.Size = New System.Drawing.Size(188, 22)
+        Me.txtAlias.Size = New System.Drawing.Size(208, 20)
         Me.txtAlias.TabIndex = 7
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(292, 140)
+        Me.Label16.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Location = New System.Drawing.Point(318, 111)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(54, 16)
+        Me.Label16.Size = New System.Drawing.Size(41, 12)
         Me.Label16.TabIndex = 20
         Me.Label16.Text = "ALIAS:"
         '
         'txtCBU
         '
-        Me.txtCBU.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCBU.Location = New System.Drawing.Point(93, 138)
+        Me.txtCBU.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCBU.Location = New System.Drawing.Point(59, 108)
         Me.txtCBU.MaxLength = 22
         Me.txtCBU.Name = "txtCBU"
-        Me.txtCBU.Size = New System.Drawing.Size(196, 22)
+        Me.txtCBU.Size = New System.Drawing.Size(219, 20)
         Me.txtCBU.TabIndex = 6
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(50, 141)
+        Me.Label15.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.Location = New System.Drawing.Point(16, 111)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(43, 16)
+        Me.Label15.Size = New System.Drawing.Size(32, 12)
         Me.Label15.TabIndex = 18
         Me.Label15.Text = "CBU:"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(562, 151)
+        Me.Label7.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(525, 178)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(101, 13)
+        Me.Label7.Size = New System.Drawing.Size(115, 12)
         Me.Label7.TabIndex = 17
         Me.Label7.Text = "Vista Previa Imagen"
         '
         'lblitem
         '
         Me.lblitem.AutoSize = True
-        Me.lblitem.Location = New System.Drawing.Point(105, 294)
+        Me.lblitem.Location = New System.Drawing.Point(610, 344)
         Me.lblitem.Name = "lblitem"
         Me.lblitem.Size = New System.Drawing.Size(39, 13)
         Me.lblitem.TabIndex = 16
@@ -257,7 +270,7 @@ Partial Class NuevoReintegro
         'lblcontadoritems
         '
         Me.lblcontadoritems.AutoSize = True
-        Me.lblcontadoritems.Location = New System.Drawing.Point(29, 294)
+        Me.lblcontadoritems.Location = New System.Drawing.Point(570, 344)
         Me.lblcontadoritems.Name = "lblcontadoritems"
         Me.lblcontadoritems.Size = New System.Drawing.Size(39, 13)
         Me.lblcontadoritems.TabIndex = 15
@@ -267,7 +280,7 @@ Partial Class NuevoReintegro
         'botonQuitarImagen
         '
         Me.botonQuitarImagen.BackColor = System.Drawing.Color.Salmon
-        Me.botonQuitarImagen.Location = New System.Drawing.Point(108, 252)
+        Me.botonQuitarImagen.Location = New System.Drawing.Point(53, 234)
         Me.botonQuitarImagen.Name = "botonQuitarImagen"
         Me.botonQuitarImagen.Size = New System.Drawing.Size(87, 25)
         Me.botonQuitarImagen.TabIndex = 14
@@ -276,17 +289,18 @@ Partial Class NuevoReintegro
         '
         'lblPicture
         '
-        Me.lblPicture.Location = New System.Drawing.Point(538, 168)
+        Me.lblPicture.Location = New System.Drawing.Point(509, 193)
         Me.lblPicture.Name = "lblPicture"
-        Me.lblPicture.Size = New System.Drawing.Size(166, 149)
+        Me.lblPicture.Size = New System.Drawing.Size(140, 120)
         Me.lblPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.lblPicture.TabIndex = 13
         Me.lblPicture.TabStop = False
         '
         'clbimagen
         '
+        Me.clbimagen.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clbimagen.FormattingEnabled = True
-        Me.clbimagen.Location = New System.Drawing.Point(224, 194)
+        Me.clbimagen.Location = New System.Drawing.Point(161, 178)
         Me.clbimagen.Name = "clbimagen"
         Me.clbimagen.Size = New System.Drawing.Size(308, 124)
         Me.clbimagen.TabIndex = 12
@@ -294,7 +308,7 @@ Partial Class NuevoReintegro
         'botonImagen
         '
         Me.botonImagen.BackColor = System.Drawing.Color.LightGreen
-        Me.botonImagen.Location = New System.Drawing.Point(108, 210)
+        Me.botonImagen.Location = New System.Drawing.Point(53, 197)
         Me.botonImagen.Name = "botonImagen"
         Me.botonImagen.Size = New System.Drawing.Size(87, 31)
         Me.botonImagen.TabIndex = 9
@@ -303,24 +317,26 @@ Partial Class NuevoReintegro
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1.Location = New System.Drawing.Point(460, 93)
+        Me.DateTimePicker1.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.DateTimePicker1.Location = New System.Drawing.Point(460, 80)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(244, 22)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(244, 20)
         Me.DateTimePicker1.TabIndex = 8
         '
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(24, 171)
+        Me.Label3.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.Location = New System.Drawing.Point(20, 327)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(78, 13)
+        Me.Label3.Size = New System.Drawing.Size(89, 12)
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Observaciones"
         '
         'txtObservacionesCarga
         '
-        Me.txtObservacionesCarga.Location = New System.Drawing.Point(108, 168)
+        Me.txtObservacionesCarga.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtObservacionesCarga.Location = New System.Drawing.Point(110, 324)
         Me.txtObservacionesCarga.Name = "txtObservacionesCarga"
         Me.txtObservacionesCarga.Size = New System.Drawing.Size(424, 20)
         Me.txtObservacionesCarga.TabIndex = 8
@@ -328,55 +344,55 @@ Partial Class NuevoReintegro
         'txtFechaSolicitud
         '
         Me.txtFechaSolicitud.Enabled = False
-        Me.txtFechaSolicitud.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaSolicitud.Location = New System.Drawing.Point(573, 69)
+        Me.txtFechaSolicitud.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFechaSolicitud.Location = New System.Drawing.Point(573, 59)
         Me.txtFechaSolicitud.Name = "txtFechaSolicitud"
-        Me.txtFechaSolicitud.Size = New System.Drawing.Size(131, 22)
+        Me.txtFechaSolicitud.Size = New System.Drawing.Size(131, 20)
         Me.txtFechaSolicitud.TabIndex = 5
         '
         'txtImporte
         '
-        Me.txtImporte.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtImporte.Location = New System.Drawing.Point(573, 45)
+        Me.txtImporte.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtImporte.Location = New System.Drawing.Point(573, 38)
         Me.txtImporte.Name = "txtImporte"
-        Me.txtImporte.Size = New System.Drawing.Size(131, 22)
+        Me.txtImporte.Size = New System.Drawing.Size(131, 20)
         Me.txtImporte.TabIndex = 4
         '
         'txtDetalle
         '
-        Me.txtDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDetalle.Location = New System.Drawing.Point(3, 22)
+        Me.txtDetalle.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDetalle.Location = New System.Drawing.Point(3, 17)
         Me.txtDetalle.Name = "txtDetalle"
-        Me.txtDetalle.Size = New System.Drawing.Size(701, 22)
+        Me.txtDetalle.Size = New System.Drawing.Size(701, 20)
         Me.txtDetalle.TabIndex = 3
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(426, 72)
+        Me.Label13.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.Location = New System.Drawing.Point(456, 62)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(141, 16)
+        Me.Label13.Size = New System.Drawing.Size(111, 12)
         Me.Label13.TabIndex = 2
         Me.Label13.Text = "Fecha de Solicitud:"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(503, 48)
+        Me.Label12.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.Location = New System.Drawing.Point(516, 41)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(64, 16)
+        Me.Label12.Size = New System.Drawing.Size(51, 12)
         Me.Label12.TabIndex = 1
         Me.Label12.Text = "Importe:"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(14, 4)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(62, 16)
+        Me.Label11.Size = New System.Drawing.Size(47, 12)
         Me.Label11.TabIndex = 0
         Me.Label11.Text = "Detalle:"
         '
@@ -682,11 +698,11 @@ Partial Class NuevoReintegro
         'lblNumeroReintegro
         '
         Me.lblNumeroReintegro.AutoSize = True
-        Me.lblNumeroReintegro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNumeroReintegro.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblNumeroReintegro.ForeColor = System.Drawing.Color.Maroon
-        Me.lblNumeroReintegro.Location = New System.Drawing.Point(494, 284)
+        Me.lblNumeroReintegro.Location = New System.Drawing.Point(494, 269)
         Me.lblNumeroReintegro.Name = "lblNumeroReintegro"
-        Me.lblNumeroReintegro.Size = New System.Drawing.Size(65, 16)
+        Me.lblNumeroReintegro.Size = New System.Drawing.Size(59, 12)
         Me.lblNumeroReintegro.TabIndex = 36
         Me.lblNumeroReintegro.Text = "Solicitud: "
         '
@@ -711,12 +727,67 @@ Partial Class NuevoReintegro
         Me.ProgressBar1.Size = New System.Drawing.Size(1206, 11)
         Me.ProgressBar1.TabIndex = 37
         '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(707, 360)
+        Me.ShapeContainer1.TabIndex = 25
+        Me.ShapeContainer1.TabStop = False
+        '
+        'RectangleShape1
+        '
+        Me.RectangleShape1.Location = New System.Drawing.Point(33, 165)
+        Me.RectangleShape1.Name = "RectangleShape1"
+        Me.RectangleShape1.Size = New System.Drawing.Size(444, 147)
+        '
+        'txtTipoCuenta
+        '
+        Me.txtTipoCuenta.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTipoCuenta.Location = New System.Drawing.Point(365, 134)
+        Me.txtTipoCuenta.MaxLength = 80
+        Me.txtTipoCuenta.Name = "txtTipoCuenta"
+        Me.txtTipoCuenta.Size = New System.Drawing.Size(208, 20)
+        Me.txtTipoCuenta.TabIndex = 27
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(284, 136)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(75, 12)
+        Me.Label17.TabIndex = 29
+        Me.Label17.Text = "Tipo Cuenta:"
+        '
+        'txtCuilPago
+        '
+        Me.txtCuilPago.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCuilPago.Location = New System.Drawing.Point(115, 134)
+        Me.txtCuilPago.MaxLength = 22
+        Me.txtCuilPago.Name = "txtCuilPago"
+        Me.txtCuilPago.Size = New System.Drawing.Size(163, 20)
+        Me.txtCuilPago.TabIndex = 26
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(16, 137)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(97, 12)
+        Me.Label19.TabIndex = 28
+        Me.Label19.Text = "CUIL Tit. Cuenta:"
+        '
         'NuevoReintegro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.ClientSize = New System.Drawing.Size(1204, 718)
+        Me.Controls.Add(Me.GridViewSubsidios)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.lblNumeroReintegro)
@@ -811,4 +882,10 @@ Partial Class NuevoReintegro
     Friend WithEvents opReintegro As System.Windows.Forms.RadioButton
     Friend WithEvents GridViewSubsidios As System.Windows.Forms.DataGridView
     Friend WithEvents txtSubsidio As System.Windows.Forms.TextBox
+    Friend WithEvents txtTipoCuenta As System.Windows.Forms.TextBox
+    Friend WithEvents Label17 As System.Windows.Forms.Label
+    Friend WithEvents txtCuilPago As System.Windows.Forms.TextBox
+    Friend WithEvents Label19 As System.Windows.Forms.Label
+    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
 End Class

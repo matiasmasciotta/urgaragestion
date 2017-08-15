@@ -53,7 +53,8 @@ Partial Class MenuPrincipal
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.MenuStrip1.BackColor = System.Drawing.Color.Gray
+        Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.DatosToolStripMenuItem, Me.ReintegrosToolStripMenuItem, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
@@ -63,7 +64,7 @@ Partial Class MenuPrincipal
         '
         'ArchivoToolStripMenuItem
         '
-        Me.ArchivoToolStripMenuItem.BackColor = System.Drawing.Color.LightSteelBlue
+        Me.ArchivoToolStripMenuItem.BackColor = System.Drawing.Color.Gray
         Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IngresarAlSistemaToolStripMenuItem, Me.UsersSoloAdminToolStripMenuItem, Me.SalirToolStripMenuItem})
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(60, 20)
@@ -71,7 +72,7 @@ Partial Class MenuPrincipal
         '
         'IngresarAlSistemaToolStripMenuItem
         '
-        Me.IngresarAlSistemaToolStripMenuItem.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.IngresarAlSistemaToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.IngresarAlSistemaToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.Iu9Rht06
         Me.IngresarAlSistemaToolStripMenuItem.Name = "IngresarAlSistemaToolStripMenuItem"
         Me.IngresarAlSistemaToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
@@ -79,7 +80,7 @@ Partial Class MenuPrincipal
         '
         'UsersSoloAdminToolStripMenuItem
         '
-        Me.UsersSoloAdminToolStripMenuItem.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.UsersSoloAdminToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.UsersSoloAdminToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ABMUSUARIOSToolStripMenuItem})
         Me.UsersSoloAdminToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.muñeco_folio_g
         Me.UsersSoloAdminToolStripMenuItem.Name = "UsersSoloAdminToolStripMenuItem"
@@ -96,7 +97,7 @@ Partial Class MenuPrincipal
         '
         'SalirToolStripMenuItem
         '
-        Me.SalirToolStripMenuItem.BackColor = System.Drawing.Color.CornflowerBlue
+        Me.SalirToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.SalirToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.Salida
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
         Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(175, 22)
@@ -104,6 +105,7 @@ Partial Class MenuPrincipal
         '
         'DatosToolStripMenuItem
         '
+        Me.DatosToolStripMenuItem.BackColor = System.Drawing.Color.Gray
         Me.DatosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExaminarBeneficiariosToolStripMenuItem, Me.ExaminarSolicitudDeReintegroToolStripMenuItem, Me.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem})
         Me.DatosToolStripMenuItem.Name = "DatosToolStripMenuItem"
         Me.DatosToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
@@ -111,7 +113,7 @@ Partial Class MenuPrincipal
         '
         'ExaminarBeneficiariosToolStripMenuItem
         '
-        Me.ExaminarBeneficiariosToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ExaminarBeneficiariosToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.ExaminarBeneficiariosToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.alta
         Me.ExaminarBeneficiariosToolStripMenuItem.Name = "ExaminarBeneficiariosToolStripMenuItem"
         Me.ExaminarBeneficiariosToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
@@ -119,7 +121,7 @@ Partial Class MenuPrincipal
         '
         'ExaminarSolicitudDeReintegroToolStripMenuItem
         '
-        Me.ExaminarSolicitudDeReintegroToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ExaminarSolicitudDeReintegroToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.ExaminarSolicitudDeReintegroToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.r_14_170423113802
         Me.ExaminarSolicitudDeReintegroToolStripMenuItem.Name = "ExaminarSolicitudDeReintegroToolStripMenuItem"
         Me.ExaminarSolicitudDeReintegroToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
@@ -127,7 +129,7 @@ Partial Class MenuPrincipal
         '
         'ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem
         '
-        Me.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.lupa
         Me.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.Name = "ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem"
         Me.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
@@ -136,6 +138,7 @@ Partial Class MenuPrincipal
         '
         'ReintegrosToolStripMenuItem
         '
+        Me.ReintegrosToolStripMenuItem.BackColor = System.Drawing.Color.Gray
         Me.ReintegrosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarSolicitudDeReintegroToolStripMenuItem, Me.ConsultarReintegrosPendientesToolStripMenuItem})
         Me.ReintegrosToolStripMenuItem.Name = "ReintegrosToolStripMenuItem"
         Me.ReintegrosToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
@@ -143,7 +146,7 @@ Partial Class MenuPrincipal
         '
         'GenerarSolicitudDeReintegroToolStripMenuItem
         '
-        Me.GenerarSolicitudDeReintegroToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.GenerarSolicitudDeReintegroToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.GenerarSolicitudDeReintegroToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.alta
         Me.GenerarSolicitudDeReintegroToolStripMenuItem.Name = "GenerarSolicitudDeReintegroToolStripMenuItem"
         Me.GenerarSolicitudDeReintegroToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
@@ -151,7 +154,7 @@ Partial Class MenuPrincipal
         '
         'ConsultarReintegrosPendientesToolStripMenuItem
         '
-        Me.ConsultarReintegrosPendientesToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.ConsultarReintegrosPendientesToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.ConsultarReintegrosPendientesToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.Lupita
         Me.ConsultarReintegrosPendientesToolStripMenuItem.Name = "ConsultarReintegrosPendientesToolStripMenuItem"
         Me.ConsultarReintegrosPendientesToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
@@ -159,6 +162,7 @@ Partial Class MenuPrincipal
         '
         'AyudaToolStripMenuItem
         '
+        Me.AyudaToolStripMenuItem.BackColor = System.Drawing.Color.Gray
         Me.AyudaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SoporteToolStripMenuItem})
         Me.AyudaToolStripMenuItem.Name = "AyudaToolStripMenuItem"
         Me.AyudaToolStripMenuItem.Size = New System.Drawing.Size(53, 20)
@@ -166,7 +170,7 @@ Partial Class MenuPrincipal
         '
         'SoporteToolStripMenuItem
         '
-        Me.SoporteToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveCaption
+        Me.SoporteToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.SoporteToolStripMenuItem.Name = "SoporteToolStripMenuItem"
         Me.SoporteToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.SoporteToolStripMenuItem.Text = "Soporte"
@@ -177,7 +181,7 @@ Partial Class MenuPrincipal
         Me.lblUser.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lblUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUser.ForeColor = System.Drawing.Color.Red
-        Me.lblUser.Location = New System.Drawing.Point(1443, 40)
+        Me.lblUser.Location = New System.Drawing.Point(694, 545)
         Me.lblUser.Name = "lblUser"
         Me.lblUser.Size = New System.Drawing.Size(118, 16)
         Me.lblUser.TabIndex = 1
@@ -187,10 +191,10 @@ Partial Class MenuPrincipal
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.ovalito
-        Me.PictureBox1.Location = New System.Drawing.Point(1408, 30)
+        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.ovv
+        Me.PictureBox1.Location = New System.Drawing.Point(660, 541)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(33, 36)
+        Me.PictureBox1.Size = New System.Drawing.Size(29, 26)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
@@ -213,11 +217,11 @@ Partial Class MenuPrincipal
         '
         Me.segundos.AutoSize = True
         Me.segundos.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.segundos.Font = New System.Drawing.Font("LcdD", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.segundos.ForeColor = System.Drawing.Color.Red
-        Me.segundos.Location = New System.Drawing.Point(1512, 83)
+        Me.segundos.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.segundos.ForeColor = System.Drawing.Color.YellowGreen
+        Me.segundos.Location = New System.Drawing.Point(896, 542)
         Me.segundos.Name = "segundos"
-        Me.segundos.Size = New System.Drawing.Size(36, 37)
+        Me.segundos.Size = New System.Drawing.Size(20, 20)
         Me.segundos.TabIndex = 4
         Me.segundos.Text = "0"
         '
@@ -225,11 +229,11 @@ Partial Class MenuPrincipal
         '
         Me.horas.AutoSize = True
         Me.horas.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.horas.Font = New System.Drawing.Font("LcdD", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.horas.ForeColor = System.Drawing.Color.Red
-        Me.horas.Location = New System.Drawing.Point(1402, 83)
+        Me.horas.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.horas.ForeColor = System.Drawing.Color.YellowGreen
+        Me.horas.Location = New System.Drawing.Point(822, 542)
         Me.horas.Name = "horas"
-        Me.horas.Size = New System.Drawing.Size(36, 37)
+        Me.horas.Size = New System.Drawing.Size(20, 20)
         Me.horas.TabIndex = 5
         Me.horas.Text = "0"
         '
@@ -237,11 +241,11 @@ Partial Class MenuPrincipal
         '
         Me.minutos.AutoSize = True
         Me.minutos.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.minutos.Font = New System.Drawing.Font("LcdD", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.minutos.ForeColor = System.Drawing.Color.Red
-        Me.minutos.Location = New System.Drawing.Point(1457, 83)
+        Me.minutos.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.minutos.ForeColor = System.Drawing.Color.YellowGreen
+        Me.minutos.Location = New System.Drawing.Point(856, 542)
         Me.minutos.Name = "minutos"
-        Me.minutos.Size = New System.Drawing.Size(36, 37)
+        Me.minutos.Size = New System.Drawing.Size(20, 20)
         Me.minutos.TabIndex = 6
         Me.minutos.Text = "0"
         '
@@ -249,11 +253,11 @@ Partial Class MenuPrincipal
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label2.Font = New System.Drawing.Font("LcdD", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.Red
-        Me.Label2.Location = New System.Drawing.Point(1436, 77)
+        Me.Label2.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.YellowGreen
+        Me.Label2.Location = New System.Drawing.Point(843, 538)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(26, 37)
+        Me.Label2.Size = New System.Drawing.Size(14, 20)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = ":"
         '
@@ -261,11 +265,11 @@ Partial Class MenuPrincipal
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label3.Font = New System.Drawing.Font("LcdD", 27.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.Red
-        Me.Label3.Location = New System.Drawing.Point(1491, 77)
+        Me.Label3.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.YellowGreen
+        Me.Label3.Location = New System.Drawing.Point(879, 538)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(26, 37)
+        Me.Label3.Size = New System.Drawing.Size(14, 20)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = ":"
         '
@@ -274,8 +278,8 @@ Partial Class MenuPrincipal
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LogoUrgara
-        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LOGUIS
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(1588, 709)
         Me.Controls.Add(Me.minutos)
         Me.Controls.Add(Me.horas)

@@ -21,10 +21,16 @@ Public Class ConsultaTotal
     Dim varOPREINTEGRO As String = " "
     Dim varOPAUDITORMEDICO As String = " "
     Dim varOPCOMISION As String = " "
+    'Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
+    '                            "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
+    '                            "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio "
+
+    'parche nuevo --> reemplazar al anterior
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                                 "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
-                                "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio "
-    Dim c As Integer = 0
+                                "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta "
+
+
 
 
     Private Sub ConsultaTotal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -426,6 +432,10 @@ Public Class ConsultaTotal
                 If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
                 If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
             End If
+            txtCuilPago.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(15).Value
+            'FALTAN LOS ROLLBACK
+            txtTipoCuenta.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(16).Value
+            'falta rollback
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
             rollbackFechaSolicitud = txtFechaSolicitud.Text
@@ -490,6 +500,10 @@ Public Class ConsultaTotal
                 If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
                 If (Me.GridViewReintegros.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
             End If
+            txtCuilPago.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(15).Value
+            'FALTAN LOS ROLLBACK
+            txtTipoCuenta.Text = Me.GridViewReintegros.Rows(e.RowIndex).Cells(16).Value
+            'falta rollback
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
             rollbackFechaSolicitud = txtFechaSolicitud.Text
@@ -552,6 +566,8 @@ Public Class ConsultaTotal
         DateTimePicker3.Enabled = False
         txtCBU.Enabled = False
         txtAlias.Enabled = False
+        txtCuilPago.Enabled = False
+        txtTipoCuenta.Enabled = False
     End Sub
 
     Private Sub EnabledTextOn()
@@ -562,6 +578,8 @@ Public Class ConsultaTotal
         DateTimePicker3.Enabled = True
         txtCBU.Enabled = True
         txtAlias.Enabled = True
+        txtCuilPago.Enabled = True
+        txtTipoCuenta.Enabled = True
     End Sub
 
     Private Sub PrendeBotones()
@@ -627,7 +645,7 @@ Public Class ConsultaTotal
             With cmdinsert
                 .Connection = con_insert
                 .CommandType = CommandType.Text
-                .CommandText = "UPDATE `reintegros` SET detalle=?detalle,importe=?importe,Observaciones_Carga=?obscarga,fecha_solicitud=?fecsol,CBU =?cbu,Alias=?alias WHERE codigo_reintegro = ?codre"
+                .CommandText = "UPDATE `reintegros` SET detalle=?detalle,importe=?importe,Observaciones_Carga=?obscarga,fecha_solicitud=?fecsol,CBU =?cbu,Alias=?alias,Cuil_Pago=?cuilpago,Tipo_Cuenta=?tipocuenta WHERE codigo_reintegro = ?codre"
                 .Parameters.AddWithValue("?codre", varCodigoreintegro)
                 .Parameters.AddWithValue("?detalle", txtDetalle.Text.ToString)
                 .Parameters.AddWithValue("?importe", varimp)
@@ -635,6 +653,9 @@ Public Class ConsultaTotal
                 .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
                 .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
                 .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
+
             End With
             Try
                 con_insert.Open()
