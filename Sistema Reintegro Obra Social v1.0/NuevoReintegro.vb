@@ -155,8 +155,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
-                            .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
+
                         Case 1
                             .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`Imagen1`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`,`Cuil_Pago`,`Tipo_Cuenta`)" & " VALUES " & "(?codus,?codben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal,?cuilpago,?tipocuenta)"
                             .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))

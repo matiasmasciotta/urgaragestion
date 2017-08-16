@@ -21,10 +21,7 @@ Public Class ConsultaTotal
     Dim varOPREINTEGRO As String = " "
     Dim varOPAUDITORMEDICO As String = " "
     Dim varOPCOMISION As String = " "
-    'Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
-    '                            "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
-    '                            "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio "
-
+    Dim varOPPAGADO As String = " "
     'parche nuevo --> reemplazar al anterior
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                                 "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
@@ -38,8 +35,8 @@ Public Class ConsultaTotal
         apagaFecha()
         llenarGridCompleto()
         'txtBeneficiario.Focus()
-        txtFechaDesde.Enabled = False
-        txtFechaHasta.Enabled = False
+        txtFechaDesde.Visible = False
+        txtFechaHasta.Visible = False
         'GridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         'GridView1.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         'GridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode
@@ -80,6 +77,8 @@ Public Class ConsultaTotal
     Private Sub prendeFecha()
         txtFechaDesde.Visible = True
         txtFechaHasta.Visible = True
+        txtFechaDesde.Enabled = True
+        txtFechaHasta.Enabled = True
         Label2.Visible = True
         Label3.Visible = True
         DateTimePicker1.Visible = True
@@ -128,7 +127,7 @@ Public Class ConsultaTotal
         varOPAUDITORMEDICO = ""
         'PENDIENTE AUDITOR MEDICO (AUDITOR MEDICO APROBADO)
         If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False And opAuditorRechazado.Checked = False) Then
-            varOPAUDITORMEDICO = " "
+            varOPAUDITORMEDICO = " AND (auditor_medico = 0)"
         End If
         'PENDIENTE DE AUDITOR MEDICO Y APROBADOS
         If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = False) Then
@@ -144,11 +143,11 @@ Public Class ConsultaTotal
         End If
         'PENDIENTES - APROBADOS Y RECHAZADOS
         If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
-            varOPAUDITORMEDICO = " AND (auditor_medico = 1 or auditor_medico = 2) "
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1) or (auditor_medico = 2) "
         End If
         'APROBADOS Y RECHAZADOS POR AUDITOR MEDICO
         If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
-            varOPAUDITORMEDICO = " AND (auditor_medico = 1 or auditor_medico = 2) "
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1) or (auditor_medico = 2) "
         End If
         'SOLO RECHAZADOS POR AUDITOR MEDICO
         If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = True) Then
@@ -160,69 +159,58 @@ Public Class ConsultaTotal
         End If
     End Sub
 
-    'funcion if de comision directiva
+    'funcion if de comision directiva <>>>>>>>>>>><<<<<<<<<
     Private Sub ifComision()
         varOPCOMISION = ""
-        'PENDIENTE COMISION (AUDITOR MEDICO APROBADO)
-        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = False) Then
-            varOPCOMISION = " "
-            opAuditorMedicoSI.Checked = True
+        'PENDIENTE AUDITOR MEDICO (AUDITOR MEDICO APROBADO)
+        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = False And opComisionRechazados.Checked = False) Then
+            varOPCOMISION = " AND (Estado = 0)"
         End If
-
-        'PENDIENTE DE COMISION Y APROBADOS
-        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = False) Then
+        'PENDIENTE DE AUDITOR MEDICO Y APROBADOS
+        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) Then
             varOPCOMISION = " AND (Estado = 1) "
         End If
-        'SOLO APROBADOS POR COMISION
-        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = False) Then
+        'SOLO APROBADOS POR AUDITOR MEDICO
+        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) Then
             varOPCOMISION = " AND (Estado = 1) "
         End If
-        'RECHAZADOS por comision
-        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = False) Then
+        'PENDIENTE DE AUDITOR MEDICO Y RECHAZADOS
+        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) Then
             varOPCOMISION = " AND (Estado = 2) "
-
         End If
-        'APROBADOS Y RECHAZADOS
-        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = False) Then
+        'PENDIENTES - APROBADOS Y RECHAZADOS
+        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = True) Then
             varOPCOMISION = " AND (Estado = 1) or (Estado = 2) "
         End If
-
-        'APARECEN TODOS LOS REGISTROS SIN FILTRO --> PERO SI APROBADOS POR AUDITOR MEDICO
-        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = False) Then
+        'APROBADOS Y RECHAZADOS POR AUDITOR MEDICO
+        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = True) Then
+            varOPCOMISION = " AND (Estado = 1) or (Estado = 2) "
+        End If
+        'SOLO RECHAZADOS POR AUDITOR MEDICO
+        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) Then
+            varOPCOMISION = " AND (Estado = 2) "
+        End If
+        'APARECEN TODOS LOS REGISTROS SIN FILTRO --> TODAS LAS SOLICITUDES DE REINTEGRO PENDIENTES DE APROBACION PARA AUDITOR
+        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) Then
             varOPCOMISION = " "
         End If
-        'LOS APROBADOS POR COMISION Y LOS PAGADOS OK
-        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = True) Then
-            varOPCOMISION = " AND (Estado = 1) or (Estado = 3) "
-        End If
-        'PENDIENTES DE COMISION, LOS RECHAZADOS Y LOS PAGADOS
-        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = True) Then
-            varOPCOMISION = " AND (Estado = 2) or (Estado = 3) "
-        End If
-        'LOS PAGADOS
-        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = True) Then
-            varOPCOMISION = " AND (Estado = 3) "
+    End Sub
 
+    'Funcion IF PAGADO
+    Private Sub ifPagados()
+        varOPPAGADO = ""
+        If (opPagoPendiente.Checked = True) And (opPAGADO.Checked = False) Then
+            varOPPAGADO = " AND (Pagado = 0) "
         End If
-        'LOS APROBADOS POR COMISION, LOS RECHAZADOS Y LOS PAGADOS
-        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = True) Then
-            varOPCOMISION = " AND (Estado=1) or (Estado = 2) or (Estado = 3) "
-
+        If (opPagoPendiente.Checked = True) And (opPAGADO.Checked = True) Then
+            varOPPAGADO = " AND (Pagado=0) or (Pagado=1)"
         End If
-        'LOS APROBADOS POR COMISION Y PAGADOS OK >>><<<
-        If (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = True) Then
-            varOPCOMISION = " AND (Estado=1) or (Estado = 3) "
+        If (opPagoPendiente.Checked = False) And (opPAGADO.Checked = True) Then
+            varOPPAGADO = " AND (Pagado = 1) "
         End If
-        'LOS RECHAZADOS Y LOS PAGADOS OK
-        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) And (opPAGADO.Checked = True) Then
-            varOPCOMISION = " AND (Estado=2) or (Estado = 3) "
-
+        If (opPagoPendiente.Checked = False) And (opPAGADO.Checked = False) Then
+            varOPPAGADO = " "
         End If
-        'TODOS LOS PAGADOS
-        If (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) And (opPAGADO.Checked = True) Then
-            varOPCOMISION = " AND (Estado=3) "
-        End If
-
     End Sub
 
     'clic en reintegro
@@ -262,12 +250,8 @@ Public Class ConsultaTotal
 
     'clic en comision pendiente
     Private Sub opComisionPendientes_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionPendientes.CheckedChanged
-        If opComisionPendientes.Checked = True Then
-            opAuditorMedicoSI.Checked = True
-        Else
-        End If
         todosLosIF()
-        'BuscarDato()
+        BuscarDato()
     End Sub
 
     'clic en comision aprobada
@@ -285,13 +269,8 @@ Public Class ConsultaTotal
 
     'clic en pago pendiente
     Private Sub opPagoPendiente_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opPagoPendiente.CheckedChanged
-        If opPagoPendiente.Checked = True Then
-            opComisionAprobados.Checked = True
-            'opAuditorMedicoSI.Checked = True
-        Else
-        End If
         todosLosIF()
-        'BuscarDato()
+        BuscarDato()
     End Sub
 
     'clic en pagados
@@ -305,17 +284,18 @@ Public Class ConsultaTotal
         ifReintegroOSubsidio()
         ifAuditorMedico()
         ifComision()
+        ifPagados()
     End Sub
     Private Sub BuscarDato()
         Try
             If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
                 sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario) " & _
-                        " and Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION
+                        " and Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
             Else
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario) " & _
                         " and Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' " & _
                    "AND (Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' " & _
-                   "AND '" & txtFechaHasta.Text.ToString & "')" & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION
+                   "AND '" & txtFechaHasta.Text.ToString & "')" & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -393,7 +373,7 @@ Public Class ConsultaTotal
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2
         MiConexion2.Open()
-        varCodigoreintegro = Int(Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value)
+        varCodigoreintegro = (Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value)
         SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value & "'"
         Com2 = New MySqlCommand(SQL2, MiConexion2)
         Rs2 = Com2.ExecuteReader()
@@ -457,7 +437,7 @@ Public Class ConsultaTotal
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2
         MiConexion2.Open()
-        varCodigoreintegro = Int(Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value)
+        varCodigoreintegro = (Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value)
         SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridViewReintegros.Rows(e.RowIndex).Cells(1).Value & "'"
         Com2 = New MySqlCommand(SQL2, MiConexion2)
         Rs2 = Com2.ExecuteReader()
