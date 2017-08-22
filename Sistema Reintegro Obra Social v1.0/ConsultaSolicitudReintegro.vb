@@ -17,7 +17,14 @@ Public Class ConsultaSolicitudReintegro
     Dim rollbackImporte As String
     Dim rollbackCarga As String
     Dim rollbackFechaSolicitud As String
+    Dim rollbackCBU As String
+    Dim rollbackAlias As String
+    Dim rollbackCuilPago As String
+    Dim rollbackTipoCuenta As String
     Dim varCodigoreintegro As String
+    Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
+                              "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
+                              "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta "
 
     Private Sub ConsultaSolicitudReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         GridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -39,11 +46,7 @@ Public Class ConsultaSolicitudReintegro
     Private Sub llenarGridCompleto() '>>>>>>>>>>>
         Try
             'SI QUIERO VER LO QUE CARGAN TODOS LOS USUARIOS DE ESA SECCIONAL (TODOS LOS USER DE ESA SECCIONAL)
-            sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
-                    "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
-                    "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
-                    "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
-                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+            sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional.ToString & "') AND (Auditor_Medico = 0)"
             'SI QUIERO VER SOLO LO QUE CARGA EL USUARIO LOGUEADO
             'sql = "SELECT Codigo_Reintegro,Codigo_Beneficiario,Fecha_Solicitud,Detalle,Importe,Observaciones_Carga,Imagen1" & _
@@ -104,18 +107,13 @@ Public Class ConsultaSolicitudReintegro
     Private Sub BuscarDato()
         Try
             If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
-                sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
-                    "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
-                    "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
-                    "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
-                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) AND USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "' AND Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%'"
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "' AND Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' and Auditor_medico=0)"
             Else
 
-                sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
-                    "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
-                    "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
-                    "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
-                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) AND USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "' AND Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' AND (Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "')"
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "' AND Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' AND " & _
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 0)"
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -162,7 +160,7 @@ Public Class ConsultaSolicitudReintegro
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2
         MiConexion2.Open()
-        varCodigoreintegro = Int(Me.GridView1.Rows(e.RowIndex).Cells(1).Value)
+        varCodigoreintegro = (Me.GridView1.Rows(e.RowIndex).Cells(1).Value)
         SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView1.Rows(e.RowIndex).Cells(1).Value & "'"
         Com2 = New MySqlCommand(SQL2, MiConexion2)
         Rs2 = Com2.ExecuteReader()
@@ -190,20 +188,26 @@ Public Class ConsultaSolicitudReintegro
             txtImporte.Text = Me.GridView1.Rows(e.RowIndex).Cells(5).Value
             rollbackImporte = txtImporte.Text
             txtObservacionesCarga.Text = Me.GridView1.Rows(e.RowIndex).Cells(6).Value
-            txtCBU.Text = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
-            txtAlias.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
+            txtCBU.Text = Me.GridView1.Rows(e.RowIndex).Cells(10).Value
+            rollbackCBU = txtCBU.Text
+            txtAlias.Text = Me.GridView1.Rows(e.RowIndex).Cells(11).Value
+            rollbackAlias = txtAlias.Text
             'si es 0 es reintegro
-            If (Me.GridView1.Rows(e.RowIndex).Cells(17).Value) = 0 Then
+            If (Me.GridView1.Rows(e.RowIndex).Cells(12).Value) = 0 Then
                 lblTipoReintegro.Text = "ES REINTEGRO"
             End If
             'si es 1 es subsidio
-            If (Me.GridView1.Rows(e.RowIndex).Cells(17).Value) = 1 Then
-                If (Me.GridView1.Rows(e.RowIndex).Cells(18).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
-                If (Me.GridView1.Rows(e.RowIndex).Cells(18).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            If (Me.GridView1.Rows(e.RowIndex).Cells(12).Value) = 1 Then
+                If (Me.GridView1.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.GridView1.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
             End If
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
             rollbackFechaSolicitud = txtFechaSolicitud.Text
+            txtCuilPago.Text = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
+            rollbackCuilPago = txtCuilPago.Text
+            txtTipoCuenta.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
+            rollbackTipoCuenta = txtTipoCuenta.Text
             botonModificaSolicitud.Visible = True
             botonModificaSolicitud.Enabled = True
             botonEliminarSolicitud.Visible = True
@@ -242,32 +246,33 @@ Public Class ConsultaSolicitudReintegro
 
         'llena textbox con datos de operacion
         Try
-            'arreglo fecha al inverso
+            'arreglo fecha
             lblfe1.Text = Me.GridView1.Rows(e.RowIndex).Cells(3).Value
             Dim fechacreacion As Date
             fechacreacion = lblfe1.Text
             lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
-            'label reintegro o subsidio
-
+            'af
             txtDetalle.Text = Me.GridView1.Rows(e.RowIndex).Cells(4).Value
             rollbackDetalle = txtDetalle.Text
             txtImporte.Text = Me.GridView1.Rows(e.RowIndex).Cells(5).Value
             rollbackImporte = txtImporte.Text
             txtObservacionesCarga.Text = Me.GridView1.Rows(e.RowIndex).Cells(6).Value
-            txtCBU.Text = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
-            txtAlias.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
+            txtCBU.Text = Me.GridView1.Rows(e.RowIndex).Cells(10).Value
+            txtAlias.Text = Me.GridView1.Rows(e.RowIndex).Cells(11).Value
             'si es 0 es reintegro
-            If (Me.GridView1.Rows(e.RowIndex).Cells(17).Value) = 0 Then
+            If (Me.GridView1.Rows(e.RowIndex).Cells(12).Value) = 0 Then
                 lblTipoReintegro.Text = "ES REINTEGRO"
             End If
             'si es 1 es subsidio
-            If (Me.GridView1.Rows(e.RowIndex).Cells(17).Value) = 1 Then
-                If (Me.GridView1.Rows(e.RowIndex).Cells(18).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
-                If (Me.GridView1.Rows(e.RowIndex).Cells(18).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            If (Me.GridView1.Rows(e.RowIndex).Cells(12).Value) = 1 Then
+                If (Me.GridView1.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.GridView1.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
             End If
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
             rollbackFechaSolicitud = txtFechaSolicitud.Text
+            txtCuilPago.Text = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
+            txtTipoCuenta.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
             botonModificaSolicitud.Visible = True
             botonModificaSolicitud.Enabled = True
             botonEliminarSolicitud.Visible = True
@@ -327,6 +332,8 @@ Public Class ConsultaSolicitudReintegro
         DateTimePicker3.Enabled = False
         txtCBU.Enabled = False
         txtAlias.Enabled = False
+        txtCuilPago.Enabled = False
+        txtTipoCuenta.Enabled = False
     End Sub
 
     Private Sub EnabledTextOn()
@@ -337,6 +344,8 @@ Public Class ConsultaSolicitudReintegro
         DateTimePicker3.Enabled = True
         txtCBU.Enabled = True
         txtAlias.Enabled = True
+        txtCuilPago.Enabled = True
+        txtTipoCuenta.Enabled = True
     End Sub
 
     Private Sub PrendeBotones()
@@ -389,6 +398,10 @@ Public Class ConsultaSolicitudReintegro
         txtImporte.Text = rollbackImporte
         txtObservacionesCarga.Text = rollbackCarga
         txtFechaSolicitud.Text = rollbackFechaSolicitud
+        txtCBU.Text = rollbackCBU
+        txtAlias.Text = rollbackAlias
+        txtCuilPago.Text = rollbackCuilPago
+        txtTipoCuenta.Text = rollbackTipoCuenta
     End Sub
 
     Private Sub DateTimePicker3_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker3.ValueChanged
@@ -402,7 +415,7 @@ Public Class ConsultaSolicitudReintegro
             With cmdinsert
                 .Connection = con_insert
                 .CommandType = CommandType.Text
-                .CommandText = "UPDATE `reintegros` SET detalle=?detalle,importe=?importe,Observaciones_Carga=?obscarga,fecha_solicitud=?fecsol,CBU =?cbu,Alias=?alias WHERE codigo_reintegro = ?codre"
+                .CommandText = "UPDATE `reintegros` SET detalle=?detalle,importe=?importe,Observaciones_Carga=?obscarga,fecha_solicitud=?fecsol,CBU =?cbu,Alias=?alias,Cuil_Pago=?cuilpago,Tipo_Cuenta=?tipcue WHERE codigo_reintegro = ?codre"
                 .Parameters.AddWithValue("?codre", varCodigoreintegro)
                 .Parameters.AddWithValue("?detalle", txtDetalle.Text.ToString)
                 .Parameters.AddWithValue("?importe", varimp)
@@ -410,6 +423,8 @@ Public Class ConsultaSolicitudReintegro
                 .Parameters.AddWithValue("?fecsol", txtFechaSolicitud.Text.ToString)
                 .Parameters.AddWithValue("?cbu", txtCBU.Text.ToString)
                 .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
+                .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                .Parameters.AddWithValue("?tipcue", txtTipoCuenta.Text.ToString)
             End With
             Try
                 con_insert.Open()
@@ -461,43 +476,8 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
 
-    Private Sub lblfe1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblfe1.Click
 
-    End Sub
-    Private Sub lblfe2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblfe2.Click
-
-    End Sub
-    Private Sub PictureBox1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox1.Click
-
-    End Sub
-    Private Sub GroupBox1_Enter(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GroupBox1.Enter
-
-    End Sub
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-
-    End Sub
-    Private Sub lblPicture_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblPicture.Click
-
-    End Sub
-    Private Sub Label5_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label5.Click
-
-    End Sub
-    Private Sub lblTipoReintegro_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles lblTipoReintegro.Click
-
-    End Sub
-    Private Sub botonImagen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonImagen.Click
-
-    End Sub
-    Private Sub Label10_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label10.Click
-
-    End Sub
-    Private Sub botonQuitarImagen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonQuitarImagen.Click
-
-    End Sub
-    Private Sub Label4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Label4.Click
-
-    End Sub
-    Private Sub Panel5_Paint(ByVal sender As System.Object, ByVal e As System.Windows.Forms.PaintEventArgs) Handles Panel5.Paint
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
     End Sub
 End Class

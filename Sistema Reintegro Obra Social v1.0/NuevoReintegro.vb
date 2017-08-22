@@ -24,6 +24,8 @@ Public Class NuevoReintegro
         txtFechaSolicitud.Text = DateTime.Now.Year & "-" & DateTime.Now.Month & "-" & DateTime.Now.Day
         apagaDatosOperacion()
         llenaGridSubsidios()
+        txtTipoCuenta.Items.Add("CAJA DE AHORRO")
+        txtTipoCuenta.Items.Add("CUENTA CORRIENTE")
         txtBusqueda.Focus()
     End Sub
 
@@ -491,6 +493,8 @@ Public Class NuevoReintegro
         txtCBU.Text = ""
         txtAlias.Text = ""
         txtSubsidio.Text = ""
+        txtCuilPago.Text = ""
+        txtTipoCuenta.Text = ""
         txtDetalle.Focus()
     End Sub
 
@@ -518,6 +522,10 @@ Public Class NuevoReintegro
         clbimagen.Enabled = False
         botonImagen.Visible = False
         botonQuitarImagen.Visible = False
+        txtTipoCuenta.Enabled = False
+        txtCBU.Enabled = False
+        txtAlias.Enabled = False
+        txtCuilPago.Enabled = False
     End Sub
     Private Sub prendeDatosOperacion()
         txtDetalle.Enabled = True
@@ -528,6 +536,10 @@ Public Class NuevoReintegro
         clbimagen.Visible = True
         clbimagen.Enabled = True
         botonImagen.Visible = True
+        txtCBU.Enabled = True
+        txtAlias.Enabled = True
+        txtCuilPago.Enabled = True
+        txtTipoCuenta.Enabled = True
     End Sub
 
     Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button2.Click
@@ -571,7 +583,7 @@ Public Class NuevoReintegro
 
     'BOTON ACEPTAR --> GENERA NUEVA SOLICITUD DE REINTEGRO
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        If (Trim(txtDetalle.Text) = "") Or (Trim(txtImporte.Text) = "") Or (Trim(txtFechaSolicitud.Text) = "") Or (Trim(txtCBU.Text) = "") Or (Trim(txtAlias.Text) = "") Then
+        If (Trim(txtTipoCuenta.Text) = "") Or (Trim(txtCuilPago.Text) = "") Or (Trim(txtAlias.Text) = "") Or (Trim(txtDetalle.Text) = "") Or (Trim(txtImporte.Text) = "") Or (Trim(txtFechaSolicitud.Text) = "") Or (Trim(txtCBU.Text) = "") Or (Trim(txtAlias.Text) = "") Then
             MsgBox("Por favor Complete todos los datos de la Operacion", vbExclamation, "Faltan Datos")
         Else
             Try
@@ -705,6 +717,26 @@ Public Class NuevoReintegro
         If Asc(e.KeyChar) = 13 Then
             GridViewSubsidios.Visible = False
         End If
+    End Sub
+
+    Private Sub txtCuilPago_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCuilPago.KeyPress
+        Dim texto As String = txtCuilPago.Text
+        If (txtCuilPago.Text.Length = 2) Or (txtCuilPago.Text.Length = 11) Then
+            texto = texto + "-" + e.KeyChar
+            txtCuilPago.Text = texto
+            e.Handled = True
+            txtCuilPago.Select(txtCuilPago.Text.Length, 0)
+        End If
+        'SOLO ADMITE NUMEROS  *******
+        If InStr("0123456789", e.KeyChar) = False Then
+            If (Asc(e.KeyChar)) <> 8 Then
+                e.Handled = True
+            End If
+        End If
+    End Sub
+
+    Private Sub txtCuilPago_TextChanged(sender As Object, e As EventArgs) Handles txtCuilPago.TextChanged
+
     End Sub
 End Class
 

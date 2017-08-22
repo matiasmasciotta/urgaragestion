@@ -101,7 +101,7 @@ Public Class Login
                 txtPass.Enabled = False
                 Timer1.Start()
                 MenuPrincipal.lblUser.Text = "Ingreso - " & DateTime.Now.Date
-                MenuPrincipal.PictureBox1.Image = WindowsApplication1.My.Resources.Resources.OvaVerde
+                MenuPrincipal.PictureBox1.Image = WindowsApplication1.My.Resources.Resources.mejoico2
                 MenuPrincipal.lblUser.ForeColor = Color.Green
                 MenuPrincipal.IngresarAlSistemaToolStripMenuItem.Text = "Salir para Cerrar Sesion"
                 MenuPrincipal.IngresarAlSistemaToolStripMenuItem.Enabled = False

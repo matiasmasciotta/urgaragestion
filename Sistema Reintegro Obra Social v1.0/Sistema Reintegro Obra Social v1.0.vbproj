@@ -10,7 +10,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>WindowsApplication1.My.MyApplication</StartupObject>
     <RootNamespace>WindowsApplication1</RootNamespace>
-    <AssemblyName>SISTEMA-REINTEGRO</AssemblyName>
+    <AssemblyName>Sistema ROSS</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
@@ -40,7 +40,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SISTEMA-REINTEGRO.xml</DocumentationFile>
+    <DocumentationFile>Sistema ROSS.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
@@ -50,7 +50,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SISTEMA-REINTEGRO.xml</DocumentationFile>
+    <DocumentationFile>Sistema ROSS.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -78,7 +78,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icono.ico</ApplicationIcon>
+    <ApplicationIcon>ico3amarillo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
@@ -391,8 +391,12 @@
     <None Include="Resources\LogoUrgara.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ico3amarillo.ico" />
     <Content Include="icono.ico" />
     <Content Include="logo.ico" />
+    <None Include="Resources\mejoricorojo.png" />
+    <None Include="Resources\mejorico.png" />
+    <None Include="Resources\mejoico2.png" />
     <None Include="Resources\LOGUIS.png" />
     <None Include="Resources\logopiedra.png" />
     <None Include="Resources\quitaFiltros.png" />

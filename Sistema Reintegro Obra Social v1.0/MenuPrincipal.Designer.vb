@@ -23,6 +23,7 @@ Partial Class MenuPrincipal
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IngresarAlSistemaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -181,7 +182,7 @@ Partial Class MenuPrincipal
         Me.lblUser.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.lblUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUser.ForeColor = System.Drawing.Color.Red
-        Me.lblUser.Location = New System.Drawing.Point(694, 545)
+        Me.lblUser.Location = New System.Drawing.Point(682, 544)
         Me.lblUser.Name = "lblUser"
         Me.lblUser.Size = New System.Drawing.Size(118, 16)
         Me.lblUser.TabIndex = 1
@@ -191,8 +192,8 @@ Partial Class MenuPrincipal
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.ovv
-        Me.PictureBox1.Location = New System.Drawing.Point(660, 541)
+        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Location = New System.Drawing.Point(652, 534)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(29, 26)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -290,6 +291,7 @@ Partial Class MenuPrincipal
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label3)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "MenuPrincipal"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent

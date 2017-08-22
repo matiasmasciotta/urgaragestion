@@ -126,7 +126,7 @@ Public Class ConsultaTotal
     Private Sub ifAuditorMedico()
         varOPAUDITORMEDICO = ""
         'PENDIENTE AUDITOR MEDICO (AUDITOR MEDICO APROBADO)
-        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False And opAuditorRechazado.Checked = False) Then
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = False) Then
             varOPAUDITORMEDICO = " AND (auditor_medico = 0)"
         End If
         'PENDIENTE DE AUDITOR MEDICO Y APROBADOS
@@ -156,6 +156,7 @@ Public Class ConsultaTotal
         'APARECEN TODOS LOS REGISTROS SIN FILTRO --> TODAS LAS SOLICITUDES DE REINTEGRO PENDIENTES DE APROBACION PARA AUDITOR
         If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = False) Then
             varOPAUDITORMEDICO = " "
+            habilitaCheck()
         End If
     End Sub
 
@@ -165,6 +166,7 @@ Public Class ConsultaTotal
         'PENDIENTE AUDITOR MEDICO (AUDITOR MEDICO APROBADO)
         If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = False And opComisionRechazados.Checked = False) Then
             varOPCOMISION = " AND (Estado = 0)"
+            opAuditorMedicoSI.Checked = True
         End If
         'PENDIENTE DE AUDITOR MEDICO Y APROBADOS
         If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) Then
@@ -173,6 +175,7 @@ Public Class ConsultaTotal
         'SOLO APROBADOS POR AUDITOR MEDICO
         If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) Then
             varOPCOMISION = " AND (Estado = 1) "
+            opAuditorMedicoSI.Checked = True
         End If
         'PENDIENTE DE AUDITOR MEDICO Y RECHAZADOS
         If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) Then
@@ -189,10 +192,12 @@ Public Class ConsultaTotal
         'SOLO RECHAZADOS POR AUDITOR MEDICO
         If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) Then
             varOPCOMISION = " AND (Estado = 2) "
+            opAuditorMedicoSI.Checked = True
         End If
         'APARECEN TODOS LOS REGISTROS SIN FILTRO --> TODAS LAS SOLICITUDES DE REINTEGRO PENDIENTES DE APROBACION PARA AUDITOR
         If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) Then
             varOPCOMISION = " "
+            habilitaCheck()
         End If
     End Sub
 
@@ -201,16 +206,49 @@ Public Class ConsultaTotal
         varOPPAGADO = ""
         If (opPagoPendiente.Checked = True) And (opPAGADO.Checked = False) Then
             varOPPAGADO = " AND (Pagado = 0) "
+            If opPagoPendiente.Checked = True Then
+                opComisionAprobados.Checked = True
+                opAuditorMedicoSI.Checked = True
+                opComisionRechazados.Enabled = False
+                opComisionPendientes.Enabled = False
+                opComisionAprobados.Enabled = False
+                opPAGADO.Enabled = False
+                opAuditorMedicoSI.Enabled = False
+                opAuditorRechazado.Enabled = False
+                opPendienteAuditor.Enabled = False
+            End If
         End If
         If (opPagoPendiente.Checked = True) And (opPAGADO.Checked = True) Then
             varOPPAGADO = " AND (Pagado=0) or (Pagado=1)"
         End If
         If (opPagoPendiente.Checked = False) And (opPAGADO.Checked = True) Then
             varOPPAGADO = " AND (Pagado = 1) "
+            opComisionAprobados.Checked = True
+            opAuditorMedicoSI.Checked = True
+            opComisionRechazados.Enabled = False
+            opComisionPendientes.Enabled = False
+            opComisionAprobados.Enabled = False
+            opPagoPendiente.Enabled = False
+            opAuditorMedicoSI.Enabled = False
+            opAuditorRechazado.Enabled = False
+            opPendienteAuditor.Enabled = False
         End If
         If (opPagoPendiente.Checked = False) And (opPAGADO.Checked = False) Then
             varOPPAGADO = " "
+            habilitaCheck()
         End If
+    End Sub
+    Private Sub habilitaCheck()
+        opSubsidio.Enabled = True
+        opReintegro.Enabled = True
+        opAuditorMedicoSI.Enabled = True
+        opAuditorRechazado.Enabled = True
+        opPendienteAuditor.Enabled = True
+        opComisionAprobados.Enabled = True
+        opComisionRechazados.Enabled = True
+        opComisionPendientes.Enabled = True
+        opPAGADO.Enabled = True
+        opPagoPendiente.Enabled = True
     End Sub
 
     'clic en reintegro
@@ -238,6 +276,7 @@ Public Class ConsultaTotal
 
     'clic auditor medico aprobado
     Private Sub opAuditorMedicoSI_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opAuditorMedicoSI.CheckedChanged
+ 
         todosLosIF()
         BuscarDato()
     End Sub
@@ -580,14 +619,27 @@ Public Class ConsultaTotal
         GridViewReintegros.Enabled = False
         EnabledTextOn()
         PrendeBotones()
+        deshabilitaTodosLosCheck()
     End Sub
-
+    Private Sub deshabilitaTodosLosCheck()
+        opSubsidio.Enabled = False
+        opReintegro.Enabled = False
+        opAuditorMedicoSI.Enabled = False
+        opAuditorRechazado.Enabled = False
+        opPendienteAuditor.Enabled = False
+        opComisionAprobados.Enabled = False
+        opComisionRechazados.Enabled = False
+        opComisionPendientes.Enabled = False
+        opPAGADO.Enabled = False
+        opPagoPendiente.Enabled = False
+    End Sub
     Private Sub CANCELA_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CANCELA.Click
         EnabledTextOff()
         ApagaBotones()
         rollbackearDatos()
         botonModificaSolicitud.Enabled = True
         GridViewReintegros.Enabled = True
+        habilitaCheck()
     End Sub
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
@@ -606,6 +658,7 @@ Public Class ConsultaTotal
             botonModificaSolicitud.Enabled = True
         End If
         GridViewReintegros.Enabled = True
+        habilitaCheck()
     End Sub
     Private Sub rollbackearDatos()
         txtDetalle.Text = rollbackDetalle.ToString
@@ -696,5 +749,72 @@ Public Class ConsultaTotal
         opComisionRechazados.Checked = False
         opPagoPendiente.Checked = False
         opPAGADO.Checked = False
+    End Sub
+
+    Private Sub opPendienteAuditor_Click(sender As Object, e As EventArgs) Handles opPendienteAuditor.Click
+        If opPendienteAuditor.Checked = True Then
+            opAuditorMedicoSI.Enabled = False
+            opAuditorRechazado.Enabled = False
+            opComisionAprobados.Enabled = False
+            opComisionPendientes.Enabled = False
+            opComisionRechazados.Enabled = False
+            opPAGADO.Enabled = False
+            opPagoPendiente.Enabled = False
+        End If
+    End Sub
+
+    Private Sub opAuditorRechazado_Click(sender As Object, e As EventArgs) Handles opAuditorRechazado.Click
+        If opAuditorRechazado.Checked = True Then
+            opAuditorMedicoSI.Enabled = False
+            opPendienteAuditor.Enabled = False
+            opComisionAprobados.Enabled = False
+            opComisionPendientes.Enabled = False
+            opComisionRechazados.Enabled = False
+            opPAGADO.Enabled = False
+            opPagoPendiente.Enabled = False
+        End If
+    End Sub
+
+    Private Sub opAuditorMedicoSI_Click(sender As Object, e As EventArgs) Handles opAuditorMedicoSI.Click
+        If opAuditorMedicoSI.Checked = True Then
+            opPendienteAuditor.Enabled = False
+            opAuditorRechazado.Enabled = False
+        End If
+    End Sub
+
+    Private Sub opComisionPendientes_Click(sender As Object, e As EventArgs) Handles opComisionPendientes.Click
+        If opComisionPendientes.Checked = True Then
+            opPendienteAuditor.Enabled = False
+            opAuditorRechazado.Enabled = False
+            opAuditorMedicoSI.Enabled = False
+            opComisionAprobados.Enabled = False
+            opComisionRechazados.Enabled = False
+            opPAGADO.Enabled = False
+            opPagoPendiente.Enabled = False
+        End If
+    End Sub
+
+    Private Sub opComisionAprobados_Click(sender As Object, e As EventArgs) Handles opComisionAprobados.Click
+        If opComisionAprobados.Checked = True Then
+            opPendienteAuditor.Enabled = False
+            opAuditorRechazado.Enabled = False
+            opAuditorMedicoSI.Enabled = False
+            opComisionPendientes.Enabled = False
+            opComisionRechazados.Enabled = False
+
+        End If
+    End Sub
+
+    Private Sub opComisionRechazados_Click(sender As Object, e As EventArgs) Handles opComisionRechazados.Click
+        If opComisionRechazados.Checked = True Then
+            opPendienteAuditor.Enabled = False
+            opAuditorRechazado.Enabled = False
+            opAuditorMedicoSI.Enabled = False
+            opComisionPendientes.Enabled = False
+            opComisionAprobados.Enabled = False
+            opPAGADO.Enabled = False
+            opPagoPendiente.Enabled = False
+
+        End If
     End Sub
 End Class
