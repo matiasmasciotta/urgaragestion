@@ -84,4 +84,20 @@
     Private Sub DatosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DatosToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+
+    End Sub
+
+    Private Sub MenuPrincipal_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        PictureBox2.Image = WindowsApplication1.My.Resources.Resources.logoblancourgara
+    End Sub
+
+    Private Sub PictureBox2_MouseHover(sender As Object, e As EventArgs) Handles PictureBox2.MouseHover
+        ToolTip1.SetToolTip(PictureBox2, "http://www.urgara.org.ar/")
+    End Sub
+
+    Private Sub PictureBox2_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox2.MouseMove
+        PictureBox2.Image = WindowsApplication1.My.Resources.Resources.logoblancourgara2
+    End Sub
 End Class

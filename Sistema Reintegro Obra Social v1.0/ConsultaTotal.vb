@@ -31,7 +31,7 @@ Public Class ConsultaTotal
 
 
     Private Sub ConsultaTotal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        GridViewReintegros.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        'GridViewReintegros.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         apagaFecha()
         llenarGridCompleto()
         'txtBeneficiario.Focus()
@@ -50,7 +50,8 @@ Public Class ConsultaTotal
     Private Sub llenarGridCompleto() '>>>>>>>>>>>
         Try
             'TRAE TODOS LOS REINTEGROS PENDIENTES
-            sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario)"
+            sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario) " & _
+                "AND (Auditor_medico=0)"
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
@@ -344,31 +345,31 @@ Public Class ConsultaTotal
             MsgBox(ex.Message)
         End Try
     End Sub
-    Private Sub BuscarDatoFecha()
-        Try
-            If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
-                sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
-                    "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
-                    "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
-                    "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
-                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%'"
-            Else
-
-                sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
-                    "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
-                    "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
-                    "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
-                    "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' AND (Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "')"
-
-            End If
-            da = New MySqlDataAdapter(sql, Conex)
-            dt = New DataTable
-            da.Fill(dt)
-            GridViewReintegros.DataSource = dt
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
-    End Sub
+    ' Private Sub BuscarDatoFecha()
+    '    Try
+    '       If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
+    '          sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
+    '             "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
+    '            "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
+    '           "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
+    '          "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%'"
+    ' Else
+    '
+    '           sql = "SELECT reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle, " & _
+    '              "importe,observaciones_carga,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario, " & _
+    '             "usuarios_reintegros.codigo_seccional,reintegros.imagen1,reintegros.imagen2,reintegros.imagen3,reintegros.imagen4,reintegros.imagen5, " & _
+    '            "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio " & _
+    '           "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' AND (Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "')"
+    '
+    '       End If
+    '      da = New MySqlDataAdapter(sql, Conex)
+    '     dt = New DataTable
+    '    da.Fill(dt)
+    '   GridViewReintegros.DataSource = dt
+    'Catch ex As Exception
+    '   MsgBox(ex.Message)
+    'End Try
+    'End Sub
 
     Private Sub txtFechaHasta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFechaHasta.TextChanged
         todosLosIF()
@@ -393,7 +394,6 @@ Public Class ConsultaTotal
         txtFechaHasta.Text = DateTimePicker2.Value.Year & "-" & DateTimePicker2.Value.Month & "-" & DateTimePicker2.Value.Day
         BuscarDato()
     End Sub
-
 
     'metodo limpia fecha
     Private Sub limpiafechas()
@@ -688,7 +688,6 @@ Public Class ConsultaTotal
                 .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
                 .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
                 .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
-
             End With
             Try
                 con_insert.Open()
@@ -814,7 +813,31 @@ Public Class ConsultaTotal
             opComisionAprobados.Enabled = False
             opPAGADO.Enabled = False
             opPagoPendiente.Enabled = False
-
         End If
+    End Sub
+
+
+    
+
+    Private Sub etiquetear()
+        ToolTip1.SetToolTip(botonExcel, "Exportar Listado a Excel")
+        ToolTip1.SetToolTip(lblPicture, "Doble click para Ver Imagen")
+    End Sub
+ 
+
+    Private Sub botonExcel_Click(sender As Object, e As EventArgs) Handles botonExcel.Click
+        GridAExcel(GridViewReintegros)
+    End Sub
+
+    Private Sub botonExcel_MouseHover(sender As Object, e As System.EventArgs) Handles botonExcel.MouseHover
+        etiquetear()
+    End Sub
+
+    Private Sub botonExcel_MouseMove(sender As Object, e As MouseEventArgs) Handles botonExcel.MouseMove
+        botonExcel.Image = WindowsApplication1.My.Resources.Resources.logo2excel
+    End Sub
+
+    Private Sub ConsultaTotal_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
+        botonExcel.Image = WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
     End Sub
 End Class

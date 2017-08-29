@@ -29,6 +29,10 @@ Public Class NuevoReintegro
         txtBusqueda.Focus()
     End Sub
 
+    Private Sub txtBusqueda_MouseHover(sender As Object, e As EventArgs) Handles txtBusqueda.MouseHover
+        ToolTip1.SetToolTip(txtBusqueda, "Seleccione busqueda por Cuil, o por Apellido y Nombre, DEFECTO: CUIL")
+    End Sub
+
     'EVENTO TEXT BUSQUEDA CHANGUED
     Private Sub txtBusqueda_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBusqueda.TextChanged
         buscarlosdatos()
@@ -467,8 +471,6 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
                     End Select
-
-
                 End If
             End With
             Try
@@ -476,6 +478,11 @@ Public Class NuevoReintegro
                 cmdinsert.ExecuteNonQuery()
                 con_insert.Close()
                 MessageBox.Show("SOLICITUD GENERADA CORRECTAMENTE", "NUEVA SOLICITUD DE REINTEGRO", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'ENV CORREO (MAIL EMISOR (GMAIL) - PASS (GMAIL) - MENSAJE   -   ASUNTO     - MAIL RECEPTOR)
+                enviarCorreo("noreply.urgarareintegros@gmail.com", "Clave2017", "Sr. Auditor, " + vbLf + "En la fecha [" & txtFechaSolicitud.Text & "], se ha generado " & _
+                             "una nueva solicitud de reintegro, correspondiente al USUARIO: " + vbLf + "[" & lblNumeroReintegro.Text & "], del beneficiario CODIGO [" & txtBeneficiario.Text & "]" & _
+                             "- (" & txtApellidoNombre.Text & "), el cual solicita: " + vbLf + "** " & txtDetalle.Text & " **, por un importe de $" & txtImporte.Text & "." + vbLf + "  " & _
+                             "a sus efectos, muchas gracias!", "Nuevo Reintegro Solicitado: Usuario " & lblNumeroReintegro.Text & ", SROSS (NO RESPONDER ESTE MENSAJE)", "matiasmasciotta@urgara.org.ar")
                 cont = 0
             Catch falla As MySqlException
                 MsgBox(falla.Message)
@@ -737,6 +744,11 @@ Public Class NuevoReintegro
 
     Private Sub txtCuilPago_TextChanged(sender As Object, e As EventArgs) Handles txtCuilPago.TextChanged
 
+    End Sub
+
+
+    Private Sub GridViewSubsidios_MouseHover(sender As Object, e As EventArgs) Handles GridViewSubsidios.MouseHover
+        ToolTip1.SetToolTip(GridViewSubsidios, "Doble click para seleccionar..")
     End Sub
 End Class
 

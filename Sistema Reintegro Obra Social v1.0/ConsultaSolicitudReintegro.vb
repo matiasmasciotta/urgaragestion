@@ -7,6 +7,7 @@ Imports System.Data
 Imports System.Drawing.Imaging
 Imports System.Drawing.Printing
 
+
 Public Class ConsultaSolicitudReintegro
     Dim Conex As New MySqlConnection(CADENABASE2)
     Dim da As MySqlDataAdapter
@@ -478,7 +479,7 @@ Public Class ConsultaSolicitudReintegro
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-
+        GridAExcel(GridView1)
     End Sub
 End Class
 

@@ -48,8 +48,11 @@ Partial Class MenuPrincipal
         Me.minutos = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -179,10 +182,10 @@ Partial Class MenuPrincipal
         'lblUser
         '
         Me.lblUser.AutoSize = True
-        Me.lblUser.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.lblUser.BackColor = System.Drawing.Color.Transparent
         Me.lblUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUser.ForeColor = System.Drawing.Color.Red
-        Me.lblUser.Location = New System.Drawing.Point(682, 544)
+        Me.lblUser.Location = New System.Drawing.Point(728, 783)
         Me.lblUser.Name = "lblUser"
         Me.lblUser.Size = New System.Drawing.Size(118, 16)
         Me.lblUser.TabIndex = 1
@@ -192,8 +195,8 @@ Partial Class MenuPrincipal
         '
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(652, 534)
+        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.mejoricorojo
+        Me.PictureBox1.Location = New System.Drawing.Point(703, 774)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(29, 26)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -217,10 +220,10 @@ Partial Class MenuPrincipal
         'segundos
         '
         Me.segundos.AutoSize = True
-        Me.segundos.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.segundos.BackColor = System.Drawing.Color.Transparent
         Me.segundos.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.segundos.ForeColor = System.Drawing.Color.YellowGreen
-        Me.segundos.Location = New System.Drawing.Point(896, 542)
+        Me.segundos.ForeColor = System.Drawing.Color.Ivory
+        Me.segundos.Location = New System.Drawing.Point(933, 781)
         Me.segundos.Name = "segundos"
         Me.segundos.Size = New System.Drawing.Size(20, 20)
         Me.segundos.TabIndex = 4
@@ -229,10 +232,10 @@ Partial Class MenuPrincipal
         'horas
         '
         Me.horas.AutoSize = True
-        Me.horas.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.horas.BackColor = System.Drawing.Color.Transparent
         Me.horas.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.horas.ForeColor = System.Drawing.Color.YellowGreen
-        Me.horas.Location = New System.Drawing.Point(822, 542)
+        Me.horas.ForeColor = System.Drawing.Color.Ivory
+        Me.horas.Location = New System.Drawing.Point(859, 781)
         Me.horas.Name = "horas"
         Me.horas.Size = New System.Drawing.Size(20, 20)
         Me.horas.TabIndex = 5
@@ -241,10 +244,10 @@ Partial Class MenuPrincipal
         'minutos
         '
         Me.minutos.AutoSize = True
-        Me.minutos.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.minutos.BackColor = System.Drawing.Color.Transparent
         Me.minutos.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.minutos.ForeColor = System.Drawing.Color.YellowGreen
-        Me.minutos.Location = New System.Drawing.Point(856, 542)
+        Me.minutos.ForeColor = System.Drawing.Color.Ivory
+        Me.minutos.Location = New System.Drawing.Point(893, 781)
         Me.minutos.Name = "minutos"
         Me.minutos.Size = New System.Drawing.Size(20, 20)
         Me.minutos.TabIndex = 6
@@ -253,10 +256,10 @@ Partial Class MenuPrincipal
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.YellowGreen
-        Me.Label2.Location = New System.Drawing.Point(843, 538)
+        Me.Label2.ForeColor = System.Drawing.Color.Ivory
+        Me.Label2.Location = New System.Drawing.Point(880, 777)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(14, 20)
         Me.Label2.TabIndex = 7
@@ -265,23 +268,41 @@ Partial Class MenuPrincipal
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.YellowGreen
-        Me.Label3.Location = New System.Drawing.Point(879, 538)
+        Me.Label3.ForeColor = System.Drawing.Color.Ivory
+        Me.Label3.Location = New System.Drawing.Point(916, 777)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(14, 20)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = ":"
+        '
+        'PictureBox2
+        '
+        Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.logoblancourgara
+        Me.PictureBox2.Location = New System.Drawing.Point(599, 634)
+        Me.PictureBox2.Name = "PictureBox2"
+        Me.PictureBox2.Size = New System.Drawing.Size(472, 134)
+        Me.PictureBox2.TabIndex = 9
+        Me.PictureBox2.TabStop = False
+        '
+        'ToolTip1
+        '
+        Me.ToolTip1.AutoPopDelay = 5000
+        Me.ToolTip1.InitialDelay = 700
+        Me.ToolTip1.ReshowDelay = 100
+        Me.ToolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.LOGUIS
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.fondo2negrosistema
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.ClientSize = New System.Drawing.Size(1588, 709)
+        Me.ClientSize = New System.Drawing.Size(1588, 820)
+        Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.minutos)
         Me.Controls.Add(Me.horas)
         Me.Controls.Add(Me.segundos)
@@ -291,6 +312,7 @@ Partial Class MenuPrincipal
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label3)
+        Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "MenuPrincipal"
@@ -300,6 +322,7 @@ Partial Class MenuPrincipal
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -328,4 +351,6 @@ Partial Class MenuPrincipal
     Friend WithEvents minutos As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
 End Class
