@@ -26,8 +26,18 @@ Public Class ConsultaSolicitudReintegro
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                               "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
                               "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta "
+    Dim tempDETALLE As String
+    Dim tempIMPORTE As String
+    Dim tempFECHASOL As String
+    Dim tempCBU As String
+    Dim tempALIAS As String
+    Dim tempOBSCARGA As String
+    Dim tempCUILPAGO As String
+    Dim tempTIPOCUENTA As String
+    Dim MODIFICA As Boolean = False
 
     Private Sub ConsultaSolicitudReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        VariableGlobalModificacion = ""
         fechaHoy()
         GridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         apagaFecha()
@@ -170,8 +180,8 @@ Public Class ConsultaSolicitudReintegro
         txtFechaHasta.Text = ""
     End Sub
 
-    '*******************************************************************************************************************************************************
-    'click en celda llena listbox con imagenes y grid >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>111111111111111111111111111111111111111111111111111111111111111111111111
+    '********************************************************                   *******************************************************************************
+    'click en celda llena listbox con imagenes y grid  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    111111111111111111111111111111111111111111111111111111111111111111111111
     Private Sub GridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellClick
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
@@ -198,22 +208,29 @@ Public Class ConsultaSolicitudReintegro
             End If
         Next
         Try
-            VariableGlobalBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(2).Value
             'arreglo fecha
+            VariableGlobalBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(2).Value
             lblfe1.Text = Me.GridView1.Rows(e.RowIndex).Cells(3).Value
             Dim fechacreacion As Date
             fechacreacion = lblfe1.Text
             lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
             'af
             txtDetalle.Text = Me.GridView1.Rows(e.RowIndex).Cells(4).Value
+            txtDetalleTEMPO.Text = txtDetalle.Text
             rollbackDetalle = txtDetalle.Text
+
             txtImporte.Text = Me.GridView1.Rows(e.RowIndex).Cells(5).Value
+            txtImporteTEMPO.Text = txtImporte.Text
             rollbackImporte = txtImporte.Text
+
             txtObservacionesCarga.Text = Me.GridView1.Rows(e.RowIndex).Cells(6).Value
+            txtObservacionesTEMPO.Text = txtObservacionesCarga.Text
+
             txtCBU.Text = Me.GridView1.Rows(e.RowIndex).Cells(10).Value
-            rollbackCBU = txtCBU.Text
+            txtCBUTEMPO.Text = txtCBU.Text
+
             txtAlias.Text = Me.GridView1.Rows(e.RowIndex).Cells(11).Value
-            rollbackAlias = txtAlias.Text
+            txtAliasTEMPO.Text = txtAlias.Text
             'si es 0 es reintegro
             If (Me.GridView1.Rows(e.RowIndex).Cells(12).Value) = 0 Then
                 lblTipoReintegro.Text = "ES REINTEGRO"
@@ -225,11 +242,15 @@ Public Class ConsultaSolicitudReintegro
             End If
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
+            txtFechSolicitudTEMPO.Text = txtFechaSolicitud.Text
             rollbackFechaSolicitud = txtFechaSolicitud.Text
+
             txtCuilPago.Text = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
-            rollbackCuilPago = txtCuilPago.Text
+            txtCuilPagoTEMPO.Text = txtCuilPago.Text
+
             txtTipoCuenta.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
-            rollbackTipoCuenta = txtTipoCuenta.Text
+            txtTipoCuentaTEMPO.Text = txtTipoCuenta.Text
+
             botonModificaSolicitud.Visible = True
             botonModificaSolicitud.Enabled = True
             botonEliminarSolicitud.Visible = True
@@ -237,7 +258,7 @@ Public Class ConsultaSolicitudReintegro
         End Try
     End Sub
 
-    'click en celda llena listbox con imagenes y grid <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 22222222222222222222222222222222222
+    'click en celda llena listbox con imagenes y grid    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<          22222222222222222222222222222222222
     Private Sub GridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellContentClick
         'lleno listbox con imagenes de la base *************************************************
         clbimagen.Items.Clear()
@@ -276,12 +297,21 @@ Public Class ConsultaSolicitudReintegro
             lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
             'af
             txtDetalle.Text = Me.GridView1.Rows(e.RowIndex).Cells(4).Value
+            txtDetalleTEMPO.Text = txtDetalle.Text
             rollbackDetalle = txtDetalle.Text
+
             txtImporte.Text = Me.GridView1.Rows(e.RowIndex).Cells(5).Value
+            txtImporteTEMPO.Text = txtImporte.Text
             rollbackImporte = txtImporte.Text
+
             txtObservacionesCarga.Text = Me.GridView1.Rows(e.RowIndex).Cells(6).Value
+            txtObservacionesTEMPO.Text = txtObservacionesCarga.Text
+
             txtCBU.Text = Me.GridView1.Rows(e.RowIndex).Cells(10).Value
+            txtCBUTEMPO.Text = txtCBU.Text
+
             txtAlias.Text = Me.GridView1.Rows(e.RowIndex).Cells(11).Value
+            txtAliasTEMPO.Text = txtAlias.Text
             'si es 0 es reintegro
             If (Me.GridView1.Rows(e.RowIndex).Cells(12).Value) = 0 Then
                 lblTipoReintegro.Text = "ES REINTEGRO"
@@ -293,9 +323,15 @@ Public Class ConsultaSolicitudReintegro
             End If
             rollbackCarga = txtObservacionesCarga.Text
             txtFechaSolicitud.Text = lblfe2.Text
+            txtFechSolicitudTEMPO.Text = txtFechaSolicitud.Text
             rollbackFechaSolicitud = txtFechaSolicitud.Text
+
             txtCuilPago.Text = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
+            txtCuilPagoTEMPO.Text = txtCuilPago.Text
+
             txtTipoCuenta.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
+            txtTipoCuentaTEMPO.Text = txtTipoCuenta.Text
+
             botonModificaSolicitud.Visible = True
             botonModificaSolicitud.Enabled = True
             botonEliminarSolicitud.Visible = True
@@ -476,6 +512,7 @@ Public Class ConsultaSolicitudReintegro
             With cmdinsert
                 .Connection = con_insert
                 .CommandType = CommandType.Text
+                VERIFICA_MODIFICACIONES()
                 .CommandText = "INSERT INTO `historial_reintegros`(`Codigo_Usuario`,`Codigo_Reintegro`,`Codigo_Beneficiario`,`Fecha_modificacion`," & _
                     "`Hora`,`Detalle`) VALUES (?codus,?codre,?codben,?fecmod,?hora,?detalle)"
                 .Parameters.AddWithValue("?codus", VariableGlobalUsuario)
@@ -483,7 +520,7 @@ Public Class ConsultaSolicitudReintegro
                 .Parameters.AddWithValue("?codben", VariableGlobalBeneficiario)
                 .Parameters.AddWithValue("?fecmod", VariableGlobalFechaHOY)
                 .Parameters.AddWithValue("?hora", VariableGlobalHoraHOY)
-                .Parameters.AddWithValue("?detalle", "MODIFICAME ESTA")
+                .Parameters.AddWithValue("?detalle", VariableGlobalModificacion)
             End With
             Try
                 con_insert.Open()
@@ -501,8 +538,76 @@ Public Class ConsultaSolicitudReintegro
 
     '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
     '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    Private Sub VERIFICA_MODIFICACIONES()
+        VariableGlobalModificacion = ""
+        Dim det As String = ""
+        Dim imp As String = ""
+        Dim fecsol As String = ""
+        Dim cbuu As String = ""
+        Dim ali As String = ""
+        Dim obsc As String = ""
+        Dim cui As String = ""
+        Dim tipcue As String = ""
+
+
+        If txtDetalle.Text <> txtDetalleTEMPO.Text Then
+            det = " // modificó el detalle ANTES - [ " & txtDetalleTEMPO.Text & " ] DESPUÉS --> [ " & txtDetalle.Text & " ]"
+        Else
+            det = ""
+        End If
+
+        If txtImporte.Text <> txtImporteTEMPO.Text Then
+            imp = " // modificó el importe - ANTES [ " & txtImporteTEMPO.Text & " ] DESPUÉS --> [ " & txtImporte.Text & " ]"
+        Else
+            imp = ""
+        End If
+
+        If txtFechaSolicitud.Text <> txtFechSolicitudTEMPO.Text Then
+            fecsol = " // modificó la fecha de solicitud - ANTES [ " & txtFechSolicitudTEMPO.Text & " ] DESPUÉS --> [ " & txtFechaSolicitud.Text & " ]"
+        Else
+            fecsol = ""
+        End If
+
+        If txtCBU.Text <> txtCBUTEMPO.Text Then
+            cbuu = " // modificó el CBU - ANTES [ " & txtCBUTEMPO.Text & " ] DESPUÉS --> [ " & txtCBU.Text & " ]"
+        Else
+            cbuu = ""
+        End If
+
+        If txtAlias.Text <> txtAliasTEMPO.Text Then
+            ali = " //modificó el alias - ANTES [ " & txtAliasTEMPO.Text & " ] DESPUÉS --> [ " & txtAlias.Text & " ]"
+        Else
+            ali = ""
+        End If
+
+        If txtObservacionesCarga.Text <> txtObservacionesTEMPO.Text Then
+            obsc = " // modificó las observaciones de carga - ANTES [ " & txtObservacionesTEMPO.Text & " ] DESPUÉS --> [ " & txtObservacionesCarga.Text & " ]"
+        Else
+            obsc = ""
+        End If
+
+        If txtCuilPago.Text <> txtCuilPagoTEMPO.Text Then
+            cui = " // modificó el cuil de pago - ANTES [ " & txtCuilPagoTEMPO.Text & " ] DESPUÉS --> [ " & txtCuilPago.Text & " ]"
+        Else
+            cui = ""
+        End If
+
+        If txtTipoCuenta.Text <> txtTipoCuentaTEMPO.Text Then
+            tipcue = " // modificó el tipo de cuenta - ANTES [ " & txtTipoCuentaTEMPO.Text & " ] DESPUÉS --> [ " & txtTipoCuenta.Text & " ]"
+        Else
+            tipcue = ""
+        End If
+
+
+
+        VariableGlobalModificacion = det & imp & fecsol & cbuu & ali & obsc & cui & tipcue
+
+    End Sub
+
+
     '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -555,6 +660,11 @@ Public Class ConsultaSolicitudReintegro
     Private Sub GridView1_MouseMove(sender As Object, e As MouseEventArgs) Handles GridView1.MouseMove
         formatearEncabezadoGrid()
     End Sub
+
+    'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+    'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+    'CONTROL DE MODIFICACIONES TEXTBOX
+
 End Class
 
 
