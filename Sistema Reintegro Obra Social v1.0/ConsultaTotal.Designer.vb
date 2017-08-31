@@ -468,6 +468,7 @@ Partial Class ConsultaTotal
         '
         'GridViewReintegros
         '
+        Me.GridViewReintegros.AllowUserToAddRows = False
         Me.GridViewReintegros.BackgroundColor = System.Drawing.Color.Moccasin
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control

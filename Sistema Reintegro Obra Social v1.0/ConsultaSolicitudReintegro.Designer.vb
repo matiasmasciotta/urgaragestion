@@ -123,6 +123,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         'GridView1
         '
+        Me.GridView1.AllowUserToAddRows = False
         Me.GridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption
         Me.GridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridView1.Location = New System.Drawing.Point(7, 157)
@@ -139,7 +140,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.GridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridView1.Size = New System.Drawing.Size(618, 446)
+        Me.GridView1.Size = New System.Drawing.Size(662, 446)
         Me.GridView1.TabIndex = 14
         Me.GridView1.VirtualMode = True
         '
@@ -207,7 +208,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.GroupBox1.Controls.Add(Me.txtFechaDesde)
         Me.GroupBox1.Location = New System.Drawing.Point(7, 46)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(618, 105)
+        Me.GroupBox1.Size = New System.Drawing.Size(662, 105)
         Me.GroupBox1.TabIndex = 22
         Me.GroupBox1.TabStop = False
         '
@@ -243,13 +244,13 @@ Partial Class ConsultaSolicitudReintegro
         '
         'clbimagen
         '
-        Me.clbimagen.BackColor = System.Drawing.Color.LightBlue
+        Me.clbimagen.BackColor = System.Drawing.Color.LightSteelBlue
         Me.clbimagen.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.clbimagen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clbimagen.FormattingEnabled = True
-        Me.clbimagen.Location = New System.Drawing.Point(677, 391)
+        Me.clbimagen.Location = New System.Drawing.Point(759, 392)
         Me.clbimagen.Name = "clbimagen"
-        Me.clbimagen.Size = New System.Drawing.Size(250, 96)
+        Me.clbimagen.Size = New System.Drawing.Size(275, 96)
         Me.clbimagen.TabIndex = 24
         '
         'Label4
@@ -257,7 +258,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(737, 357)
+        Me.Label4.Location = New System.Drawing.Point(821, 358)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(122, 16)
         Me.Label4.TabIndex = 27
@@ -268,7 +269,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(1066, 334)
+        Me.Label5.Location = New System.Drawing.Point(1150, 335)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(80, 16)
         Me.Label5.TabIndex = 28
@@ -276,7 +277,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         'lblPicture
         '
-        Me.lblPicture.Location = New System.Drawing.Point(998, 351)
+        Me.lblPicture.Location = New System.Drawing.Point(1082, 352)
         Me.lblPicture.Name = "lblPicture"
         Me.lblPicture.Size = New System.Drawing.Size(221, 211)
         Me.lblPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -297,7 +298,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.DateTimePicker3.Enabled = False
         Me.DateTimePicker3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker3.Location = New System.Drawing.Point(142, 126)
+        Me.DateTimePicker3.Location = New System.Drawing.Point(180, 126)
         Me.DateTimePicker3.Name = "DateTimePicker3"
         Me.DateTimePicker3.Size = New System.Drawing.Size(257, 22)
         Me.DateTimePicker3.TabIndex = 8
@@ -306,7 +307,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(7, 189)
+        Me.Label6.Location = New System.Drawing.Point(45, 189)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(117, 16)
         Me.Label6.TabIndex = 7
@@ -315,7 +316,7 @@ Partial Class ConsultaSolicitudReintegro
         'txtObservacionesCarga
         '
         Me.txtObservacionesCarga.Enabled = False
-        Me.txtObservacionesCarga.Location = New System.Drawing.Point(124, 186)
+        Me.txtObservacionesCarga.Location = New System.Drawing.Point(162, 186)
         Me.txtObservacionesCarga.Name = "txtObservacionesCarga"
         Me.txtObservacionesCarga.Size = New System.Drawing.Size(475, 20)
         Me.txtObservacionesCarga.TabIndex = 6
@@ -324,7 +325,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtFechaSolicitud.Enabled = False
         Me.txtFechaSolicitud.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaSolicitud.Location = New System.Drawing.Point(268, 96)
+        Me.txtFechaSolicitud.Location = New System.Drawing.Point(306, 96)
         Me.txtFechaSolicitud.Name = "txtFechaSolicitud"
         Me.txtFechaSolicitud.Size = New System.Drawing.Size(131, 22)
         Me.txtFechaSolicitud.TabIndex = 5
@@ -349,16 +350,16 @@ Partial Class ConsultaSolicitudReintegro
         Me.Panel5.Controls.Add(Me.Label13)
         Me.Panel5.Controls.Add(Me.Label12)
         Me.Panel5.Controls.Add(Me.Label11)
-        Me.Panel5.Location = New System.Drawing.Point(631, 52)
+        Me.Panel5.Location = New System.Drawing.Point(675, 52)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(686, 275)
+        Me.Panel5.Size = New System.Drawing.Size(642, 275)
         Me.Panel5.TabIndex = 30
         '
         'Label19
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(18, 215)
+        Me.Label19.Location = New System.Drawing.Point(56, 215)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(106, 14)
         Me.Label19.TabIndex = 68
@@ -368,7 +369,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtCuilPago.Enabled = False
         Me.txtCuilPago.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCuilPago.Location = New System.Drawing.Point(124, 212)
+        Me.txtCuilPago.Location = New System.Drawing.Point(162, 212)
         Me.txtCuilPago.MaxLength = 22
         Me.txtCuilPago.Name = "txtCuilPago"
         Me.txtCuilPago.Size = New System.Drawing.Size(169, 21)
@@ -378,7 +379,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(306, 215)
+        Me.Label17.Location = New System.Drawing.Point(344, 215)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(81, 14)
         Me.Label17.TabIndex = 69
@@ -388,7 +389,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtTipoCuenta.Enabled = False
         Me.txtTipoCuenta.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTipoCuenta.Location = New System.Drawing.Point(391, 212)
+        Me.txtTipoCuenta.Location = New System.Drawing.Point(429, 212)
         Me.txtTipoCuenta.MaxLength = 80
         Me.txtTipoCuenta.Name = "txtTipoCuenta"
         Me.txtTipoCuenta.Size = New System.Drawing.Size(208, 21)
@@ -398,7 +399,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtAlias.Enabled = False
         Me.txtAlias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAlias.Location = New System.Drawing.Point(410, 157)
+        Me.txtAlias.Location = New System.Drawing.Point(448, 157)
         Me.txtAlias.MaxLength = 80
         Me.txtAlias.Name = "txtAlias"
         Me.txtAlias.Size = New System.Drawing.Size(188, 22)
@@ -408,7 +409,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label16.Location = New System.Drawing.Point(359, 159)
+        Me.Label16.Location = New System.Drawing.Point(397, 159)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(54, 16)
         Me.Label16.TabIndex = 43
@@ -418,7 +419,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtCBU.Enabled = False
         Me.txtCBU.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCBU.Location = New System.Drawing.Point(124, 157)
+        Me.txtCBU.Location = New System.Drawing.Point(162, 157)
         Me.txtCBU.MaxLength = 22
         Me.txtCBU.Name = "txtCBU"
         Me.txtCBU.Size = New System.Drawing.Size(196, 22)
@@ -428,7 +429,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(76, 159)
+        Me.Label15.Location = New System.Drawing.Point(114, 159)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(43, 16)
         Me.Label15.TabIndex = 42
@@ -438,7 +439,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtImporte.Enabled = False
         Me.txtImporte.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtImporte.Location = New System.Drawing.Point(268, 67)
+        Me.txtImporte.Location = New System.Drawing.Point(306, 67)
         Me.txtImporte.Name = "txtImporte"
         Me.txtImporte.Size = New System.Drawing.Size(131, 22)
         Me.txtImporte.TabIndex = 4
@@ -447,16 +448,16 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtDetalle.Enabled = False
         Me.txtDetalle.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDetalle.Location = New System.Drawing.Point(3, 38)
+        Me.txtDetalle.Location = New System.Drawing.Point(14, 38)
         Me.txtDetalle.Name = "txtDetalle"
-        Me.txtDetalle.Size = New System.Drawing.Size(675, 22)
+        Me.txtDetalle.Size = New System.Drawing.Size(622, 22)
         Me.txtDetalle.TabIndex = 3
         '
         'Label13
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(121, 99)
+        Me.Label13.Location = New System.Drawing.Point(159, 99)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(141, 16)
         Me.Label13.TabIndex = 2
@@ -466,7 +467,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label12.Location = New System.Drawing.Point(198, 70)
+        Me.Label12.Location = New System.Drawing.Point(236, 70)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(64, 16)
         Me.Label12.TabIndex = 1
@@ -476,7 +477,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(14, 19)
+        Me.Label11.Location = New System.Drawing.Point(49, 18)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(62, 16)
         Me.Label11.TabIndex = 0
@@ -485,7 +486,7 @@ Partial Class ConsultaSolicitudReintegro
         'botonQuitarImagen
         '
         Me.botonQuitarImagen.BackColor = System.Drawing.Color.Salmon
-        Me.botonQuitarImagen.Location = New System.Drawing.Point(804, 513)
+        Me.botonQuitarImagen.Location = New System.Drawing.Point(888, 514)
         Me.botonQuitarImagen.Name = "botonQuitarImagen"
         Me.botonQuitarImagen.Size = New System.Drawing.Size(87, 25)
         Me.botonQuitarImagen.TabIndex = 14
@@ -496,7 +497,7 @@ Partial Class ConsultaSolicitudReintegro
         'botonImagen
         '
         Me.botonImagen.BackColor = System.Drawing.Color.LightGreen
-        Me.botonImagen.Location = New System.Drawing.Point(711, 513)
+        Me.botonImagen.Location = New System.Drawing.Point(795, 514)
         Me.botonImagen.Name = "botonImagen"
         Me.botonImagen.Size = New System.Drawing.Size(87, 25)
         Me.botonImagen.TabIndex = 9
@@ -506,10 +507,10 @@ Partial Class ConsultaSolicitudReintegro
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.recazul
-        Me.PictureBox1.Location = New System.Drawing.Point(635, 343)
+        Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.recazulss
+        Me.PictureBox1.Location = New System.Drawing.Point(718, 379)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(351, 211)
+        Me.PictureBox1.Size = New System.Drawing.Size(351, 126)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PictureBox1.TabIndex = 26
         Me.PictureBox1.TabStop = False
@@ -550,7 +551,7 @@ Partial Class ConsultaSolicitudReintegro
         'lblfe1
         '
         Me.lblfe1.AutoSize = True
-        Me.lblfe1.Location = New System.Drawing.Point(888, 391)
+        Me.lblfe1.Location = New System.Drawing.Point(972, 392)
         Me.lblfe1.Name = "lblfe1"
         Me.lblfe1.Size = New System.Drawing.Size(39, 13)
         Me.lblfe1.TabIndex = 34
@@ -560,7 +561,7 @@ Partial Class ConsultaSolicitudReintegro
         'lblfe2
         '
         Me.lblfe2.AutoSize = True
-        Me.lblfe2.Location = New System.Drawing.Point(888, 411)
+        Me.lblfe2.Location = New System.Drawing.Point(972, 412)
         Me.lblfe2.Name = "lblfe2"
         Me.lblfe2.Size = New System.Drawing.Size(39, 13)
         Me.lblfe2.TabIndex = 35

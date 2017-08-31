@@ -28,6 +28,7 @@ Public Class ConsultaSolicitudReintegro
                               "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta "
 
     Private Sub ConsultaSolicitudReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        fechaHoy()
         GridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         apagaFecha()
         llenarGridCompleto()
@@ -104,6 +105,25 @@ Public Class ConsultaSolicitudReintegro
     Private Sub txtBeneficiario_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBeneficiario.TextChanged
         BuscarDato()
     End Sub
+    Private Sub formatearEncabezadoGrid()
+        Me.GridView1.Columns(0).Name = "User"
+        Me.GridView1.Columns(1).Name = "Reintegro(id)"
+        Me.GridView1.Columns(2).Name = "Beneficiario(id)"
+        Me.GridView1.Columns(3).Name = "Fecha Solic."
+        Me.GridView1.Columns(4).Name = "Detalle"
+        Me.GridView1.Columns(5).Name = "Imp.($)"
+        Me.GridView1.Columns(6).Name = "Obs. carga"
+        Me.GridView1.Columns(7).Name = "Nombre y Apellido Beneficiario"
+        Me.GridView1.Columns(8).Name = "tipo user (X)"
+        Me.GridView1.Columns(9).Name = "Secc User(X)"
+        Me.GridView1.Columns(10).Name = "CBU p/pago Beneficiario"
+        Me.GridView1.Columns(11).Name = "Alias Benef."
+        Me.GridView1.Columns(12).Name = "Reint/Subs"
+        Me.GridView1.Columns(13).Name = "idsubs(x)"
+        Me.GridView1.Columns(14).Name = "Pagado si o no"
+        Me.GridView1.Columns(15).Name = "Cuil para Pago Benef."
+        Me.GridView1.Columns(16).Name = "Tipo Cuenta p/Pago Benef."
+    End Sub
 
     Private Sub BuscarDato()
         Try
@@ -151,7 +171,7 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
     '*******************************************************************************************************************************************************
-    'click en celda llena listbox con imagenes
+    'click en celda llena listbox con imagenes y grid >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>111111111111111111111111111111111111111111111111111111111111111111111111
     Private Sub GridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellClick
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
@@ -178,6 +198,7 @@ Public Class ConsultaSolicitudReintegro
             End If
         Next
         Try
+            VariableGlobalBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(2).Value
             'arreglo fecha
             lblfe1.Text = Me.GridView1.Rows(e.RowIndex).Cells(3).Value
             Dim fechacreacion As Date
@@ -216,7 +237,7 @@ Public Class ConsultaSolicitudReintegro
         End Try
     End Sub
 
-    'click en celda llena listbox con imagenes
+    'click en celda llena listbox con imagenes y grid <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 22222222222222222222222222222222222
     Private Sub GridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellContentClick
         'lleno listbox con imagenes de la base *************************************************
         clbimagen.Items.Clear()
@@ -227,7 +248,7 @@ Public Class ConsultaSolicitudReintegro
         Dim Com2 As New MySqlCommand
         Com2.Connection = MiConexion2
         MiConexion2.Open()
-        varCodigoreintegro = Int(Me.GridView1.Rows(e.RowIndex).Cells(1).Value)
+        varCodigoreintegro = (Me.GridView1.Rows(e.RowIndex).Cells(1).Value)
         SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView1.Rows(e.RowIndex).Cells(1).Value & "'"
         Com2 = New MySqlCommand(SQL2, MiConexion2)
         Rs2 = Com2.ExecuteReader()
@@ -248,6 +269,7 @@ Public Class ConsultaSolicitudReintegro
         'llena textbox con datos de operacion
         Try
             'arreglo fecha
+            VariableGlobalBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(2).Value
             lblfe1.Text = Me.GridView1.Rows(e.RowIndex).Cells(3).Value
             Dim fechacreacion As Date
             fechacreacion = lblfe1.Text
@@ -409,7 +431,14 @@ Public Class ConsultaSolicitudReintegro
         txtFechaSolicitud.Text = DateTimePicker3.Value.Year & "-" & DateTimePicker3.Value.Month & "-" & DateTimePicker3.Value.Day
     End Sub
 
-    Private Sub update_To()
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    Private Sub update_To() 'Pisa la base productiva "REINTEGROS"
         Using con_insert As New MySqlConnection(CADENABASE2)
             Dim cmdinsert As New MySqlCommand
             Dim varimp As Double = Convert.ToDouble(txtImporte.Text)
@@ -432,11 +461,52 @@ Public Class ConsultaSolicitudReintegro
                 cmdinsert.ExecuteNonQuery()
                 con_insert.Close()
                 MessageBox.Show("UPDATE en BD OK", "Actualizacion de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Insert_To_Modificacion()
             Catch falla As MySqlException
                 MsgBox(falla.Message)
             End Try
         End Using
     End Sub
+
+
+    Private Sub Insert_To_Modificacion() 'Registra la modificacion que hizo el usuario logueado en la tabla "historial_reintegros"
+        Using con_insert As New MySqlConnection(CADENABASE2)
+            Dim cmdinsert As New MySqlCommand
+            Dim varimp As Double = Convert.ToDouble(txtImporte.Text)
+            With cmdinsert
+                .Connection = con_insert
+                .CommandType = CommandType.Text
+                .CommandText = "INSERT INTO `historial_reintegros`(`Codigo_Usuario`,`Codigo_Reintegro`,`Codigo_Beneficiario`,`Fecha_modificacion`," & _
+                    "`Hora`,`Detalle`) VALUES (?codus,?codre,?codben,?fecmod,?hora,?detalle)"
+                .Parameters.AddWithValue("?codus", VariableGlobalUsuario)
+                .Parameters.AddWithValue("?codre", varCodigoreintegro)
+                .Parameters.AddWithValue("?codben", VariableGlobalBeneficiario)
+                .Parameters.AddWithValue("?fecmod", VariableGlobalFechaHOY)
+                .Parameters.AddWithValue("?hora", VariableGlobalHoraHOY)
+                .Parameters.AddWithValue("?detalle", "MODIFICAME ESTA")
+            End With
+            Try
+                con_insert.Open()
+                cmdinsert.ExecuteNonQuery()
+                con_insert.Close()
+                MessageBox.Show("Asignado a historial de modificacion..", "Actualizacion de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch falla As MySqlException
+                MsgBox(falla.Message)
+            End Try
+        End Using
+    End Sub
+
+
+
+
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+
 
     'boton eliminar
     Private Sub botonEliminarSolicitud_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonEliminarSolicitud.Click
@@ -480,6 +550,10 @@ Public Class ConsultaSolicitudReintegro
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         GridAExcel(GridView1)
+    End Sub
+
+    Private Sub GridView1_MouseMove(sender As Object, e As MouseEventArgs) Handles GridView1.MouseMove
+        formatearEncabezadoGrid()
     End Sub
 End Class
 

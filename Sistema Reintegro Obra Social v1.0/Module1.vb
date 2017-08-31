@@ -3,12 +3,19 @@ Module Module1
     Public VariableGlobalUsuario As String
     Public VariableGlobalSeccional As Integer
     Public variableControl As Integer = 0
+    Public VariableGlobalBeneficiario As String
+    Public VariableGlobalModificacion As String
+    Public VariableGlobalReintegroModif As String
+    Public VariableGlobalFechaHOY As String
+    Public VariableGlobalHoraHOY As String
+    Public Sub fechaHoy()
+        VariableGlobalFechaHOY = DateTime.Now.Year & "-" & DateTime.Now.Month & "-" & DateTime.Now.Day
+        VariableGlobalHoraHOY = DateTime.Now.TimeOfDay.Hours & ":" & DateTime.Now.TimeOfDay.Minutes & ":" & DateTime.Now.TimeOfDay.Seconds
+    End Sub
+
 
     'FICHERO TXT BASE *********lee ***
     Public CADENABASE2 As String
-
-
-
     ' Funcion para convertir imagen del picture box a bits y jpeg
     Public Function DeImagen_a_Bytes(ByVal Imagen As Image) As Byte()
         If Not Imagen Is Nothing Then

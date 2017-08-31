@@ -428,6 +428,7 @@ Partial Class NuevoReintegro
         '
         'GridViewSubsidios
         '
+        Me.GridViewSubsidios.AllowUserToAddRows = False
         Me.GridViewSubsidios.BackgroundColor = System.Drawing.Color.DarkGray
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
@@ -503,6 +504,7 @@ Partial Class NuevoReintegro
         '
         'GridView
         '
+        Me.GridView.AllowUserToAddRows = False
         Me.GridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control

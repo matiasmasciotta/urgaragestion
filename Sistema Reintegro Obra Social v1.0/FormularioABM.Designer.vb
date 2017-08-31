@@ -78,6 +78,7 @@ Partial Class FormularioABM
         '
         'GridView
         '
+        Me.GridView.AllowUserToAddRows = False
         Me.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridView.GridColor = System.Drawing.SystemColors.ActiveCaption
         Me.GridView.Location = New System.Drawing.Point(3, 35)
