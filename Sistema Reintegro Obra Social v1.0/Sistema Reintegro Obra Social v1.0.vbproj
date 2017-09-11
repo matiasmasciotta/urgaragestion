@@ -152,6 +152,18 @@
     <Compile Include="ConsultaTotal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormularioAuditor.Designer.vb">
+      <DependentUpon>FormularioAuditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioAuditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Historial.Designer.vb">
+      <DependentUpon>Historial.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Historial.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module2.vb" />
     <Compile Include="Welcome.Designer.vb">
       <DependentUpon>Welcome.vb</DependentUpon>
@@ -221,6 +233,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultaTotal.resx">
       <DependentUpon>ConsultaTotal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioAuditor.resx">
+      <DependentUpon>FormularioAuditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Historial.resx">
+      <DependentUpon>Historial.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.vb</DependentUpon>
@@ -418,6 +436,7 @@
     <Content Include="ico3amarillo.ico" />
     <Content Include="icono.ico" />
     <Content Include="logo.ico" />
+    <None Include="Resources\medico.png" />
     <None Include="Resources\logoblancourgara2.png" />
     <None Include="Resources\logoblancourgara.png" />
     <None Include="Resources\fondo2negrosistema.png" />

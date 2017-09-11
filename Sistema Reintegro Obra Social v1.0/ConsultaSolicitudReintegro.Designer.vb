@@ -49,6 +49,14 @@ Partial Class ConsultaSolicitudReintegro
         Me.txtObservacionesCarga = New System.Windows.Forms.TextBox()
         Me.txtFechaSolicitud = New System.Windows.Forms.TextBox()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.txtTipoCuentaTEMPO = New System.Windows.Forms.TextBox()
+        Me.txtCuilPagoTEMPO = New System.Windows.Forms.TextBox()
+        Me.txtObservacionesTEMPO = New System.Windows.Forms.TextBox()
+        Me.txtAliasTEMPO = New System.Windows.Forms.TextBox()
+        Me.txtCBUTEMPO = New System.Windows.Forms.TextBox()
+        Me.txtFechSolicitudTEMPO = New System.Windows.Forms.TextBox()
+        Me.txtImporteTEMPO = New System.Windows.Forms.TextBox()
+        Me.txtDetalleTEMPO = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtCuilPago = New System.Windows.Forms.TextBox()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -73,14 +81,6 @@ Partial Class ConsultaSolicitudReintegro
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.botonEliminarSolicitud = New System.Windows.Forms.Button()
         Me.lblTipoReintegro = New System.Windows.Forms.Label()
-        Me.txtDetalleTEMPO = New System.Windows.Forms.TextBox()
-        Me.txtImporteTEMPO = New System.Windows.Forms.TextBox()
-        Me.txtFechSolicitudTEMPO = New System.Windows.Forms.TextBox()
-        Me.txtCBUTEMPO = New System.Windows.Forms.TextBox()
-        Me.txtAliasTEMPO = New System.Windows.Forms.TextBox()
-        Me.txtObservacionesTEMPO = New System.Windows.Forms.TextBox()
-        Me.txtCuilPagoTEMPO = New System.Windows.Forms.TextBox()
-        Me.txtTipoCuentaTEMPO = New System.Windows.Forms.TextBox()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -371,6 +371,89 @@ Partial Class ConsultaSolicitudReintegro
         Me.Panel5.Size = New System.Drawing.Size(642, 294)
         Me.Panel5.TabIndex = 30
         '
+        'txtTipoCuentaTEMPO
+        '
+        Me.txtTipoCuentaTEMPO.Enabled = False
+        Me.txtTipoCuentaTEMPO.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTipoCuentaTEMPO.Location = New System.Drawing.Point(437, 239)
+        Me.txtTipoCuentaTEMPO.MaxLength = 80
+        Me.txtTipoCuentaTEMPO.Name = "txtTipoCuentaTEMPO"
+        Me.txtTipoCuentaTEMPO.Size = New System.Drawing.Size(208, 21)
+        Me.txtTipoCuentaTEMPO.TabIndex = 77
+        Me.txtTipoCuentaTEMPO.Visible = False
+        '
+        'txtCuilPagoTEMPO
+        '
+        Me.txtCuilPagoTEMPO.Enabled = False
+        Me.txtCuilPagoTEMPO.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCuilPagoTEMPO.Location = New System.Drawing.Point(180, 240)
+        Me.txtCuilPagoTEMPO.MaxLength = 22
+        Me.txtCuilPagoTEMPO.Name = "txtCuilPagoTEMPO"
+        Me.txtCuilPagoTEMPO.Size = New System.Drawing.Size(169, 21)
+        Me.txtCuilPagoTEMPO.TabIndex = 76
+        Me.txtCuilPagoTEMPO.Visible = False
+        '
+        'txtObservacionesTEMPO
+        '
+        Me.txtObservacionesTEMPO.Enabled = False
+        Me.txtObservacionesTEMPO.Location = New System.Drawing.Point(170, 199)
+        Me.txtObservacionesTEMPO.Name = "txtObservacionesTEMPO"
+        Me.txtObservacionesTEMPO.Size = New System.Drawing.Size(475, 20)
+        Me.txtObservacionesTEMPO.TabIndex = 75
+        Me.txtObservacionesTEMPO.Visible = False
+        '
+        'txtAliasTEMPO
+        '
+        Me.txtAliasTEMPO.Enabled = False
+        Me.txtAliasTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAliasTEMPO.Location = New System.Drawing.Point(439, 150)
+        Me.txtAliasTEMPO.MaxLength = 80
+        Me.txtAliasTEMPO.Name = "txtAliasTEMPO"
+        Me.txtAliasTEMPO.Size = New System.Drawing.Size(188, 22)
+        Me.txtAliasTEMPO.TabIndex = 74
+        Me.txtAliasTEMPO.Visible = False
+        '
+        'txtCBUTEMPO
+        '
+        Me.txtCBUTEMPO.Enabled = False
+        Me.txtCBUTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCBUTEMPO.Location = New System.Drawing.Point(178, 150)
+        Me.txtCBUTEMPO.MaxLength = 22
+        Me.txtCBUTEMPO.Name = "txtCBUTEMPO"
+        Me.txtCBUTEMPO.Size = New System.Drawing.Size(196, 22)
+        Me.txtCBUTEMPO.TabIndex = 73
+        Me.txtCBUTEMPO.Visible = False
+        '
+        'txtFechSolicitudTEMPO
+        '
+        Me.txtFechSolicitudTEMPO.Enabled = False
+        Me.txtFechSolicitudTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFechSolicitudTEMPO.Location = New System.Drawing.Point(448, 96)
+        Me.txtFechSolicitudTEMPO.Name = "txtFechSolicitudTEMPO"
+        Me.txtFechSolicitudTEMPO.Size = New System.Drawing.Size(131, 22)
+        Me.txtFechSolicitudTEMPO.TabIndex = 72
+        Me.txtFechSolicitudTEMPO.Visible = False
+        '
+        'txtImporteTEMPO
+        '
+        Me.txtImporteTEMPO.Enabled = False
+        Me.txtImporteTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtImporteTEMPO.Location = New System.Drawing.Point(448, 67)
+        Me.txtImporteTEMPO.Name = "txtImporteTEMPO"
+        Me.txtImporteTEMPO.Size = New System.Drawing.Size(131, 22)
+        Me.txtImporteTEMPO.TabIndex = 71
+        Me.txtImporteTEMPO.Visible = False
+        '
+        'txtDetalleTEMPO
+        '
+        Me.txtDetalleTEMPO.Enabled = False
+        Me.txtDetalleTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDetalleTEMPO.Location = New System.Drawing.Point(189, 15)
+        Me.txtDetalleTEMPO.Name = "txtDetalleTEMPO"
+        Me.txtDetalleTEMPO.Size = New System.Drawing.Size(313, 22)
+        Me.txtDetalleTEMPO.TabIndex = 70
+        Me.txtDetalleTEMPO.Visible = False
+        '
         'Label19
         '
         Me.Label19.AutoSize = True
@@ -612,89 +695,6 @@ Partial Class ConsultaSolicitudReintegro
         Me.lblTipoReintegro.Size = New System.Drawing.Size(154, 16)
         Me.lblTipoReintegro.TabIndex = 40
         Me.lblTipoReintegro.Text = "Reintegro o Subsidio"
-        '
-        'txtDetalleTEMPO
-        '
-        Me.txtDetalleTEMPO.Enabled = False
-        Me.txtDetalleTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDetalleTEMPO.Location = New System.Drawing.Point(189, 15)
-        Me.txtDetalleTEMPO.Name = "txtDetalleTEMPO"
-        Me.txtDetalleTEMPO.Size = New System.Drawing.Size(313, 22)
-        Me.txtDetalleTEMPO.TabIndex = 70
-        Me.txtDetalleTEMPO.Visible = False
-        '
-        'txtImporteTEMPO
-        '
-        Me.txtImporteTEMPO.Enabled = False
-        Me.txtImporteTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtImporteTEMPO.Location = New System.Drawing.Point(448, 67)
-        Me.txtImporteTEMPO.Name = "txtImporteTEMPO"
-        Me.txtImporteTEMPO.Size = New System.Drawing.Size(131, 22)
-        Me.txtImporteTEMPO.TabIndex = 71
-        Me.txtImporteTEMPO.Visible = False
-        '
-        'txtFechSolicitudTEMPO
-        '
-        Me.txtFechSolicitudTEMPO.Enabled = False
-        Me.txtFechSolicitudTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechSolicitudTEMPO.Location = New System.Drawing.Point(448, 96)
-        Me.txtFechSolicitudTEMPO.Name = "txtFechSolicitudTEMPO"
-        Me.txtFechSolicitudTEMPO.Size = New System.Drawing.Size(131, 22)
-        Me.txtFechSolicitudTEMPO.TabIndex = 72
-        Me.txtFechSolicitudTEMPO.Visible = False
-        '
-        'txtCBUTEMPO
-        '
-        Me.txtCBUTEMPO.Enabled = False
-        Me.txtCBUTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCBUTEMPO.Location = New System.Drawing.Point(178, 150)
-        Me.txtCBUTEMPO.MaxLength = 22
-        Me.txtCBUTEMPO.Name = "txtCBUTEMPO"
-        Me.txtCBUTEMPO.Size = New System.Drawing.Size(196, 22)
-        Me.txtCBUTEMPO.TabIndex = 73
-        Me.txtCBUTEMPO.Visible = False
-        '
-        'txtAliasTEMPO
-        '
-        Me.txtAliasTEMPO.Enabled = False
-        Me.txtAliasTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAliasTEMPO.Location = New System.Drawing.Point(439, 150)
-        Me.txtAliasTEMPO.MaxLength = 80
-        Me.txtAliasTEMPO.Name = "txtAliasTEMPO"
-        Me.txtAliasTEMPO.Size = New System.Drawing.Size(188, 22)
-        Me.txtAliasTEMPO.TabIndex = 74
-        Me.txtAliasTEMPO.Visible = False
-        '
-        'txtObservacionesTEMPO
-        '
-        Me.txtObservacionesTEMPO.Enabled = False
-        Me.txtObservacionesTEMPO.Location = New System.Drawing.Point(170, 199)
-        Me.txtObservacionesTEMPO.Name = "txtObservacionesTEMPO"
-        Me.txtObservacionesTEMPO.Size = New System.Drawing.Size(475, 20)
-        Me.txtObservacionesTEMPO.TabIndex = 75
-        Me.txtObservacionesTEMPO.Visible = False
-        '
-        'txtCuilPagoTEMPO
-        '
-        Me.txtCuilPagoTEMPO.Enabled = False
-        Me.txtCuilPagoTEMPO.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCuilPagoTEMPO.Location = New System.Drawing.Point(180, 240)
-        Me.txtCuilPagoTEMPO.MaxLength = 22
-        Me.txtCuilPagoTEMPO.Name = "txtCuilPagoTEMPO"
-        Me.txtCuilPagoTEMPO.Size = New System.Drawing.Size(169, 21)
-        Me.txtCuilPagoTEMPO.TabIndex = 76
-        Me.txtCuilPagoTEMPO.Visible = False
-        '
-        'txtTipoCuentaTEMPO
-        '
-        Me.txtTipoCuentaTEMPO.Enabled = False
-        Me.txtTipoCuentaTEMPO.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTipoCuentaTEMPO.Location = New System.Drawing.Point(437, 239)
-        Me.txtTipoCuentaTEMPO.MaxLength = 80
-        Me.txtTipoCuentaTEMPO.Name = "txtTipoCuentaTEMPO"
-        Me.txtTipoCuentaTEMPO.Size = New System.Drawing.Size(208, 21)
-        Me.txtTipoCuentaTEMPO.TabIndex = 77
-        Me.txtTipoCuentaTEMPO.Visible = False
         '
         'ConsultaSolicitudReintegro
         '

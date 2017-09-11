@@ -88,6 +88,7 @@ Public Class Login
                 '--> es Auditor
                 If txtTipoUsuario.Text = 3 Then
                     MenuPrincipal.ConsultarReintegrosPendientesToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ConsultaAuditorMedicoToolStripMenuItem.Enabled = True
                 End If
                 '--> es Otro
                 If txtTipoUsuario.Text = 4 Then

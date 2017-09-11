@@ -100,4 +100,8 @@
     Private Sub PictureBox2_MouseMove(sender As Object, e As MouseEventArgs) Handles PictureBox2.MouseMove
         PictureBox2.Image = WindowsApplication1.My.Resources.Resources.logoblancourgara2
     End Sub
+
+    Private Sub ConsultaAuditorMedicoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaAuditorMedicoToolStripMenuItem.Click
+        FormularioAuditor.show()
+    End Sub
 End Class

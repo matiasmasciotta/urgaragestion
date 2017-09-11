@@ -130,14 +130,17 @@
   <data name="descarga" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\descarga.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="modulo6_i" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\modulo6_i.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="recazul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\recazul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Lupita" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\images (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="apro" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\apro.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logoexcelsistemaa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoexcelsistemaa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="excellogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\excellogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,11 +154,11 @@
   <data name="urgaraLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\urgaraLogo.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="fondo2negrosistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fondo2negrosistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="LogoUrgara" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LogoUrgara.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Salida" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\login-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Iu9Rht06" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Iu9Rht06.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,14 +175,23 @@
   <data name="mejorico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mejorico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logoblancourgara" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoblancourgara.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logopiedra" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logopiedra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logo2excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo2excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="recnegro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\recnegro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ovv" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ovv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="apro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\apro.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="quitaFiltros" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\quitaFiltros.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,8 +208,11 @@
   <data name="alta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\alta.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="modulo6_i" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\modulo6_i.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Salida" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoblancourgara2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoblancourgara2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mejoricorojo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mejoricorojo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,19 +232,7 @@
   <data name="r_14_170423113802" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\r_14_170423113802.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logoexcelsistemaa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoexcelsistemaa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo2excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo2excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fondo2negrosistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fondo2negrosistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoblancourgara" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoblancourgara.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logoblancourgara2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logoblancourgara2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="medico" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\medico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

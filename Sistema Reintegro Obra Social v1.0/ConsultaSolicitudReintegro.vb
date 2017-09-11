@@ -38,7 +38,6 @@ Public Class ConsultaSolicitudReintegro
 
     Private Sub ConsultaSolicitudReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         VariableGlobalModificacion = ""
-        fechaHoy()
         GridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
         apagaFecha()
         llenarGridCompleto()
@@ -346,6 +345,7 @@ Public Class ConsultaSolicitudReintegro
         Catch ex As Exception
         End Try
     End Sub
+
     Private Sub GridView1_CellContextMenuStripChanged(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellContextMenuStripChanged
         clbimagen.Items.Clear()
         clbimagen.Items.Add(DeImagen_a_Bytes(Me.GridView1.Rows(e.RowIndex).Cells(10).Value))
@@ -506,6 +506,8 @@ Public Class ConsultaSolicitudReintegro
 
 
     Private Sub Insert_To_Modificacion() 'Registra la modificacion que hizo el usuario logueado en la tabla "historial_reintegros"
+        'calcula la fecha y hora de hoy en este preciso momento..
+        fechaHoy()
         Using con_insert As New MySqlConnection(CADENABASE2)
             Dim cmdinsert As New MySqlCommand
             Dim varimp As Double = Convert.ToDouble(txtImporte.Text)
@@ -661,10 +663,18 @@ Public Class ConsultaSolicitudReintegro
         formatearEncabezadoGrid()
     End Sub
 
-    'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-    'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
-    'CONTROL DE MODIFICACIONES TEXTBOX
+    'WW DOBLE CLICK EN GRID PARA HISTORIAL  WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+    Private Sub GridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellContentDoubleClick
+        VarHistorialReintegro = varCodigoreintegro
+        Historial.Show()
+    End Sub
 
+
+    Private Sub GridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellDoubleClick
+        VarHistorialReintegro = varCodigoreintegro
+        Historial.Show()
+    End Sub
+    'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
 End Class
 
 

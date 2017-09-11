@@ -37,6 +37,7 @@ Partial Class MenuPrincipal
         Me.ReintegrosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarSolicitudDeReintegroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultarReintegrosPendientesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultaAuditorMedicoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SoporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblUser = New System.Windows.Forms.Label()
@@ -129,7 +130,7 @@ Partial Class MenuPrincipal
         Me.ExaminarSolicitudDeReintegroToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.r_14_170423113802
         Me.ExaminarSolicitudDeReintegroToolStripMenuItem.Name = "ExaminarSolicitudDeReintegroToolStripMenuItem"
         Me.ExaminarSolicitudDeReintegroToolStripMenuItem.Size = New System.Drawing.Size(306, 22)
-        Me.ExaminarSolicitudDeReintegroToolStripMenuItem.Text = "Examinar Solicitud de Reintegro"
+        Me.ExaminarSolicitudDeReintegroToolStripMenuItem.Text = "Examinar Solicitudes de Reintegro"
         '
         'ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem
         '
@@ -143,7 +144,7 @@ Partial Class MenuPrincipal
         'ReintegrosToolStripMenuItem
         '
         Me.ReintegrosToolStripMenuItem.BackColor = System.Drawing.Color.Gray
-        Me.ReintegrosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarSolicitudDeReintegroToolStripMenuItem, Me.ConsultarReintegrosPendientesToolStripMenuItem})
+        Me.ReintegrosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarSolicitudDeReintegroToolStripMenuItem, Me.ConsultarReintegrosPendientesToolStripMenuItem, Me.ConsultaAuditorMedicoToolStripMenuItem})
         Me.ReintegrosToolStripMenuItem.Name = "ReintegrosToolStripMenuItem"
         Me.ReintegrosToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
         Me.ReintegrosToolStripMenuItem.Text = "Solicitud"
@@ -163,6 +164,14 @@ Partial Class MenuPrincipal
         Me.ConsultarReintegrosPendientesToolStripMenuItem.Name = "ConsultarReintegrosPendientesToolStripMenuItem"
         Me.ConsultarReintegrosPendientesToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
         Me.ConsultarReintegrosPendientesToolStripMenuItem.Text = "Consultar Reintegros Pendientes"
+        '
+        'ConsultaAuditorMedicoToolStripMenuItem
+        '
+        Me.ConsultaAuditorMedicoToolStripMenuItem.Enabled = False
+        Me.ConsultaAuditorMedicoToolStripMenuItem.Image = Global.WindowsApplication1.My.Resources.Resources.medico
+        Me.ConsultaAuditorMedicoToolStripMenuItem.Name = "ConsultaAuditorMedicoToolStripMenuItem"
+        Me.ConsultaAuditorMedicoToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.ConsultaAuditorMedicoToolStripMenuItem.Text = "Auditor Medico"
         '
         'AyudaToolStripMenuItem
         '
@@ -353,4 +362,5 @@ Partial Class MenuPrincipal
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents ConsultaAuditorMedicoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

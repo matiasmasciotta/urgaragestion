@@ -840,4 +840,8 @@ Public Class ConsultaTotal
     Private Sub ConsultaTotal_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
         botonExcel.Image = WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
     End Sub
+
+    Private Sub lblPicture_Click(sender As Object, e As EventArgs) Handles lblPicture.Click
+
+    End Sub
 End Class
