@@ -80,6 +80,7 @@ Public Class Login
                     MenuPrincipal.ConsultarReintegrosPendientesToolStripMenuItem.Enabled = True
                     MenuPrincipal.UsersSoloAdminToolStripMenuItem.Visible = True
                     MenuPrincipal.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.Visible = True
+                    MenuPrincipal.ConsultaAuditorMedicoToolStripMenuItem.Enabled = True
                 End If
                 '--> es Pagador
                 If txtTipoUsuario.Text = 2 Then

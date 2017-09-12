@@ -56,9 +56,9 @@ Partial Class FormularioAuditor
         Me.lblReintegroAprobado = New System.Windows.Forms.Label()
         Me.lblReintegroRechazado = New System.Windows.Forms.Label()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-        Me.RectangleShape3 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.RectangleShape2 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.shapeRechazados = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.shapeAprobados = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.shapePendientes = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.CANCELA = New System.Windows.Forms.Button()
         Me.OK = New System.Windows.Forms.Button()
         Me.txtPorcAM = New System.Windows.Forms.TextBox()
@@ -82,7 +82,7 @@ Partial Class FormularioAuditor
         'botonExcel
         '
         Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel.Location = New System.Drawing.Point(510, 179)
+        Me.botonExcel.Location = New System.Drawing.Point(525, 179)
         Me.botonExcel.Name = "botonExcel"
         Me.botonExcel.Size = New System.Drawing.Size(28, 22)
         Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -108,17 +108,17 @@ Partial Class FormularioAuditor
         Me.GridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.GridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridView1.Size = New System.Drawing.Size(540, 364)
+        Me.GridView1.Size = New System.Drawing.Size(555, 437)
         Me.GridView1.TabIndex = 80
         Me.GridView1.VirtualMode = True
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(636, 608)
+        Me.Button1.Location = New System.Drawing.Point(792, 663)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(76, 30)
+        Me.Button1.Size = New System.Drawing.Size(163, 30)
         Me.Button1.TabIndex = 79
-        Me.Button1.Text = "volver"
+        Me.Button1.Text = "Salir"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Label1
@@ -248,8 +248,9 @@ Partial Class FormularioAuditor
         '
         'botonAprobar
         '
-        Me.botonAprobar.BackColor = System.Drawing.Color.YellowGreen
-        Me.botonAprobar.Location = New System.Drawing.Point(636, 242)
+        Me.botonAprobar.BackColor = System.Drawing.Color.Lime
+        Me.botonAprobar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botonAprobar.Location = New System.Drawing.Point(631, 242)
         Me.botonAprobar.Name = "botonAprobar"
         Me.botonAprobar.Size = New System.Drawing.Size(94, 34)
         Me.botonAprobar.TabIndex = 85
@@ -259,12 +260,13 @@ Partial Class FormularioAuditor
         '
         'botonDesaprobar
         '
-        Me.botonDesaprobar.BackColor = System.Drawing.Color.Silver
-        Me.botonDesaprobar.Location = New System.Drawing.Point(636, 285)
+        Me.botonDesaprobar.BackColor = System.Drawing.Color.Red
+        Me.botonDesaprobar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botonDesaprobar.Location = New System.Drawing.Point(631, 285)
         Me.botonDesaprobar.Name = "botonDesaprobar"
         Me.botonDesaprobar.Size = New System.Drawing.Size(94, 34)
         Me.botonDesaprobar.TabIndex = 86
-        Me.botonDesaprobar.Text = "Desaprobar"
+        Me.botonDesaprobar.Text = "Rechazar"
         Me.botonDesaprobar.UseVisualStyleBackColor = False
         Me.botonDesaprobar.Visible = False
         '
@@ -281,9 +283,10 @@ Partial Class FormularioAuditor
         'GridView2
         '
         Me.GridView2.AllowUserToAddRows = False
+        Me.GridView2.AllowUserToDeleteRows = False
         Me.GridView2.BackgroundColor = System.Drawing.Color.Honeydew
         Me.GridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridView2.Location = New System.Drawing.Point(792, 93)
+        Me.GridView2.Location = New System.Drawing.Point(790, 95)
         Me.GridView2.MultiSelect = False
         Me.GridView2.Name = "GridView2"
         Me.GridView2.ReadOnly = True
@@ -297,7 +300,7 @@ Partial Class FormularioAuditor
         Me.GridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.GridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridView2.Size = New System.Drawing.Size(600, 133)
+        Me.GridView2.Size = New System.Drawing.Size(600, 262)
         Me.GridView2.TabIndex = 88
         Me.GridView2.VirtualMode = True
         '
@@ -305,7 +308,7 @@ Partial Class FormularioAuditor
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(1044, 70)
+        Me.Label5.Location = New System.Drawing.Point(1044, 72)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(76, 16)
         Me.Label5.TabIndex = 89
@@ -317,7 +320,7 @@ Partial Class FormularioAuditor
         Me.clbimagen.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.clbimagen.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clbimagen.FormattingEnabled = True
-        Me.clbimagen.Location = New System.Drawing.Point(581, 478)
+        Me.clbimagen.Location = New System.Drawing.Point(581, 480)
         Me.clbimagen.Name = "clbimagen"
         Me.clbimagen.Size = New System.Drawing.Size(194, 80)
         Me.clbimagen.TabIndex = 90
@@ -325,7 +328,7 @@ Partial Class FormularioAuditor
         'PictureBox1
         '
         Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.rec2
-        Me.PictureBox1.Location = New System.Drawing.Point(572, 468)
+        Me.PictureBox1.Location = New System.Drawing.Point(572, 470)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(214, 102)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -334,7 +337,7 @@ Partial Class FormularioAuditor
         '
         'lblPicture
         '
-        Me.lblPicture.Location = New System.Drawing.Point(600, 331)
+        Me.lblPicture.Location = New System.Drawing.Point(597, 331)
         Me.lblPicture.Name = "lblPicture"
         Me.lblPicture.Size = New System.Drawing.Size(163, 131)
         Me.lblPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -345,7 +348,7 @@ Partial Class FormularioAuditor
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(1044, 364)
+        Me.Label6.Location = New System.Drawing.Point(1044, 366)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(85, 16)
         Me.Label6.TabIndex = 94
@@ -356,7 +359,7 @@ Partial Class FormularioAuditor
         Me.GridView3.AllowUserToAddRows = False
         Me.GridView3.BackgroundColor = System.Drawing.Color.MistyRose
         Me.GridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridView3.Location = New System.Drawing.Point(792, 386)
+        Me.GridView3.Location = New System.Drawing.Point(790, 388)
         Me.GridView3.MultiSelect = False
         Me.GridView3.Name = "GridView3"
         Me.GridView3.ReadOnly = True
@@ -377,7 +380,7 @@ Partial Class FormularioAuditor
         'lblReintegroPendiente
         '
         Me.lblReintegroPendiente.AutoSize = True
-        Me.lblReintegroPendiente.Location = New System.Drawing.Point(186, 577)
+        Me.lblReintegroPendiente.Location = New System.Drawing.Point(312, 184)
         Me.lblReintegroPendiente.Name = "lblReintegroPendiente"
         Me.lblReintegroPendiente.Size = New System.Drawing.Size(28, 13)
         Me.lblReintegroPendiente.TabIndex = 95
@@ -386,7 +389,7 @@ Partial Class FormularioAuditor
         'lblReintegroAprobado
         '
         Me.lblReintegroAprobado.AutoSize = True
-        Me.lblReintegroAprobado.Location = New System.Drawing.Point(1169, 71)
+        Me.lblReintegroAprobado.Location = New System.Drawing.Point(1128, 72)
         Me.lblReintegroAprobado.Name = "lblReintegroAprobado"
         Me.lblReintegroAprobado.Size = New System.Drawing.Size(28, 13)
         Me.lblReintegroAprobado.TabIndex = 96
@@ -395,7 +398,7 @@ Partial Class FormularioAuditor
         'lblReintegroRechazado
         '
         Me.lblReintegroRechazado.AutoSize = True
-        Me.lblReintegroRechazado.Location = New System.Drawing.Point(1169, 366)
+        Me.lblReintegroRechazado.Location = New System.Drawing.Point(1128, 366)
         Me.lblReintegroRechazado.Name = "lblReintegroRechazado"
         Me.lblReintegroRechazado.Size = New System.Drawing.Size(28, 13)
         Me.lblReintegroRechazado.TabIndex = 97
@@ -406,28 +409,29 @@ Partial Class FormularioAuditor
         Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
-        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape3, Me.RectangleShape2, Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(1404, 679)
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.shapeRechazados, Me.shapeAprobados, Me.shapePendientes})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(1404, 728)
         Me.ShapeContainer1.TabIndex = 98
         Me.ShapeContainer1.TabStop = False
         '
-        'RectangleShape3
+        'shapeRechazados
         '
-        Me.RectangleShape3.Location = New System.Drawing.Point(792, 360)
-        Me.RectangleShape3.Name = "RectangleShape3"
-        Me.RectangleShape3.Size = New System.Drawing.Size(599, 23)
+        Me.shapeRechazados.Location = New System.Drawing.Point(790, 361)
+        Me.shapeRechazados.Name = "shapeRechazados"
+        Me.shapeRechazados.Size = New System.Drawing.Size(600, 23)
         '
-        'RectangleShape2
+        'shapeAprobados
         '
-        Me.RectangleShape2.Location = New System.Drawing.Point(792, 65)
-        Me.RectangleShape2.Name = "RectangleShape2"
-        Me.RectangleShape2.Size = New System.Drawing.Size(599, 23)
+        Me.shapeAprobados.Location = New System.Drawing.Point(790, 68)
+        Me.shapeAprobados.Name = "shapeAprobados"
+        Me.shapeAprobados.Size = New System.Drawing.Size(600, 23)
         '
-        'RectangleShape1
+        'shapePendientes
         '
-        Me.RectangleShape1.Location = New System.Drawing.Point(12, 178)
-        Me.RectangleShape1.Name = "RectangleShape1"
-        Me.RectangleShape1.Size = New System.Drawing.Size(539, 24)
+        Me.shapePendientes.BackColor = System.Drawing.Color.DarkGray
+        Me.shapePendientes.Location = New System.Drawing.Point(12, 178)
+        Me.shapePendientes.Name = "shapePendientes"
+        Me.shapePendientes.Size = New System.Drawing.Size(555, 24)
         '
         'CANCELA
         '
@@ -500,7 +504,7 @@ Partial Class FormularioAuditor
         'botonExcel2
         '
         Me.botonExcel2.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel2.Location = New System.Drawing.Point(1354, 66)
+        Me.botonExcel2.Location = New System.Drawing.Point(1354, 68)
         Me.botonExcel2.Name = "botonExcel2"
         Me.botonExcel2.Size = New System.Drawing.Size(28, 22)
         Me.botonExcel2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -510,7 +514,7 @@ Partial Class FormularioAuditor
         'botonExcel3
         '
         Me.botonExcel3.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel3.Location = New System.Drawing.Point(1354, 361)
+        Me.botonExcel3.Location = New System.Drawing.Point(1354, 362)
         Me.botonExcel3.Name = "botonExcel3"
         Me.botonExcel3.Size = New System.Drawing.Size(28, 22)
         Me.botonExcel3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -521,7 +525,9 @@ Partial Class FormularioAuditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1404, 679)
+        Me.BackColor = System.Drawing.Color.Silver
+        Me.ClientSize = New System.Drawing.Size(1404, 728)
+        Me.Controls.Add(Me.GridView1)
         Me.Controls.Add(Me.botonExcel3)
         Me.Controls.Add(Me.botonExcel2)
         Me.Controls.Add(Me.GridView2)
@@ -548,7 +554,6 @@ Partial Class FormularioAuditor
         Me.Controls.Add(Me.txtBeneficiario)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.botonExcel)
-        Me.Controls.Add(Me.GridView1)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ShapeContainer1)
         Me.Name = "FormularioAuditor"
@@ -598,9 +603,9 @@ Partial Class FormularioAuditor
     Friend WithEvents lblReintegroAprobado As System.Windows.Forms.Label
     Friend WithEvents lblReintegroRechazado As System.Windows.Forms.Label
     Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
-    Friend WithEvents RectangleShape3 As Microsoft.VisualBasic.PowerPacks.RectangleShape
-    Friend WithEvents RectangleShape2 As Microsoft.VisualBasic.PowerPacks.RectangleShape
-    Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
+    Friend WithEvents shapeRechazados As Microsoft.VisualBasic.PowerPacks.RectangleShape
+    Friend WithEvents shapeAprobados As Microsoft.VisualBasic.PowerPacks.RectangleShape
+    Friend WithEvents shapePendientes As Microsoft.VisualBasic.PowerPacks.RectangleShape
     Friend WithEvents CANCELA As System.Windows.Forms.Button
     Friend WithEvents OK As System.Windows.Forms.Button
     Friend WithEvents txtPorcAM As System.Windows.Forms.TextBox

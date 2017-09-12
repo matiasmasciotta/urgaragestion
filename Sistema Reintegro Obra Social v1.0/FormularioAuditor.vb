@@ -21,7 +21,6 @@ Public Class FormularioAuditor
                               "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta "
     Dim varAudMed As Integer
     Dim det As String = ""
-
     Private Sub FormularioAuditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         apagaFecha()
         llenarGridCompleto()
@@ -584,5 +583,79 @@ Public Class FormularioAuditor
         VariableGlobalModificacion = det & varCodigoreintegro
     End Sub
 
-  
+    'EXPANDE GRID 1
+    Private Sub RectangleShape1_DoubleClick(sender As Object, e As System.EventArgs) Handles shapePendientes.DoubleClick
+        If (GridView1.Width = 555) And (shapePendientes.Width = 555) Then
+            GridView1.Width = 1500
+            shapePendientes.Width = 1500
+        ElseIf (GridView1.Width = 1500) And (shapePendientes.Width = 1500) Then
+            GridView1.Width = 555
+            shapePendientes.Width = 555
+        End If
+    End Sub
+
+
+
+    'DOBLE CLICK EN GRID PENDIENTES
+    Private Sub GridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellDoubleClick
+        Try
+            varCodigoreintegro = (Me.GridView1.Rows(e.RowIndex).Cells(1).Value).ToString
+            Historial.lblTitulo.Text = "'PENDIENTES' -" & " Historial de Modificaciones del reintegro N° -" & varCodigoreintegro & "-"
+            VarHistorialReintegro = varCodigoreintegro
+            Historial.Show()
+        Catch
+        End Try
+    End Sub
+    Private Sub GridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellContentDoubleClick
+        Try
+            varCodigoreintegro = (Me.GridView1.Rows(e.RowIndex).Cells(1).Value).ToString
+            Historial.lblTitulo.Text = "'PENDIENTES' -" & " Historial de Modificaciones del reintegro N° -" & varCodigoreintegro & "-"
+            VarHistorialReintegro = varCodigoreintegro
+            Historial.Show()
+        Catch
+        End Try
+    End Sub
+
+
+    'DOBLE CLIC EN GRID APROBADOS
+    Private Sub GridView2_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView2.CellContentDoubleClick
+        Try
+            varCodigoreintegroAprobado = (Me.GridView2.Rows(e.RowIndex).Cells(1).Value).ToString
+            Historial.lblTitulo.Text = "'APROBADOS' -" & " Historial de Modificaciones del reintegro N° -" & varCodigoreintegroAprobado & "-"
+            VarHistorialReintegro = varCodigoreintegroAprobado
+            Historial.Show()
+        Catch
+        End Try
+    End Sub
+
+    Private Sub GridView2_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView2.CellDoubleClick
+        Try
+            varCodigoreintegroAprobado = (Me.GridView2.Rows(e.RowIndex).Cells(1).Value).ToString
+            Historial.lblTitulo.Text = "'APROBADOS' -" & " Historial de Modificaciones del reintegro N° -" & varCodigoreintegroAprobado & "-"
+            VarHistorialReintegro = varCodigoreintegroAprobado
+            Historial.Show()
+        Catch
+        End Try
+    End Sub
+
+    'DOBLE CLICK EN GRID RECHAZADOS
+    Private Sub GridView3_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView3.CellContentDoubleClick
+        Try
+            varCodigoreintegroAprobado = (Me.GridView3.Rows(e.RowIndex).Cells(1).Value).ToString
+            Historial.lblTitulo.Text = "'RECHAZADOS' -" & " Historial de Modificaciones del reintegro N° -" & varCodigoreintegroRechazado & "-"
+            VarHistorialReintegro = varCodigoreintegroRechazado
+            Historial.Show()
+        Catch
+        End Try
+    End Sub
+
+    Private Sub GridView3_CellMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles GridView3.CellMouseDoubleClick
+        Try
+            varCodigoreintegroAprobado = (Me.GridView3.Rows(e.RowIndex).Cells(1).Value).ToString
+            Historial.lblTitulo.Text = "'RECHAZADOS' -" & " Historial de Modificaciones del reintegro N° -" & varCodigoreintegroRechazado & "-"
+            VarHistorialReintegro = varCodigoreintegroRechazado
+            Historial.Show()
+        Catch
+        End Try
+    End Sub
 End Class
