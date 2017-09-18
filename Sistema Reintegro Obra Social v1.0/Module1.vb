@@ -4,6 +4,7 @@ Module Module1
     Public VariableGlobalSeccional As Integer
     Public variableControl As Integer = 0
     Public VariableGlobalBeneficiario As String
+    Public VariableGlobalCuilBeneficiario As String
     Public VariableGlobalModificacion As String
     Public VariableGlobalReintegroModif As String
     Public VariableGlobalFechaHOY As String

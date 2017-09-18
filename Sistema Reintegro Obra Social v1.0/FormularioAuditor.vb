@@ -18,7 +18,7 @@ Public Class FormularioAuditor
     Dim varCodigoreintegroRechazado As String
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                               "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
-                              "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta "
+                              "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta,cuil_beneficiario "
     Dim varAudMed As Integer
     Dim det As String = ""
     Private Sub FormularioAuditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -180,6 +180,8 @@ Public Class FormularioAuditor
             'arreglo fecha
             VariableGlobalBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegro = (Me.GridView1.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(17).Value
+
             lblReintegroPendiente.Text = varCodigoreintegro
             botonAprobar.Visible = True
             botonDesaprobar.Visible = True
@@ -217,6 +219,8 @@ Public Class FormularioAuditor
             'arreglo fecha
             VariableGlobalBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegro = (Me.GridView1.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(17).Value
+
             lblReintegroPendiente.Text = varCodigoreintegro
             botonAprobar.Visible = True
             botonDesaprobar.Visible = True
@@ -229,31 +233,33 @@ Public Class FormularioAuditor
     Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView2.CellContentClick
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
-        Dim SQL2 As String
-        Dim MiConexion2 As New MySqlConnection(CADENABASE2)
-        Dim Rs2 As MySqlDataReader
-        Dim Com2 As New MySqlCommand
-        Com2.Connection = MiConexion2
-        MiConexion2.Open()
-        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView1.Rows(e.RowIndex).Cells(1).Value & "'"
-        Com2 = New MySqlCommand(SQL2, MiConexion2)
-        Rs2 = Com2.ExecuteReader()
-        Rs2.Read()
-        'lleno el list siempre y cuando no sea null
-        For i = 0 To 4
-            If Rs2(i).Equals(DBNull.Value) Then
-                'clbimagen.Items.Add("NO IMAGE")
-            Else
-                Dim bits As Byte() = CType(Rs2(i), Byte())
-                Dim memorybits As New System.IO.MemoryStream(bits)
-                Dim bitmap As New Bitmap(memorybits)
-                clbimagen.Items.Add(bitmap)
-            End If
-        Next
         Try
+            Dim SQL2 As String
+            Dim MiConexion2 As New MySqlConnection(CADENABASE2)
+            Dim Rs2 As MySqlDataReader
+            Dim Com2 As New MySqlCommand
+            Com2.Connection = MiConexion2
+            MiConexion2.Open()
+            SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView2.Rows(e.RowIndex).Cells(1).Value.ToString & "'"
+            Com2 = New MySqlCommand(SQL2, MiConexion2)
+            Rs2 = Com2.ExecuteReader()
+            Rs2.Read()
+            'lleno el list siempre y cuando no sea null
+            For i = 0 To 4
+                If Rs2(i).Equals(DBNull.Value) Then
+                    'clbimagen.Items.Add("NO IMAGE")
+                Else
+                    Dim bits As Byte() = CType(Rs2(i), Byte())
+                    Dim memorybits As New System.IO.MemoryStream(bits)
+                    Dim bitmap As New Bitmap(memorybits)
+                    clbimagen.Items.Add(bitmap)
+                End If
+            Next
             'arreglo fecha
             VariableGlobalBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroAprobado = (Me.GridView2.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
+
             lblReintegroAprobado.Text = varCodigoreintegroAprobado
         Catch
         End Try
@@ -262,32 +268,34 @@ Public Class FormularioAuditor
     Private Sub GridView2_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView2.CellClick
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
-        Dim SQL2 As String
-        Dim MiConexion2 As New MySqlConnection(CADENABASE2)
-        Dim Rs2 As MySqlDataReader
-        Dim Com2 As New MySqlCommand
-        Com2.Connection = MiConexion2
-        MiConexion2.Open()
-        'varCodigoreintegro = (Me.GridView1.Rows(e.RowIndex).Cells(1).Value)
-        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView1.Rows(e.RowIndex).Cells(1).Value & "'"
-        Com2 = New MySqlCommand(SQL2, MiConexion2)
-        Rs2 = Com2.ExecuteReader()
-        Rs2.Read()
-        'lleno el list siempre y cuando no sea null
-        For i = 0 To 4
-            If Rs2(i).Equals(DBNull.Value) Then
-                'clbimagen.Items.Add("NO IMAGE")
-            Else
-                Dim bits As Byte() = CType(Rs2(i), Byte())
-                Dim memorybits As New System.IO.MemoryStream(bits)
-                Dim bitmap As New Bitmap(memorybits)
-                clbimagen.Items.Add(bitmap)
-            End If
-        Next
         Try
+            Dim SQL2 As String
+            Dim MiConexion2 As New MySqlConnection(CADENABASE2)
+            Dim Rs2 As MySqlDataReader
+            Dim Com2 As New MySqlCommand
+            Com2.Connection = MiConexion2
+            MiConexion2.Open()
+            'varCodigoreintegro = (Me.GridView1.Rows(e.RowIndex).Cells(1).Value)
+            SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView2.Rows(e.RowIndex).Cells(1).Value.ToString & "'"
+            Com2 = New MySqlCommand(SQL2, MiConexion2)
+            Rs2 = Com2.ExecuteReader()
+            Rs2.Read()
+            'lleno el list siempre y cuando no sea null
+            For i = 0 To 4
+                If Rs2(i).Equals(DBNull.Value) Then
+                    'clbimagen.Items.Add("NO IMAGE")
+                Else
+                    Dim bits As Byte() = CType(Rs2(i), Byte())
+                    Dim memorybits As New System.IO.MemoryStream(bits)
+                    Dim bitmap As New Bitmap(memorybits)
+                    clbimagen.Items.Add(bitmap)
+                End If
+            Next
             'arreglo fecha
             VariableGlobalBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroAprobado = (Me.GridView2.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
+
             lblReintegroAprobado.Text = varCodigoreintegroAprobado
         Catch
         End Try
@@ -297,31 +305,33 @@ Public Class FormularioAuditor
     Private Sub GridView3_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView3.CellClick
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
-        Dim SQL2 As String
-        Dim MiConexion2 As New MySqlConnection(CADENABASE2)
-        Dim Rs2 As MySqlDataReader
-        Dim Com2 As New MySqlCommand
-        Com2.Connection = MiConexion2
-        MiConexion2.Open()
-        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView1.Rows(e.RowIndex).Cells(1).Value & "'"
-        Com2 = New MySqlCommand(SQL2, MiConexion2)
-        Rs2 = Com2.ExecuteReader()
-        Rs2.Read()
-        'lleno el list siempre y cuando no sea null
-        For i = 0 To 4
-            If Rs2(i).Equals(DBNull.Value) Then
-                'clbimagen.Items.Add("NO IMAGE")
-            Else
-                Dim bits As Byte() = CType(Rs2(i), Byte())
-                Dim memorybits As New System.IO.MemoryStream(bits)
-                Dim bitmap As New Bitmap(memorybits)
-                clbimagen.Items.Add(bitmap)
-            End If
-        Next
         Try
+            Dim SQL2 As String
+            Dim MiConexion2 As New MySqlConnection(CADENABASE2)
+            Dim Rs2 As MySqlDataReader
+            Dim Com2 As New MySqlCommand
+            Com2.Connection = MiConexion2
+            MiConexion2.Open()
+            SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView3.Rows(e.RowIndex).Cells(1).Value & "'"
+            Com2 = New MySqlCommand(SQL2, MiConexion2)
+            Rs2 = Com2.ExecuteReader()
+            Rs2.Read()
+            'lleno el list siempre y cuando no sea null
+            For i = 0 To 4
+                If Rs2(i).Equals(DBNull.Value) Then
+                    'clbimagen.Items.Add("NO IMAGE")
+                Else
+                    Dim bits As Byte() = CType(Rs2(i), Byte())
+                    Dim memorybits As New System.IO.MemoryStream(bits)
+                    Dim bitmap As New Bitmap(memorybits)
+                    clbimagen.Items.Add(bitmap)
+                End If
+            Next
             'arreglo fecha
             VariableGlobalBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroRechazado = (Me.GridView3.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
+
             lblReintegroRechazado.Text = varCodigoreintegroRechazado
         Catch
         End Try
@@ -330,31 +340,33 @@ Public Class FormularioAuditor
     Private Sub GridView3_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView3.CellContentClick
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
-        Dim SQL2 As String
-        Dim MiConexion2 As New MySqlConnection(CADENABASE2)
-        Dim Rs2 As MySqlDataReader
-        Dim Com2 As New MySqlCommand
-        Com2.Connection = MiConexion2
-        MiConexion2.Open()
-        SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView1.Rows(e.RowIndex).Cells(1).Value & "'"
-        Com2 = New MySqlCommand(SQL2, MiConexion2)
-        Rs2 = Com2.ExecuteReader()
-        Rs2.Read()
-        'lleno el list siempre y cuando no sea null
-        For i = 0 To 4
-            If Rs2(i).Equals(DBNull.Value) Then
-                'clbimagen.Items.Add("NO IMAGE")
-            Else
-                Dim bits As Byte() = CType(Rs2(i), Byte())
-                Dim memorybits As New System.IO.MemoryStream(bits)
-                Dim bitmap As New Bitmap(memorybits)
-                clbimagen.Items.Add(bitmap)
-            End If
-        Next
         Try
+            Dim SQL2 As String
+            Dim MiConexion2 As New MySqlConnection(CADENABASE2)
+            Dim Rs2 As MySqlDataReader
+            Dim Com2 As New MySqlCommand
+            Com2.Connection = MiConexion2
+            MiConexion2.Open()
+            SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView3.Rows(e.RowIndex).Cells(1).Value & "'"
+            Com2 = New MySqlCommand(SQL2, MiConexion2)
+            Rs2 = Com2.ExecuteReader()
+            Rs2.Read()
+            'lleno el list siempre y cuando no sea null
+            For i = 0 To 4
+                If Rs2(i).Equals(DBNull.Value) Then
+                    'clbimagen.Items.Add("NO IMAGE")
+                Else
+                    Dim bits As Byte() = CType(Rs2(i), Byte())
+                    Dim memorybits As New System.IO.MemoryStream(bits)
+                    Dim bitmap As New Bitmap(memorybits)
+                    clbimagen.Items.Add(bitmap)
+                End If
+            Next
             'arreglo fecha
             VariableGlobalBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroRechazado = (Me.GridView3.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
+
             lblReintegroRechazado.Text = varCodigoreintegroRechazado
         Catch
         End Try
@@ -421,7 +433,7 @@ Public Class FormularioAuditor
         OK.Visible = True
         CANCELA.Visible = True
         txtObservacionesAM.Visible = True
-        det = "El Auditor Medico Rechazó el reintegro: "
+        det = "*El Auditor Medico Rechazó el reintegro: "
         txtObservacionesAM.Focus()
     End Sub
 
@@ -466,11 +478,12 @@ Public Class FormularioAuditor
                 .Connection = con_insert
                 .CommandType = CommandType.Text
                 VERIFICA_MODIFICACIONES()
-                .CommandText = "INSERT INTO `historial_reintegros`(`Codigo_Usuario`,`Codigo_Reintegro`,`Codigo_Beneficiario`,`Fecha_modificacion`," & _
-                    "`Hora`,`Detalle`) VALUES (?codus,?codre,?codben,?fecmod,?hora,?detalle)"
+                .CommandText = "INSERT INTO `historial_reintegros`(`Codigo_Usuario`,`Codigo_Reintegro`,`Codigo_Beneficiario`,`Cuil_Beneficiario`,`Fecha_modificacion`," & _
+                    "`Hora`,`Detalle`) VALUES (?codus,?codre,?codben,?cuilben,?fecmod,?hora,?detalle)"
                 .Parameters.AddWithValue("?codus", VariableGlobalUsuario)
                 .Parameters.AddWithValue("?codre", varCodigoreintegro)
                 .Parameters.AddWithValue("?codben", VariableGlobalBeneficiario)
+                .Parameters.AddWithValue("?cuilben", VariableGlobalCuilBeneficiario)
                 .Parameters.AddWithValue("?fecmod", VariableGlobalFechaHOY)
                 .Parameters.AddWithValue("?hora", VariableGlobalHoraHOY)
                 .Parameters.AddWithValue("?detalle", VariableGlobalModificacion)

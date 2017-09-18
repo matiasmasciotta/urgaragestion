@@ -81,6 +81,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.botonEliminarSolicitud = New System.Windows.Forms.Button()
         Me.lblTipoReintegro = New System.Windows.Forms.Label()
+        Me.txtCuil = New System.Windows.Forms.TextBox()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -696,12 +697,23 @@ Partial Class ConsultaSolicitudReintegro
         Me.lblTipoReintegro.TabIndex = 40
         Me.lblTipoReintegro.Text = "Reintegro o Subsidio"
         '
+        'txtCuil
+        '
+        Me.txtCuil.Enabled = False
+        Me.txtCuil.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCuil.Location = New System.Drawing.Point(1141, 40)
+        Me.txtCuil.Name = "txtCuil"
+        Me.txtCuil.Size = New System.Drawing.Size(114, 22)
+        Me.txtCuil.TabIndex = 78
+        Me.txtCuil.Visible = False
+        '
         'ConsultaSolicitudReintegro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.SteelBlue
         Me.ClientSize = New System.Drawing.Size(1333, 677)
+        Me.Controls.Add(Me.txtCuil)
         Me.Controls.Add(Me.lblTipoReintegro)
         Me.Controls.Add(Me.botonEliminarSolicitud)
         Me.Controls.Add(Me.ProgressBar1)
@@ -798,4 +810,5 @@ Partial Class ConsultaSolicitudReintegro
     Friend WithEvents txtImporteTEMPO As System.Windows.Forms.TextBox
     Friend WithEvents txtDetalleTEMPO As System.Windows.Forms.TextBox
     Friend WithEvents txtTipoCuentaTEMPO As System.Windows.Forms.TextBox
+    Friend WithEvents txtCuil As System.Windows.Forms.TextBox
 End Class

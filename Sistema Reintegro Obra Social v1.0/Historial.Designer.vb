@@ -24,6 +24,7 @@ Partial Class Historial
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GridView1 = New System.Windows.Forms.DataGridView()
         Me.botonExcel = New System.Windows.Forms.PictureBox()
@@ -31,13 +32,16 @@ Partial Class Historial
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.lblTitulo = New System.Windows.Forms.Label()
+        Me.GridDetalleReintegro = New System.Windows.Forms.DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridDetalleReintegro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(735, 43)
+        Me.Button1.Location = New System.Drawing.Point(811, 20)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(91, 30)
         Me.Button1.TabIndex = 1
@@ -50,7 +54,7 @@ Partial Class Historial
         Me.GridView1.AllowUserToDeleteRows = False
         Me.GridView1.BackgroundColor = System.Drawing.Color.LightSteelBlue
         Me.GridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridView1.Location = New System.Drawing.Point(12, 79)
+        Me.GridView1.Location = New System.Drawing.Point(12, 56)
         Me.GridView1.MultiSelect = False
         Me.GridView1.Name = "GridView1"
         Me.GridView1.ReadOnly = True
@@ -64,14 +68,14 @@ Partial Class Historial
         Me.GridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridView1.Size = New System.Drawing.Size(1572, 491)
+        Me.GridView1.Size = New System.Drawing.Size(1572, 422)
         Me.GridView1.TabIndex = 15
         Me.GridView1.VirtualMode = True
         '
         'botonExcel
         '
         Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel.Location = New System.Drawing.Point(657, 43)
+        Me.botonExcel.Location = New System.Drawing.Point(754, 18)
         Me.botonExcel.Name = "botonExcel"
         Me.botonExcel.Size = New System.Drawing.Size(31, 28)
         Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -84,33 +88,70 @@ Partial Class Historial
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(1596, 598)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(1588, 593)
         Me.ShapeContainer1.TabIndex = 79
         Me.ShapeContainer1.TabStop = False
         '
         'RectangleShape1
         '
-        Me.RectangleShape1.Location = New System.Drawing.Point(12, 39)
+        Me.RectangleShape1.Location = New System.Drawing.Point(12, 14)
         Me.RectangleShape1.Name = "RectangleShape1"
-        Me.RectangleShape1.Size = New System.Drawing.Size(685, 37)
+        Me.RectangleShape1.Size = New System.Drawing.Size(779, 37)
         '
         'lblTitulo
         '
         Me.lblTitulo.AutoSize = True
         Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
                 Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitulo.Location = New System.Drawing.Point(19, 49)
+        Me.lblTitulo.Location = New System.Drawing.Point(19, 28)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(71, 20)
         Me.lblTitulo.TabIndex = 80
         Me.lblTitulo.Text = "TITULO"
+        '
+        'GridDetalleReintegro
+        '
+        Me.GridDetalleReintegro.AllowUserToAddRows = False
+        Me.GridDetalleReintegro.AllowUserToDeleteRows = False
+        Me.GridDetalleReintegro.BackgroundColor = System.Drawing.Color.Tan
+        Me.GridDetalleReintegro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.GridDetalleReintegro.Location = New System.Drawing.Point(13, 517)
+        Me.GridDetalleReintegro.MultiSelect = False
+        Me.GridDetalleReintegro.Name = "GridDetalleReintegro"
+        Me.GridDetalleReintegro.ReadOnly = True
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridDetalleReintegro.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Me.GridDetalleReintegro.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.GridDetalleReintegro.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.GridDetalleReintegro.Size = New System.Drawing.Size(1572, 64)
+        Me.GridDetalleReintegro.TabIndex = 81
+        Me.GridDetalleReintegro.VirtualMode = True
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
+                Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(20, 494)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(179, 20)
+        Me.Label1.TabIndex = 82
+        Me.Label1.Text = "Detalle del Reintegro"
         '
         'Historial
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1596, 598)
+        Me.ClientSize = New System.Drawing.Size(1588, 593)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.GridDetalleReintegro)
         Me.Controls.Add(Me.lblTitulo)
         Me.Controls.Add(Me.botonExcel)
         Me.Controls.Add(Me.GridView1)
@@ -120,6 +161,7 @@ Partial Class Historial
         Me.Text = "Historial"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridDetalleReintegro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -131,4 +173,6 @@ Partial Class Historial
     Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
+    Friend WithEvents GridDetalleReintegro As System.Windows.Forms.DataGridView
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 End Class

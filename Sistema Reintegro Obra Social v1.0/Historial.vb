@@ -17,6 +17,8 @@ Public Class Historial
     Dim comando As MySqlCommand
     Dim varCodigoreintegro As String
     Dim varSQLCAMPOS As String = "apellidonombre,codigo_reintegro,fecha_modificacion,hora,detalle"
+    Dim varSQLCAMPOSDETALLE As String = "reintegros.Codigo_Reintegro,reintegros.detalle,reintegros.importe,reintegros.Fecha_Solicitud,reintegros.Observaciones_Carga, " & _
+                                        "beneficiarios.ApellidoNombre,beneficiarios.Celular,beneficiarios.Telefono,beneficiarios.Codigo_Beneficiario,beneficiarios.Cuil "
 
     Private Sub Historial_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
@@ -28,6 +30,16 @@ Public Class Historial
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+        Try
+            sql = "select " & varSQLCAMPOSDETALLE & " from reintegros,beneficiarios where (reintegros.Codigo_Beneficiario=beneficiarios.Codigo_Beneficiario) AND (reintegros.Cuil_Beneficiario = beneficiarios.Cuil) and (codigo_reintegro = '" & VarHistorialReintegro & "')"
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridDetalleReintegro.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -56,5 +68,9 @@ Public Class Historial
 
     Private Sub Historial_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
         botonExcel.Image = WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
+    End Sub
+
+    Private Sub GridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellContentClick
+
     End Sub
 End Class

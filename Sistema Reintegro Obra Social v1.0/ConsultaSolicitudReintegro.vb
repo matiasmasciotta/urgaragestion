@@ -25,7 +25,7 @@ Public Class ConsultaSolicitudReintegro
     Dim varCodigoreintegro As String
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                               "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
-                              "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta "
+                              "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta,cuil_beneficiario "
     Dim tempDETALLE As String
     Dim tempIMPORTE As String
     Dim tempFECHASOL As String
@@ -132,6 +132,8 @@ Public Class ConsultaSolicitudReintegro
         Me.GridView1.Columns(14).Name = "Pagado si o no"
         Me.GridView1.Columns(15).Name = "Cuil para Pago Benef."
         Me.GridView1.Columns(16).Name = "Tipo Cuenta p/Pago Benef."
+        Me.GridView1.Columns(17).Name = "Cuil Beneficiario."
+
     End Sub
 
     Private Sub BuscarDato()
@@ -250,6 +252,9 @@ Public Class ConsultaSolicitudReintegro
             txtTipoCuenta.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
             txtTipoCuentaTEMPO.Text = txtTipoCuenta.Text
 
+            txtCuil.Text = Me.GridView1.Rows(e.RowIndex).Cells(17).Value
+            VariableGlobalCuilBeneficiario = txtCuil.Text
+
             botonModificaSolicitud.Visible = True
             botonModificaSolicitud.Enabled = True
             botonEliminarSolicitud.Visible = True
@@ -330,6 +335,9 @@ Public Class ConsultaSolicitudReintegro
 
             txtTipoCuenta.Text = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
             txtTipoCuentaTEMPO.Text = txtTipoCuenta.Text
+
+            txtCuil.Text = Me.GridView1.Rows(e.RowIndex).Cells(17).Value
+            VariableGlobalCuilBeneficiario = txtCuil.Text
 
             botonModificaSolicitud.Visible = True
             botonModificaSolicitud.Enabled = True
@@ -515,11 +523,12 @@ Public Class ConsultaSolicitudReintegro
                 .Connection = con_insert
                 .CommandType = CommandType.Text
                 VERIFICA_MODIFICACIONES()
-                .CommandText = "INSERT INTO `historial_reintegros`(`Codigo_Usuario`,`Codigo_Reintegro`,`Codigo_Beneficiario`,`Fecha_modificacion`," & _
-                    "`Hora`,`Detalle`) VALUES (?codus,?codre,?codben,?fecmod,?hora,?detalle)"
+                .CommandText = "INSERT INTO `historial_reintegros`(`Codigo_Usuario`,`Codigo_Reintegro`,`Codigo_Beneficiario`,`Cuil_Beneficiario`,`Fecha_modificacion`," & _
+                    "`Hora`,`Detalle`) VALUES (?codus,?codre,?codben,?cuilben,?fecmod,?hora,?detalle)"
                 .Parameters.AddWithValue("?codus", VariableGlobalUsuario)
                 .Parameters.AddWithValue("?codre", varCodigoreintegro)
                 .Parameters.AddWithValue("?codben", VariableGlobalBeneficiario)
+                .Parameters.AddWithValue("?cuilben", VariableGlobalCuilBeneficiario)
                 .Parameters.AddWithValue("?fecmod", VariableGlobalFechaHOY)
                 .Parameters.AddWithValue("?hora", VariableGlobalHoraHOY)
                 .Parameters.AddWithValue("?detalle", VariableGlobalModificacion)
@@ -665,6 +674,7 @@ Public Class ConsultaSolicitudReintegro
 
     'WW DOBLE CLICK EN GRID PARA HISTORIAL  WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
     Private Sub GridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellContentDoubleClick
+        Historial.lblTitulo.Text = "'Solicitudes de Reintegro' - Historial de Modificaciones del reintegro N° - " & varCodigoreintegro
         VarHistorialReintegro = varCodigoreintegro
         Historial.Show()
     End Sub
