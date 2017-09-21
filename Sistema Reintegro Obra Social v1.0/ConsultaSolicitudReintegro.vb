@@ -35,6 +35,8 @@ Public Class ConsultaSolicitudReintegro
     Dim tempCUILPAGO As String
     Dim tempTIPOCUENTA As String
     Dim MODIFICA As Boolean = False
+    Dim varCodigoreintegroAprobado As String
+    Dim varCodigoreintegroRechazado As String
 
     Private Sub ConsultaSolicitudReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         VariableGlobalModificacion = ""
@@ -56,7 +58,6 @@ Public Class ConsultaSolicitudReintegro
     'Metodo llena grid boo
     Private Sub llenarGridCompleto() '>>>>>>>>>>>
         Try
-            'SI QUIERO VER LO QUE CARGAN TODOS LOS USUARIOS DE ESA SECCIONAL (TODOS LOS USER DE ESA SECCIONAL)
             sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional.ToString & "') AND (Auditor_Medico = 0)"
             'SI QUIERO VER SOLO LO QUE CARGA EL USUARIO LOGUEADO
@@ -69,6 +70,32 @@ Public Class ConsultaSolicitudReintegro
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+        'grid aprobados 
+        Try
+            sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional.ToString & "') AND (Auditor_Medico = 1) order by fecha_solicitud desc"
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridView2.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        'grid rechazados
+        Try
+            sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional.ToString & "') AND (Auditor_Medico = 2) order by fecha_solicitud desc"
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridView3.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
     End Sub
 
     'CHECK DE FECHA ACTIVADO O DESACTIVADO
@@ -182,7 +209,7 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
     '********************************************************                   *******************************************************************************
-    'click en celda llena listbox con imagenes y grid  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    111111111111111111111111111111111111111111111111111111111111111111111111
+    ' 111 click en celda llena listbox con imagenes y grid  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>    111111111111111111111111111111111111111111111111111111111111111111111111
     Private Sub GridView1_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellClick
         clbimagen.Items.Clear()
         lblPicture.Image = Nothing
@@ -262,7 +289,7 @@ Public Class ConsultaSolicitudReintegro
         End Try
     End Sub
 
-    'click en celda llena listbox con imagenes y grid    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<          22222222222222222222222222222222222
+    ' 22222 click en celda llena listbox con imagenes y grid    <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<          22222222222222222222222222222222222
     Private Sub GridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView1.CellContentClick
         'lleno listbox con imagenes de la base *************************************************
         clbimagen.Items.Clear()
@@ -345,6 +372,161 @@ Public Class ConsultaSolicitudReintegro
         Catch
         End Try
     End Sub
+    'aasdas
+
+    '*****************************************
+    'CLICK 1 - REINTEGROS APROBADOS
+    Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView2.CellContentClick
+        clbimagen.Items.Clear()
+        lblPicture.Image = Nothing
+        Try
+            Dim SQL2 As String
+            Dim MiConexion2 As New MySqlConnection(CADENABASE2)
+            Dim Rs2 As MySqlDataReader
+            Dim Com2 As New MySqlCommand
+            Com2.Connection = MiConexion2
+            MiConexion2.Open()
+            SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView2.Rows(e.RowIndex).Cells(1).Value.ToString & "'"
+            Com2 = New MySqlCommand(SQL2, MiConexion2)
+            Rs2 = Com2.ExecuteReader()
+            Rs2.Read()
+            'lleno el list siempre y cuando no sea null
+            For i = 0 To 4
+                If Rs2(i).Equals(DBNull.Value) Then
+                    'clbimagen.Items.Add("NO IMAGE")
+                Else
+                    Dim bits As Byte() = CType(Rs2(i), Byte())
+                    Dim memorybits As New System.IO.MemoryStream(bits)
+                    Dim bitmap As New Bitmap(memorybits)
+                    clbimagen.Items.Add(bitmap)
+                End If
+            Next
+            'arreglo fecha
+            VariableGlobalBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(2).Value
+            varCodigoreintegroAprobado = (Me.GridView2.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
+        Catch
+        End Try
+    End Sub
+    'CLICK 2 - REINTEGROS APROBADOS
+    Private Sub GridView2_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView2.CellClick
+        clbimagen.Items.Clear()
+        lblPicture.Image = Nothing
+        Try
+            Dim SQL2 As String
+            Dim MiConexion2 As New MySqlConnection(CADENABASE2)
+            Dim Rs2 As MySqlDataReader
+            Dim Com2 As New MySqlCommand
+            Com2.Connection = MiConexion2
+            MiConexion2.Open()
+            'varCodigoreintegro = (Me.GridView1.Rows(e.RowIndex).Cells(1).Value)
+            SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView2.Rows(e.RowIndex).Cells(1).Value.ToString & "'"
+            Com2 = New MySqlCommand(SQL2, MiConexion2)
+            Rs2 = Com2.ExecuteReader()
+            Rs2.Read()
+            'lleno el list siempre y cuando no sea null
+            For i = 0 To 4
+                If Rs2(i).Equals(DBNull.Value) Then
+                    'clbimagen.Items.Add("NO IMAGE")
+                Else
+                    Dim bits As Byte() = CType(Rs2(i), Byte())
+                    Dim memorybits As New System.IO.MemoryStream(bits)
+                    Dim bitmap As New Bitmap(memorybits)
+                    clbimagen.Items.Add(bitmap)
+                End If
+            Next
+            'arreglo fecha
+            VariableGlobalBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(2).Value
+            varCodigoreintegroAprobado = (Me.GridView2.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
+        Catch
+        End Try
+    End Sub
+    '*******************************
+    'CLICK 1 - REINTEGROS RECHAZADOS
+    Private Sub GridView3_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView3.CellClick
+        clbimagen.Items.Clear()
+        lblPicture.Image = Nothing
+        Try
+            Dim SQL2 As String
+            Dim MiConexion2 As New MySqlConnection(CADENABASE2)
+            Dim Rs2 As MySqlDataReader
+            Dim Com2 As New MySqlCommand
+            Com2.Connection = MiConexion2
+            MiConexion2.Open()
+            SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView3.Rows(e.RowIndex).Cells(1).Value & "'"
+            Com2 = New MySqlCommand(SQL2, MiConexion2)
+            Rs2 = Com2.ExecuteReader()
+            Rs2.Read()
+            'lleno el list siempre y cuando no sea null
+            For i = 0 To 4
+                If Rs2(i).Equals(DBNull.Value) Then
+                    'clbimagen.Items.Add("NO IMAGE")
+                Else
+                    Dim bits As Byte() = CType(Rs2(i), Byte())
+                    Dim memorybits As New System.IO.MemoryStream(bits)
+                    Dim bitmap As New Bitmap(memorybits)
+                    clbimagen.Items.Add(bitmap)
+                End If
+            Next
+            'arreglo fecha
+            VariableGlobalBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(2).Value
+            varCodigoreintegroRechazado = (Me.GridView3.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
+        Catch
+        End Try
+    End Sub
+    'CKICK 2 - REINTEGROS RECHAZADOS
+    Private Sub GridView3_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView3.CellContentClick
+        clbimagen.Items.Clear()
+        lblPicture.Image = Nothing
+        Try
+            Dim SQL2 As String
+            Dim MiConexion2 As New MySqlConnection(CADENABASE2)
+            Dim Rs2 As MySqlDataReader
+            Dim Com2 As New MySqlCommand
+            Com2.Connection = MiConexion2
+            MiConexion2.Open()
+            SQL2 = "select Imagen1,Imagen2,Imagen3,Imagen4,Imagen5 from reintegros where codigo_reintegro = '" & Me.GridView3.Rows(e.RowIndex).Cells(1).Value & "'"
+            Com2 = New MySqlCommand(SQL2, MiConexion2)
+            Rs2 = Com2.ExecuteReader()
+            Rs2.Read()
+            'lleno el list siempre y cuando no sea null
+            For i = 0 To 4
+                If Rs2(i).Equals(DBNull.Value) Then
+                    'clbimagen.Items.Add("NO IMAGE")
+                Else
+                    Dim bits As Byte() = CType(Rs2(i), Byte())
+                    Dim memorybits As New System.IO.MemoryStream(bits)
+                    Dim bitmap As New Bitmap(memorybits)
+                    clbimagen.Items.Add(bitmap)
+                End If
+            Next
+            'arreglo fecha
+            VariableGlobalBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(2).Value
+            varCodigoreintegroRechazado = (Me.GridView3.Rows(e.RowIndex).Cells(1).Value).ToString
+            VariableGlobalCuilBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
+        Catch
+        End Try
+    End Sub
+    '****************************************
+
+
+
+
+    'asdsad
+
+
+
+
+
+
+
+
+
+
+
+
     '*******************************************************************************************************************************************************
     'VISTA PREVIA DEL PICTUREBOX AL SELECCIONAR EN EL COMBOLIST
     Private Sub clbimagen_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles clbimagen.SelectedIndexChanged
@@ -681,10 +863,34 @@ Public Class ConsultaSolicitudReintegro
 
 
     Private Sub GridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellDoubleClick
+        Historial.lblTitulo.Text = "'Solicitudes de Reintegro' - Historial de Modificaciones del reintegro N° - " & varCodigoreintegro
         VarHistorialReintegro = varCodigoreintegro
         Historial.Show()
     End Sub
     'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW
+
+    Private Sub GridView2_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView2.CellContentDoubleClick
+        Historial.lblTitulo.Text = "'Solicitudes de Reintegro' - Historial de Modificaciones del reintegro N° - " & varCodigoreintegroAprobado
+        VarHistorialReintegro = varCodigoreintegroAprobado
+        Historial.Show()
+    End Sub
+    Private Sub GridView2_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView2.CellDoubleClick
+        Historial.lblTitulo.Text = "'Solicitudes de Reintegro' - Historial de Modificaciones del reintegro N° - " & varCodigoreintegroAprobado
+        VarHistorialReintegro = varCodigoreintegroAprobado
+        Historial.Show()
+    End Sub
+
+    Private Sub GridView3_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView3.CellContentDoubleClick
+        Historial.lblTitulo.Text = "'Solicitudes de Reintegro' - Historial de Modificaciones del reintegro N° - " & varCodigoreintegroRechazado
+        VarHistorialReintegro = varCodigoreintegroRechazado
+        Historial.Show()
+    End Sub
+
+    Private Sub GridView3_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView3.CellDoubleClick
+        Historial.lblTitulo.Text = "'Solicitudes de Reintegro' - Historial de Modificaciones del reintegro N° - " & varCodigoreintegroRechazado
+        VarHistorialReintegro = varCodigoreintegroRechazado
+        Historial.Show()
+    End Sub
 End Class
 
 

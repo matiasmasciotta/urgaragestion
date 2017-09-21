@@ -104,4 +104,28 @@
     Private Sub ConsultaAuditorMedicoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaAuditorMedicoToolStripMenuItem.Click
         FormularioAuditor.show()
     End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
+
+    End Sub
+
+    Private Sub lblUser_Click(sender As Object, e As EventArgs) Handles lblUser.Click
+
+    End Sub
+
+    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+
+    End Sub
+
+    Private Sub minutos_Click(sender As Object, e As EventArgs) Handles minutos.Click
+
+    End Sub
+
+    Private Sub segundos_Click(sender As Object, e As EventArgs) Handles segundos.Click
+
+    End Sub
 End Class

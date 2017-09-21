@@ -41,7 +41,7 @@ Partial Class Historial
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(811, 20)
+        Me.Button1.Location = New System.Drawing.Point(811, 24)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(91, 30)
         Me.Button1.TabIndex = 1
@@ -52,9 +52,9 @@ Partial Class Historial
         '
         Me.GridView1.AllowUserToAddRows = False
         Me.GridView1.AllowUserToDeleteRows = False
-        Me.GridView1.BackgroundColor = System.Drawing.Color.LightSteelBlue
+        Me.GridView1.BackgroundColor = System.Drawing.Color.LightSlateGray
         Me.GridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridView1.Location = New System.Drawing.Point(12, 56)
+        Me.GridView1.Location = New System.Drawing.Point(-30, 67)
         Me.GridView1.MultiSelect = False
         Me.GridView1.Name = "GridView1"
         Me.GridView1.ReadOnly = True
@@ -68,14 +68,14 @@ Partial Class Historial
         Me.GridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridView1.Size = New System.Drawing.Size(1572, 422)
+        Me.GridView1.Size = New System.Drawing.Size(1564, 422)
         Me.GridView1.TabIndex = 15
         Me.GridView1.VirtualMode = True
         '
         'botonExcel
         '
         Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel.Location = New System.Drawing.Point(754, 18)
+        Me.botonExcel.Location = New System.Drawing.Point(753, 25)
         Me.botonExcel.Name = "botonExcel"
         Me.botonExcel.Size = New System.Drawing.Size(31, 28)
         Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -88,13 +88,13 @@ Partial Class Historial
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(1588, 593)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(1543, 593)
         Me.ShapeContainer1.TabIndex = 79
         Me.ShapeContainer1.TabStop = False
         '
         'RectangleShape1
         '
-        Me.RectangleShape1.Location = New System.Drawing.Point(12, 14)
+        Me.RectangleShape1.Location = New System.Drawing.Point(12, 21)
         Me.RectangleShape1.Name = "RectangleShape1"
         Me.RectangleShape1.Size = New System.Drawing.Size(779, 37)
         '
@@ -103,7 +103,7 @@ Partial Class Historial
         Me.lblTitulo.AutoSize = True
         Me.lblTitulo.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
                 Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitulo.Location = New System.Drawing.Point(19, 28)
+        Me.lblTitulo.Location = New System.Drawing.Point(19, 31)
         Me.lblTitulo.Name = "lblTitulo"
         Me.lblTitulo.Size = New System.Drawing.Size(71, 20)
         Me.lblTitulo.TabIndex = 80
@@ -115,7 +115,7 @@ Partial Class Historial
         Me.GridDetalleReintegro.AllowUserToDeleteRows = False
         Me.GridDetalleReintegro.BackgroundColor = System.Drawing.Color.Tan
         Me.GridDetalleReintegro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridDetalleReintegro.Location = New System.Drawing.Point(13, 517)
+        Me.GridDetalleReintegro.Location = New System.Drawing.Point(-38, 518)
         Me.GridDetalleReintegro.MultiSelect = False
         Me.GridDetalleReintegro.Name = "GridDetalleReintegro"
         Me.GridDetalleReintegro.ReadOnly = True
@@ -138,7 +138,7 @@ Partial Class Historial
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, CType(((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic) _
                 Or System.Drawing.FontStyle.Underline), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(20, 494)
+        Me.Label1.Location = New System.Drawing.Point(18, 495)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(179, 20)
         Me.Label1.TabIndex = 82
@@ -148,8 +148,8 @@ Partial Class Historial
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ActiveCaption
-        Me.ClientSize = New System.Drawing.Size(1588, 593)
+        Me.BackColor = System.Drawing.SystemColors.AppWorkspace
+        Me.ClientSize = New System.Drawing.Size(1543, 593)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GridDetalleReintegro)
         Me.Controls.Add(Me.lblTitulo)
@@ -158,6 +158,7 @@ Partial Class Historial
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.ShapeContainer1)
         Me.Name = "Historial"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Historial"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).EndInit()

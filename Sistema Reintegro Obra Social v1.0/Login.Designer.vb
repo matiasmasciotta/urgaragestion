@@ -195,7 +195,7 @@ Partial Class Login
         Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.rec2
         Me.PictureBox2.Location = New System.Drawing.Point(12, -20)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(493, 284)
+        Me.PictureBox2.Size = New System.Drawing.Size(492, 292)
         Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox2.TabIndex = 12
         Me.PictureBox2.TabStop = False
@@ -220,6 +220,7 @@ Partial Class Login
         Me.Name = "Login"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Login"
+        Me.TopMost = True
         Me.TransparencyKey = System.Drawing.Color.DimGray
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
