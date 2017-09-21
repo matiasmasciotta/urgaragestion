@@ -151,6 +151,12 @@
     <Compile Include="ConsultaTotal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormularioPagos.Designer.vb">
+      <DependentUpon>FormularioPagos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioPagos.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormularioAuditor.Designer.vb">
       <DependentUpon>FormularioAuditor.vb</DependentUpon>
     </Compile>
@@ -235,6 +241,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormularioAuditor.resx">
       <DependentUpon>FormularioAuditor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioPagos.resx">
+      <DependentUpon>FormularioPagos.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Historial.resx">
       <DependentUpon>Historial.vb</DependentUpon>

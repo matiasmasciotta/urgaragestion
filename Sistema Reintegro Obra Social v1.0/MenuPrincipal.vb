@@ -128,4 +128,8 @@
     Private Sub segundos_Click(sender As Object, e As EventArgs) Handles segundos.Click
 
     End Sub
+
+    Private Sub GenerarPagoDeReintegroOSubsidioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Click
+        FormularioPagos.Show()
+    End Sub
 End Class

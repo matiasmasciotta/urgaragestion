@@ -84,7 +84,8 @@ Public Class Login
                 End If
                 '--> es Pagador
                 If txtTipoUsuario.Text = 2 Then
-                    MenuPrincipal.ConsultarReintegrosPendientesToolStripMenuItem.Enabled = True
+                    'MenuPrincipal.ConsultarReintegrosPendientesToolStripMenuItem.Enabled = True
+                    MenuPrincipal.GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Enabled = True
                 End If
                 '--> es Auditor
                 If txtTipoUsuario.Text = 3 Then
