@@ -164,14 +164,15 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
     Private Sub BuscarDato()
+        'Filtra los Pendientes de Auditoria Medica
         Try
-            If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
+            If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
-                    "AND USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "' AND Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' and Auditor_medico=0)"
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=0)"
             Else
 
-                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
-                    "AND USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "' AND Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%' AND " & _
+                sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
                     "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 0)"
             End If
             da = New MySqlDataAdapter(sql, Conex)
@@ -181,6 +182,45 @@ Public Class ConsultaSolicitudReintegro
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+        'Filtra los Aprobados por Auditor Medico
+        Try
+            If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=1)"
+            Else
+
+                sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 1)"
+            End If
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridView2.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        'Filtra los Rechazados por Auditor Medico
+        Try
+            If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=2)"
+            Else
+
+                sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 2)"
+            End If
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridView3.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
 
     Private Sub txtFechaHasta_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtFechaHasta.TextChanged
@@ -405,6 +445,60 @@ Public Class ConsultaSolicitudReintegro
             VariableGlobalBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroAprobado = (Me.GridView2.Rows(e.RowIndex).Cells(1).Value).ToString
             VariableGlobalCuilBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
+
+            'nue
+            lblfe1.Text = Me.GridView2.Rows(e.RowIndex).Cells(3).Value
+            Dim fechacreacion As Date
+            fechacreacion = lblfe1.Text
+            lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
+            'af
+            txtDetalle.Text = Me.GridView2.Rows(e.RowIndex).Cells(4).Value
+            txtDetalleTEMPO.Text = txtDetalle.Text
+            rollbackDetalle = txtDetalle.Text
+
+            txtImporte.Text = Me.GridView2.Rows(e.RowIndex).Cells(5).Value
+            txtImporteTEMPO.Text = txtImporte.Text
+            rollbackImporte = txtImporte.Text
+
+            txtObservacionesCarga.Text = Me.GridView2.Rows(e.RowIndex).Cells(6).Value
+            txtObservacionesTEMPO.Text = txtObservacionesCarga.Text
+
+            txtCBU.Text = Me.GridView2.Rows(e.RowIndex).Cells(10).Value
+            txtCBUTEMPO.Text = txtCBU.Text
+
+            txtAlias.Text = Me.GridView2.Rows(e.RowIndex).Cells(11).Value
+            txtAliasTEMPO.Text = txtAlias.Text
+            'si es 0 es reintegro
+            If (Me.GridView2.Rows(e.RowIndex).Cells(12).Value) = 0 Then
+                lblTipoReintegro.Text = "ES REINTEGRO"
+            End If
+            'si es 1 es subsidio
+            If (Me.GridView2.Rows(e.RowIndex).Cells(12).Value) = 1 Then
+                If (Me.GridView2.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.GridView2.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            End If
+            rollbackCarga = txtObservacionesCarga.Text
+            txtFechaSolicitud.Text = lblfe2.Text
+            txtFechSolicitudTEMPO.Text = txtFechaSolicitud.Text
+            rollbackFechaSolicitud = txtFechaSolicitud.Text
+
+            txtCuilPago.Text = Me.GridView2.Rows(e.RowIndex).Cells(15).Value
+            txtCuilPagoTEMPO.Text = txtCuilPago.Text
+
+            txtTipoCuenta.Text = Me.GridView2.Rows(e.RowIndex).Cells(16).Value
+            txtTipoCuentaTEMPO.Text = txtTipoCuenta.Text
+
+            txtCuil.Text = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
+            VariableGlobalCuilBeneficiario = txtCuil.Text
+
+            botonModificaSolicitud.Visible = False
+            'botonModificaSolicitud.Enabled = True
+            botonEliminarSolicitud.Visible = False
+            'nuec
+
+
+
+
         Catch
         End Try
     End Sub
@@ -439,6 +533,56 @@ Public Class ConsultaSolicitudReintegro
             VariableGlobalBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroAprobado = (Me.GridView2.Rows(e.RowIndex).Cells(1).Value).ToString
             VariableGlobalCuilBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
+
+            'nue
+            lblfe1.Text = Me.GridView2.Rows(e.RowIndex).Cells(3).Value
+            Dim fechacreacion As Date
+            fechacreacion = lblfe1.Text
+            lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
+            'af
+            txtDetalle.Text = Me.GridView2.Rows(e.RowIndex).Cells(4).Value
+            txtDetalleTEMPO.Text = txtDetalle.Text
+            rollbackDetalle = txtDetalle.Text
+
+            txtImporte.Text = Me.GridView2.Rows(e.RowIndex).Cells(5).Value
+            txtImporteTEMPO.Text = txtImporte.Text
+            rollbackImporte = txtImporte.Text
+
+            txtObservacionesCarga.Text = Me.GridView2.Rows(e.RowIndex).Cells(6).Value
+            txtObservacionesTEMPO.Text = txtObservacionesCarga.Text
+
+            txtCBU.Text = Me.GridView2.Rows(e.RowIndex).Cells(10).Value
+            txtCBUTEMPO.Text = txtCBU.Text
+
+            txtAlias.Text = Me.GridView2.Rows(e.RowIndex).Cells(11).Value
+            txtAliasTEMPO.Text = txtAlias.Text
+            'si es 0 es reintegro
+            If (Me.GridView2.Rows(e.RowIndex).Cells(12).Value) = 0 Then
+                lblTipoReintegro.Text = "ES REINTEGRO"
+            End If
+            'si es 1 es subsidio
+            If (Me.GridView2.Rows(e.RowIndex).Cells(12).Value) = 1 Then
+                If (Me.GridView2.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.GridView2.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            End If
+            rollbackCarga = txtObservacionesCarga.Text
+            txtFechaSolicitud.Text = lblfe2.Text
+            txtFechSolicitudTEMPO.Text = txtFechaSolicitud.Text
+            rollbackFechaSolicitud = txtFechaSolicitud.Text
+
+            txtCuilPago.Text = Me.GridView2.Rows(e.RowIndex).Cells(15).Value
+            txtCuilPagoTEMPO.Text = txtCuilPago.Text
+
+            txtTipoCuenta.Text = Me.GridView2.Rows(e.RowIndex).Cells(16).Value
+            txtTipoCuentaTEMPO.Text = txtTipoCuenta.Text
+
+            txtCuil.Text = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
+            VariableGlobalCuilBeneficiario = txtCuil.Text
+
+            botonModificaSolicitud.Visible = False
+            ' botonModificaSolicitud.Enabled = True
+            botonEliminarSolicitud.Visible = False
+            'nuec
         Catch
         End Try
     End Sub
@@ -473,6 +617,57 @@ Public Class ConsultaSolicitudReintegro
             VariableGlobalBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroRechazado = (Me.GridView3.Rows(e.RowIndex).Cells(1).Value).ToString
             VariableGlobalCuilBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
+
+
+            'nue
+            lblfe1.Text = Me.GridView3.Rows(e.RowIndex).Cells(3).Value
+            Dim fechacreacion As Date
+            fechacreacion = lblfe1.Text
+            lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
+            'af
+            txtDetalle.Text = Me.GridView3.Rows(e.RowIndex).Cells(4).Value
+            txtDetalleTEMPO.Text = txtDetalle.Text
+            rollbackDetalle = txtDetalle.Text
+
+            txtImporte.Text = Me.GridView3.Rows(e.RowIndex).Cells(5).Value
+            txtImporteTEMPO.Text = txtImporte.Text
+            rollbackImporte = txtImporte.Text
+
+            txtObservacionesCarga.Text = Me.GridView3.Rows(e.RowIndex).Cells(6).Value
+            txtObservacionesTEMPO.Text = txtObservacionesCarga.Text
+
+            txtCBU.Text = Me.GridView3.Rows(e.RowIndex).Cells(10).Value
+            txtCBUTEMPO.Text = txtCBU.Text
+
+            txtAlias.Text = Me.GridView3.Rows(e.RowIndex).Cells(11).Value
+            txtAliasTEMPO.Text = txtAlias.Text
+            'si es 0 es reintegro
+            If (Me.GridView3.Rows(e.RowIndex).Cells(12).Value) = 0 Then
+                lblTipoReintegro.Text = "ES REINTEGRO"
+            End If
+            'si es 1 es subsidio
+            If (Me.GridView3.Rows(e.RowIndex).Cells(12).Value) = 1 Then
+                If (Me.GridView3.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.GridView3.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            End If
+            rollbackCarga = txtObservacionesCarga.Text
+            txtFechaSolicitud.Text = lblfe2.Text
+            txtFechSolicitudTEMPO.Text = txtFechaSolicitud.Text
+            rollbackFechaSolicitud = txtFechaSolicitud.Text
+
+            txtCuilPago.Text = Me.GridView3.Rows(e.RowIndex).Cells(15).Value
+            txtCuilPagoTEMPO.Text = txtCuilPago.Text
+
+            txtTipoCuenta.Text = Me.GridView3.Rows(e.RowIndex).Cells(16).Value
+            txtTipoCuentaTEMPO.Text = txtTipoCuenta.Text
+
+            txtCuil.Text = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
+            VariableGlobalCuilBeneficiario = txtCuil.Text
+
+            botonModificaSolicitud.Visible = False
+            'botonModificaSolicitud.Enabled = True
+            botonEliminarSolicitud.Visible = False
+            'nuec
         Catch
         End Try
     End Sub
@@ -506,26 +701,62 @@ Public Class ConsultaSolicitudReintegro
             VariableGlobalBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroRechazado = (Me.GridView3.Rows(e.RowIndex).Cells(1).Value).ToString
             VariableGlobalCuilBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
+
+            'nue
+            lblfe1.Text = Me.GridView3.Rows(e.RowIndex).Cells(3).Value
+            Dim fechacreacion As Date
+            fechacreacion = lblfe1.Text
+            lblfe2.Text = Format(fechacreacion, "yyyy/MM/dd")
+            'af
+            txtDetalle.Text = Me.GridView3.Rows(e.RowIndex).Cells(4).Value
+            txtDetalleTEMPO.Text = txtDetalle.Text
+            rollbackDetalle = txtDetalle.Text
+
+            txtImporte.Text = Me.GridView3.Rows(e.RowIndex).Cells(5).Value
+            txtImporteTEMPO.Text = txtImporte.Text
+            rollbackImporte = txtImporte.Text
+
+            txtObservacionesCarga.Text = Me.GridView3.Rows(e.RowIndex).Cells(6).Value
+            txtObservacionesTEMPO.Text = txtObservacionesCarga.Text
+
+            txtCBU.Text = Me.GridView3.Rows(e.RowIndex).Cells(10).Value
+            txtCBUTEMPO.Text = txtCBU.Text
+
+            txtAlias.Text = Me.GridView3.Rows(e.RowIndex).Cells(11).Value
+            txtAliasTEMPO.Text = txtAlias.Text
+            'si es 0 es reintegro
+            If (Me.GridView3.Rows(e.RowIndex).Cells(12).Value) = 0 Then
+                lblTipoReintegro.Text = "ES REINTEGRO"
+            End If
+            'si es 1 es subsidio
+            If (Me.GridView3.Rows(e.RowIndex).Cells(12).Value) = 1 Then
+                If (Me.GridView3.Rows(e.RowIndex).Cells(13).Value) = 1 Then lblTipoReintegro.Text = "ES SUBSIDIO POR NACIMIENTO"
+                If (Me.GridView3.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
+            End If
+            rollbackCarga = txtObservacionesCarga.Text
+            txtFechaSolicitud.Text = lblfe2.Text
+            txtFechSolicitudTEMPO.Text = txtFechaSolicitud.Text
+            rollbackFechaSolicitud = txtFechaSolicitud.Text
+
+            txtCuilPago.Text = Me.GridView3.Rows(e.RowIndex).Cells(15).Value
+            txtCuilPagoTEMPO.Text = txtCuilPago.Text
+
+            txtTipoCuenta.Text = Me.GridView3.Rows(e.RowIndex).Cells(16).Value
+            txtTipoCuentaTEMPO.Text = txtTipoCuenta.Text
+
+            txtCuil.Text = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
+            VariableGlobalCuilBeneficiario = txtCuil.Text
+
+            botonModificaSolicitud.Visible = False
+            'botonModificaSolicitud.Enabled = True
+            botonEliminarSolicitud.Visible = False
+
+
         Catch
         End Try
     End Sub
     '****************************************
-
-
-
-
     'asdsad
-
-
-
-
-
-
-
-
-
-
-
 
     '*******************************************************************************************************************************************************
     'VISTA PREVIA DEL PICTUREBOX AL SELECCIONAR EN EL COMBOLIST
