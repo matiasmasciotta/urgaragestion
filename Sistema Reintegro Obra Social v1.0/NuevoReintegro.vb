@@ -128,6 +128,9 @@ Public Class NuevoReintegro
         Using con_insert As New MySqlConnection(CADENABASE2)
             Dim cmdinsert As New MySqlCommand
             Dim varimp As Double = Convert.ToDouble(txtImporte.Text)
+
+            Dim cadena(4) As String
+
             With cmdinsert
                 .Connection = con_insert
                 .CommandType = CommandType.Text
@@ -166,6 +169,7 @@ Public Class NuevoReintegro
                         Case 1
                             .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Cuil_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`Imagen1`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`,`Cuil_Pago`,`Tipo_Cuenta`)" & " VALUES " & "(?codus,?codben,?cuilben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal,?cuilpago,?tipocuenta)"
                             .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
+                            cadena(0) = clbStrings.Items.Item(0)
                             .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
                             .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
                             .Parameters.AddWithValue("?cuilben", txtCUIL.Text.ToString)
@@ -193,6 +197,8 @@ Public Class NuevoReintegro
                             .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Cuil_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`,`Cuil_Pago`,`Tipo_Cuenta`)" & " VALUES " & "(?codus,?codben,?cuilben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal,?cuilpago,?tipocuenta)"
                             .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
                             .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
+                            cadena(0) = clbStrings.Items.Item(0)
+                            cadena(1) = clbStrings.Items.Item(1)
                             .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
                             .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
                             .Parameters.AddWithValue("?cuilben", txtCUIL.Text.ToString)
@@ -222,6 +228,9 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?img1", DeImagen_a_Bytes(clbimagen.Items.Item(0)))
                             .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
                             .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
+                            cadena(0) = clbStrings.Items.Item(0)
+                            cadena(1) = clbStrings.Items.Item(1)
+                            cadena(2) = clbStrings.Items.Item(2)
                             .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
                             .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
                             .Parameters.AddWithValue("?cuilben", txtCUIL.Text.ToString)
@@ -252,6 +261,10 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?img2", DeImagen_a_Bytes(clbimagen.Items.Item(1)))
                             .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
                             .Parameters.AddWithValue("?img4", DeImagen_a_Bytes(clbimagen.Items.Item(3)))
+                            cadena(0) = clbStrings.Items.Item(0)
+                            cadena(1) = clbStrings.Items.Item(1)
+                            cadena(2) = clbStrings.Items.Item(2)
+                            cadena(3) = clbStrings.Items.Item(3)
                             .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
                             .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
                             .Parameters.AddWithValue("?cuilben", txtCUIL.Text.ToString)
@@ -283,6 +296,11 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?img3", DeImagen_a_Bytes(clbimagen.Items.Item(2)))
                             .Parameters.AddWithValue("?img4", DeImagen_a_Bytes(clbimagen.Items.Item(3)))
                             .Parameters.AddWithValue("?img5", DeImagen_a_Bytes(clbimagen.Items.Item(4)))
+                            cadena(0) = clbStrings.Items.Item(0)
+                            cadena(1) = clbStrings.Items.Item(1)
+                            cadena(2) = clbStrings.Items.Item(2)
+                            cadena(3) = clbStrings.Items.Item(3)
+                            cadena(4) = clbStrings.Items.Item(4)
                             .Parameters.AddWithValue("?codus", lblNumeroReintegro.Text.ToString)
                             .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
                             .Parameters.AddWithValue("?cuilben", txtCUIL.Text.ToString)
@@ -577,6 +595,8 @@ Public Class NuevoReintegro
         If OpenFileDialog1.ShowDialog = Windows.Forms.DialogResult.OK Then
             If (cont < 5) Then
                 clbimagen.Items.Add(Image.FromFile(OpenFileDialog1.FileName))
+                Dim cadenita As String = (OpenFileDialog1.FileName).ToString
+                clbStrings.Items.Add(cadenita)
                 cont = clbimagen.Items.Count
                 botonImagen.Text = "+Subir Imagen " & "[" & cont & "]"
                 lblcontadoritems.Text = clbimagen.Items.Count
@@ -612,6 +632,7 @@ Public Class NuevoReintegro
                 limpiarTextboxOperacion()
                 limpiarDatosBeneficiarios()
                 clbimagen.Items.Clear()
+                clbStrings.Items.Clear()
                 apagaDatosBeneficiarios()
                 apagaDatosOperacion()
                 lblPicture.Image = Nothing
@@ -643,6 +664,7 @@ Public Class NuevoReintegro
     Private Sub botonQuitarImagen_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonQuitarImagen.Click
         If clbimagen.Items.Count > 0 Then
             clbimagen.Items.Remove(clbimagen.SelectedItem)
+            clbStrings.Items.Remove(clbStrings.SelectedItem)
             botonImagen.Visible = True
         Else
             If clbimagen.Items.Count = 0 Then

@@ -410,7 +410,7 @@ Partial Class FormularioAuditor
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.shapeRechazados, Me.shapeAprobados, Me.shapePendientes})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(1404, 728)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(1410, 728)
         Me.ShapeContainer1.TabIndex = 98
         Me.ShapeContainer1.TabStop = False
         '
@@ -526,7 +526,7 @@ Partial Class FormularioAuditor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Silver
-        Me.ClientSize = New System.Drawing.Size(1404, 728)
+        Me.ClientSize = New System.Drawing.Size(1410, 728)
         Me.Controls.Add(Me.GridView1)
         Me.Controls.Add(Me.botonExcel3)
         Me.Controls.Add(Me.botonExcel2)
@@ -558,7 +558,7 @@ Partial Class FormularioAuditor
         Me.Controls.Add(Me.ShapeContainer1)
         Me.Name = "FormularioAuditor"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Auditor Medico"
+        Me.Text = "ñ"
         CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)

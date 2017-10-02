@@ -93,6 +93,7 @@ Partial Class NuevoReintegro
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.clbStrings = New System.Windows.Forms.CheckedListBox()
         Me.Panel5.SuspendLayout()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridViewSubsidios, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -788,12 +789,22 @@ Partial Class NuevoReintegro
         Me.ProgressBar1.Size = New System.Drawing.Size(1206, 11)
         Me.ProgressBar1.TabIndex = 37
         '
+        'clbStrings
+        '
+        Me.clbStrings.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.clbStrings.FormattingEnabled = True
+        Me.clbStrings.Location = New System.Drawing.Point(968, 56)
+        Me.clbStrings.Name = "clbStrings"
+        Me.clbStrings.Size = New System.Drawing.Size(199, 64)
+        Me.clbStrings.TabIndex = 31
+        '
         'NuevoReintegro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.ClientSize = New System.Drawing.Size(1204, 718)
+        Me.Controls.Add(Me.clbStrings)
         Me.Controls.Add(Me.GridViewSubsidios)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Button4)
@@ -896,4 +907,5 @@ Partial Class NuevoReintegro
     Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
     Friend WithEvents txtTipoCuenta As System.Windows.Forms.ComboBox
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents clbStrings As System.Windows.Forms.CheckedListBox
 End Class

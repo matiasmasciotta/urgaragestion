@@ -23,6 +23,7 @@ Partial Class ConsultaSolicitudReintegro
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ConsultaSolicitudReintegro))
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -41,8 +42,28 @@ Partial Class ConsultaSolicitudReintegro
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.opPAGADO = New System.Windows.Forms.CheckBox()
+        Me.opComisionRechazados = New System.Windows.Forms.CheckBox()
+        Me.opComisionAprobados = New System.Windows.Forms.CheckBox()
+        Me.opComisionPendientes = New System.Windows.Forms.CheckBox()
+        Me.opSubsidio = New System.Windows.Forms.CheckBox()
+        Me.opReintegro = New System.Windows.Forms.CheckBox()
+        Me.botonLimpiarFiltros = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.opAuditorMedicoSI = New System.Windows.Forms.CheckBox()
+        Me.opAuditorRechazado = New System.Windows.Forms.CheckBox()
+        Me.opPagoPendiente = New System.Windows.Forms.CheckBox()
+        Me.opPendienteAuditor = New System.Windows.Forms.CheckBox()
         Me.lblfechahasta = New System.Windows.Forms.Label()
         Me.lblfechadesde = New System.Windows.Forms.Label()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.LineShape2 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape3 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape4 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.clbimagen = New System.Windows.Forms.CheckedListBox()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
@@ -113,16 +134,16 @@ Partial Class ConsultaSolicitudReintegro
         Me.checkFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.checkFecha.Location = New System.Drawing.Point(7, -3)
         Me.checkFecha.Name = "checkFecha"
-        Me.checkFecha.Size = New System.Drawing.Size(115, 19)
+        Me.checkFecha.Size = New System.Drawing.Size(57, 19)
         Me.checkFecha.TabIndex = 18
-        Me.checkFecha.Text = "Filtrar por Fecha"
+        Me.checkFecha.Text = "Filtrar"
         Me.checkFecha.UseVisualStyleBackColor = True
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(330, 47)
+        Me.Label3.Location = New System.Drawing.Point(267, 32)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(39, 15)
         Me.Label3.TabIndex = 17
@@ -132,7 +153,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(10, 47)
+        Me.Label2.Location = New System.Drawing.Point(10, 32)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(83, 15)
         Me.Label2.TabIndex = 16
@@ -183,24 +204,24 @@ Partial Class ConsultaSolicitudReintegro
         'txtFechaHasta
         '
         Me.txtFechaHasta.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaHasta.Location = New System.Drawing.Point(385, 44)
+        Me.txtFechaHasta.Location = New System.Drawing.Point(315, 29)
         Me.txtFechaHasta.Name = "txtFechaHasta"
-        Me.txtFechaHasta.Size = New System.Drawing.Size(200, 22)
+        Me.txtFechaHasta.Size = New System.Drawing.Size(153, 22)
         Me.txtFechaHasta.TabIndex = 12
         Me.txtFechaHasta.Visible = False
         '
         'txtFechaDesde
         '
         Me.txtFechaDesde.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechaDesde.Location = New System.Drawing.Point(121, 44)
+        Me.txtFechaDesde.Location = New System.Drawing.Point(96, 29)
         Me.txtFechaDesde.Name = "txtFechaDesde"
-        Me.txtFechaDesde.Size = New System.Drawing.Size(201, 22)
+        Me.txtFechaDesde.Size = New System.Drawing.Size(153, 22)
         Me.txtFechaDesde.TabIndex = 11
         Me.txtFechaDesde.Visible = False
         '
         'Boton_Salir
         '
-        Me.Boton_Salir.Location = New System.Drawing.Point(1023, 629)
+        Me.Boton_Salir.Location = New System.Drawing.Point(820, 627)
         Me.Boton_Salir.Name = "Boton_Salir"
         Me.Boton_Salir.Size = New System.Drawing.Size(182, 36)
         Me.Boton_Salir.TabIndex = 19
@@ -209,22 +230,37 @@ Partial Class ConsultaSolicitudReintegro
         '
         'DateTimePicker1
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(128, 118)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(103, 94)
         Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(201, 20)
+        Me.DateTimePicker1.Size = New System.Drawing.Size(153, 20)
         Me.DateTimePicker1.TabIndex = 20
         Me.DateTimePicker1.Visible = False
         '
         'DateTimePicker2
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(385, 72)
+        Me.DateTimePicker2.Location = New System.Drawing.Point(315, 56)
         Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker2.Size = New System.Drawing.Size(153, 20)
         Me.DateTimePicker2.TabIndex = 21
         Me.DateTimePicker2.Visible = False
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.opPAGADO)
+        Me.GroupBox1.Controls.Add(Me.opComisionRechazados)
+        Me.GroupBox1.Controls.Add(Me.opComisionAprobados)
+        Me.GroupBox1.Controls.Add(Me.opComisionPendientes)
+        Me.GroupBox1.Controls.Add(Me.opSubsidio)
+        Me.GroupBox1.Controls.Add(Me.opReintegro)
+        Me.GroupBox1.Controls.Add(Me.botonLimpiarFiltros)
+        Me.GroupBox1.Controls.Add(Me.Label7)
+        Me.GroupBox1.Controls.Add(Me.Label9)
+        Me.GroupBox1.Controls.Add(Me.Label8)
+        Me.GroupBox1.Controls.Add(Me.Label14)
+        Me.GroupBox1.Controls.Add(Me.opAuditorMedicoSI)
+        Me.GroupBox1.Controls.Add(Me.opAuditorRechazado)
+        Me.GroupBox1.Controls.Add(Me.opPagoPendiente)
+        Me.GroupBox1.Controls.Add(Me.opPendienteAuditor)
         Me.GroupBox1.Controls.Add(Me.lblfechahasta)
         Me.GroupBox1.Controls.Add(Me.lblfechadesde)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
@@ -233,36 +269,233 @@ Partial Class ConsultaSolicitudReintegro
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.txtFechaDesde)
-        Me.GroupBox1.Location = New System.Drawing.Point(7, 46)
+        Me.GroupBox1.Controls.Add(Me.ShapeContainer1)
+        Me.GroupBox1.Location = New System.Drawing.Point(7, 38)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(662, 105)
+        Me.GroupBox1.Size = New System.Drawing.Size(662, 166)
         Me.GroupBox1.TabIndex = 22
         Me.GroupBox1.TabStop = False
+        '
+        'opPAGADO
+        '
+        Me.opPAGADO.AutoSize = True
+        Me.opPAGADO.Location = New System.Drawing.Point(382, 125)
+        Me.opPAGADO.Name = "opPAGADO"
+        Me.opPAGADO.Size = New System.Drawing.Size(68, 17)
+        Me.opPAGADO.TabIndex = 89
+        Me.opPAGADO.Text = "Pagados"
+        Me.opPAGADO.UseVisualStyleBackColor = True
+        '
+        'opComisionRechazados
+        '
+        Me.opComisionRechazados.AutoSize = True
+        Me.opComisionRechazados.Location = New System.Drawing.Point(276, 145)
+        Me.opComisionRechazados.Name = "opComisionRechazados"
+        Me.opComisionRechazados.Size = New System.Drawing.Size(86, 17)
+        Me.opComisionRechazados.TabIndex = 88
+        Me.opComisionRechazados.Text = "Rechazados"
+        Me.opComisionRechazados.UseVisualStyleBackColor = True
+        '
+        'opComisionAprobados
+        '
+        Me.opComisionAprobados.AutoSize = True
+        Me.opComisionAprobados.Location = New System.Drawing.Point(276, 125)
+        Me.opComisionAprobados.Name = "opComisionAprobados"
+        Me.opComisionAprobados.Size = New System.Drawing.Size(77, 17)
+        Me.opComisionAprobados.TabIndex = 87
+        Me.opComisionAprobados.Text = "Aprobados"
+        Me.opComisionAprobados.UseVisualStyleBackColor = True
+        '
+        'opComisionPendientes
+        '
+        Me.opComisionPendientes.AutoSize = True
+        Me.opComisionPendientes.Location = New System.Drawing.Point(276, 107)
+        Me.opComisionPendientes.Name = "opComisionPendientes"
+        Me.opComisionPendientes.Size = New System.Drawing.Size(79, 17)
+        Me.opComisionPendientes.TabIndex = 84
+        Me.opComisionPendientes.Text = "Pendientes"
+        Me.opComisionPendientes.UseVisualStyleBackColor = True
+        '
+        'opSubsidio
+        '
+        Me.opSubsidio.AutoSize = True
+        Me.opSubsidio.Location = New System.Drawing.Point(69, 125)
+        Me.opSubsidio.Name = "opSubsidio"
+        Me.opSubsidio.Size = New System.Drawing.Size(71, 17)
+        Me.opSubsidio.TabIndex = 81
+        Me.opSubsidio.Text = "Subsidios"
+        Me.opSubsidio.UseVisualStyleBackColor = True
+        '
+        'opReintegro
+        '
+        Me.opReintegro.AutoSize = True
+        Me.opReintegro.Location = New System.Drawing.Point(69, 107)
+        Me.opReintegro.Name = "opReintegro"
+        Me.opReintegro.Size = New System.Drawing.Size(77, 17)
+        Me.opReintegro.TabIndex = 80
+        Me.opReintegro.Text = "Reintegros"
+        Me.opReintegro.UseVisualStyleBackColor = True
+        '
+        'botonLimpiarFiltros
+        '
+        Me.botonLimpiarFiltros.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.botonLimpiarFiltros.AutoEllipsis = True
+        Me.botonLimpiarFiltros.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.botonLimpiarFiltros.BackColor = System.Drawing.Color.Transparent
+        Me.botonLimpiarFiltros.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.botonLimpiarFiltros.Image = CType(resources.GetObject("botonLimpiarFiltros.Image"), System.Drawing.Image)
+        Me.botonLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.botonLimpiarFiltros.Location = New System.Drawing.Point(532, 44)
+        Me.botonLimpiarFiltros.Name = "botonLimpiarFiltros"
+        Me.botonLimpiarFiltros.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.botonLimpiarFiltros.Size = New System.Drawing.Size(86, 86)
+        Me.botonLimpiarFiltros.TabIndex = 90
+        Me.botonLimpiarFiltros.Text = "Limpiar Filtros"
+        Me.botonLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.botonLimpiarFiltros.UseVisualStyleBackColor = True
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(372, 89)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(98, 13)
+        Me.Label7.TabIndex = 94
+        Me.Label7.Text = "Pago del Reintegro"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(271, 90)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(94, 13)
+        Me.Label9.TabIndex = 93
+        Me.Label9.Text = "Comisión Directiva"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(93, 90)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(28, 13)
+        Me.Label8.TabIndex = 92
+        Me.Label8.Text = "Tipo"
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(163, 90)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(88, 13)
+        Me.Label14.TabIndex = 91
+        Me.Label14.Text = "Auditoría Médica"
+        '
+        'opAuditorMedicoSI
+        '
+        Me.opAuditorMedicoSI.AutoSize = True
+        Me.opAuditorMedicoSI.Location = New System.Drawing.Point(160, 125)
+        Me.opAuditorMedicoSI.Name = "opAuditorMedicoSI"
+        Me.opAuditorMedicoSI.Size = New System.Drawing.Size(77, 17)
+        Me.opAuditorMedicoSI.TabIndex = 83
+        Me.opAuditorMedicoSI.Text = "Aprobados"
+        Me.opAuditorMedicoSI.UseVisualStyleBackColor = True
+        '
+        'opAuditorRechazado
+        '
+        Me.opAuditorRechazado.AutoSize = True
+        Me.opAuditorRechazado.Location = New System.Drawing.Point(160, 145)
+        Me.opAuditorRechazado.Name = "opAuditorRechazado"
+        Me.opAuditorRechazado.Size = New System.Drawing.Size(86, 17)
+        Me.opAuditorRechazado.TabIndex = 86
+        Me.opAuditorRechazado.Text = "Rechazados"
+        Me.opAuditorRechazado.UseVisualStyleBackColor = True
+        '
+        'opPagoPendiente
+        '
+        Me.opPagoPendiente.AutoSize = True
+        Me.opPagoPendiente.Location = New System.Drawing.Point(382, 107)
+        Me.opPagoPendiente.Name = "opPagoPendiente"
+        Me.opPagoPendiente.Size = New System.Drawing.Size(79, 17)
+        Me.opPagoPendiente.TabIndex = 85
+        Me.opPagoPendiente.Text = "Pendientes"
+        Me.opPagoPendiente.UseVisualStyleBackColor = True
+        '
+        'opPendienteAuditor
+        '
+        Me.opPendienteAuditor.AutoSize = True
+        Me.opPendienteAuditor.Location = New System.Drawing.Point(160, 107)
+        Me.opPendienteAuditor.Name = "opPendienteAuditor"
+        Me.opPendienteAuditor.Size = New System.Drawing.Size(79, 17)
+        Me.opPendienteAuditor.TabIndex = 82
+        Me.opPendienteAuditor.Text = "Pendientes"
+        Me.opPendienteAuditor.UseVisualStyleBackColor = True
         '
         'lblfechahasta
         '
         Me.lblfechahasta.AutoSize = True
-        Me.lblfechahasta.Location = New System.Drawing.Point(395, 28)
+        Me.lblfechahasta.Location = New System.Drawing.Point(342, 13)
         Me.lblfechahasta.Name = "lblfechahasta"
-        Me.lblfechahasta.Size = New System.Drawing.Size(94, 13)
+        Me.lblfechahasta.Size = New System.Drawing.Size(89, 13)
         Me.lblfechahasta.TabIndex = 23
-        Me.lblfechahasta.Text = "Año  -  Mes  -  Día"
+        Me.lblfechahasta.Text = "aaaa  -  mm  -  dd"
         Me.lblfechahasta.Visible = False
         '
         'lblfechadesde
         '
         Me.lblfechadesde.AutoSize = True
-        Me.lblfechadesde.Location = New System.Drawing.Point(130, 28)
+        Me.lblfechadesde.Location = New System.Drawing.Point(117, 13)
         Me.lblfechadesde.Name = "lblfechadesde"
-        Me.lblfechadesde.Size = New System.Drawing.Size(94, 13)
+        Me.lblfechadesde.Size = New System.Drawing.Size(89, 13)
         Me.lblfechadesde.TabIndex = 22
-        Me.lblfechadesde.Text = "Año  -  Mes  -  Día"
+        Me.lblfechadesde.Text = "aaaa  -  mm  -  dd"
         Me.lblfechadesde.Visible = False
+        '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(3, 16)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape2, Me.LineShape1, Me.LineShape3, Me.LineShape4})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(656, 147)
+        Me.ShapeContainer1.TabIndex = 95
+        Me.ShapeContainer1.TabStop = False
+        '
+        'LineShape2
+        '
+        Me.LineShape2.Name = "LineShape2"
+        Me.LineShape2.X1 = 145
+        Me.LineShape2.X2 = 145
+        Me.LineShape2.Y1 = 90
+        Me.LineShape2.Y2 = 141
+        '
+        'LineShape1
+        '
+        Me.LineShape1.Name = "LineShape1"
+        Me.LineShape1.X1 = 261
+        Me.LineShape1.X2 = 261
+        Me.LineShape1.Y1 = 90
+        Me.LineShape1.Y2 = 141
+        '
+        'LineShape3
+        '
+        Me.LineShape3.Name = "LineShape3"
+        Me.LineShape3.X1 = 369
+        Me.LineShape3.X2 = 369
+        Me.LineShape3.Y1 = 91
+        Me.LineShape3.Y2 = 142
+        '
+        'LineShape4
+        '
+        Me.LineShape4.Name = "LineShape4"
+        Me.LineShape4.X1 = 64
+        Me.LineShape4.X2 = 467
+        Me.LineShape4.Y1 = 89
+        Me.LineShape4.Y2 = 89
         '
         'Button1
         '
         Me.Button1.BackColor = System.Drawing.Color.DarkTurquoise
-        Me.Button1.Location = New System.Drawing.Point(82, 635)
+        Me.Button1.Location = New System.Drawing.Point(82, 685)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(89, 36)
         Me.Button1.TabIndex = 23
@@ -636,7 +869,7 @@ Partial Class ConsultaSolicitudReintegro
         'CANCELA
         '
         Me.CANCELA.BackColor = System.Drawing.Color.Chocolate
-        Me.CANCELA.Location = New System.Drawing.Point(411, 627)
+        Me.CANCELA.Location = New System.Drawing.Point(411, 677)
         Me.CANCELA.Name = "CANCELA"
         Me.CANCELA.Size = New System.Drawing.Size(84, 52)
         Me.CANCELA.TabIndex = 33
@@ -647,7 +880,7 @@ Partial Class ConsultaSolicitudReintegro
         'OK
         '
         Me.OK.BackColor = System.Drawing.Color.MediumSeaGreen
-        Me.OK.Location = New System.Drawing.Point(289, 653)
+        Me.OK.Location = New System.Drawing.Point(289, 703)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(126, 26)
         Me.OK.TabIndex = 32
@@ -658,7 +891,7 @@ Partial Class ConsultaSolicitudReintegro
         'botonModificaSolicitud
         '
         Me.botonModificaSolicitud.BackColor = System.Drawing.Color.LightSkyBlue
-        Me.botonModificaSolicitud.Location = New System.Drawing.Point(289, 627)
+        Me.botonModificaSolicitud.Location = New System.Drawing.Point(289, 677)
         Me.botonModificaSolicitud.Name = "botonModificaSolicitud"
         Me.botonModificaSolicitud.Size = New System.Drawing.Size(126, 29)
         Me.botonModificaSolicitud.TabIndex = 31
@@ -688,7 +921,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(0, 680)
+        Me.ProgressBar1.Location = New System.Drawing.Point(0, 735)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(1332, 11)
         Me.ProgressBar1.TabIndex = 38
@@ -696,7 +929,7 @@ Partial Class ConsultaSolicitudReintegro
         'botonEliminarSolicitud
         '
         Me.botonEliminarSolicitud.BackColor = System.Drawing.Color.Salmon
-        Me.botonEliminarSolicitud.Location = New System.Drawing.Point(492, 627)
+        Me.botonEliminarSolicitud.Location = New System.Drawing.Point(492, 677)
         Me.botonEliminarSolicitud.Name = "botonEliminarSolicitud"
         Me.botonEliminarSolicitud.Size = New System.Drawing.Size(87, 52)
         Me.botonEliminarSolicitud.TabIndex = 39
@@ -730,7 +963,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Location = New System.Drawing.Point(7, 157)
+        Me.TabControl1.Location = New System.Drawing.Point(7, 208)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(662, 467)
@@ -852,7 +1085,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.DarkGray
-        Me.ClientSize = New System.Drawing.Size(1333, 692)
+        Me.ClientSize = New System.Drawing.Size(1333, 745)
         Me.Controls.Add(Me.TabControl1)
         Me.Controls.Add(Me.txtCuil)
         Me.Controls.Add(Me.lblTipoReintegro)
@@ -865,7 +1098,6 @@ Partial Class ConsultaSolicitudReintegro
         Me.Controls.Add(Me.botonQuitarImagen)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.botonImagen)
-        Me.Controls.Add(Me.Panel5)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.lblPicture)
         Me.Controls.Add(Me.clbimagen)
@@ -878,6 +1110,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblfe2)
         Me.Controls.Add(Me.lblfe1)
+        Me.Controls.Add(Me.Panel5)
         Me.Name = "ConsultaSolicitudReintegro"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Consulta de Solicitudes de Reintegro Generadas"
@@ -963,4 +1196,24 @@ Partial Class ConsultaSolicitudReintegro
     Friend WithEvents TabPage3 As System.Windows.Forms.TabPage
     Friend WithEvents GridView3 As System.Windows.Forms.DataGridView
     Friend WithEvents GridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents opPAGADO As System.Windows.Forms.CheckBox
+    Friend WithEvents opComisionRechazados As System.Windows.Forms.CheckBox
+    Friend WithEvents opComisionAprobados As System.Windows.Forms.CheckBox
+    Friend WithEvents opComisionPendientes As System.Windows.Forms.CheckBox
+    Friend WithEvents opSubsidio As System.Windows.Forms.CheckBox
+    Friend WithEvents opReintegro As System.Windows.Forms.CheckBox
+    Friend WithEvents botonLimpiarFiltros As System.Windows.Forms.Button
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents Label14 As System.Windows.Forms.Label
+    Friend WithEvents opAuditorMedicoSI As System.Windows.Forms.CheckBox
+    Friend WithEvents opAuditorRechazado As System.Windows.Forms.CheckBox
+    Friend WithEvents opPagoPendiente As System.Windows.Forms.CheckBox
+    Friend WithEvents opPendienteAuditor As System.Windows.Forms.CheckBox
+    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    Friend WithEvents LineShape2 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents LineShape3 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents LineShape4 As Microsoft.VisualBasic.PowerPacks.LineShape
 End Class

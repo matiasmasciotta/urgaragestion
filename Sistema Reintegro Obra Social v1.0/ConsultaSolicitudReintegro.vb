@@ -23,6 +23,10 @@ Public Class ConsultaSolicitudReintegro
     Dim rollbackCuilPago As String
     Dim rollbackTipoCuenta As String
     Dim varCodigoreintegro As String
+    Dim varOPREINTEGRO As String = " "
+    Dim varOPAUDITORMEDICO As String = " "
+    Dim varOPCOMISION As String = " "
+    Dim varOPPAGADO As String = " "
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                               "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
                               "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta,cuil_beneficiario "
@@ -138,9 +142,6 @@ Public Class ConsultaSolicitudReintegro
         Me.Close()
     End Sub
 
-    Private Sub txtBeneficiario_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBeneficiario.TextChanged
-        BuscarDato()
-    End Sub
     Private Sub formatearEncabezadoGrid()
         Me.GridView1.Columns(0).Name = "User"
         Me.GridView1.Columns(1).Name = "Reintegro(id)"
@@ -168,12 +169,12 @@ Public Class ConsultaSolicitudReintegro
         Try
             If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
-                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=0)"
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=0) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
             Else
 
                 sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
-                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 0)"
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 0) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -187,12 +188,12 @@ Public Class ConsultaSolicitudReintegro
         Try
             If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
-                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=1)"
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=1) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
             Else
 
                 sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
-                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 1)"
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 1) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -206,12 +207,12 @@ Public Class ConsultaSolicitudReintegro
         Try
             If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
-                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=2)"
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=2) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
             Else
 
                 sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
-                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 2)"
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 2) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -1122,6 +1123,244 @@ Public Class ConsultaSolicitudReintegro
         VarHistorialReintegro = varCodigoreintegroRechazado
         Historial.Show()
     End Sub
+
+    Private Sub botonLimpiarFiltros_Click(sender As Object, e As EventArgs) Handles botonLimpiarFiltros.Click
+        opReintegro.Checked = False
+        opSubsidio.Checked = False
+        opAuditorMedicoSI.Checked = False
+        opAuditorRechazado.Checked = False
+        opComisionAprobados.Checked = False
+        opComisionPendientes.Checked = False
+        opComisionRechazados.Checked = False
+        opPagoPendiente.Checked = False
+        opPAGADO.Checked = False
+    End Sub
+
+
+    'clic en reintegro
+    Private Sub opReintegro_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opReintegro.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+    'clic en subsidio
+    Private Sub opSubsidio_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opSubsidio.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'escribo en el buscador
+    Private Sub txtBeneficiario_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtBeneficiario.TextChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'click auditor medico pendiente
+    Private Sub opPendienteAuditor_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opPendienteAuditor.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'clic auditor medico aprobado
+    Private Sub opAuditorMedicoSI_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opAuditorMedicoSI.CheckedChanged
+
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'clic en auditor rechazado
+    Private Sub opAuditorRechazado_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opAuditorRechazado.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'clic en comision pendiente
+    Private Sub opComisionPendientes_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionPendientes.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'clic en comision aprobada
+    Private Sub opComisionAprobados_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionAprobados.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+
+    End Sub
+
+    'clic en comision rechazada
+    Private Sub opComisionRechazados_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionRechazados.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'clic en pago pendiente
+    Private Sub opPagoPendiente_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opPagoPendiente.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    'clic en pagados
+    Private Sub opPAGADO_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opPAGADO.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    '<<<<<<<<<<>>>>>>>>>>>>><<<<<<<<<<<<<<<<<<>>>>>> LLAMA A TODOS LOS IF CHECK >>>>>>>>>>>>>>><<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>><<<<<<<<<<
+    Private Sub todosLosIF()
+        ifReintegroOSubsidio()
+        ifAuditorMedico()
+        ifComision()
+        ifPagados()
+    End Sub
+
+    'Funcion IF PAGADO
+    Private Sub ifPagados()
+        varOPPAGADO = ""
+        If (opPagoPendiente.Checked = True) And (opPAGADO.Checked = False) Then
+            varOPPAGADO = " AND (Pagado = 0) "
+            If opPagoPendiente.Checked = True Then
+                opComisionAprobados.Checked = True
+                opAuditorMedicoSI.Checked = True
+                opComisionRechazados.Enabled = False
+                opComisionPendientes.Enabled = False
+                opComisionAprobados.Enabled = False
+                opPAGADO.Enabled = False
+                opAuditorMedicoSI.Enabled = False
+                opAuditorRechazado.Enabled = False
+                opPendienteAuditor.Enabled = False
+            End If
+        End If
+        If (opPagoPendiente.Checked = True) And (opPAGADO.Checked = True) Then
+            varOPPAGADO = " AND (Pagado=0) or (Pagado=1)"
+        End If
+        If (opPagoPendiente.Checked = False) And (opPAGADO.Checked = True) Then
+            varOPPAGADO = " AND (Pagado = 1) "
+            opComisionAprobados.Checked = True
+            opAuditorMedicoSI.Checked = True
+            opComisionRechazados.Enabled = False
+            opComisionPendientes.Enabled = False
+            opComisionAprobados.Enabled = False
+            opPagoPendiente.Enabled = False
+            opAuditorMedicoSI.Enabled = False
+            opAuditorRechazado.Enabled = False
+            opPendienteAuditor.Enabled = False
+        End If
+        If (opPagoPendiente.Checked = False) And (opPAGADO.Checked = False) Then
+            varOPPAGADO = " "
+            habilitaCheck()
+        End If
+    End Sub
+    Private Sub habilitaCheck()
+        opSubsidio.Enabled = True
+        opReintegro.Enabled = True
+        opAuditorMedicoSI.Enabled = True
+        opAuditorRechazado.Enabled = True
+        opPendienteAuditor.Enabled = True
+        opComisionAprobados.Enabled = True
+        opComisionRechazados.Enabled = True
+        opComisionPendientes.Enabled = True
+        opPAGADO.Enabled = True
+        opPagoPendiente.Enabled = True
+    End Sub
+
+    'funcion if reintegro o subsidio
+    Private Sub ifReintegroOSubsidio()
+        varOPREINTEGRO = ""
+        If (opReintegro.Checked = True) And (opSubsidio.Checked = False) Then
+            varOPREINTEGRO = " AND (tipo_reintegro = 0) "
+        End If
+        If (opReintegro.Checked = True) And (opSubsidio.Checked = True) Then
+            varOPREINTEGRO = " "
+        End If
+        If (opReintegro.Checked = False) And (opSubsidio.Checked = True) Then
+            varOPREINTEGRO = " AND (tipo_reintegro = 1) "
+        End If
+        If (opReintegro.Checked = False) And (opSubsidio.Checked = False) Then
+            varOPREINTEGRO = " "
+        End If
+
+    End Sub
+
+
+    'funcion if auditor medico
+    Private Sub ifAuditorMedico()
+        varOPAUDITORMEDICO = ""
+        'PENDIENTE AUDITOR MEDICO (AUDITOR MEDICO APROBADO)
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 0)"
+        End If
+        'PENDIENTE DE AUDITOR MEDICO Y APROBADOS
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1) "
+        End If
+        'SOLO APROBADOS POR AUDITOR MEDICO
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1) "
+        End If
+        'PENDIENTE DE AUDITOR MEDICO Y RECHAZADOS
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 2) "
+        End If
+        'PENDIENTES - APROBADOS Y RECHAZADOS
+        If (opPendienteAuditor.Checked = True) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1) or (auditor_medico = 2) "
+        End If
+        'APROBADOS Y RECHAZADOS POR AUDITOR MEDICO
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = True) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 1) or (auditor_medico = 2) "
+        End If
+        'SOLO RECHAZADOS POR AUDITOR MEDICO
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = True) Then
+            varOPAUDITORMEDICO = " AND (auditor_medico = 2) "
+        End If
+        'APARECEN TODOS LOS REGISTROS SIN FILTRO --> TODAS LAS SOLICITUDES DE REINTEGRO PENDIENTES DE APROBACION PARA AUDITOR
+        If (opPendienteAuditor.Checked = False) And (opAuditorMedicoSI.Checked = False) And (opAuditorRechazado.Checked = False) Then
+            varOPAUDITORMEDICO = " "
+            habilitaCheck()
+        End If
+    End Sub
+
+    'funcion if de comision directiva <>>>>>>>>>>><<<<<<<<<
+    Private Sub ifComision()
+        varOPCOMISION = ""
+        'PENDIENTE AUDITOR MEDICO (AUDITOR MEDICO APROBADO)
+        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = False And opComisionRechazados.Checked = False) Then
+            varOPCOMISION = " AND (Estado = 0)"
+            opAuditorMedicoSI.Checked = True
+        End If
+        'PENDIENTE DE AUDITOR MEDICO Y APROBADOS
+        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) Then
+            varOPCOMISION = " AND (Estado = 1) "
+        End If
+        'SOLO APROBADOS POR AUDITOR MEDICO
+        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = False) Then
+            varOPCOMISION = " AND (Estado = 1) "
+            opAuditorMedicoSI.Checked = True
+        End If
+        'PENDIENTE DE AUDITOR MEDICO Y RECHAZADOS
+        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) Then
+            varOPCOMISION = " AND (Estado = 2) "
+        End If
+        'PENDIENTES - APROBADOS Y RECHAZADOS
+        If (opComisionPendientes.Checked = True) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = True) Then
+            varOPCOMISION = " AND (Estado = 1) or (Estado = 2) "
+        End If
+        'APROBADOS Y RECHAZADOS POR AUDITOR MEDICO
+        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = True) And (opComisionRechazados.Checked = True) Then
+            varOPCOMISION = " AND (Estado = 1) or (Estado = 2) "
+        End If
+        'SOLO RECHAZADOS POR AUDITOR MEDICO
+        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = True) Then
+            varOPCOMISION = " AND (Estado = 2) "
+            opAuditorMedicoSI.Checked = True
+        End If
+        'APARECEN TODOS LOS REGISTROS SIN FILTRO --> TODAS LAS SOLICITUDES DE REINTEGRO PENDIENTES DE APROBACION PARA AUDITOR
+        If (opComisionPendientes.Checked = False) And (opComisionAprobados.Checked = False) And (opComisionRechazados.Checked = False) Then
+            varOPCOMISION = " "
+            habilitaCheck()
+        End If
+    End Sub
+
+
 End Class
 
 
