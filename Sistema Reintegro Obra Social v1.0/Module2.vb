@@ -44,7 +44,7 @@ Module Correo
             envios.Port = 587
             envios.EnableSsl = True
             envios.Send(correos)
-            MsgBox("El mensaje fue enviado correctamente. ", MsgBoxStyle.Information, "Mensaje")
+            MsgBox("Informado al Auditor.. ", MsgBoxStyle.Information, "Mensaje")
 
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Mensajeria 1.0 vb.net ®", MessageBoxButtons.OK, MessageBoxIcon.Error)

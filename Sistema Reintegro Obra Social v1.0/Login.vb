@@ -13,6 +13,12 @@ Public Class Login
     Dim sql As String
     Dim comando As MySqlCommand
 
+    Dim Conex3 As New MySqlConnection(CADENABASE2)
+    Dim da3 As MySqlDataAdapter
+    Dim dt3 As DataTable
+    Dim sql3 As String
+    Dim comando3 As MySqlCommand
+
 
     Private Sub BotonAceptar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BotonAceptar.Click
         If (Trim(txtUser.Text) = "") Or (Trim(txtPass.Text) = "") Then
@@ -71,6 +77,9 @@ Public Class Login
                     MenuPrincipal.ExaminarBeneficiariosToolStripMenuItem.Enabled = True
                     MenuPrincipal.ExaminarSolicitudDeReintegroToolStripMenuItem.Enabled = True
                     MenuPrincipal.GenerarSolicitudDeReintegroToolStripMenuItem.Enabled = True
+
+                    'LLena el grid de menu principal oculto, con datos del usuario logueado.
+                    labelUserMenuPrincipal()
                 End If
                 '--> es Admin
                 If txtTipoUsuario.Text = 1 Then
@@ -81,20 +90,24 @@ Public Class Login
                     MenuPrincipal.UsersSoloAdminToolStripMenuItem.Visible = True
                     MenuPrincipal.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.Visible = True
                     MenuPrincipal.ConsultaAuditorMedicoToolStripMenuItem.Enabled = True
+                    labelUserMenuPrincipal()
                 End If
                 '--> es Pagador
                 If txtTipoUsuario.Text = 2 Then
                     'MenuPrincipal.ConsultarReintegrosPendientesToolStripMenuItem.Enabled = True
                     MenuPrincipal.GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Enabled = True
+                    labelUserMenuPrincipal()
                 End If
                 '--> es Auditor
                 If txtTipoUsuario.Text = 3 Then
                     MenuPrincipal.ConsultarReintegrosPendientesToolStripMenuItem.Enabled = True
                     MenuPrincipal.ConsultaAuditorMedicoToolStripMenuItem.Enabled = True
+                    labelUserMenuPrincipal()
                 End If
                 '--> es Otro
                 If txtTipoUsuario.Text = 4 Then
                     'nada aún
+                    labelUserMenuPrincipal()
                 End If
 
                 '*****************************************************************************************************
@@ -103,9 +116,9 @@ Public Class Login
                 txtUser.Enabled = False
                 txtPass.Enabled = False
                 Timer1.Start()
-                MenuPrincipal.lblUser.Text = "Ingreso - " & DateTime.Now.Date
+                'MenuPrincipal.lblUser.Text = "Ingreso - " & DateTime.Now.Date
                 MenuPrincipal.PictureBox1.Image = WindowsApplication1.My.Resources.Resources.mejoico2
-                MenuPrincipal.lblUser.ForeColor = Color.Green
+                'MenuPrincipal.lblUser.ForeColor = Color.Green
                 MenuPrincipal.IngresarAlSistemaToolStripMenuItem.Text = "Salir para Cerrar Sesion"
                 MenuPrincipal.IngresarAlSistemaToolStripMenuItem.Enabled = False
                 'Me.Close()
@@ -115,6 +128,20 @@ Public Class Login
         End Try
     End Sub
 
+    Private Sub labelUserMenuPrincipal()
+        'LLena el grid de menu principal oculto, con datos del usuario logueado.
+        Try
+            sql3 = "select apellidonombre from usuarios_reintegros where (codigo_usuario = '" & VariableGlobalUsuario.ToString & "')"
+            da3 = New MySqlDataAdapter(sql3, Conex3)
+            dt3 = New DataTable
+            da3.Fill(dt3)
+            MenuPrincipal.GridViewUsuario.DataSource = dt3
+            MenuPrincipal.GridViewUsuario.Rows(0).Selected = True
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+        'sacar
+    End Sub
 
     'Funcion de encriptado ********************************************************************************************
     Private Sub MD5EncryptPass(ByVal StrPass As String)
@@ -164,11 +191,4 @@ Public Class Login
         End If
     End Sub
 
-    Private Sub txtUser_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtUser.TextChanged
-
-    End Sub
-
-    Private Sub PictureBox2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles PictureBox2.Click
-
-    End Sub
 End Class

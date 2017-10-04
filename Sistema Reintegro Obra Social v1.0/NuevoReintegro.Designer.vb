@@ -797,6 +797,7 @@ Partial Class NuevoReintegro
         Me.clbStrings.Name = "clbStrings"
         Me.clbStrings.Size = New System.Drawing.Size(199, 64)
         Me.clbStrings.TabIndex = 31
+        Me.clbStrings.Visible = False
         '
         'NuevoReintegro
         '

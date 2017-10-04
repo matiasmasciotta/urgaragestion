@@ -1,4 +1,17 @@
-﻿Public Class MenuPrincipal
+﻿Imports MySql.Data.MySqlClient
+Imports System.IO
+Imports System.Drawing.Imaging
+Imports System.Windows.Forms.Keys
+
+
+Public Class MenuPrincipal
+    Dim Conex As New MySqlConnection(CADENABASE2)
+    Dim da As MySqlDataAdapter
+    Dim dt As DataTable
+    Dim sql As String
+    Dim comando As MySqlCommand
+  
+
     'BOTON GENERAR SOLICITUD
     Private Sub GenerarSolicitudDeReintegroToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GenerarSolicitudDeReintegroToolStripMenuItem.Click
         NuevoReintegro.Show()
@@ -31,26 +44,15 @@
         Timer1.Enabled = True
         'effecIn()
         apagarBotones()
-        'MsgBox(CADENABASE2)
-
-        '****************si quiero sobreescribirlo********
-        'Dim obj As Object
-        'Dim archivo As Object
-        'obj = CreateObject("Scripting.FileSystemObject")
-        'archivo = obj.CreateTextFile("C:\texto.txt")
-        'archivo.WriteLine("Esta es la linea 1")
-        'archivo.WriteLine("Esta es la linea 2")
-        'archivo.close()
     End Sub
 
-
-    'Metodo apaga botones
     Private Sub apagarBotones()
         ExaminarBeneficiariosToolStripMenuItem.Enabled = False
         ExaminarSolicitudDeReintegroToolStripMenuItem.Enabled = False
         GenerarSolicitudDeReintegroToolStripMenuItem.Enabled = False
         ConsultarReintegrosPendientesToolStripMenuItem.Enabled = False
     End Sub
+
 
     Private Sub ExaminarSolicitudDeReintegroToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExaminarSolicitudDeReintegroToolStripMenuItem.Click
         ConsultaSolicitudReintegro.Show()
@@ -69,9 +71,6 @@
 
     End Sub
 
-    Private Sub horas_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles horas.Click
-
-    End Sub
 
     Private Sub SoporteToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SoporteToolStripMenuItem.Click
         soporte.Show()
@@ -81,13 +80,6 @@
         ConsultaTotal.Show()
     End Sub
 
-    Private Sub DatosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DatosToolStripMenuItem.Click
-
-    End Sub
-
-    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
-
-    End Sub
 
     Private Sub MenuPrincipal_MouseMove(sender As Object, e As MouseEventArgs) Handles Me.MouseMove
         PictureBox2.Image = WindowsApplication1.My.Resources.Resources.logoblancourgara
@@ -102,34 +94,17 @@
     End Sub
 
     Private Sub ConsultaAuditorMedicoToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultaAuditorMedicoToolStripMenuItem.Click
-        FormularioAuditor.show()
+        FormularioAuditor.Show()
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-
-    End Sub
-
-    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
-
-    End Sub
-
-    Private Sub lblUser_Click(sender As Object, e As EventArgs) Handles lblUser.Click
-
-    End Sub
-
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
-
-    End Sub
-
-    Private Sub minutos_Click(sender As Object, e As EventArgs) Handles minutos.Click
-
-    End Sub
-
-    Private Sub segundos_Click(sender As Object, e As EventArgs) Handles segundos.Click
-
-    End Sub
 
     Private Sub GenerarPagoDeReintegroOSubsidioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Click
         FormularioPagos.Show()
     End Sub
+
+    'LABEL DE USER
+    Private Sub GridViewUsuario_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles GridViewUsuario.RowsAdded
+        lblUser.Text = "User: " & GridViewUsuario.Rows(0).Cells(0).Value.ToString()
+    End Sub
+
 End Class

@@ -504,13 +504,14 @@ Public Class NuevoReintegro
                 End If
             End With
             Try
+                'asd
                 con_insert.Open()
                 cmdinsert.ExecuteNonQuery()
                 con_insert.Close()
                 MessageBox.Show("SOLICITUD GENERADA CORRECTAMENTE", "NUEVA SOLICITUD DE REINTEGRO", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 'ENV CORREO (MAIL EMISOR (GMAIL) - PASS (GMAIL) - MENSAJE   -   ASUNTO     - MAIL RECEPTOR)
                 enviarCorreo("noreply.urgarareintegros@gmail.com", "Clave2017", "Sr. Auditor, " + vbLf + "En la fecha [" & txtFechaSolicitud.Text & "], se ha generado " & _
-                             "una nueva solicitud de reintegro, correspondiente al USUARIO: " + vbLf + "[" & lblNumeroReintegro.Text & "], del beneficiario N° [" & txtBeneficiario.Text & "]" & _
+                             "una nueva solicitud de reintegro, generada por el USUARIO: " + vbLf + "[" & VariableGlobalUsuario.ToString & "], del beneficiario N° [" & txtBeneficiario.Text & "]" & _
                              "- N° de Cuil [" & txtCUIL.Text & "] (" & txtApellidoNombre.Text & "), el cual solicita: " + vbLf + "** " & txtDetalle.Text & " **, por un importe de $" & txtImporte.Text & "." + vbLf + "  " & _
                              "a sus efectos, muchas gracias!", "Nuevo Reintegro Solicitado: Usuario " & lblNumeroReintegro.Text & ", SROSS (NO RESPONDER ESTE MENSAJE)", "matiasmasciotta@urgara.org.ar")
                 cont = 0
@@ -783,6 +784,10 @@ Public Class NuevoReintegro
 
     Private Sub GridViewSubsidios_MouseHover(sender As Object, e As EventArgs) Handles GridViewSubsidios.MouseHover
         ToolTip1.SetToolTip(GridViewSubsidios, "Doble click para seleccionar..")
+    End Sub
+
+    Private Sub Panel5_Paint(sender As Object, e As PaintEventArgs) Handles Panel5.Paint
+
     End Sub
 End Class
 

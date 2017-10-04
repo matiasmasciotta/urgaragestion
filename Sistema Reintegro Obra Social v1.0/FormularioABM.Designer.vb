@@ -545,7 +545,8 @@ Partial Class FormularioABM
         Me.Controls.Add(Me.Panel4)
         Me.Controls.Add(Me.Panel5)
         Me.Name = "FormularioABM"
-        Me.Text = "Alta-Baja-Modificación"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.Text = "Busqueda de Beneficiarios"
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
