@@ -41,6 +41,8 @@ Public Class ConsultaSolicitudReintegro
     Dim MODIFICA As Boolean = False
     Dim varCodigoreintegroAprobado As String
     Dim varCodigoreintegroRechazado As String
+    Dim varOPAPEYCUIL As String = ""
+    Dim varOPNUMREINTEGRO As String = ""
 
     Private Sub ConsultaSolicitudReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         VariableGlobalModificacion = ""
@@ -166,15 +168,22 @@ Public Class ConsultaSolicitudReintegro
 
     Private Sub BuscarDato()
         'Filtra los Pendientes de Auditoria Medica
+
+
+
+
+
         Try
             If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
-                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=0) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND " & _
+                    "(Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=0) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO & varOPAPEYCUIL & varOPNUMREINTEGRO
             Else
 
                 sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
-                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 0) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and " & _
+                    "(Auditor_Medico = 0) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO & varOPAPEYCUIL & varOPNUMREINTEGRO
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -183,6 +192,13 @@ Public Class ConsultaSolicitudReintegro
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+
+
+
+
+
+
 
         'Filtra los Aprobados por Auditor Medico
         Try
@@ -1078,10 +1094,6 @@ Public Class ConsultaSolicitudReintegro
 
 
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        GridAExcel(GridView1)
-    End Sub
-
     Private Sub GridView1_MouseMove(sender As Object, e As MouseEventArgs) Handles GridView1.MouseMove
         formatearEncabezadoGrid()
     End Sub
@@ -1361,6 +1373,49 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
 
+
+    'OPCION A FILTRAR POR APELLIDO O CUIL DEL BENEFICIARIO
+
+
+    Private Sub txtApeoCuil_TextChanged(sender As Object, e As EventArgs) Handles txtApeoCuil.TextChanged
+        If opBuscaNumReintegro.Checked = True Then
+            varOPNUMREINTEGRO = " AND Codigo_Reintegro like '%" & txtApeoCuil.Text & "%'"
+        End If
+        If opBuscarDNI.Checked = True Then
+            varOPAPEYCUIL = " AND Cuil_Beneficiario like '%" & txtApeoCuil.Text & "%'"
+        End If
+        BuscarDato()
+    End Sub
+
+    Private Sub opBuscaNumReintegro_CheckedChanged(sender As Object, e As EventArgs) Handles opBuscaNumReintegro.CheckedChanged
+        If (opBuscaNumReintegro.Checked = True) Then
+            opBuscarDNI.Checked = False
+            txtBeneficiario.Enabled = False
+            txtApeoCuil.Text = ""
+            txtApeoCuil.Focus()
+        End If
+    End Sub
+
+    Private Sub opBuscarDNI_CheckedChanged(sender As Object, e As EventArgs) Handles opBuscarDNI.CheckedChanged
+        If (opBuscarDNI.Checked = True) Then
+            opBuscaNumReintegro.Checked = False
+            txtBeneficiario.Enabled = True
+            txtApeoCuil.Text = ""
+            txtApeoCuil.Focus()
+        End If
+    End Sub
+
+    Private Sub botonExcel_Click(sender As Object, e As EventArgs) Handles botonExcel.Click
+        GridAExcel(GridView1)
+    End Sub
+
+    Private Sub botonExcelAprobadosAM_Click(sender As Object, e As EventArgs) Handles botonExcelAprobadosAM.Click
+        GridAExcel(GridView2)
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles botonexcelRechazados.Click
+        GridAExcel(GridView3)
+    End Sub
 End Class
 
 

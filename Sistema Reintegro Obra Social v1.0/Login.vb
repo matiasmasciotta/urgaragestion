@@ -191,4 +191,19 @@ Public Class Login
         End If
     End Sub
 
+    Private Sub txtUser_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtUser.KeyPress
+        If e.KeyChar = Microsoft.VisualBasic.ChrW(13) Then
+            txtPass.Focus()
+        End If
+    End Sub
+
+    Private Sub txtPass_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtPass.KeyPress
+        If e.KeyChar = Microsoft.VisualBasic.ChrW(13) Then
+            BotonAceptar.Focus()
+        End If
+    End Sub
+
+    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+
+    End Sub
 End Class

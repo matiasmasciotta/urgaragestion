@@ -41,6 +41,7 @@ Partial Class FormularioABM
         Me.txtApellidoNombre = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.tempApellidoNombre = New System.Windows.Forms.TextBox()
         Me.txtProvincia = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
         Me.txtLocalidad = New System.Windows.Forms.TextBox()
@@ -65,9 +66,13 @@ Partial Class FormularioABM
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtCUIL = New System.Windows.Forms.TextBox()
-        Me.botonConfirmarAlta = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.tempCuil = New System.Windows.Forms.TextBox()
+        Me.tempCodigo_Beneficiario = New System.Windows.Forms.TextBox()
+        Me.opUrgara = New System.Windows.Forms.CheckBox()
+        Me.txtParentesco = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -189,6 +194,7 @@ Partial Class FormularioABM
         Me.botonModificarBeneficiario.TabIndex = 4
         Me.botonModificarBeneficiario.Text = "Modificar "
         Me.botonModificarBeneficiario.UseVisualStyleBackColor = False
+        Me.botonModificarBeneficiario.Visible = False
         '
         'botonAgregarBeneficiario
         '
@@ -199,6 +205,7 @@ Partial Class FormularioABM
         Me.botonAgregarBeneficiario.TabIndex = 3
         Me.botonAgregarBeneficiario.Text = "Agregar Beneficiario"
         Me.botonAgregarBeneficiario.UseVisualStyleBackColor = False
+        Me.botonAgregarBeneficiario.Visible = False
         '
         'Label18
         '
@@ -267,6 +274,9 @@ Partial Class FormularioABM
         'Panel4
         '
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel4.Controls.Add(Me.Label10)
+        Me.Panel4.Controls.Add(Me.txtParentesco)
+        Me.Panel4.Controls.Add(Me.tempApellidoNombre)
         Me.Panel4.Controls.Add(Me.txtProvincia)
         Me.Panel4.Controls.Add(Me.Label24)
         Me.Panel4.Controls.Add(Me.txtLocalidad)
@@ -293,13 +303,23 @@ Partial Class FormularioABM
         Me.Panel4.Controls.Add(Me.Label2)
         Me.Panel4.Location = New System.Drawing.Point(549, 78)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(480, 355)
+        Me.Panel4.Size = New System.Drawing.Size(480, 421)
         Me.Panel4.TabIndex = 10
+        '
+        'tempApellidoNombre
+        '
+        Me.tempApellidoNombre.Location = New System.Drawing.Point(239, 175)
+        Me.tempApellidoNombre.Name = "tempApellidoNombre"
+        Me.tempApellidoNombre.ReadOnly = True
+        Me.tempApellidoNombre.Size = New System.Drawing.Size(233, 20)
+        Me.tempApellidoNombre.TabIndex = 30
+        Me.tempApellidoNombre.Visible = False
         '
         'txtProvincia
         '
-        Me.txtProvincia.Location = New System.Drawing.Point(134, 224)
+        Me.txtProvincia.Location = New System.Drawing.Point(134, 251)
         Me.txtProvincia.Name = "txtProvincia"
+        Me.txtProvincia.ReadOnly = True
         Me.txtProvincia.Size = New System.Drawing.Size(112, 20)
         Me.txtProvincia.TabIndex = 29
         '
@@ -307,7 +327,7 @@ Partial Class FormularioABM
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(72, 227)
+        Me.Label24.Location = New System.Drawing.Point(72, 254)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(60, 15)
         Me.Label24.TabIndex = 28
@@ -315,8 +335,9 @@ Partial Class FormularioABM
         '
         'txtLocalidad
         '
-        Me.txtLocalidad.Location = New System.Drawing.Point(134, 198)
+        Me.txtLocalidad.Location = New System.Drawing.Point(134, 225)
         Me.txtLocalidad.Name = "txtLocalidad"
+        Me.txtLocalidad.ReadOnly = True
         Me.txtLocalidad.Size = New System.Drawing.Size(109, 20)
         Me.txtLocalidad.TabIndex = 27
         '
@@ -324,7 +345,7 @@ Partial Class FormularioABM
         '
         Me.Label23.AutoSize = True
         Me.Label23.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label23.Location = New System.Drawing.Point(71, 201)
+        Me.Label23.Location = New System.Drawing.Point(71, 228)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(64, 15)
         Me.Label23.TabIndex = 26
@@ -332,8 +353,9 @@ Partial Class FormularioABM
         '
         'txtCelular
         '
-        Me.txtCelular.Location = New System.Drawing.Point(134, 250)
+        Me.txtCelular.Location = New System.Drawing.Point(134, 277)
         Me.txtCelular.Name = "txtCelular"
+        Me.txtCelular.ReadOnly = True
         Me.txtCelular.Size = New System.Drawing.Size(109, 20)
         Me.txtCelular.TabIndex = 25
         '
@@ -341,7 +363,7 @@ Partial Class FormularioABM
         '
         Me.Label22.AutoSize = True
         Me.Label22.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label22.Location = New System.Drawing.Point(85, 253)
+        Me.Label22.Location = New System.Drawing.Point(85, 280)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(49, 15)
         Me.Label22.TabIndex = 24
@@ -349,8 +371,9 @@ Partial Class FormularioABM
         '
         'txtCP
         '
-        Me.txtCP.Location = New System.Drawing.Point(134, 172)
+        Me.txtCP.Location = New System.Drawing.Point(134, 199)
         Me.txtCP.Name = "txtCP"
+        Me.txtCP.ReadOnly = True
         Me.txtCP.Size = New System.Drawing.Size(54, 20)
         Me.txtCP.TabIndex = 23
         '
@@ -358,7 +381,7 @@ Partial Class FormularioABM
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(101, 174)
+        Me.Label21.Location = New System.Drawing.Point(101, 201)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(32, 15)
         Me.Label21.TabIndex = 22
@@ -366,8 +389,9 @@ Partial Class FormularioABM
         '
         'txtPiso
         '
-        Me.txtPiso.Location = New System.Drawing.Point(134, 146)
+        Me.txtPiso.Location = New System.Drawing.Point(134, 173)
         Me.txtPiso.Name = "txtPiso"
+        Me.txtPiso.ReadOnly = True
         Me.txtPiso.Size = New System.Drawing.Size(45, 20)
         Me.txtPiso.TabIndex = 21
         '
@@ -375,7 +399,7 @@ Partial Class FormularioABM
         '
         Me.Label20.AutoSize = True
         Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(98, 148)
+        Me.Label20.Location = New System.Drawing.Point(98, 175)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(34, 15)
         Me.Label20.TabIndex = 20
@@ -383,8 +407,9 @@ Partial Class FormularioABM
         '
         'txtPuerta
         '
-        Me.txtPuerta.Location = New System.Drawing.Point(134, 120)
+        Me.txtPuerta.Location = New System.Drawing.Point(134, 147)
         Me.txtPuerta.Name = "txtPuerta"
+        Me.txtPuerta.ReadOnly = True
         Me.txtPuerta.Size = New System.Drawing.Size(47, 20)
         Me.txtPuerta.TabIndex = 19
         '
@@ -392,7 +417,7 @@ Partial Class FormularioABM
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(85, 121)
+        Me.Label19.Location = New System.Drawing.Point(85, 148)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(46, 15)
         Me.Label19.TabIndex = 18
@@ -400,22 +425,25 @@ Partial Class FormularioABM
         '
         'txtMail
         '
-        Me.txtMail.Location = New System.Drawing.Point(134, 307)
+        Me.txtMail.Location = New System.Drawing.Point(134, 334)
         Me.txtMail.Name = "txtMail"
+        Me.txtMail.ReadOnly = True
         Me.txtMail.Size = New System.Drawing.Size(190, 20)
         Me.txtMail.TabIndex = 17
         '
         'txtTelefono
         '
-        Me.txtTelefono.Location = New System.Drawing.Point(134, 278)
+        Me.txtTelefono.Location = New System.Drawing.Point(134, 305)
         Me.txtTelefono.Name = "txtTelefono"
+        Me.txtTelefono.ReadOnly = True
         Me.txtTelefono.Size = New System.Drawing.Size(112, 20)
         Me.txtTelefono.TabIndex = 16
         '
         'txtCalle
         '
-        Me.txtCalle.Location = New System.Drawing.Point(134, 94)
+        Me.txtCalle.Location = New System.Drawing.Point(134, 121)
         Me.txtCalle.Name = "txtCalle"
+        Me.txtCalle.ReadOnly = True
         Me.txtCalle.Size = New System.Drawing.Size(190, 20)
         Me.txtCalle.TabIndex = 15
         '
@@ -423,7 +451,7 @@ Partial Class FormularioABM
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(98, 310)
+        Me.Label9.Location = New System.Drawing.Point(98, 337)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(34, 15)
         Me.Label9.TabIndex = 14
@@ -433,7 +461,7 @@ Partial Class FormularioABM
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(76, 281)
+        Me.Label8.Location = New System.Drawing.Point(76, 308)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(58, 15)
         Me.Label8.TabIndex = 13
@@ -443,7 +471,7 @@ Partial Class FormularioABM
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(93, 97)
+        Me.Label7.Location = New System.Drawing.Point(93, 124)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(38, 15)
         Me.Label7.TabIndex = 12
@@ -452,7 +480,7 @@ Partial Class FormularioABM
         'comboSexo
         '
         Me.comboSexo.FormattingEnabled = True
-        Me.comboSexo.Location = New System.Drawing.Point(134, 67)
+        Me.comboSexo.Location = New System.Drawing.Point(134, 94)
         Me.comboSexo.Name = "comboSexo"
         Me.comboSexo.Size = New System.Drawing.Size(119, 21)
         Me.comboSexo.TabIndex = 11
@@ -461,7 +489,7 @@ Partial Class FormularioABM
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(92, 67)
+        Me.Label6.Location = New System.Drawing.Point(92, 94)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(38, 15)
         Me.Label6.TabIndex = 10
@@ -502,20 +530,11 @@ Partial Class FormularioABM
         Me.txtCUIL.Size = New System.Drawing.Size(112, 20)
         Me.txtCUIL.TabIndex = 11
         '
-        'botonConfirmarAlta
-        '
-        Me.botonConfirmarAlta.Location = New System.Drawing.Point(618, 498)
-        Me.botonConfirmarAlta.Name = "botonConfirmarAlta"
-        Me.botonConfirmarAlta.Size = New System.Drawing.Size(143, 48)
-        Me.botonConfirmarAlta.TabIndex = 14
-        Me.botonConfirmarAlta.Text = "Aceptar"
-        Me.botonConfirmarAlta.UseVisualStyleBackColor = True
-        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(789, 498)
+        Me.Button1.Location = New System.Drawing.Point(719, 608)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(145, 48)
+        Me.Button1.Size = New System.Drawing.Size(145, 30)
         Me.Button1.TabIndex = 15
         Me.Button1.Text = "Salir"
         Me.Button1.UseVisualStyleBackColor = True
@@ -528,15 +547,66 @@ Partial Class FormularioABM
         Me.Panel5.Size = New System.Drawing.Size(136, 41)
         Me.Panel5.TabIndex = 17
         '
+        'tempCuil
+        '
+        Me.tempCuil.Location = New System.Drawing.Point(882, 28)
+        Me.tempCuil.Name = "tempCuil"
+        Me.tempCuil.ReadOnly = True
+        Me.tempCuil.Size = New System.Drawing.Size(112, 20)
+        Me.tempCuil.TabIndex = 12
+        Me.tempCuil.Visible = False
+        '
+        'tempCodigo_Beneficiario
+        '
+        Me.tempCodigo_Beneficiario.BackColor = System.Drawing.SystemColors.Info
+        Me.tempCodigo_Beneficiario.Location = New System.Drawing.Point(410, 29)
+        Me.tempCodigo_Beneficiario.Name = "tempCodigo_Beneficiario"
+        Me.tempCodigo_Beneficiario.ReadOnly = True
+        Me.tempCodigo_Beneficiario.Size = New System.Drawing.Size(134, 20)
+        Me.tempCodigo_Beneficiario.TabIndex = 6
+        Me.tempCodigo_Beneficiario.Visible = False
+        '
+        'opUrgara
+        '
+        Me.opUrgara.AutoSize = True
+        Me.opUrgara.Enabled = False
+        Me.opUrgara.Location = New System.Drawing.Point(752, 57)
+        Me.opUrgara.Name = "opUrgara"
+        Me.opUrgara.Size = New System.Drawing.Size(104, 17)
+        Me.opUrgara.TabIndex = 31
+        Me.opUrgara.Text = "Afiliado a Urgara"
+        Me.opUrgara.UseVisualStyleBackColor = True
+        '
+        'txtParentesco
+        '
+        Me.txtParentesco.Enabled = False
+        Me.txtParentesco.Location = New System.Drawing.Point(134, 67)
+        Me.txtParentesco.Name = "txtParentesco"
+        Me.txtParentesco.ReadOnly = True
+        Me.txtParentesco.Size = New System.Drawing.Size(190, 20)
+        Me.txtParentesco.TabIndex = 31
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(56, 68)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(72, 15)
+        Me.Label10.TabIndex = 32
+        Me.Label10.Text = "Parentesco:"
+        '
         'FormularioABM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
         Me.ClientSize = New System.Drawing.Size(1077, 664)
+        Me.Controls.Add(Me.opUrgara)
+        Me.Controls.Add(Me.tempCodigo_Beneficiario)
+        Me.Controls.Add(Me.tempCuil)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.botonConfirmarAlta)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Panel3)
@@ -588,7 +658,6 @@ Partial Class FormularioABM
     Friend WithEvents txtTelefono As System.Windows.Forms.TextBox
     Friend WithEvents botonModificarBeneficiario As System.Windows.Forms.Button
     Friend WithEvents botonAgregarBeneficiario As System.Windows.Forms.Button
-    Friend WithEvents botonConfirmarAlta As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents opBuscarNombre As System.Windows.Forms.RadioButton
     Friend WithEvents opBuscarDNI As System.Windows.Forms.RadioButton
@@ -608,4 +677,10 @@ Partial Class FormularioABM
     Friend WithEvents CANCELAR As System.Windows.Forms.Button
     Friend WithEvents OK As System.Windows.Forms.Button
     Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents tempApellidoNombre As System.Windows.Forms.TextBox
+    Friend WithEvents tempCuil As System.Windows.Forms.TextBox
+    Friend WithEvents tempCodigo_Beneficiario As System.Windows.Forms.TextBox
+    Friend WithEvents opUrgara As System.Windows.Forms.CheckBox
+    Friend WithEvents txtParentesco As System.Windows.Forms.TextBox
+    Friend WithEvents Label10 As System.Windows.Forms.Label
 End Class

@@ -56,6 +56,7 @@ Partial Class MenuPrincipal
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.GridViewUsuario = New System.Windows.Forms.DataGridView()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -219,7 +220,7 @@ Partial Class MenuPrincipal
         Me.lblUser.BackColor = System.Drawing.Color.Transparent
         Me.lblUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblUser.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.lblUser.Location = New System.Drawing.Point(1356, 41)
+        Me.lblUser.Location = New System.Drawing.Point(1406, 43)
         Me.lblUser.Name = "lblUser"
         Me.lblUser.Size = New System.Drawing.Size(97, 16)
         Me.lblUser.TabIndex = 1
@@ -230,7 +231,7 @@ Partial Class MenuPrincipal
         Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.mejoricorojo
-        Me.PictureBox1.Location = New System.Drawing.Point(1324, 46)
+        Me.PictureBox1.Location = New System.Drawing.Point(1307, 46)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(29, 26)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
@@ -246,7 +247,7 @@ Partial Class MenuPrincipal
         Me.Label1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.Red
-        Me.Label1.Location = New System.Drawing.Point(1351, 149)
+        Me.Label1.Location = New System.Drawing.Point(1330, 149)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(0, 16)
         Me.Label1.TabIndex = 3
@@ -257,7 +258,7 @@ Partial Class MenuPrincipal
         Me.segundos.BackColor = System.Drawing.Color.Transparent
         Me.segundos.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.segundos.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.segundos.Location = New System.Drawing.Point(1429, 59)
+        Me.segundos.Location = New System.Drawing.Point(1412, 59)
         Me.segundos.Name = "segundos"
         Me.segundos.Size = New System.Drawing.Size(20, 20)
         Me.segundos.TabIndex = 4
@@ -269,7 +270,7 @@ Partial Class MenuPrincipal
         Me.horas.BackColor = System.Drawing.Color.Transparent
         Me.horas.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.horas.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.horas.Location = New System.Drawing.Point(1356, 59)
+        Me.horas.Location = New System.Drawing.Point(1339, 59)
         Me.horas.Name = "horas"
         Me.horas.Size = New System.Drawing.Size(20, 20)
         Me.horas.TabIndex = 5
@@ -281,7 +282,7 @@ Partial Class MenuPrincipal
         Me.minutos.BackColor = System.Drawing.Color.Transparent
         Me.minutos.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.minutos.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.minutos.Location = New System.Drawing.Point(1390, 59)
+        Me.minutos.Location = New System.Drawing.Point(1373, 59)
         Me.minutos.Name = "minutos"
         Me.minutos.Size = New System.Drawing.Size(20, 20)
         Me.minutos.TabIndex = 6
@@ -293,7 +294,7 @@ Partial Class MenuPrincipal
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label2.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.Label2.Location = New System.Drawing.Point(1376, 59)
+        Me.Label2.Location = New System.Drawing.Point(1359, 59)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(14, 20)
         Me.Label2.TabIndex = 7
@@ -305,7 +306,7 @@ Partial Class MenuPrincipal
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label3.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.Label3.Location = New System.Drawing.Point(1412, 59)
+        Me.Label3.Location = New System.Drawing.Point(1395, 59)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(14, 20)
         Me.Label3.TabIndex = 8
@@ -359,6 +360,18 @@ Partial Class MenuPrincipal
         Me.GridViewUsuario.TabIndex = 39
         Me.GridViewUsuario.Visible = False
         '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.LightSeaGreen
+        Me.Label4.Location = New System.Drawing.Point(1340, 43)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(66, 16)
+        Me.Label4.TabIndex = 40
+        Me.Label4.Text = "Usuario:"
+        '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -367,6 +380,7 @@ Partial Class MenuPrincipal
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1588, 865)
+        Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.GridViewUsuario)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.minutos)
@@ -424,4 +438,5 @@ Partial Class MenuPrincipal
     Friend WithEvents PagosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GenerarPagoDeReintegroOSubsidioToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GridViewUsuario As System.Windows.Forms.DataGridView
+    Friend WithEvents Label4 As System.Windows.Forms.Label
 End Class

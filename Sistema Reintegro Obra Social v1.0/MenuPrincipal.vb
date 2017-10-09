@@ -104,7 +104,7 @@ Public Class MenuPrincipal
 
     'LABEL DE USER
     Private Sub GridViewUsuario_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles GridViewUsuario.RowsAdded
-        lblUser.Text = "User: " & GridViewUsuario.Rows(0).Cells(0).Value.ToString()
+        lblUser.Text = GridViewUsuario.Rows(0).Cells(0).Value.ToString()
     End Sub
 
 End Class

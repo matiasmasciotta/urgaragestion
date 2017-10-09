@@ -15,6 +15,12 @@ Public Class FormularioABM
     Dim cont As Integer
     Dim controlDNI As Boolean
     Dim controlNombre As Boolean
+    Dim varSQLCAMPOSBENEFICIARIOS As String = "Beneficiarios.Codigo_Beneficiario,Beneficiarios.Cuil,Beneficiarios.ApellidoNombre,Beneficiarios.Sexo,Beneficiarios.Calle," & _
+        "Beneficiarios.Puerta,Beneficiarios.Piso,Beneficiarios.Codigo_Postal,Beneficiarios.Celular,Beneficiarios.Telefono,Beneficiarios.Mail,Beneficiarios.Localidad," & _
+        "Beneficiarios.Provincia,Beneficiarios.Urgara,Beneficiarios.TipoBeneficiarioTitular,Beneficiarios.Parentesco,Parentesco.Descripcion"
+    '(00)Codigo_Beneficiario,(01)Cuil,(02)ApellidoNombre,(03)Sexo,(04)Calle,(05)Puerta,(06)Piso,(07)Codigo_Postal,(08)Celular,(09)Telefono,(10)Mail,(11)Localidad,(12)Provincia,
+    '(13)Urgara,(14)TipoBeneficiarioTitular,(15)Parentesco,(16)Parentesco.Descripcion
+
     'Private Property prog As Integer
     'boton Cancelar
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
@@ -28,9 +34,10 @@ Public Class FormularioABM
 
     'CUANDO CARGA EL FORMULARIO ABM **************************
     Private Sub FormularioABM_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        opUrgara.Checked = False
         opBuscarDNI.Checked = True
         booModificacion = False
-        botonModificarBeneficiario.Enabled = False
+        'botonModificarBeneficiario.Enabled = False
         mostrarlosdatos()
         boo = False
         cont = 0
@@ -39,7 +46,7 @@ Public Class FormularioABM
         controlNombre = False
         'deshabilito los textbox
         apagarTextBox()
-        botonConfirmarAlta.Enabled = False
+        'botonConfirmarAlta.Enabled = False
     End Sub
 
     '@Metodo Deshabilita Los TextBox de Datos Personales (BENEFICIARIOS)
@@ -89,7 +96,7 @@ Public Class FormularioABM
     '@Metodo Llena Datos en GridVIEW
     Private Sub mostrarlosdatos()
         Try
-            sql = "SELECT Codigo_Beneficiario,Cuil,ApellidoNombre,Sexo,Calle,Puerta,Piso,Codigo_Postal,Celular,Telefono,Mail,Localidad,Provincia,Urgara,TipoBeneficiarioTitular from beneficiarios"
+            sql = "SELECT " & varSQLCAMPOSBENEFICIARIOS & " from beneficiarios,Parentesco where (Beneficiarios.Parentesco = Parentesco.Codigo)"
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
@@ -103,11 +110,11 @@ Public Class FormularioABM
     Private Sub buscarlosdatos()
         Try
             If (opBuscarDNI.Checked = True) And (opBuscarNombre.Checked = False) Then
-                sql = "SELECT Codigo_Beneficiario,Cuil,ApellidoNombre,Sexo,Calle,Puerta,Piso,Codigo_Postal,Celular,Telefono,Mail,Localidad,Provincia,Urgara,TipoBeneficiarioTitular from beneficiarios WHERE Cuil LIKE '%" & txtBusqueda.Text.ToString & "%'"
+                sql = "SELECT " & varSQLCAMPOSBENEFICIARIOS & " from beneficiarios,Parentesco WHERE (Beneficiarios.Parentesco = Parentesco.Codigo) and (Beneficiarios.Cuil LIKE '%" & txtBusqueda.Text.ToString & "%')"
                 controlNombre = False
             End If
             If (opBuscarNombre.Checked = True) And (opBuscarDNI.Checked = False) Then
-                sql = "SELECT Codigo_Beneficiario,Cuil,ApellidoNombre,Sexo,Calle,Puerta,Piso,Codigo_Postal,Celular,Telefono,Mail,Localidad,Provincia,Urgara,TipoBeneficiarioTitular from beneficiarios WHERE ApellidoNombre LIKE '%" & txtBusqueda.Text.ToString & "%'"
+                sql = "SELECT " & varSQLCAMPOSBENEFICIARIOS & " from beneficiarios,Parentesco WHERE (Beneficiarios.Parentesco = Parentesco.Codigo) and (Beneficiarios.ApellidoNombre LIKE '%" & txtBusqueda.Text.ToString & "%')"
                 controlDNI = False
             End If
             da = New MySqlDataAdapter(sql, Conex)
@@ -119,13 +126,73 @@ Public Class FormularioABM
         End Try
     End Sub
 
-    'LLENA LOS TEXTBOX CON LOS DATOS DE LA SELECCION DEL GRIDVIEW **************************
+    ' 1111-  LLENA LOS TEXTBOX CON LOS DATOS DE LA SELECCION DEL GRIDVIEW **************************
     Private Sub GridView_CellClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GridView.CellClick
         Try
             txtBeneficiario.Text = Me.GridView.Rows(e.RowIndex).Cells(0).Value
+            tempCodigo_Beneficiario.Text = Me.GridView.Rows(e.RowIndex).Cells(0).Value
+
             txtCUIL.Text = Me.GridView.Rows(e.RowIndex).Cells(1).Value
+            tempCuil.Text = Me.GridView.Rows(e.RowIndex).Cells(1).Value
+
             txtApellidoNombre.Text = Me.GridView.Rows(e.RowIndex).Cells(2).Value
+            tempApellidoNombre.Text = Me.GridView.Rows(e.RowIndex).Cells(2).Value
+
+            comboSexo.Items.Clear()
             comboSexo.Text = Me.GridView.Rows(e.RowIndex).Cells(3).Value
+            If comboSexo.Text = "M" Then
+                comboSexo.Items.Add("F")
+            Else
+                comboSexo.Items.Add("M")
+            End If
+            txtCalle.Text = Me.GridView.Rows(e.RowIndex).Cells(4).Value
+            txtPuerta.Text = Me.GridView.Rows(e.RowIndex).Cells(5).Value
+            txtPiso.Text = Me.GridView.Rows(e.RowIndex).Cells(6).Value
+            txtCP.Text = Me.GridView.Rows(e.RowIndex).Cells(7).Value
+            txtLocalidad.Text = Me.GridView.Rows(e.RowIndex).Cells(11).Value
+            txtProvincia.Text = Me.GridView.Rows(e.RowIndex).Cells(12).Value
+            'titular o adherente
+            If Me.GridView.Rows(e.RowIndex).Cells(14).Value = 1 Then
+                comboTipoBeneficiario.Text = "TITULAR"
+            Else
+                comboTipoBeneficiario.Text = "ADHERENTE"
+            End If
+            'parentesco
+            txtParentesco.Text = Me.GridView.Rows(e.RowIndex).Cells(16).Value
+            'Afiliado a urgara
+            If Me.GridView.Rows(e.RowIndex).Cells(13).Value = 0 Then
+                opUrgara.Checked = False
+            End If
+            If Me.GridView.Rows(e.RowIndex).Cells(13).Value = 1 Then
+                opUrgara.Checked = True
+            End If
+            txtCelular.Text = Me.GridView.Rows(e.RowIndex).Cells(8).Value
+            txtTelefono.Text = Me.GridView.Rows(e.RowIndex).Cells(9).Value
+            txtMail.Text = Me.GridView.Rows(e.RowIndex).Cells(10).Value
+        Catch
+        End Try
+        'botonModificarBeneficiario.Enabled = True
+    End Sub
+
+    '2222
+    Private Sub GridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView.CellContentClick
+        Try
+            txtBeneficiario.Text = Me.GridView.Rows(e.RowIndex).Cells(0).Value
+            tempCodigo_Beneficiario.Text = Me.GridView.Rows(e.RowIndex).Cells(0).Value
+
+            txtCUIL.Text = Me.GridView.Rows(e.RowIndex).Cells(1).Value
+            tempCuil.Text = Me.GridView.Rows(e.RowIndex).Cells(1).Value
+
+            txtApellidoNombre.Text = Me.GridView.Rows(e.RowIndex).Cells(2).Value
+            tempApellidoNombre.Text = Me.GridView.Rows(e.RowIndex).Cells(2).Value
+
+            comboSexo.Items.Clear()
+            comboSexo.Text = Me.GridView.Rows(e.RowIndex).Cells(3).Value
+            If comboSexo.Text = "M" Then
+                comboSexo.Items.Add("F")
+            Else
+                comboSexo.Items.Add("M")
+            End If
             txtCalle.Text = Me.GridView.Rows(e.RowIndex).Cells(4).Value
             txtPuerta.Text = Me.GridView.Rows(e.RowIndex).Cells(5).Value
             txtPiso.Text = Me.GridView.Rows(e.RowIndex).Cells(6).Value
@@ -142,29 +209,31 @@ Public Class FormularioABM
             txtMail.Text = Me.GridView.Rows(e.RowIndex).Cells(10).Value
         Catch
         End Try
-        botonModificarBeneficiario.Enabled = True
-
+        'botonModificarBeneficiario.Enabled = True
     End Sub
 
-    Private Sub botonModificarBeneficiario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonModificarBeneficiario.Click
-        booModificacion = True
-        'BOTON MODIFICAR --> HABILITA LOS TEXTBOX
-        prenderTextBox()
-        OK.Visible = True
-        CANCELAR.Visible = True
-        GridView.Enabled = False
-    End Sub
 
-    Private Sub CANCELAR_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CANCELAR.Click
-        OK.Visible = False
-        CANCELAR.Visible = False
-        apagarTextBox()
-        GridView.Enabled = True
-    End Sub
+
+    ' Private Sub botonModificarBeneficiario_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles botonModificarBeneficiario.Click
+    '     botonAgregarBeneficiario.Visible = False
+    '     booModificacion = True
+    ' 'BOTON MODIFICAR --> HABILITA LOS TEXTBOX
+    '     prenderTextBox()
+    '     OK.Visible = True
+    '     CANCELAR.Visible = True
+    '     GridView.Enabled = False
+    ' End Sub
+
+    ' Private Sub CANCELAR_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CANCELAR.Click
+    '     OK.Visible = False
+    '     CANCELAR.Visible = False
+    '     apagarTextBox()
+    '     GridView.Enabled = True
+    ' End Sub
 
     Private Sub txtDetalle_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Me.botonConfirmarAlta.Enabled = True
-        botonConfirmarAlta.Enabled = False
+        'Me.botonConfirmarAlta.Enabled = True
+        'botonConfirmarAlta.Enabled = False
     End Sub
 
     ' Private Function Imagen_Bytes(ByVal image As Image) As Byte()
@@ -177,8 +246,8 @@ Public Class FormularioABM
         ' updatebeneficiarios()
         update_to()
         buscarlosdatos()
-        OK.Visible = False
-        CANCELAR.Visible = False
+        'OK.Visible = False
+        'CANCELAR.Visible = False
         apagarTextBox()
         GridView.Enabled = True
         GridView.Refresh()
@@ -222,12 +291,14 @@ Public Class FormularioABM
             With cmdinsert
                 .Connection = con_insert
                 .CommandType = CommandType.Text
-                .CommandText = "UPDATE `beneficiarios` SET calle = ?calle,puerta=?puerta,piso=?piso,codigo_postal=?codpos,localidad=?localidad,provincia=?provincia,celular=?celular,telefono=?telefono,mail=?mail WHERE codigo_beneficiario = ?codben and cuil = ?cuil and apellidonombre = ?apenom "
+                .CommandText = "UPDATE beneficiarios SET Codigo_Beneficiario=?codben,Cuil=?cuil,ApellidoNombre=?apenom,calle=?calle," & _
+                    "puerta=?puerta,piso=?piso,codigo_postal=?codpos,localidad=?localidad,provincia=?provincia,celular=?celular,telefono=?telefono,mail=?mail " & _
+                    "WHERE codigo_beneficiario = '" & tempCodigo_Beneficiario.Text & "' and cuil = '" & tempCuil.Text & "' and apellidonombre = '" & tempApellidoNombre.Text & "'"
+                'NO GRABA POR QUE ?apenom, o cuil, o codben, cambian y no busca al real.
+                'hay que hacer una variable temporal al seleccionar al beneficiario que guarde: TempCODBEN, TempCuil, TempApenom
                 .Parameters.AddWithValue("?codben", txtBeneficiario.Text.ToString)
-
                 .Parameters.AddWithValue("?cuil", txtCUIL.Text.ToString)
                 .Parameters.AddWithValue("?apenom", txtApellidoNombre.Text.ToString)
-
                 .Parameters.AddWithValue("?calle", txtCalle.Text.ToString)
                 .Parameters.AddWithValue("?puerta", txtPuerta.Text.ToString)
                 .Parameters.AddWithValue("?piso", txtPiso.Text.ToString)
@@ -257,6 +328,11 @@ Public Class FormularioABM
     Private Sub opBuscarNombre_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opBuscarNombre.CheckedChanged
         buscarlosdatos()
     End Sub
+
+
+    'Private Sub botonAgregarBeneficiario_Click(sender As Object, e As EventArgs) Handles botonAgregarBeneficiario.Click
+    '    MsgBox("Disponible en Version 2.0", vbInformation)
+    'End Sub
 
 
 End Class

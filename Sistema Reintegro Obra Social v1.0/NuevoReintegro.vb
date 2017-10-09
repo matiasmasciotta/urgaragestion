@@ -11,6 +11,28 @@ Public Class NuevoReintegro
     Dim cont As Integer = 0
     Dim n As Integer = 2
     Dim ima As Byte
+    Dim varSQLREINTEGROS As String = "max(codigo_reintegro)+1" 'CONTROLA EL ULTIMO REINTEGRO EN LA BASE Y LE SUMA UNO QUE SERIA EL QUE SE ADICIONA EN LA NUEVA SOLICITUD
+    Dim varSQLCAMPOSNUEVOREINTEGRO As String = "Beneficiarios.Codigo_Beneficiario,Beneficiarios.Cuil,Beneficiarios.ApellidoNombre,Beneficiarios.Sexo,Beneficiarios.Calle, " & _
+        "Beneficiarios.Puerta,Beneficiarios.Piso,Beneficiarios.Codigo_Postal,Beneficiarios.Celular,Beneficiarios.Telefono,Beneficiarios.Mail,Beneficiarios.Localidad, " & _
+        "Beneficiarios.Provincia,Beneficiarios.Urgara,Beneficiarios.TipoBeneficiarioTitular,Beneficiarios.Parentesco,Parentesco.Descripcion"
+
+    ' "(00)Beneficiarios.Codigo_Beneficiario
+    '(01)Beneficiarios.Cuil
+    '(02)Beneficiarios.ApellidoNombre,
+    '(03)Beneficiarios.Sexo,
+    '(04)Beneficiarios.Calle,
+    '(05)Beneficiarios.Puerta,
+    '(06)Beneficiarios.Piso
+    '(07)Beneficiarios.Codigo_Postal
+    '(08)Beneficiarios.Celular,
+    '(09)Beneficiarios.Telefono,
+    '(10)Beneficiarios.Mail,
+    '(11)Beneficiarios.Localidad, 
+    '(12)Beneficiarios.Provincia,
+    '(13)Beneficiarios.Urgara,
+    '(14)Beneficiarios.TipoBeneficiarioTitular"
+    '(15)Beneficiarios.Parentesco
+    '(16)Parentesco.Descripcion
 
     Private Sub NuevoReintegro_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
         txtBusqueda.Focus()
@@ -18,6 +40,7 @@ Public Class NuevoReintegro
 
     'LOAD FORMULARIO NUEVO REINTEGRO
     Private Sub NuevoReintegro_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        ultimoreintegro()
         opReintegro.Checked = True
         lblNumeroReintegro.Text = VariableGlobalUsuario
         opBuscarDNI.Checked = True
@@ -42,10 +65,12 @@ Public Class NuevoReintegro
     Private Sub buscarlosdatos()
         Try
             If (opBuscarDNI.Checked = True) And (opBuscarNombre.Checked = False) Then
-                sql = "SELECT Codigo_Beneficiario,Cuil,ApellidoNombre,Sexo,Calle,Puerta,Piso,Codigo_Postal,Celular,Telefono,Mail,Localidad,Provincia,Urgara,TipoBeneficiarioTitular from beneficiarios WHERE Cuil LIKE '%" & txtBusqueda.Text.ToString & "%'"
+                sql = "SELECT " & varSQLCAMPOSNUEVOREINTEGRO & " from beneficiarios,Parentesco WHERE (Beneficiarios.Parentesco = Parentesco.Codigo) " & _
+                    "and (Beneficiarios.Cuil LIKE '%" & txtBusqueda.Text.ToString & "%')"
             End If
             If (opBuscarNombre.Checked = True) And (opBuscarDNI.Checked = False) Then
-                sql = "SELECT Codigo_Beneficiario,Cuil,ApellidoNombre,Sexo,Calle,Puerta,Piso,Codigo_Postal,Celular,Telefono,Mail,Localidad,Provincia,Urgara,TipoBeneficiarioTitular from beneficiarios WHERE ApellidoNombre LIKE '%" & txtBusqueda.Text.ToString & "%'"
+                sql = "SELECT " & varSQLCAMPOSNUEVOREINTEGRO & " from  beneficiarios,Parentesco WHERE (Beneficiarios.Parentesco = Parentesco.Codigo) and " & _
+                    "Beneficiarios.ApellidoNombre LIKE '%" & txtBusqueda.Text.ToString & "%'"
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -55,12 +80,26 @@ Public Class NuevoReintegro
             MsgBox(ex.Message)
         End Try
     End Sub
+
+    Private Sub ultimoreintegro()
+        Try
+            sql = "SELECT " & varSQLREINTEGROS & " from reintegros "
+                da = New MySqlDataAdapter(sql, Conex)
+                dt = New DataTable
+                da.Fill(dt)
+            GridViewUltimoReintegro.DataSource = dt
+            lblProximoReintegro.text = GridViewUltimoReintegro.Rows(0).Cells(0).Value.ToString()
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
     '@BUSCARLOSDATOS()
 
     '[] DEFINICION DE METODO MOSTRARLOSDATOS()
     Private Sub mostrarlosdatos()
         Try
-            sql = "SELECT Codigo_Beneficiario,Cuil,ApellidoNombre,Sexo,Calle,Puerta,Piso,Codigo_Postal,Celular,Telefono,Mail,Localidad,Provincia,Urgara,TipoBeneficiarioTitular from beneficiarios"
+            sql = "SELECT " & varSQLCAMPOSNUEVOREINTEGRO & " from  beneficiarios,Parentesco WHERE (Beneficiarios.Parentesco = Parentesco.Codigo) "
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
@@ -87,6 +126,17 @@ Public Class NuevoReintegro
             txtCelular.Text = Me.GridView.Rows(e.RowIndex).Cells(8).Value
             txtTelefono.Text = Me.GridView.Rows(e.RowIndex).Cells(9).Value
             txtMail.Text = Me.GridView.Rows(e.RowIndex).Cells(10).Value
+
+            'parentesco
+            txtParentesco.Text = Me.GridView.Rows(e.RowIndex).Cells(16).Value
+            'Afiliado a urgara
+            If Me.GridView.Rows(e.RowIndex).Cells(13).Value = 0 Then
+                opUrgara.Checked = False
+            End If
+            If Me.GridView.Rows(e.RowIndex).Cells(13).Value = 1 Then
+                opUrgara.Checked = True
+            End If
+
         Catch
         End Try
         prendeDatosOperacion()
@@ -110,6 +160,17 @@ Public Class NuevoReintegro
             txtCelular.Text = Me.GridView.Rows(e.RowIndex).Cells(8).Value
             txtTelefono.Text = Me.GridView.Rows(e.RowIndex).Cells(9).Value
             txtMail.Text = Me.GridView.Rows(e.RowIndex).Cells(10).Value
+
+            'parentesco
+            txtParentesco.Text = Me.GridView.Rows(e.RowIndex).Cells(16).Value
+            'Afiliado a urgara
+            If Me.GridView.Rows(e.RowIndex).Cells(13).Value = 0 Then
+                opUrgara.Checked = False
+            End If
+            If Me.GridView.Rows(e.RowIndex).Cells(13).Value = 1 Then
+                opUrgara.Checked = True
+            End If
+
         Catch
         End Try
         prendeDatosOperacion()
@@ -510,10 +571,12 @@ Public Class NuevoReintegro
                 con_insert.Close()
                 MessageBox.Show("SOLICITUD GENERADA CORRECTAMENTE", "NUEVA SOLICITUD DE REINTEGRO", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 'ENV CORREO (MAIL EMISOR (GMAIL) - PASS (GMAIL) - MENSAJE   -   ASUNTO     - MAIL RECEPTOR)
-                enviarCorreo("noreply.urgarareintegros@gmail.com", "Clave2017", "Sr. Auditor, " + vbLf + "En la fecha [" & txtFechaSolicitud.Text & "], se ha generado " & _
-                             "una nueva solicitud de reintegro, generada por el USUARIO: " + vbLf + "[" & VariableGlobalUsuario.ToString & "], del beneficiario N° [" & txtBeneficiario.Text & "]" & _
-                             "- N° de Cuil [" & txtCUIL.Text & "] (" & txtApellidoNombre.Text & "), el cual solicita: " + vbLf + "** " & txtDetalle.Text & " **, por un importe de $" & txtImporte.Text & "." + vbLf + "  " & _
-                             "a sus efectos, muchas gracias!", "Nuevo Reintegro Solicitado: Usuario " & lblNumeroReintegro.Text & ", SROSS (NO RESPONDER ESTE MENSAJE)", "matiasmasciotta@urgara.org.ar")
+                enviarCorreo("noreply.urgarareintegros@gmail.com", "Clave2017", "<u> Sr. Auditor </u>, " & "<br /> <br />" & "DATOS SOLICITUD DEL REINTEGRO: " & _
+                             "<strong>" & lblProximoReintegro.Text.ToString & "</strong> <br /> <br />" & "FECHA " & _
+                             "SOLICITUD: '" & txtFechaSolicitud.Text & "'" & "<br />" & "USUARIO SOLICITANTE: '" & MenuPrincipal.lblUser.Text.ToString & "'" & "<br />" & "BENEFICIARIO: " & _
+                             "'" & txtBeneficiario.Text & "'<br />" & "CUIL: '" & txtCUIL.Text & "'<br />" & "APELLIDO Y NOMBRE: '" & txtApellidoNombre.Text & "'<br />" & "SOLICITA: " & _
+                             "'" & txtDetalle.Text & "'<br />" & "<strong> IMPORTE: $" & txtImporte.Text & "</strong> <br />" & "<br />" & "A sus efectos, muchas gracias!", "Nueva solicitud " & _
+                             "de reintegro Nro: [" & lblProximoReintegro.Text.ToString & "] - Usuario: " & MenuPrincipal.lblUser.Text.ToString & ", SROSS (NO RESPONDER ESTE MENSAJE)", "matiasmasciotta@urgara.org.ar")
                 cont = 0
             Catch falla As MySqlException
                 MsgBox(falla.Message)
@@ -788,6 +851,15 @@ Public Class NuevoReintegro
 
     Private Sub Panel5_Paint(sender As Object, e As PaintEventArgs) Handles Panel5.Paint
 
+    End Sub
+
+    Private Sub lblPicture_Click(sender As Object, e As EventArgs) Handles lblPicture.Click
+
+    End Sub
+
+    Private Sub lblPicture_DoubleClick(sender As Object, e As EventArgs) Handles lblPicture.DoubleClick
+        FormularioImagen.PictureBox1.Image = Me.lblPicture.Image
+        FormularioImagen.Show()
     End Sub
 End Class
 
