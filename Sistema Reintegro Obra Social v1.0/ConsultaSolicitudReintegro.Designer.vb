@@ -22,14 +22,15 @@ Partial Class ConsultaSolicitudReintegro
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ConsultaSolicitudReintegro))
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.checkFecha = New System.Windows.Forms.CheckBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -42,28 +43,19 @@ Partial Class ConsultaSolicitudReintegro
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.opPAGADO = New System.Windows.Forms.CheckBox()
-        Me.opComisionRechazados = New System.Windows.Forms.CheckBox()
-        Me.opComisionAprobados = New System.Windows.Forms.CheckBox()
-        Me.opComisionPendientes = New System.Windows.Forms.CheckBox()
         Me.opSubsidio = New System.Windows.Forms.CheckBox()
         Me.opReintegro = New System.Windows.Forms.CheckBox()
         Me.botonLimpiarFiltros = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.opAuditorMedicoSI = New System.Windows.Forms.CheckBox()
         Me.opAuditorRechazado = New System.Windows.Forms.CheckBox()
-        Me.opPagoPendiente = New System.Windows.Forms.CheckBox()
         Me.opPendienteAuditor = New System.Windows.Forms.CheckBox()
         Me.lblfechahasta = New System.Windows.Forms.Label()
         Me.lblfechadesde = New System.Windows.Forms.Label()
-        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
-        Me.LineShape2 = New Microsoft.VisualBasic.PowerPacks.LineShape()
-        Me.LineShape1 = New Microsoft.VisualBasic.PowerPacks.LineShape()
-        Me.LineShape3 = New Microsoft.VisualBasic.PowerPacks.LineShape()
-        Me.LineShape4 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.opPAGADO = New System.Windows.Forms.CheckBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.opPagoPendiente = New System.Windows.Forms.CheckBox()
         Me.clbimagen = New System.Windows.Forms.CheckedListBox()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -108,9 +100,21 @@ Partial Class ConsultaSolicitudReintegro
         Me.txtCuil = New System.Windows.Forms.TextBox()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.botonExcel = New System.Windows.Forms.PictureBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.opComisionRechazados = New System.Windows.Forms.CheckBox()
+        Me.opComisionAprobados = New System.Windows.Forms.CheckBox()
+        Me.opComisionPendientes = New System.Windows.Forms.CheckBox()
+        Me.botonExcelAprobadosAM = New System.Windows.Forms.PictureBox()
         Me.GridView2 = New System.Windows.Forms.DataGridView()
+        Me.ShapeContainer3 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.LineShape11 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape10 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape9 = New Microsoft.VisualBasic.PowerPacks.LineShape()
+        Me.LineShape8 = New Microsoft.VisualBasic.PowerPacks.LineShape()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.botonexcelRechazados = New System.Windows.Forms.PictureBox()
         Me.GridView3 = New System.Windows.Forms.DataGridView()
         Me.ShapeContainer2 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
@@ -119,9 +123,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.opBuscarDNI = New System.Windows.Forms.RadioButton()
         Me.txtApeoCuil = New System.Windows.Forms.TextBox()
         Me.opBuscaNumReintegro = New System.Windows.Forms.RadioButton()
-        Me.botonExcel = New System.Windows.Forms.PictureBox()
-        Me.botonExcelAprobadosAM = New System.Windows.Forms.PictureBox()
-        Me.botonexcelRechazados = New System.Windows.Forms.PictureBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -129,30 +131,33 @@ Partial Class ConsultaSolicitudReintegro
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage2.SuspendLayout()
+        CType(Me.botonExcelAprobadosAM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage3.SuspendLayout()
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.botonExcelAprobadosAM, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.botonexcelRechazados, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'checkFecha
         '
         Me.checkFecha.AutoSize = True
+        Me.checkFecha.BackColor = System.Drawing.Color.Transparent
         Me.checkFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.checkFecha.Location = New System.Drawing.Point(7, -3)
+        Me.checkFecha.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.checkFecha.Location = New System.Drawing.Point(9, 76)
         Me.checkFecha.Name = "checkFecha"
         Me.checkFecha.Size = New System.Drawing.Size(115, 19)
         Me.checkFecha.TabIndex = 18
         Me.checkFecha.Text = "Filtrar por Fecha"
-        Me.checkFecha.UseVisualStyleBackColor = True
+        Me.checkFecha.UseVisualStyleBackColor = False
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label3.Location = New System.Drawing.Point(267, 32)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(39, 15)
@@ -163,6 +168,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label2.Location = New System.Drawing.Point(10, 32)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(83, 15)
@@ -172,7 +178,9 @@ Partial Class ConsultaSolicitudReintegro
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label1.Location = New System.Drawing.Point(90, 13)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(117, 15)
@@ -184,18 +192,18 @@ Partial Class ConsultaSolicitudReintegro
         Me.GridView1.AllowUserToAddRows = False
         Me.GridView1.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark
         Me.GridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridView1.Location = New System.Drawing.Point(4, 2)
+        Me.GridView1.Location = New System.Drawing.Point(3, 30)
         Me.GridView1.MultiSelect = False
         Me.GridView1.Name = "GridView1"
         Me.GridView1.ReadOnly = True
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridView1.Size = New System.Drawing.Size(645, 403)
@@ -231,9 +239,11 @@ Partial Class ConsultaSolicitudReintegro
         '
         'Boton_Salir
         '
-        Me.Boton_Salir.Location = New System.Drawing.Point(797, 710)
+        Me.Boton_Salir.Image = CType(resources.GetObject("Boton_Salir.Image"), System.Drawing.Image)
+        Me.Boton_Salir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Boton_Salir.Location = New System.Drawing.Point(675, 714)
         Me.Boton_Salir.Name = "Boton_Salir"
-        Me.Boton_Salir.Size = New System.Drawing.Size(182, 36)
+        Me.Boton_Salir.Size = New System.Drawing.Size(642, 36)
         Me.Boton_Salir.TabIndex = 19
         Me.Boton_Salir.Text = "Salir"
         Me.Boton_Salir.UseVisualStyleBackColor = True
@@ -256,81 +266,33 @@ Partial Class ConsultaSolicitudReintegro
         '
         'GroupBox1
         '
+        Me.GroupBox1.BackColor = System.Drawing.Color.Transparent
         Me.GroupBox1.Controls.Add(Me.DateTimePicker1)
-        Me.GroupBox1.Controls.Add(Me.opPAGADO)
-        Me.GroupBox1.Controls.Add(Me.opComisionRechazados)
-        Me.GroupBox1.Controls.Add(Me.opComisionAprobados)
-        Me.GroupBox1.Controls.Add(Me.opComisionPendientes)
         Me.GroupBox1.Controls.Add(Me.opSubsidio)
         Me.GroupBox1.Controls.Add(Me.opReintegro)
-        Me.GroupBox1.Controls.Add(Me.botonLimpiarFiltros)
-        Me.GroupBox1.Controls.Add(Me.Label7)
-        Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.Label8)
         Me.GroupBox1.Controls.Add(Me.Label14)
         Me.GroupBox1.Controls.Add(Me.opAuditorMedicoSI)
         Me.GroupBox1.Controls.Add(Me.opAuditorRechazado)
-        Me.GroupBox1.Controls.Add(Me.opPagoPendiente)
         Me.GroupBox1.Controls.Add(Me.opPendienteAuditor)
         Me.GroupBox1.Controls.Add(Me.lblfechahasta)
         Me.GroupBox1.Controls.Add(Me.lblfechadesde)
         Me.GroupBox1.Controls.Add(Me.DateTimePicker2)
         Me.GroupBox1.Controls.Add(Me.txtFechaHasta)
-        Me.GroupBox1.Controls.Add(Me.checkFecha)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.txtFechaDesde)
-        Me.GroupBox1.Controls.Add(Me.ShapeContainer1)
-        Me.GroupBox1.Location = New System.Drawing.Point(7, 77)
+        Me.GroupBox1.Location = New System.Drawing.Point(7, 89)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(662, 156)
+        Me.GroupBox1.Size = New System.Drawing.Size(662, 109)
         Me.GroupBox1.TabIndex = 22
         Me.GroupBox1.TabStop = False
-        '
-        'opPAGADO
-        '
-        Me.opPAGADO.AutoSize = True
-        Me.opPAGADO.Location = New System.Drawing.Point(382, 115)
-        Me.opPAGADO.Name = "opPAGADO"
-        Me.opPAGADO.Size = New System.Drawing.Size(68, 17)
-        Me.opPAGADO.TabIndex = 89
-        Me.opPAGADO.Text = "Pagados"
-        Me.opPAGADO.UseVisualStyleBackColor = True
-        '
-        'opComisionRechazados
-        '
-        Me.opComisionRechazados.AutoSize = True
-        Me.opComisionRechazados.Location = New System.Drawing.Point(276, 135)
-        Me.opComisionRechazados.Name = "opComisionRechazados"
-        Me.opComisionRechazados.Size = New System.Drawing.Size(86, 17)
-        Me.opComisionRechazados.TabIndex = 88
-        Me.opComisionRechazados.Text = "Rechazados"
-        Me.opComisionRechazados.UseVisualStyleBackColor = True
-        '
-        'opComisionAprobados
-        '
-        Me.opComisionAprobados.AutoSize = True
-        Me.opComisionAprobados.Location = New System.Drawing.Point(276, 115)
-        Me.opComisionAprobados.Name = "opComisionAprobados"
-        Me.opComisionAprobados.Size = New System.Drawing.Size(77, 17)
-        Me.opComisionAprobados.TabIndex = 87
-        Me.opComisionAprobados.Text = "Aprobados"
-        Me.opComisionAprobados.UseVisualStyleBackColor = True
-        '
-        'opComisionPendientes
-        '
-        Me.opComisionPendientes.AutoSize = True
-        Me.opComisionPendientes.Location = New System.Drawing.Point(276, 97)
-        Me.opComisionPendientes.Name = "opComisionPendientes"
-        Me.opComisionPendientes.Size = New System.Drawing.Size(79, 17)
-        Me.opComisionPendientes.TabIndex = 84
-        Me.opComisionPendientes.Text = "Pendientes"
-        Me.opComisionPendientes.UseVisualStyleBackColor = True
         '
         'opSubsidio
         '
         Me.opSubsidio.AutoSize = True
-        Me.opSubsidio.Location = New System.Drawing.Point(69, 115)
+        Me.opSubsidio.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.opSubsidio.Location = New System.Drawing.Point(195, 91)
         Me.opSubsidio.Name = "opSubsidio"
         Me.opSubsidio.Size = New System.Drawing.Size(71, 17)
         Me.opSubsidio.TabIndex = 81
@@ -340,7 +302,8 @@ Partial Class ConsultaSolicitudReintegro
         'opReintegro
         '
         Me.opReintegro.AutoSize = True
-        Me.opReintegro.Location = New System.Drawing.Point(69, 97)
+        Me.opReintegro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.opReintegro.Location = New System.Drawing.Point(111, 91)
         Me.opReintegro.Name = "opReintegro"
         Me.opReintegro.Size = New System.Drawing.Size(77, 17)
         Me.opReintegro.TabIndex = 80
@@ -352,11 +315,11 @@ Partial Class ConsultaSolicitudReintegro
         Me.botonLimpiarFiltros.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.botonLimpiarFiltros.AutoEllipsis = True
         Me.botonLimpiarFiltros.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.botonLimpiarFiltros.BackColor = System.Drawing.Color.DarkGray
+        Me.botonLimpiarFiltros.BackColor = System.Drawing.Color.Transparent
         Me.botonLimpiarFiltros.Cursor = System.Windows.Forms.Cursors.Hand
         Me.botonLimpiarFiltros.Image = CType(resources.GetObject("botonLimpiarFiltros.Image"), System.Drawing.Image)
         Me.botonLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.botonLimpiarFiltros.Location = New System.Drawing.Point(496, 102)
+        Me.botonLimpiarFiltros.Location = New System.Drawing.Point(504, 184)
         Me.botonLimpiarFiltros.Name = "botonLimpiarFiltros"
         Me.botonLimpiarFiltros.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.botonLimpiarFiltros.Size = New System.Drawing.Size(38, 38)
@@ -364,37 +327,20 @@ Partial Class ConsultaSolicitudReintegro
         Me.botonLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.botonLimpiarFiltros.UseVisualStyleBackColor = False
         '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(372, 81)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(98, 13)
-        Me.Label7.TabIndex = 94
-        Me.Label7.Text = "Pago del Reintegro"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(271, 82)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(94, 13)
-        Me.Label9.TabIndex = 93
-        Me.Label9.Text = "Comisión Directiva"
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(93, 82)
+        Me.Label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label8.Location = New System.Drawing.Point(33, 92)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(28, 13)
+        Me.Label8.Size = New System.Drawing.Size(70, 13)
         Me.Label8.TabIndex = 92
-        Me.Label8.Text = "Tipo"
+        Me.Label8.Text = "Solicitud tipo:"
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(163, 82)
+        Me.Label14.Location = New System.Drawing.Point(511, 29)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(88, 13)
         Me.Label14.TabIndex = 91
@@ -404,7 +350,7 @@ Partial Class ConsultaSolicitudReintegro
         'opAuditorMedicoSI
         '
         Me.opAuditorMedicoSI.AutoSize = True
-        Me.opAuditorMedicoSI.Location = New System.Drawing.Point(160, 115)
+        Me.opAuditorMedicoSI.Location = New System.Drawing.Point(514, 32)
         Me.opAuditorMedicoSI.Name = "opAuditorMedicoSI"
         Me.opAuditorMedicoSI.Size = New System.Drawing.Size(77, 17)
         Me.opAuditorMedicoSI.TabIndex = 83
@@ -415,7 +361,7 @@ Partial Class ConsultaSolicitudReintegro
         'opAuditorRechazado
         '
         Me.opAuditorRechazado.AutoSize = True
-        Me.opAuditorRechazado.Location = New System.Drawing.Point(160, 135)
+        Me.opAuditorRechazado.Location = New System.Drawing.Point(514, 29)
         Me.opAuditorRechazado.Name = "opAuditorRechazado"
         Me.opAuditorRechazado.Size = New System.Drawing.Size(86, 17)
         Me.opAuditorRechazado.TabIndex = 86
@@ -423,20 +369,10 @@ Partial Class ConsultaSolicitudReintegro
         Me.opAuditorRechazado.UseVisualStyleBackColor = True
         Me.opAuditorRechazado.Visible = False
         '
-        'opPagoPendiente
-        '
-        Me.opPagoPendiente.AutoSize = True
-        Me.opPagoPendiente.Location = New System.Drawing.Point(382, 97)
-        Me.opPagoPendiente.Name = "opPagoPendiente"
-        Me.opPagoPendiente.Size = New System.Drawing.Size(79, 17)
-        Me.opPagoPendiente.TabIndex = 85
-        Me.opPagoPendiente.Text = "Pendientes"
-        Me.opPagoPendiente.UseVisualStyleBackColor = True
-        '
         'opPendienteAuditor
         '
         Me.opPendienteAuditor.AutoSize = True
-        Me.opPendienteAuditor.Location = New System.Drawing.Point(160, 97)
+        Me.opPendienteAuditor.Location = New System.Drawing.Point(514, 29)
         Me.opPendienteAuditor.Name = "opPendienteAuditor"
         Me.opPendienteAuditor.Size = New System.Drawing.Size(79, 17)
         Me.opPendienteAuditor.TabIndex = 82
@@ -447,6 +383,7 @@ Partial Class ConsultaSolicitudReintegro
         'lblfechahasta
         '
         Me.lblfechahasta.AutoSize = True
+        Me.lblfechahasta.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.lblfechahasta.Location = New System.Drawing.Point(342, 13)
         Me.lblfechahasta.Name = "lblfechahasta"
         Me.lblfechahasta.Size = New System.Drawing.Size(89, 13)
@@ -457,6 +394,7 @@ Partial Class ConsultaSolicitudReintegro
         'lblfechadesde
         '
         Me.lblfechadesde.AutoSize = True
+        Me.lblfechadesde.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.lblfechadesde.Location = New System.Drawing.Point(117, 13)
         Me.lblfechadesde.Name = "lblfechadesde"
         Me.lblfechadesde.Size = New System.Drawing.Size(89, 13)
@@ -464,47 +402,34 @@ Partial Class ConsultaSolicitudReintegro
         Me.lblfechadesde.Text = "aaaa  -  mm  -  dd"
         Me.lblfechadesde.Visible = False
         '
-        'ShapeContainer1
+        'opPAGADO
         '
-        Me.ShapeContainer1.Location = New System.Drawing.Point(3, 16)
-        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
-        Me.ShapeContainer1.Name = "ShapeContainer1"
-        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape2, Me.LineShape1, Me.LineShape3, Me.LineShape4})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(656, 137)
-        Me.ShapeContainer1.TabIndex = 95
-        Me.ShapeContainer1.TabStop = False
+        Me.opPAGADO.AutoSize = True
+        Me.opPAGADO.Location = New System.Drawing.Point(351, 33)
+        Me.opPAGADO.Name = "opPAGADO"
+        Me.opPAGADO.Size = New System.Drawing.Size(68, 17)
+        Me.opPAGADO.TabIndex = 89
+        Me.opPAGADO.Text = "Pagados"
+        Me.opPAGADO.UseVisualStyleBackColor = True
         '
-        'LineShape2
+        'Label7
         '
-        Me.LineShape2.Name = "LineShape2"
-        Me.LineShape2.X1 = 145
-        Me.LineShape2.X2 = 145
-        Me.LineShape2.Y1 = 80
-        Me.LineShape2.Y2 = 131
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(150, 34)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(98, 13)
+        Me.Label7.TabIndex = 94
+        Me.Label7.Text = "Pago del Reintegro"
         '
-        'LineShape1
+        'opPagoPendiente
         '
-        Me.LineShape1.Name = "LineShape1"
-        Me.LineShape1.X1 = 261
-        Me.LineShape1.X2 = 261
-        Me.LineShape1.Y1 = 80
-        Me.LineShape1.Y2 = 131
-        '
-        'LineShape3
-        '
-        Me.LineShape3.Name = "LineShape3"
-        Me.LineShape3.X1 = 369
-        Me.LineShape3.X2 = 369
-        Me.LineShape3.Y1 = 81
-        Me.LineShape3.Y2 = 132
-        '
-        'LineShape4
-        '
-        Me.LineShape4.Name = "LineShape4"
-        Me.LineShape4.X1 = 64
-        Me.LineShape4.X2 = 467
-        Me.LineShape4.Y1 = 79
-        Me.LineShape4.Y2 = 79
+        Me.opPagoPendiente.AutoSize = True
+        Me.opPagoPendiente.Location = New System.Drawing.Point(266, 33)
+        Me.opPagoPendiente.Name = "opPagoPendiente"
+        Me.opPagoPendiente.Size = New System.Drawing.Size(79, 17)
+        Me.opPagoPendiente.TabIndex = 85
+        Me.opPagoPendiente.Text = "Pendientes"
+        Me.opPagoPendiente.UseVisualStyleBackColor = True
         '
         'clbimagen
         '
@@ -522,6 +447,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label4.AutoSize = True
         Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.Label4.Location = New System.Drawing.Point(817, 383)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(122, 16)
@@ -533,6 +459,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label5.AutoSize = True
         Me.Label5.BackColor = System.Drawing.Color.Transparent
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label5.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.Label5.Location = New System.Drawing.Point(1150, 350)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(80, 16)
@@ -541,6 +468,9 @@ Partial Class ConsultaSolicitudReintegro
         '
         'lblPicture
         '
+        Me.lblPicture.BackColor = System.Drawing.Color.MidnightBlue
+        Me.lblPicture.BackgroundImage = CType(resources.GetObject("lblPicture.BackgroundImage"), System.Drawing.Image)
+        Me.lblPicture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.lblPicture.Location = New System.Drawing.Point(1082, 371)
         Me.lblPicture.Name = "lblPicture"
         Me.lblPicture.Size = New System.Drawing.Size(221, 211)
@@ -551,7 +481,9 @@ Partial Class ConsultaSolicitudReintegro
         'Label10
         '
         Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.Transparent
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label10.Location = New System.Drawing.Point(687, 34)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(260, 13)
@@ -562,7 +494,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.DateTimePicker3.Enabled = False
         Me.DateTimePicker3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker3.Location = New System.Drawing.Point(241, 64)
+        Me.DateTimePicker3.Location = New System.Drawing.Point(241, 63)
         Me.DateTimePicker3.Name = "DateTimePicker3"
         Me.DateTimePicker3.Size = New System.Drawing.Size(189, 22)
         Me.DateTimePicker3.TabIndex = 8
@@ -571,6 +503,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label6.Location = New System.Drawing.Point(20, 146)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(81, 13)
@@ -597,6 +530,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         'Panel5
         '
+        Me.Panel5.BackColor = System.Drawing.Color.Transparent
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel5.Controls.Add(Me.Label19)
         Me.Panel5.Controls.Add(Me.txtCuilPago)
@@ -616,7 +550,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Panel5.Controls.Add(Me.Label13)
         Me.Panel5.Controls.Add(Me.Label12)
         Me.Panel5.Controls.Add(Me.Label11)
-        Me.Panel5.Location = New System.Drawing.Point(675, 47)
+        Me.Panel5.Location = New System.Drawing.Point(675, 50)
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(642, 255)
         Me.Panel5.TabIndex = 30
@@ -625,6 +559,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label19.Location = New System.Drawing.Point(11, 172)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(89, 13)
@@ -645,6 +580,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label17.Location = New System.Drawing.Point(30, 198)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(68, 13)
@@ -675,7 +611,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.lblTipoReintegro.AutoSize = True
         Me.lblTipoReintegro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTipoReintegro.ForeColor = System.Drawing.Color.Black
+        Me.lblTipoReintegro.ForeColor = System.Drawing.SystemColors.ButtonFace
         Me.lblTipoReintegro.Location = New System.Drawing.Point(101, 228)
         Me.lblTipoReintegro.Name = "lblTipoReintegro"
         Me.lblTipoReintegro.Size = New System.Drawing.Size(154, 16)
@@ -686,6 +622,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label16.Location = New System.Drawing.Point(61, 120)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(40, 13)
@@ -706,6 +643,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label15.Location = New System.Drawing.Point(68, 92)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(32, 13)
@@ -734,6 +672,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label13.Location = New System.Drawing.Point(3, 67)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(98, 13)
@@ -744,6 +683,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label12.Location = New System.Drawing.Point(53, 41)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(45, 13)
@@ -754,6 +694,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.Label11.Location = New System.Drawing.Point(53, 17)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(43, 13)
@@ -764,7 +705,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtTipoCuentaTEMPO.Enabled = False
         Me.txtTipoCuentaTEMPO.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTipoCuentaTEMPO.Location = New System.Drawing.Point(1067, 34)
+        Me.txtTipoCuentaTEMPO.Location = New System.Drawing.Point(939, 11)
         Me.txtTipoCuentaTEMPO.MaxLength = 80
         Me.txtTipoCuentaTEMPO.Name = "txtTipoCuentaTEMPO"
         Me.txtTipoCuentaTEMPO.Size = New System.Drawing.Size(52, 21)
@@ -775,7 +716,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtCuilPagoTEMPO.Enabled = False
         Me.txtCuilPagoTEMPO.Font = New System.Drawing.Font("Arial Rounded MT Bold", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCuilPagoTEMPO.Location = New System.Drawing.Point(1016, 11)
+        Me.txtCuilPagoTEMPO.Location = New System.Drawing.Point(970, 11)
         Me.txtCuilPagoTEMPO.MaxLength = 22
         Me.txtCuilPagoTEMPO.Name = "txtCuilPagoTEMPO"
         Me.txtCuilPagoTEMPO.Size = New System.Drawing.Size(47, 21)
@@ -785,7 +726,7 @@ Partial Class ConsultaSolicitudReintegro
         'txtObservacionesTEMPO
         '
         Me.txtObservacionesTEMPO.Enabled = False
-        Me.txtObservacionesTEMPO.Location = New System.Drawing.Point(1198, 34)
+        Me.txtObservacionesTEMPO.Location = New System.Drawing.Point(954, 12)
         Me.txtObservacionesTEMPO.Name = "txtObservacionesTEMPO"
         Me.txtObservacionesTEMPO.Size = New System.Drawing.Size(87, 20)
         Me.txtObservacionesTEMPO.TabIndex = 75
@@ -795,7 +736,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtAliasTEMPO.Enabled = False
         Me.txtAliasTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAliasTEMPO.Location = New System.Drawing.Point(1070, 11)
+        Me.txtAliasTEMPO.Location = New System.Drawing.Point(944, 9)
         Me.txtAliasTEMPO.MaxLength = 80
         Me.txtAliasTEMPO.Name = "txtAliasTEMPO"
         Me.txtAliasTEMPO.Size = New System.Drawing.Size(48, 22)
@@ -806,7 +747,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtCBUTEMPO.Enabled = False
         Me.txtCBUTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCBUTEMPO.Location = New System.Drawing.Point(1124, 32)
+        Me.txtCBUTEMPO.Location = New System.Drawing.Point(971, 12)
         Me.txtCBUTEMPO.MaxLength = 22
         Me.txtCBUTEMPO.Name = "txtCBUTEMPO"
         Me.txtCBUTEMPO.Size = New System.Drawing.Size(71, 22)
@@ -817,7 +758,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtFechSolicitudTEMPO.Enabled = False
         Me.txtFechSolicitudTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtFechSolicitudTEMPO.Location = New System.Drawing.Point(1260, 12)
+        Me.txtFechSolicitudTEMPO.Location = New System.Drawing.Point(981, 11)
         Me.txtFechSolicitudTEMPO.Name = "txtFechSolicitudTEMPO"
         Me.txtFechSolicitudTEMPO.Size = New System.Drawing.Size(42, 22)
         Me.txtFechSolicitudTEMPO.TabIndex = 72
@@ -827,7 +768,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtImporteTEMPO.Enabled = False
         Me.txtImporteTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtImporteTEMPO.Location = New System.Drawing.Point(1198, 11)
+        Me.txtImporteTEMPO.Location = New System.Drawing.Point(986, 12)
         Me.txtImporteTEMPO.Name = "txtImporteTEMPO"
         Me.txtImporteTEMPO.Size = New System.Drawing.Size(56, 22)
         Me.txtImporteTEMPO.TabIndex = 71
@@ -837,7 +778,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtDetalleTEMPO.Enabled = False
         Me.txtDetalleTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtDetalleTEMPO.Location = New System.Drawing.Point(1124, 11)
+        Me.txtDetalleTEMPO.Location = New System.Drawing.Point(939, 12)
         Me.txtDetalleTEMPO.Name = "txtDetalleTEMPO"
         Me.txtDetalleTEMPO.Size = New System.Drawing.Size(68, 20)
         Me.txtDetalleTEMPO.TabIndex = 70
@@ -845,6 +786,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         'PictureBox1
         '
+        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.recnegro
         Me.PictureBox1.Location = New System.Drawing.Point(714, 404)
         Me.PictureBox1.Name = "PictureBox1"
@@ -944,10 +886,10 @@ Partial Class ConsultaSolicitudReintegro
         Me.TabControl1.Controls.Add(Me.TabPage1)
         Me.TabControl1.Controls.Add(Me.TabPage2)
         Me.TabControl1.Controls.Add(Me.TabPage3)
-        Me.TabControl1.Location = New System.Drawing.Point(7, 238)
+        Me.TabControl1.Location = New System.Drawing.Point(7, 205)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(662, 461)
+        Me.TabControl1.Size = New System.Drawing.Size(662, 494)
         Me.TabControl1.TabIndex = 79
         '
         'TabPage1
@@ -957,62 +899,171 @@ Partial Class ConsultaSolicitudReintegro
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(654, 435)
+        Me.TabPage1.Size = New System.Drawing.Size(654, 468)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Pendientes Auditoría"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'botonExcel
+        '
+        Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
+        Me.botonExcel.Location = New System.Drawing.Point(604, 3)
+        Me.botonExcel.Name = "botonExcel"
+        Me.botonExcel.Size = New System.Drawing.Size(30, 26)
+        Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.botonExcel.TabIndex = 88
+        Me.botonExcel.TabStop = False
+        '
         'TabPage2
         '
+        Me.TabPage2.Controls.Add(Me.Label7)
+        Me.TabPage2.Controls.Add(Me.opPAGADO)
+        Me.TabPage2.Controls.Add(Me.opPagoPendiente)
+        Me.TabPage2.Controls.Add(Me.Label9)
+        Me.TabPage2.Controls.Add(Me.opComisionRechazados)
+        Me.TabPage2.Controls.Add(Me.opComisionAprobados)
+        Me.TabPage2.Controls.Add(Me.opComisionPendientes)
         Me.TabPage2.Controls.Add(Me.botonExcelAprobadosAM)
         Me.TabPage2.Controls.Add(Me.GridView2)
+        Me.TabPage2.Controls.Add(Me.ShapeContainer3)
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(654, 435)
+        Me.TabPage2.Size = New System.Drawing.Size(654, 468)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Aprobados AM"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(151, 9)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(94, 13)
+        Me.Label9.TabIndex = 96
+        Me.Label9.Text = "Comisión Directiva"
+        '
+        'opComisionRechazados
+        '
+        Me.opComisionRechazados.AutoSize = True
+        Me.opComisionRechazados.Location = New System.Drawing.Point(434, 8)
+        Me.opComisionRechazados.Name = "opComisionRechazados"
+        Me.opComisionRechazados.Size = New System.Drawing.Size(86, 17)
+        Me.opComisionRechazados.TabIndex = 96
+        Me.opComisionRechazados.Text = "Rechazados"
+        Me.opComisionRechazados.UseVisualStyleBackColor = True
+        '
+        'opComisionAprobados
+        '
+        Me.opComisionAprobados.AutoSize = True
+        Me.opComisionAprobados.Location = New System.Drawing.Point(351, 8)
+        Me.opComisionAprobados.Name = "opComisionAprobados"
+        Me.opComisionAprobados.Size = New System.Drawing.Size(77, 17)
+        Me.opComisionAprobados.TabIndex = 96
+        Me.opComisionAprobados.Text = "Aprobados"
+        Me.opComisionAprobados.UseVisualStyleBackColor = True
+        '
+        'opComisionPendientes
+        '
+        Me.opComisionPendientes.AutoSize = True
+        Me.opComisionPendientes.Location = New System.Drawing.Point(266, 8)
+        Me.opComisionPendientes.Name = "opComisionPendientes"
+        Me.opComisionPendientes.Size = New System.Drawing.Size(79, 17)
+        Me.opComisionPendientes.TabIndex = 98
+        Me.opComisionPendientes.Text = "Pendientes"
+        Me.opComisionPendientes.UseVisualStyleBackColor = True
+        '
+        'botonExcelAprobadosAM
+        '
+        Me.botonExcelAprobadosAM.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
+        Me.botonExcelAprobadosAM.Location = New System.Drawing.Point(604, 3)
+        Me.botonExcelAprobadosAM.Name = "botonExcelAprobadosAM"
+        Me.botonExcelAprobadosAM.Size = New System.Drawing.Size(30, 26)
+        Me.botonExcelAprobadosAM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.botonExcelAprobadosAM.TabIndex = 97
+        Me.botonExcelAprobadosAM.TabStop = False
         '
         'GridView2
         '
         Me.GridView2.AllowUserToAddRows = False
         Me.GridView2.AllowUserToDeleteRows = False
-        Me.GridView2.BackgroundColor = System.Drawing.Color.DarkSeaGreen
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle9.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle9
+        Me.GridView2.BackgroundColor = System.Drawing.Color.Navy
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridView2.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.GridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridView2.DefaultCellStyle = DataGridViewCellStyle10
-        Me.GridView2.Location = New System.Drawing.Point(1, 3)
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridView2.DefaultCellStyle = DataGridViewCellStyle3
+        Me.GridView2.Location = New System.Drawing.Point(1, 56)
         Me.GridView2.MultiSelect = False
         Me.GridView2.Name = "GridView2"
         Me.GridView2.ReadOnly = True
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.GridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridView2.Size = New System.Drawing.Size(651, 403)
+        Me.GridView2.Size = New System.Drawing.Size(651, 409)
         Me.GridView2.TabIndex = 95
         Me.GridView2.VirtualMode = True
+        '
+        'ShapeContainer3
+        '
+        Me.ShapeContainer3.Location = New System.Drawing.Point(3, 3)
+        Me.ShapeContainer3.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer3.Name = "ShapeContainer3"
+        Me.ShapeContainer3.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.LineShape11, Me.LineShape10, Me.LineShape9, Me.LineShape8})
+        Me.ShapeContainer3.Size = New System.Drawing.Size(648, 462)
+        Me.ShapeContainer3.TabIndex = 99
+        Me.ShapeContainer3.TabStop = False
+        '
+        'LineShape11
+        '
+        Me.LineShape11.Name = "LineShape11"
+        Me.LineShape11.X1 = -1
+        Me.LineShape11.X2 = 593
+        Me.LineShape11.Y1 = 28
+        Me.LineShape11.Y2 = 28
+        '
+        'LineShape10
+        '
+        Me.LineShape10.Name = "LineShape10"
+        Me.LineShape10.X1 = -1
+        Me.LineShape10.X2 = 593
+        Me.LineShape10.Y1 = 47
+        Me.LineShape10.Y2 = 47
+        '
+        'LineShape9
+        '
+        Me.LineShape9.Name = "LineShape9"
+        Me.LineShape9.X1 = -2
+        Me.LineShape9.X2 = 592
+        Me.LineShape9.Y1 = 3
+        Me.LineShape9.Y2 = 3
+        '
+        'LineShape8
+        '
+        Me.LineShape8.Name = "LineShape8"
+        Me.LineShape8.X1 = -2
+        Me.LineShape8.X2 = 592
+        Me.LineShape8.Y1 = 22
+        Me.LineShape8.Y2 = 22
         '
         'TabPage3
         '
@@ -1020,44 +1071,54 @@ Partial Class ConsultaSolicitudReintegro
         Me.TabPage3.Controls.Add(Me.GridView3)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Size = New System.Drawing.Size(654, 435)
+        Me.TabPage3.Size = New System.Drawing.Size(654, 468)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Rechazados AM"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'botonexcelRechazados
+        '
+        Me.botonexcelRechazados.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
+        Me.botonexcelRechazados.Location = New System.Drawing.Point(6, 408)
+        Me.botonexcelRechazados.Name = "botonexcelRechazados"
+        Me.botonexcelRechazados.Size = New System.Drawing.Size(30, 26)
+        Me.botonexcelRechazados.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.botonexcelRechazados.TabIndex = 97
+        Me.botonexcelRechazados.TabStop = False
         '
         'GridView3
         '
         Me.GridView3.AllowUserToAddRows = False
         Me.GridView3.BackgroundColor = System.Drawing.Color.Firebrick
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridView3.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle5
         Me.GridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridView3.DefaultCellStyle = DataGridViewCellStyle13
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridView3.DefaultCellStyle = DataGridViewCellStyle6
         Me.GridView3.Location = New System.Drawing.Point(3, 3)
         Me.GridView3.MultiSelect = False
         Me.GridView3.Name = "GridView3"
         Me.GridView3.ReadOnly = True
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle14.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridView3.RowHeadersDefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle7.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridView3.RowHeadersDefaultCellStyle = DataGridViewCellStyle7
         Me.GridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridView3.Size = New System.Drawing.Size(651, 403)
@@ -1079,7 +1140,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.RectangleShape1.BorderColor = System.Drawing.SystemColors.ControlDarkDark
         Me.RectangleShape1.Location = New System.Drawing.Point(675, 286)
         Me.RectangleShape1.Name = "RectangleShape1"
-        Me.RectangleShape1.Size = New System.Drawing.Size(641, 386)
+        Me.RectangleShape1.Size = New System.Drawing.Size(639, 406)
         '
         'botonQuitarImagen
         '
@@ -1112,14 +1173,16 @@ Partial Class ConsultaSolicitudReintegro
         'opBuscarDNI
         '
         Me.opBuscarDNI.AutoSize = True
-        Me.opBuscarDNI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.opBuscarDNI.Location = New System.Drawing.Point(25, 51)
+        Me.opBuscarDNI.BackColor = System.Drawing.Color.Transparent
+        Me.opBuscarDNI.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.opBuscarDNI.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.opBuscarDNI.Location = New System.Drawing.Point(53, 52)
         Me.opBuscarDNI.Name = "opBuscarDNI"
-        Me.opBuscarDNI.Size = New System.Drawing.Size(190, 20)
+        Me.opBuscarDNI.Size = New System.Drawing.Size(154, 17)
         Me.opBuscarDNI.TabIndex = 83
         Me.opBuscarDNI.TabStop = True
         Me.opBuscarDNI.Text = "Buscar por Cuil Beneficiario"
-        Me.opBuscarDNI.UseVisualStyleBackColor = True
+        Me.opBuscarDNI.UseVisualStyleBackColor = False
         '
         'txtApeoCuil
         '
@@ -1133,51 +1196,27 @@ Partial Class ConsultaSolicitudReintegro
         'opBuscaNumReintegro
         '
         Me.opBuscaNumReintegro.AutoSize = True
-        Me.opBuscaNumReintegro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.opBuscaNumReintegro.Location = New System.Drawing.Point(25, 34)
+        Me.opBuscaNumReintegro.BackColor = System.Drawing.Color.Transparent
+        Me.opBuscaNumReintegro.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.opBuscaNumReintegro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.opBuscaNumReintegro.Location = New System.Drawing.Point(53, 37)
         Me.opBuscaNumReintegro.Name = "opBuscaNumReintegro"
-        Me.opBuscaNumReintegro.Size = New System.Drawing.Size(189, 20)
+        Me.opBuscaNumReintegro.Size = New System.Drawing.Size(155, 17)
         Me.opBuscaNumReintegro.TabIndex = 86
         Me.opBuscaNumReintegro.TabStop = True
         Me.opBuscaNumReintegro.Text = "Buscar por N° de Reintegro"
-        Me.opBuscaNumReintegro.UseVisualStyleBackColor = True
-        '
-        'botonExcel
-        '
-        Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel.Location = New System.Drawing.Point(6, 406)
-        Me.botonExcel.Name = "botonExcel"
-        Me.botonExcel.Size = New System.Drawing.Size(30, 26)
-        Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.botonExcel.TabIndex = 87
-        Me.botonExcel.TabStop = False
-        '
-        'botonExcelAprobadosAM
-        '
-        Me.botonExcelAprobadosAM.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcelAprobadosAM.Location = New System.Drawing.Point(4, 407)
-        Me.botonExcelAprobadosAM.Name = "botonExcelAprobadosAM"
-        Me.botonExcelAprobadosAM.Size = New System.Drawing.Size(30, 26)
-        Me.botonExcelAprobadosAM.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.botonExcelAprobadosAM.TabIndex = 96
-        Me.botonExcelAprobadosAM.TabStop = False
-        '
-        'botonexcelRechazados
-        '
-        Me.botonexcelRechazados.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonexcelRechazados.Location = New System.Drawing.Point(6, 408)
-        Me.botonexcelRechazados.Name = "botonexcelRechazados"
-        Me.botonexcelRechazados.Size = New System.Drawing.Size(30, 26)
-        Me.botonexcelRechazados.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.botonexcelRechazados.TabIndex = 97
-        Me.botonexcelRechazados.TabStop = False
+        Me.opBuscaNumReintegro.UseVisualStyleBackColor = False
         '
         'ConsultaSolicitudReintegro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.Color.DarkGray
+        Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1333, 764)
+        Me.Controls.Add(Me.botonLimpiarFiltros)
+        Me.Controls.Add(Me.checkFecha)
         Me.Controls.Add(Me.txtBeneficiario)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.opBuscaNumReintegro)
@@ -1206,11 +1245,11 @@ Partial Class ConsultaSolicitudReintegro
         Me.Controls.Add(Me.lblPicture)
         Me.Controls.Add(Me.clbimagen)
         Me.Controls.Add(Me.Boton_Salir)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.lblfe2)
         Me.Controls.Add(Me.lblfe1)
         Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.ShapeContainer2)
         Me.Name = "ConsultaSolicitudReintegro"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -1224,13 +1263,14 @@ Partial Class ConsultaSolicitudReintegro
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
+        CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage2.ResumeLayout(False)
+        Me.TabPage2.PerformLayout()
+        CType(Me.botonExcelAprobadosAM, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
-        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.botonExcelAprobadosAM, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.botonexcelRechazados, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1298,25 +1338,16 @@ Partial Class ConsultaSolicitudReintegro
     Friend WithEvents GridView3 As System.Windows.Forms.DataGridView
     Friend WithEvents GridView2 As System.Windows.Forms.DataGridView
     Friend WithEvents opPAGADO As System.Windows.Forms.CheckBox
-    Friend WithEvents opComisionRechazados As System.Windows.Forms.CheckBox
-    Friend WithEvents opComisionAprobados As System.Windows.Forms.CheckBox
-    Friend WithEvents opComisionPendientes As System.Windows.Forms.CheckBox
     Friend WithEvents opSubsidio As System.Windows.Forms.CheckBox
     Friend WithEvents opReintegro As System.Windows.Forms.CheckBox
     Friend WithEvents botonLimpiarFiltros As System.Windows.Forms.Button
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label14 As System.Windows.Forms.Label
     Friend WithEvents opAuditorMedicoSI As System.Windows.Forms.CheckBox
     Friend WithEvents opAuditorRechazado As System.Windows.Forms.CheckBox
     Friend WithEvents opPagoPendiente As System.Windows.Forms.CheckBox
     Friend WithEvents opPendienteAuditor As System.Windows.Forms.CheckBox
-    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
-    Friend WithEvents LineShape2 As Microsoft.VisualBasic.PowerPacks.LineShape
-    Friend WithEvents LineShape1 As Microsoft.VisualBasic.PowerPacks.LineShape
-    Friend WithEvents LineShape3 As Microsoft.VisualBasic.PowerPacks.LineShape
-    Friend WithEvents LineShape4 As Microsoft.VisualBasic.PowerPacks.LineShape
     Friend WithEvents ShapeContainer2 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
     Friend WithEvents botonQuitarImagen As System.Windows.Forms.Button
@@ -1324,7 +1355,17 @@ Partial Class ConsultaSolicitudReintegro
     Friend WithEvents opBuscarDNI As System.Windows.Forms.RadioButton
     Friend WithEvents txtApeoCuil As System.Windows.Forms.TextBox
     Friend WithEvents opBuscaNumReintegro As System.Windows.Forms.RadioButton
-    Friend WithEvents botonExcel As System.Windows.Forms.PictureBox
-    Friend WithEvents botonExcelAprobadosAM As System.Windows.Forms.PictureBox
     Friend WithEvents botonexcelRechazados As System.Windows.Forms.PictureBox
+    Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
+    Friend WithEvents botonExcel As System.Windows.Forms.PictureBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents opComisionRechazados As System.Windows.Forms.CheckBox
+    Friend WithEvents opComisionAprobados As System.Windows.Forms.CheckBox
+    Friend WithEvents opComisionPendientes As System.Windows.Forms.CheckBox
+    Friend WithEvents botonExcelAprobadosAM As System.Windows.Forms.PictureBox
+    Friend WithEvents ShapeContainer3 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    Friend WithEvents LineShape11 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents LineShape10 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents LineShape9 As Microsoft.VisualBasic.PowerPacks.LineShape
+    Friend WithEvents LineShape8 As Microsoft.VisualBasic.PowerPacks.LineShape
 End Class

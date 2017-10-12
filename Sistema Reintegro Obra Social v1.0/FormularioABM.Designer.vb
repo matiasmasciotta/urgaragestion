@@ -22,6 +22,7 @@ Partial Class FormularioABM
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormularioABM))
         Me.GridView = New System.Windows.Forms.DataGridView()
         Me.lblingreso = New System.Windows.Forms.Label()
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
@@ -41,6 +42,8 @@ Partial Class FormularioABM
         Me.txtApellidoNombre = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Panel4 = New System.Windows.Forms.Panel()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.txtParentesco = New System.Windows.Forms.TextBox()
         Me.tempApellidoNombre = New System.Windows.Forms.TextBox()
         Me.txtProvincia = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -71,19 +74,20 @@ Partial Class FormularioABM
         Me.tempCuil = New System.Windows.Forms.TextBox()
         Me.tempCodigo_Beneficiario = New System.Windows.Forms.TextBox()
         Me.opUrgara = New System.Windows.Forms.CheckBox()
-        Me.txtParentesco = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Panel6 = New System.Windows.Forms.Panel()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.Panel3.SuspendLayout()
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
+        Me.Panel6.SuspendLayout()
         Me.SuspendLayout()
         '
         'GridView
         '
         Me.GridView.AllowUserToAddRows = False
+        Me.GridView.BackgroundColor = System.Drawing.Color.MediumSeaGreen
         Me.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridView.GridColor = System.Drawing.SystemColors.ActiveCaption
         Me.GridView.Location = New System.Drawing.Point(3, 35)
@@ -115,6 +119,7 @@ Partial Class FormularioABM
         '
         'Panel1
         '
+        Me.Panel1.BackColor = System.Drawing.Color.Transparent
         Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel1.Controls.Add(Me.txtBusqueda)
         Me.Panel1.Controls.Add(Me.lblingreso)
@@ -125,6 +130,7 @@ Partial Class FormularioABM
         '
         'Panel2
         '
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
         Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel2.Controls.Add(Me.CANCELAR)
         Me.Panel2.Controls.Add(Me.OK)
@@ -228,6 +234,7 @@ Partial Class FormularioABM
         '
         'Panel3
         '
+        Me.Panel3.BackColor = System.Drawing.Color.Transparent
         Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel3.Controls.Add(Me.txtBeneficiario)
         Me.Panel3.Location = New System.Drawing.Point(549, 11)
@@ -238,6 +245,7 @@ Partial Class FormularioABM
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Location = New System.Drawing.Point(571, 5)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(98, 13)
@@ -265,6 +273,7 @@ Partial Class FormularioABM
         'Label3
         '
         Me.Label3.AutoSize = True
+        Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.Location = New System.Drawing.Point(555, 69)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(72, 13)
@@ -273,6 +282,7 @@ Partial Class FormularioABM
         '
         'Panel4
         '
+        Me.Panel4.BackColor = System.Drawing.Color.Transparent
         Me.Panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.Panel4.Controls.Add(Me.Label10)
         Me.Panel4.Controls.Add(Me.txtParentesco)
@@ -305,6 +315,25 @@ Partial Class FormularioABM
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(480, 421)
         Me.Panel4.TabIndex = 10
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(56, 68)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(72, 15)
+        Me.Label10.TabIndex = 32
+        Me.Label10.Text = "Parentesco:"
+        '
+        'txtParentesco
+        '
+        Me.txtParentesco.Enabled = False
+        Me.txtParentesco.Location = New System.Drawing.Point(134, 67)
+        Me.txtParentesco.Name = "txtParentesco"
+        Me.txtParentesco.ReadOnly = True
+        Me.txtParentesco.Size = New System.Drawing.Size(190, 20)
+        Me.txtParentesco.TabIndex = 31
         '
         'tempApellidoNombre
         '
@@ -516,6 +545,7 @@ Partial Class FormularioABM
         'Label4
         '
         Me.Label4.AutoSize = True
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
         Me.Label4.Location = New System.Drawing.Point(786, 5)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(34, 13)
@@ -541,6 +571,7 @@ Partial Class FormularioABM
         '
         'Panel5
         '
+        Me.Panel5.BackColor = System.Drawing.Color.Transparent
         Me.Panel5.Controls.Add(Me.txtCUIL)
         Me.Panel5.Location = New System.Drawing.Point(740, 13)
         Me.Panel5.Name = "Panel5"
@@ -549,7 +580,7 @@ Partial Class FormularioABM
         '
         'tempCuil
         '
-        Me.tempCuil.Location = New System.Drawing.Point(882, 28)
+        Me.tempCuil.Location = New System.Drawing.Point(663, 57)
         Me.tempCuil.Name = "tempCuil"
         Me.tempCuil.ReadOnly = True
         Me.tempCuil.Size = New System.Drawing.Size(112, 20)
@@ -558,7 +589,7 @@ Partial Class FormularioABM
         '
         'tempCodigo_Beneficiario
         '
-        Me.tempCodigo_Beneficiario.BackColor = System.Drawing.SystemColors.Info
+        Me.tempCodigo_Beneficiario.BackColor = System.Drawing.SystemColors.ButtonHighlight
         Me.tempCodigo_Beneficiario.Location = New System.Drawing.Point(410, 29)
         Me.tempCodigo_Beneficiario.Name = "tempCodigo_Beneficiario"
         Me.tempCodigo_Beneficiario.ReadOnly = True
@@ -569,40 +600,33 @@ Partial Class FormularioABM
         'opUrgara
         '
         Me.opUrgara.AutoSize = True
+        Me.opUrgara.BackColor = System.Drawing.Color.Transparent
         Me.opUrgara.Enabled = False
-        Me.opUrgara.Location = New System.Drawing.Point(752, 57)
+        Me.opUrgara.Location = New System.Drawing.Point(5, 14)
         Me.opUrgara.Name = "opUrgara"
-        Me.opUrgara.Size = New System.Drawing.Size(104, 17)
+        Me.opUrgara.Size = New System.Drawing.Size(118, 17)
         Me.opUrgara.TabIndex = 31
-        Me.opUrgara.Text = "Afiliado a Urgara"
-        Me.opUrgara.UseVisualStyleBackColor = True
+        Me.opUrgara.Text = "Afiliado a URGARA"
+        Me.opUrgara.UseVisualStyleBackColor = False
         '
-        'txtParentesco
+        'Panel6
         '
-        Me.txtParentesco.Enabled = False
-        Me.txtParentesco.Location = New System.Drawing.Point(134, 67)
-        Me.txtParentesco.Name = "txtParentesco"
-        Me.txtParentesco.ReadOnly = True
-        Me.txtParentesco.Size = New System.Drawing.Size(190, 20)
-        Me.txtParentesco.TabIndex = 31
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(56, 68)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(72, 15)
-        Me.Label10.TabIndex = 32
-        Me.Label10.Text = "Parentesco:"
+        Me.Panel6.BackColor = System.Drawing.Color.Transparent
+        Me.Panel6.Controls.Add(Me.opUrgara)
+        Me.Panel6.Location = New System.Drawing.Point(905, 13)
+        Me.Panel6.Name = "Panel6"
+        Me.Panel6.Size = New System.Drawing.Size(124, 41)
+        Me.Panel6.TabIndex = 32
         '
         'FormularioABM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
+        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1077, 664)
-        Me.Controls.Add(Me.opUrgara)
+        Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.tempCodigo_Beneficiario)
         Me.Controls.Add(Me.tempCuil)
         Me.Controls.Add(Me.Label1)
@@ -628,6 +652,8 @@ Partial Class FormularioABM
         Me.Panel4.PerformLayout()
         Me.Panel5.ResumeLayout(False)
         Me.Panel5.PerformLayout()
+        Me.Panel6.ResumeLayout(False)
+        Me.Panel6.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -683,4 +709,5 @@ Partial Class FormularioABM
     Friend WithEvents opUrgara As System.Windows.Forms.CheckBox
     Friend WithEvents txtParentesco As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Panel6 As System.Windows.Forms.Panel
 End Class

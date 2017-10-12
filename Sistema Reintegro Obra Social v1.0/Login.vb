@@ -162,6 +162,8 @@ Public Class Login
 
     Private Sub Login_Activated(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Activated
         txtUser.Focus()
+        txtUser.Focus()
+        txtUser.Focus()
     End Sub
     '*************************************************************************************************************************
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -175,6 +177,8 @@ Public Class Login
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+        txtUser.Focus()
+        txtUser.Focus()
         txtUser.Focus()
     End Sub
 

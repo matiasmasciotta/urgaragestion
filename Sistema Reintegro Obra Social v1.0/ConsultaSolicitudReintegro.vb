@@ -167,19 +167,14 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
     Private Sub BuscarDato()
-        'Filtra los Pendientes de Auditoria Medica
-
-
-
-
-
+        'Filtra los Pendientes de Auditoria Medica (GRID 1)
         Try
             If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND " & _
-                    "(Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=0) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO & varOPAPEYCUIL & varOPNUMREINTEGRO
+                    "(Detalle LIKE '%" & txtBeneficiario.Text & "%') " & _
+                    "AND (Auditor_medico=0) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO & varOPAPEYCUIL & varOPNUMREINTEGRO
             Else
-
                 sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
                     "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and " & _
@@ -193,23 +188,18 @@ Public Class ConsultaSolicitudReintegro
             MsgBox(ex.Message)
         End Try
 
-
-
-
-
-
-
-
-        'Filtra los Aprobados por Auditor Medico
+        'Filtra los Aprobados por Auditor Medico (GRID 2)
         Try
             If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
-                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=1) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND " & _
+                    "(Detalle LIKE '%" & txtBeneficiario.Text & "%') AND " & _
+                    "(Auditor_medico=1) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO & varOPAPEYCUIL & varOPNUMREINTEGRO
             Else
-
                 sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
-                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 1) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and " & _
+                    "(Auditor_Medico = 1) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO & varOPAPEYCUIL & varOPNUMREINTEGRO
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -219,16 +209,18 @@ Public Class ConsultaSolicitudReintegro
             MsgBox(ex.Message)
         End Try
 
-        'Filtra los Rechazados por Auditor Medico
+        'Filtra los Rechazados por Auditor Medico (GRID 3)
         Try
             If (txtFechaDesde.Text = "") And (txtFechaDesde.Text = "") Then
                 sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
-                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text & "%') AND (Auditor_medico=2) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
+                    "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND " & _
+                    "(Detalle LIKE '%" & txtBeneficiario.Text & "%') AND " & _
+                    "(Auditor_medico=2) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO & varOPAPEYCUIL & varOPNUMREINTEGRO
             Else
-
                 sql = "SELECT " & varSQLCAMPOS & " FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
                     "AND (USUARIOS_REINTEGROS.Codigo_Seccional = '" & VariableGlobalSeccional & "') AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
-                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and (Auditor_Medico = 2) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and " & _
+                    "(Auditor_Medico = 2) " & varOPREINTEGRO & varOPAUDITORMEDICO & varOPCOMISION & varOPPAGADO & varOPAPEYCUIL & varOPNUMREINTEGRO
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -1137,6 +1129,10 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
     Private Sub botonLimpiarFiltros_Click(sender As Object, e As EventArgs) Handles botonLimpiarFiltros.Click
+        txtApeoCuil.Text = ""
+        txtApeoCuil.Text = ""
+        opBuscarDNI.Checked = False
+        opBuscaNumReintegro.Checked = False
         opReintegro.Checked = False
         opSubsidio.Checked = False
         opAuditorMedicoSI.Checked = False
@@ -1158,6 +1154,10 @@ Public Class ConsultaSolicitudReintegro
     Private Sub opSubsidio_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opSubsidio.CheckedChanged
         todosLosIF()
         BuscarDato()
+    End Sub
+
+    Private Sub txtBeneficiario_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles txtBeneficiario.MouseDoubleClick
+        txtBeneficiario.Enabled = True
     End Sub
 
     'escribo en el buscador
@@ -1186,20 +1186,20 @@ Public Class ConsultaSolicitudReintegro
     End Sub
 
     'clic en comision pendiente
-    Private Sub opComisionPendientes_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionPendientes.CheckedChanged
+    Private Sub opComisionPendientes_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         todosLosIF()
         BuscarDato()
     End Sub
 
     'clic en comision aprobada
-    Private Sub opComisionAprobados_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionAprobados.CheckedChanged
+    Private Sub opComisionAprobados_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         todosLosIF()
         BuscarDato()
 
     End Sub
 
     'clic en comision rechazada
-    Private Sub opComisionRechazados_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opComisionRechazados.CheckedChanged
+    Private Sub opComisionRechazados_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
         todosLosIF()
         BuscarDato()
     End Sub
@@ -1212,6 +1212,21 @@ Public Class ConsultaSolicitudReintegro
 
     'clic en pagados
     Private Sub opPAGADO_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opPAGADO.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    Private Sub opComisionAprobados_CheckedChanged_1(sender As Object, e As EventArgs) Handles opComisionAprobados.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    Private Sub opComisionPendientes_CheckedChanged_1(sender As Object, e As EventArgs) Handles opComisionPendientes.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    Private Sub opComisionRechazados_CheckedChanged_1(sender As Object, e As EventArgs) Handles opComisionRechazados.CheckedChanged
         todosLosIF()
         BuscarDato()
     End Sub
@@ -1380,9 +1395,13 @@ Public Class ConsultaSolicitudReintegro
     Private Sub txtApeoCuil_TextChanged(sender As Object, e As EventArgs) Handles txtApeoCuil.TextChanged
         If opBuscaNumReintegro.Checked = True Then
             varOPNUMREINTEGRO = " AND Codigo_Reintegro like '%" & txtApeoCuil.Text & "%'"
+        Else
+            varOPNUMREINTEGRO = " "
         End If
         If opBuscarDNI.Checked = True Then
             varOPAPEYCUIL = " AND Cuil_Beneficiario like '%" & txtApeoCuil.Text & "%'"
+        Else
+            varOPAPEYCUIL = " "
         End If
         BuscarDato()
     End Sub
@@ -1405,17 +1424,24 @@ Public Class ConsultaSolicitudReintegro
         End If
     End Sub
 
-    Private Sub botonExcel_Click(sender As Object, e As EventArgs) Handles botonExcel.Click
+    Private Sub botonExcel_Click(sender As Object, e As EventArgs)
         GridAExcel(GridView1)
     End Sub
 
-    Private Sub botonExcelAprobadosAM_Click(sender As Object, e As EventArgs) Handles botonExcelAprobadosAM.Click
+    Private Sub botonExcelAprobadosAM_Click(sender As Object, e As EventArgs)
         GridAExcel(GridView2)
     End Sub
 
     Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles botonexcelRechazados.Click
         GridAExcel(GridView3)
     End Sub
+
+    Private Sub botonLimpiarFiltros_MouseHover(sender As Object, e As EventArgs) Handles botonLimpiarFiltros.MouseHover
+        'etiquetar
+        ToolTip1.SetToolTip(botonLimpiarFiltros, "Quitar Filtros!")
+    End Sub
+
+ 
 End Class
 
 

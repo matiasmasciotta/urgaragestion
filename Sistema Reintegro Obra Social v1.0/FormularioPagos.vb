@@ -17,6 +17,9 @@ Public Class FormularioPagos
     Dim varCodigoreintegroAprobado As String
     Dim varCodigoreintegroPagado As String
     Dim varCodigoreintegroRechazado As String
+    Dim varOPREINTEGRO As String = " "
+    Dim varOPNUMREINTEGRO As String = ""
+    Dim varOPCUIL As String = ""
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                               "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
                               "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta,cuil_beneficiario "
@@ -26,43 +29,121 @@ Public Class FormularioPagos
     Dim det As String = ""
     Dim pagaono As Boolean
 
-    'Metodo activa textbox y label de fecha
-    Private Sub prendeFecha()
-        txtFechaDesde.Visible = True
-        txtFechaHasta.Visible = True
-        Label2.Visible = True
-        Label3.Visible = True
-        DateTimePicker1.Visible = True
-        DateTimePicker2.Visible = True
-        lblfechadesde.Visible = True
-        lblfechahasta.Visible = True
+    Private Sub ifReintegroOSubsidio()
+        varOPREINTEGRO = ""
+        If (opReintegro.Checked = True) And (opSubsidio.Checked = False) Then
+            varOPREINTEGRO = " AND (tipo_reintegro = 0) "
+        End If
+        If (opReintegro.Checked = True) And (opSubsidio.Checked = True) Then
+            varOPREINTEGRO = " "
+        End If
+        If (opReintegro.Checked = False) And (opSubsidio.Checked = True) Then
+            varOPREINTEGRO = " AND (tipo_reintegro = 1) "
+        End If
+        If (opReintegro.Checked = False) And (opSubsidio.Checked = False) Then
+            varOPREINTEGRO = " "
+        End If
     End Sub
 
-    'Metodo oculta textbox y label de fecha
-    Private Sub apagaFecha()
-        txtFechaDesde.Visible = False
-        txtFechaHasta.Visible = False
-        Label2.Visible = False
-        Label3.Visible = False
-        DateTimePicker1.Visible = False
-        DateTimePicker2.Visible = False
-        lblfechadesde.Visible = False
-        lblfechahasta.Visible = False
-    End Sub
-    'metodo limpia fecha
-    Private Sub limpiafechas()
-        txtFechaDesde.Text = ""
-        txtFechaHasta.Text = ""
+    Private Sub todosLosIF()
+        ifReintegroOSubsidio()
     End Sub
 
 
-    Private Sub FormularioPagos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        varPagado = 0
-        apagaFecha()
-        llenarGridCompleto()
-        txtBeneficiario.Focus()
-        txtFechaDesde.Enabled = False
-        txtFechaHasta.Enabled = False
+    Private Sub opBuscaNumReintegro_CheckedChanged(sender As Object, e As EventArgs) Handles opBuscaNumReintegro.CheckedChanged
+        If opBuscaNumReintegro.Checked = True Then
+            opBuscarDNI.Checked = False
+            txtNumReintegroBusqueda.Text = ""
+            txtNumReintegroBusqueda.Enabled = True
+            txtNumReintegroBusqueda.Focus()
+        End If
+    End Sub
+
+    Private Sub opBuscarDNI_CheckedChanged(sender As Object, e As EventArgs) Handles opBuscarDNI.CheckedChanged
+        If opBuscarDNI.Checked = True Then
+            opBuscaNumReintegro.Checked = False
+            txtNumReintegroBusqueda.Text = ""
+            txtNumReintegroBusqueda.Enabled = True
+            txtNumReintegroBusqueda.Focus()
+        End If
+    End Sub
+
+    Private Sub txtNumReintegroBusqueda_TextChanged(sender As Object, e As EventArgs) Handles txtNumReintegroBusqueda.TextChanged
+        If opBuscaNumReintegro.Checked = True Then
+            varOPNUMREINTEGRO = " AND (Reintegros.Codigo_Reintegro like '%" & txtNumReintegroBusqueda.Text & "%') "
+        Else
+            varOPNUMREINTEGRO = " "
+        End If
+        If opBuscarDNI.Checked = True Then
+            varOPCUIL = " AND (Reintegros.Cuil_Beneficiario like '%" & txtNumReintegroBusqueda.Text & "%') "
+        Else
+            varOPCUIL = " "
+        End If
+        BuscarDato()
+    End Sub
+
+    Private Sub BuscarDato()
+        'pendientes comision
+        Try
+            If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (Auditor_Medico = 1) and (estado = 0) AND " & _
+                    "(Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by fecha_solicitud desc"
+            Else
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (Auditor_Medico = 1) and (estado = 0) AND " & _
+                    "(Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' " & _
+                    "AND '" & txtFechaHasta.Text.ToString & "') " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by fecha_solicitud desc"
+            End If
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridView2.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        'Rechazados por Comision
+        Try
+            If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (Auditor_Medico = 1) and (estado =2) AND " & _
+                    "(Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by fecha_solicitud desc"
+            Else
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (Auditor_Medico = 1) and (estado =2) AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' " & _
+                    "AND '" & txtFechaHasta.Text.ToString & "') " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by fecha_solicitud desc"
+            End If
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridView3.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+        'Pagados (aprobados por comision)
+        Try
+            If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (Auditor_Medico = 1) and (estado =1) and (pagado=1) AND " & _
+                    "(Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by fecha_solicitud desc"
+            Else
+                sql = "SELECT " & varSQLCAMPOS & "FROM REINTEGROS,USUARIOS_REINTEGROS WHERE (REINTEGROS.CODIGO_USUARIO = USUARIOS_REINTEGROS.CODIGO_USUARIO) " & _
+                    "AND (Auditor_Medico = 1) and (estado =1) and (pagado=1) AND (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
+                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' " & _
+                    "AND '" & txtFechaHasta.Text.ToString & "') " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by fecha_solicitud desc"
+            End If
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridView3.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
     End Sub
 
     'metodo llenar grid
@@ -105,7 +186,44 @@ Public Class FormularioPagos
 
     End Sub
 
+    'Metodo activa textbox y label de fecha
+    Private Sub prendeFecha()
+        txtFechaDesde.Visible = True
+        txtFechaHasta.Visible = True
+        Label2.Visible = True
+        Label3.Visible = True
+        DateTimePicker1.Visible = True
+        DateTimePicker2.Visible = True
+        lblfechadesde.Visible = True
+        lblfechahasta.Visible = True
+    End Sub
 
+    'Metodo oculta textbox y label de fecha
+    Private Sub apagaFecha()
+        txtFechaDesde.Visible = False
+        txtFechaHasta.Visible = False
+        Label2.Visible = False
+        Label3.Visible = False
+        DateTimePicker1.Visible = False
+        DateTimePicker2.Visible = False
+        lblfechadesde.Visible = False
+        lblfechahasta.Visible = False
+    End Sub
+    'metodo limpia fecha
+    Private Sub limpiafechas()
+        txtFechaDesde.Text = ""
+        txtFechaHasta.Text = ""
+    End Sub
+
+
+    Private Sub FormularioPagos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        varPagado = 0
+        apagaFecha()
+        llenarGridCompleto()
+        txtBeneficiario.Focus()
+        txtFechaDesde.Enabled = False
+        txtFechaHasta.Enabled = False
+    End Sub
 
     '*****************************************
     'CLICK 1 - REINTEGROS APROBADOS
@@ -458,9 +576,6 @@ Public Class FormularioPagos
     End Sub
     '****************************************
 
-
-
-
     'CLICK 1 - REINTEGROS PAGADOS Y APROBADOS POR COMISION
     Private Sub GridView4_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView4.CellClick
         clbimagen.Items.Clear()
@@ -582,4 +697,50 @@ Public Class FormularioPagos
     Private Sub botonExcelPagados_Click(sender As Object, e As EventArgs) Handles botonExcelPagados.Click
         GridAExcel(GridView4)
     End Sub
+
+    Private Sub txtBeneficiario_TextChanged(sender As Object, e As EventArgs) Handles txtBeneficiario.TextChanged
+        BuscarDato()
+    End Sub
+
+    Private Sub checkFecha_CheckedChanged(sender As Object, e As EventArgs) Handles checkFecha.CheckedChanged
+        If checkFecha.Checked = True Then
+            'MsgBox("CHECK ACTIVO FECHA", vbInformation)
+            prendeFecha()
+        Else
+            'MsgBox("CHECK DESACTIVADO FECHA", vbInformation)
+            apagaFecha()
+            limpiafechas()
+        End If
+    End Sub
+
+    Private Sub txtFechaDesde_TextChanged(sender As Object, e As EventArgs) Handles txtFechaDesde.TextChanged
+        BuscarDato()
+    End Sub
+
+    Private Sub txtFechaHasta_TextChanged(sender As Object, e As EventArgs) Handles txtFechaHasta.TextChanged
+        BuscarDato()
+    End Sub
+
+    Private Sub opReintegro_CheckedChanged(sender As Object, e As EventArgs) Handles opReintegro.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    Private Sub opSubsidio_CheckedChanged(sender As Object, e As EventArgs) Handles opSubsidio.CheckedChanged
+        todosLosIF()
+        BuscarDato()
+    End Sub
+
+    Private Sub DateTimePicker1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker1.ValueChanged
+        txtFechaDesde.Text = DateTimePicker1.Value.Year & "-" & DateTimePicker1.Value.Month & "-" & DateTimePicker1.Value.Day
+        txtFechaHasta.Text = DateTimePicker2.Value.Year & "-" & DateTimePicker2.Value.Month & "-" & DateTimePicker2.Value.Day
+        BuscarDato()
+    End Sub
+
+    Private Sub DateTimePicker2_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker2.ValueChanged
+        txtFechaDesde.Text = DateTimePicker1.Value.Year & "-" & DateTimePicker1.Value.Month & "-" & DateTimePicker1.Value.Day
+        txtFechaHasta.Text = DateTimePicker2.Value.Year & "-" & DateTimePicker2.Value.Month & "-" & DateTimePicker2.Value.Day
+        BuscarDato()
+    End Sub
+
 End Class
