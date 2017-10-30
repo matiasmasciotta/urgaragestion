@@ -122,7 +122,6 @@ Public Class ConsultaTotal
 
     End Sub
  
-
     'funcion if auditor medico
     Private Sub ifAuditorMedico()
         varOPAUDITORMEDICO = ""
@@ -842,6 +841,10 @@ Public Class ConsultaTotal
     End Sub
 
     Private Sub lblPicture_Click(sender As Object, e As EventArgs) Handles lblPicture.Click
+
+    End Sub
+
+    Private Sub ToolTip1_Popup(sender As Object, e As PopupEventArgs) Handles ToolTip1.Popup
 
     End Sub
 End Class

@@ -42,6 +42,8 @@ Partial Class MenuPrincipal
         Me.ConsultaAuditorMedicoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PagosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GenerarPagoDeReintegroOSubsidioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ConsultarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AyudaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SoporteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.lblUser = New System.Windows.Forms.Label()
@@ -67,7 +69,7 @@ Partial Class MenuPrincipal
         '
         Me.MenuStrip1.BackColor = System.Drawing.Color.SteelBlue
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.DatosToolStripMenuItem, Me.ReintegrosToolStripMenuItem, Me.PagosToolStripMenuItem, Me.AyudaToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.DatosToolStripMenuItem, Me.ReintegrosToolStripMenuItem, Me.PagosToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(1588, 24)
@@ -197,6 +199,20 @@ Partial Class MenuPrincipal
         Me.GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Name = "GenerarPagoDeReintegroOSubsidioToolStripMenuItem"
         Me.GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Size = New System.Drawing.Size(273, 22)
         Me.GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Text = "Generar Pago de Reintegro o Subsidio"
+        '
+        'ReportesToolStripMenuItem
+        '
+        Me.ReportesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultarToolStripMenuItem})
+        Me.ReportesToolStripMenuItem.Name = "ReportesToolStripMenuItem"
+        Me.ReportesToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
+        Me.ReportesToolStripMenuItem.Text = "Reportes"
+        '
+        'ConsultarToolStripMenuItem
+        '
+        Me.ConsultarToolStripMenuItem.Image = CType(resources.GetObject("ConsultarToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ConsultarToolStripMenuItem.Name = "ConsultarToolStripMenuItem"
+        Me.ConsultarToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.ConsultarToolStripMenuItem.Text = "Consultar"
         '
         'AyudaToolStripMenuItem
         '
@@ -439,4 +455,6 @@ Partial Class MenuPrincipal
     Friend WithEvents GenerarPagoDeReintegroOSubsidioToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents GridViewUsuario As System.Windows.Forms.DataGridView
     Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents ReportesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ConsultarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

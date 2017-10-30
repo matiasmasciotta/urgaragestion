@@ -32,10 +32,11 @@ Partial Class NuevoReintegro
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.lblresultadocuit = New System.Windows.Forms.Label()
+        Me.txtCUITT = New System.Windows.Forms.MaskedTextBox()
         Me.GridViewSubsidios = New System.Windows.Forms.DataGridView()
         Me.txtTipoCuenta = New System.Windows.Forms.ComboBox()
         Me.Label17 = New System.Windows.Forms.Label()
-        Me.txtCuilPago = New System.Windows.Forms.TextBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.txtSubsidio = New System.Windows.Forms.TextBox()
         Me.opSubsidio = New System.Windows.Forms.RadioButton()
@@ -131,10 +132,11 @@ Partial Class NuevoReintegro
         '
         Me.Panel5.BackColor = System.Drawing.Color.Transparent
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel5.Controls.Add(Me.lblresultadocuit)
+        Me.Panel5.Controls.Add(Me.txtCUITT)
         Me.Panel5.Controls.Add(Me.GridViewSubsidios)
         Me.Panel5.Controls.Add(Me.txtTipoCuenta)
         Me.Panel5.Controls.Add(Me.Label17)
-        Me.Panel5.Controls.Add(Me.txtCuilPago)
         Me.Panel5.Controls.Add(Me.Label19)
         Me.Panel5.Controls.Add(Me.txtSubsidio)
         Me.Panel5.Controls.Add(Me.opSubsidio)
@@ -163,6 +165,26 @@ Partial Class NuevoReintegro
         Me.Panel5.Name = "Panel5"
         Me.Panel5.Size = New System.Drawing.Size(697, 390)
         Me.Panel5.TabIndex = 24
+        '
+        'lblresultadocuit
+        '
+        Me.lblresultadocuit.AutoSize = True
+        Me.lblresultadocuit.BackColor = System.Drawing.Color.Transparent
+        Me.lblresultadocuit.ForeColor = System.Drawing.Color.Red
+        Me.lblresultadocuit.Location = New System.Drawing.Point(198, 141)
+        Me.lblresultadocuit.Name = "lblresultadocuit"
+        Me.lblresultadocuit.Size = New System.Drawing.Size(23, 13)
+        Me.lblresultadocuit.TabIndex = 44
+        Me.lblresultadocuit.Text = "( * )"
+        '
+        'txtCUITT
+        '
+        Me.txtCUITT.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.txtCUITT.Location = New System.Drawing.Point(105, 138)
+        Me.txtCUITT.Mask = "##-########-#"
+        Me.txtCUITT.Name = "txtCUITT"
+        Me.txtCUITT.Size = New System.Drawing.Size(91, 20)
+        Me.txtCUITT.TabIndex = 43
         '
         'GridViewSubsidios
         '
@@ -211,16 +233,6 @@ Partial Class NuevoReintegro
         Me.Label17.Size = New System.Drawing.Size(67, 14)
         Me.Label17.TabIndex = 29
         Me.Label17.Text = "Tipo Cuenta:"
-        '
-        'txtCuilPago
-        '
-        Me.txtCuilPago.Enabled = False
-        Me.txtCuilPago.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCuilPago.Location = New System.Drawing.Point(115, 140)
-        Me.txtCuilPago.MaxLength = 13
-        Me.txtCuilPago.Name = "txtCuilPago"
-        Me.txtCuilPago.Size = New System.Drawing.Size(163, 20)
-        Me.txtCuilPago.TabIndex = 9
         '
         'Label19
         '
@@ -894,9 +906,6 @@ Partial Class NuevoReintegro
         Me.ProgressBar1.Size = New System.Drawing.Size(1206, 11)
         Me.ProgressBar1.TabIndex = 37
         '
-        'ToolTip1
-        '
-        '
         'Panel7
         '
         Me.Panel7.BackColor = System.Drawing.Color.Transparent
@@ -1036,7 +1045,6 @@ Partial Class NuevoReintegro
     Friend WithEvents GridViewSubsidios As System.Windows.Forms.DataGridView
     Friend WithEvents txtSubsidio As System.Windows.Forms.TextBox
     Friend WithEvents Label17 As System.Windows.Forms.Label
-    Friend WithEvents txtCuilPago As System.Windows.Forms.TextBox
     Friend WithEvents Label19 As System.Windows.Forms.Label
     Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
@@ -1051,4 +1059,6 @@ Partial Class NuevoReintegro
     Friend WithEvents GridViewUltimoReintegro As System.Windows.Forms.DataGridView
     Friend WithEvents lblProximoReintegro As System.Windows.Forms.Label
     Friend WithEvents Panel8 As System.Windows.Forms.Panel
+    Friend WithEvents lblresultadocuit As System.Windows.Forms.Label
+    Friend WithEvents txtCUITT As System.Windows.Forms.MaskedTextBox
 End Class

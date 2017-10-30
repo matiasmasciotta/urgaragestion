@@ -1441,7 +1441,9 @@ Public Class ConsultaSolicitudReintegro
         ToolTip1.SetToolTip(botonLimpiarFiltros, "Quitar Filtros!")
     End Sub
 
- 
+    Private Sub botonExcel_Click_1(sender As Object, e As EventArgs) Handles botonExcel.Click
+
+    End Sub
 End Class
 
 

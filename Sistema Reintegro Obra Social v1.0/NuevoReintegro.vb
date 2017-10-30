@@ -224,7 +224,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
 
                         Case 1
@@ -252,7 +252,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
                         Case 2
                             .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Cuil_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`,`Cuil_Pago`,`Tipo_Cuenta`)" & " VALUES " & "(?codus,?codben,?cuilben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal,?cuilpago,?tipocuenta)"
@@ -281,7 +281,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
 
                         Case 3
@@ -313,7 +313,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
 
                         Case 4
@@ -347,7 +347,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
 
                         Case 5
@@ -383,7 +383,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
                     End Select
                 End If
@@ -415,7 +415,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
 
                         Case 1
@@ -442,7 +442,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
                         Case 2
                             .CommandText = "INSERT INTO `reintegros`(`Codigo_Usuario`,`Codigo_Beneficiario`,`Cuil_Beneficiario`,`Fecha_Solicitud`,`Detalle`,`Importe`,`CBU`,`Alias`,`tipo_reintegro`,`id_Subsidio`,`Observaciones_Carga`,`imagen1`,`Imagen2`,`Auditor_Medico`,`Porcentaje_Reintegro_AM`,`Observaciones_AM`,`Estado`,`Observaciones_Comision`,`Autorizante`,`A_Cargo`,`Fecha_Reintegro`,`Porcentaje_Reintegro_final`,`Valor_Reintegrado`,`Cuil_Pago`,`Tipo_Cuenta`)" & " VALUES " & "(?codus,?codben,?cuilben,?fecsol,?det,?imp,?cbu,?alias,?tiporeintegro,?idsub,?obsc,?img1,?img2,?audmed,?porcaudmed,?obsam,?est,?obscomision,?aut,?acargo,?fecreint,?porcreint,?valfinal,?cuilpago,?tipocuenta)"
@@ -469,7 +469,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
 
                         Case 3
@@ -498,7 +498,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
 
                         Case 4
@@ -528,7 +528,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
 
                         Case 5
@@ -559,7 +559,7 @@ Public Class NuevoReintegro
                             .Parameters.AddWithValue("?fecreint", varfec)
                             .Parameters.AddWithValue("?porcreint", Int(0))
                             .Parameters.AddWithValue("?valfinal", Int(0))
-                            .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
+                            .Parameters.AddWithValue("?cuilpago", txtCUITT.Text.ToString)
                             .Parameters.AddWithValue("?tipocuenta", txtTipoCuenta.Text.ToString)
                     End Select
                 End If
@@ -594,7 +594,7 @@ Public Class NuevoReintegro
         txtCBU.Text = ""
         txtAlias.Text = ""
         txtSubsidio.Text = ""
-        txtCuilPago.Text = ""
+        txtCUITT.Text = ""
         txtTipoCuenta.Text = ""
         txtDetalle.Focus()
     End Sub
@@ -626,7 +626,7 @@ Public Class NuevoReintegro
         txtTipoCuenta.Enabled = False
         txtCBU.Enabled = False
         txtAlias.Enabled = False
-        txtCuilPago.Enabled = False
+        txtCUITT.Enabled = False
     End Sub
     Private Sub prendeDatosOperacion()
         txtDetalle.Enabled = True
@@ -639,7 +639,7 @@ Public Class NuevoReintegro
         botonImagen.Visible = True
         txtCBU.Enabled = True
         txtAlias.Enabled = True
-        txtCuilPago.Enabled = True
+        txtCUITT.Enabled = True
         txtTipoCuenta.Enabled = True
     End Sub
 
@@ -686,8 +686,40 @@ Public Class NuevoReintegro
 
     'BOTON ACEPTAR --> GENERA NUEVA SOLICITUD DE REINTEGRO
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
-        If (Trim(txtTipoCuenta.Text) = "") Or (Trim(txtCuilPago.Text) = "") Or (Trim(txtDetalle.Text) = "") Or (Trim(txtImporte.Text) = "") Or (Trim(txtFechaSolicitud.Text) = "") Or (Trim(txtCBU.Text) = "") Or (Trim(txtAlias.Text) = "") Then
-            MsgBox("Por favor Complete todos los datos de la Operacion", vbExclamation, "Faltan Datos")
+        If (Trim(txtTipoCuenta.Text) = "") Or (Trim(txtCUITT.Text) = "") Or (Trim(txtDetalle.Text) = "") Or (Trim(txtImporte.Text) = "") Or _
+            (Trim(txtFechaSolicitud.Text) = "") Or (Trim(txtCBU.Text) = "") Or (Trim(txtAlias.Text) = "") Or (Trim(txtCUITT.Text) = "") Then
+            If txtDetalle.Text = "" Then
+                txtDetalle.BackColor = Color.LightCoral
+            Else
+                txtDetalle.BackColor = Color.White
+            End If
+            If txtTipoCuenta.Text = "" Then
+                txtTipoCuenta.BackColor = Color.LightCoral
+            Else
+                txtTipoCuenta.BackColor = Color.White
+            End If
+            If txtImporte.Text = "" Then
+                txtImporte.BackColor = Color.LightCoral
+            Else
+                txtImporte.BackColor = Color.White
+            End If
+            If txtFechaSolicitud.Text = "" Then
+                txtFechaSolicitud.BackColor = Color.LightCoral
+            Else
+                txtFechaSolicitud.BackColor = Color.White
+            End If
+            If txtCBU.Text = "" Then
+                txtCBU.BackColor = Color.LightCoral
+            Else
+                txtCBU.BackColor = Color.White
+            End If
+            If txtCUITT.Text = "" Then
+                txtCUITT.BackColor = Color.LightCoral
+            Else
+                txtCUITT.BackColor = Color.White
+            End If
+
+            MsgBox("Por favor complete todos los datos marcados", vbExclamation, "Faltan Datos")
         Else
             Try
                 ProgressBar1.Visible = True
@@ -824,25 +856,25 @@ Public Class NuevoReintegro
         End If
     End Sub
 
-    Private Sub txtCuilPago_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCuilPago.KeyPress
-        Dim texto As String = txtCuilPago.Text
-        If (txtCuilPago.Text.Length = 2) Or (txtCuilPago.Text.Length = 11) Then
-            texto = texto + "-" + e.KeyChar
-            txtCuilPago.Text = texto
-            e.Handled = True
-            txtCuilPago.Select(txtCuilPago.Text.Length, 0)
-        End If
-        'SOLO ADMITE NUMEROS  *******
-        If InStr("0123456789", e.KeyChar) = False Then
-            If (Asc(e.KeyChar)) <> 8 Then
-                e.Handled = True
-            End If
-        End If
-    End Sub
+    'Private Sub txtCuilPago_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCuilPago.KeyPress, txtCuilPago.KeyPress
+    ' Dim texto As String = txtCuilPago.Text
+    '     If (txtCuilPago.Text.Length = 2) Or (txtCuilPago.Text.Length = 11) Then
+    '         texto = texto + "-" + e.KeyChar
+    '         txtCuilPago.Text = texto
+    '         e.Handled = True
+    '         txtCuilPago.Select(txtCuilPago.Text.Length, 0)
+    '     End If
+    ' 'SOLO ADMITE NUMEROS  *******
+    '     If InStr("0123456789", e.KeyChar) = False Then
+    '         If (Asc(e.KeyChar)) <> 8 Then
+    '             e.Handled = True
+    '         End If
+    '     End If
+    ' End Sub
 
-    Private Sub txtCuilPago_TextChanged(sender As Object, e As EventArgs) Handles txtCuilPago.TextChanged
-
-    End Sub
+    'Private Sub txtCuilPago_TextChanged(sender As Object, e As EventArgs) Handles txtCuilPago.TextChanged
+    '
+    ' End Sub
 
 
     Private Sub GridViewSubsidios_MouseHover(sender As Object, e As EventArgs) Handles GridViewSubsidios.MouseHover
@@ -862,7 +894,40 @@ Public Class NuevoReintegro
         FormularioImagen.Show()
     End Sub
 
-    Private Sub ToolTip1_Popup(sender As Object, e As PopupEventArgs) Handles ToolTip1.Popup
+    'valida el CUIT / CUIL
+    Private Sub txtCUITT_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCUITT.KeyPress
+        e.Handled = NumericSOLOCUIT(e.KeyChar)
+        txtCUITT.BackColor = Color.LightCoral
+    End Sub
+    Public Function NumericSOLOCUIT(ByVal eChar As Char) As Boolean
+        Dim chkStr As String = "0123456789"
+        If chkStr.IndexOf(eChar) > -1 OrElse eChar = vbBack Then
+            If eChar = Chr(44) And txtCUITT.Text.Contains(" ") Then Return True
+            Return False
+        Else
+            Return True
+        End If
+    End Function
+
+    Private Sub txtCUITT_LostFocus(sender As Object, e As EventArgs) Handles txtCUITT.LostFocus
+        Dim VARCUI As String = txtCUITT.Text
+        mkf_validacuit(VARCUI)
+        If mkf_validacuit(VARCUI) = True Then
+            lblresultadocuit.Text = "(ok)"
+            lblresultadocuit.ForeColor = Color.GreenYellow
+            txtCUITT.BackColor = Color.LightGreen
+        Else
+            lblresultadocuit.Text = "(*)"
+            lblresultadocuit.ForeColor = Color.Red
+            txtCUITT.BackColor = Color.LightCoral
+        End If
+    End Sub
+
+
+
+
+
+    Private Sub txtCUITT_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txtCUITT.MaskInputRejected
 
     End Sub
 End Class

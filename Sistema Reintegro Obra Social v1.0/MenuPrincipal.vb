@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Drawing.Imaging
 Imports System.Windows.Forms.Keys
+Imports System.Text.RegularExpressions
 
 
 Public Class MenuPrincipal
@@ -10,7 +11,7 @@ Public Class MenuPrincipal
     Dim dt As DataTable
     Dim sql As String
     Dim comando As MySqlCommand
-  
+
 
     'BOTON GENERAR SOLICITUD
     Private Sub GenerarSolicitudDeReintegroToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles GenerarSolicitudDeReintegroToolStripMenuItem.Click
@@ -106,5 +107,47 @@ Public Class MenuPrincipal
     Private Sub GridViewUsuario_RowsAdded(sender As Object, e As DataGridViewRowsAddedEventArgs) Handles GridViewUsuario.RowsAdded
         lblUser.Text = GridViewUsuario.Rows(0).Cells(0).Value.ToString()
     End Sub
+
+    Private Sub ConsultarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarToolStripMenuItem.Click
+        Reportes.Show()
+    End Sub
+
+
+
+
+
+
+    Private Sub botonValidaCuit_Click(sender As Object, e As EventArgs)
+
+    End Sub
+
+    '  Private Sub txtCUITT_KeyPress(sender As Object, e As KeyPressEventArgs)
+    '      e.Handled = NumericSOLOCUIT(e.KeyChar)
+    '  End Sub
+
+
+    '    Public Function NumericSOLOCUIT(ByVal eChar As Char) As Boolean
+    ' Dim chkStr As String = "0123456789"
+    '     If chkStr.IndexOf(eChar) > -1 OrElse eChar = vbBack Then
+    '         If eChar = Chr(44) And txtCUITT.Text.Contains(" ") Then Return True
+    '         Return False
+    '     Else
+    '         Return True
+    '     End If
+    ' End Function
+
+
+    '    Private Sub txtCUITT_LostFocus(sender As Object, e As EventArgs)
+    ' Dim VARCUI As String = txtCUITT.Text
+    '     mkf_validacuit(VARCUI)
+    '     If mkf_validacuit(VARCUI) = True Then
+    '         lblresultadocuit.Text = "(ok)"
+    '         lblresultadocuit.ForeColor = Color.GreenYellow
+    '     Else
+    '         lblresultadocuit.Text = "(*)"
+    '         lblresultadocuit.ForeColor = Color.Red
+    '     End If
+    ' End Sub
+
 
 End Class

@@ -45,7 +45,6 @@ Partial Class ConsultaSolicitudReintegro
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.opSubsidio = New System.Windows.Forms.CheckBox()
         Me.opReintegro = New System.Windows.Forms.CheckBox()
-        Me.botonLimpiarFiltros = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.opAuditorMedicoSI = New System.Windows.Forms.CheckBox()
@@ -53,6 +52,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.opPendienteAuditor = New System.Windows.Forms.CheckBox()
         Me.lblfechahasta = New System.Windows.Forms.Label()
         Me.lblfechadesde = New System.Windows.Forms.Label()
+        Me.botonLimpiarFiltros = New System.Windows.Forms.Button()
         Me.opPAGADO = New System.Windows.Forms.CheckBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.opPagoPendiente = New System.Windows.Forms.CheckBox()
@@ -310,23 +310,6 @@ Partial Class ConsultaSolicitudReintegro
         Me.opReintegro.Text = "Reintegros"
         Me.opReintegro.UseVisualStyleBackColor = True
         '
-        'botonLimpiarFiltros
-        '
-        Me.botonLimpiarFiltros.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.botonLimpiarFiltros.AutoEllipsis = True
-        Me.botonLimpiarFiltros.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.botonLimpiarFiltros.BackColor = System.Drawing.Color.Transparent
-        Me.botonLimpiarFiltros.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.botonLimpiarFiltros.Image = CType(resources.GetObject("botonLimpiarFiltros.Image"), System.Drawing.Image)
-        Me.botonLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.botonLimpiarFiltros.Location = New System.Drawing.Point(504, 184)
-        Me.botonLimpiarFiltros.Name = "botonLimpiarFiltros"
-        Me.botonLimpiarFiltros.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.botonLimpiarFiltros.Size = New System.Drawing.Size(38, 38)
-        Me.botonLimpiarFiltros.TabIndex = 90
-        Me.botonLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.botonLimpiarFiltros.UseVisualStyleBackColor = False
-        '
         'Label8
         '
         Me.Label8.AutoSize = True
@@ -401,6 +384,23 @@ Partial Class ConsultaSolicitudReintegro
         Me.lblfechadesde.TabIndex = 22
         Me.lblfechadesde.Text = "aaaa  -  mm  -  dd"
         Me.lblfechadesde.Visible = False
+        '
+        'botonLimpiarFiltros
+        '
+        Me.botonLimpiarFiltros.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.botonLimpiarFiltros.AutoEllipsis = True
+        Me.botonLimpiarFiltros.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.botonLimpiarFiltros.BackColor = System.Drawing.Color.Transparent
+        Me.botonLimpiarFiltros.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.botonLimpiarFiltros.Image = CType(resources.GetObject("botonLimpiarFiltros.Image"), System.Drawing.Image)
+        Me.botonLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.botonLimpiarFiltros.Location = New System.Drawing.Point(504, 184)
+        Me.botonLimpiarFiltros.Name = "botonLimpiarFiltros"
+        Me.botonLimpiarFiltros.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.botonLimpiarFiltros.Size = New System.Drawing.Size(38, 38)
+        Me.botonLimpiarFiltros.TabIndex = 90
+        Me.botonLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.botonLimpiarFiltros.UseVisualStyleBackColor = False
         '
         'opPAGADO
         '
