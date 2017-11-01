@@ -687,7 +687,8 @@ Public Class NuevoReintegro
     'BOTON ACEPTAR --> GENERA NUEVA SOLICITUD DE REINTEGRO
     Private Sub Button4_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button4.Click
         If (Trim(txtTipoCuenta.Text) = "") Or (Trim(txtCUITT.Text) = "") Or (Trim(txtDetalle.Text) = "") Or (Trim(txtImporte.Text) = "") Or _
-            (Trim(txtFechaSolicitud.Text) = "") Or (Trim(txtCBU.Text) = "") Or (Trim(txtAlias.Text) = "") Or (Trim(txtCUITT.Text) = "") Then
+            (Trim(txtFechaSolicitud.Text) = "") Or (Trim(txtCBU.Text) = "") Or (Trim(txtAlias.Text) = "") Or (Trim(txtCUITT.Text = "")) Or _
+            (mkf_validacuit(txtCUITT.Text) = False) Or (txtCBU.TextLength <> 22) Or (txtCUITT.TextLength <> 13) Then
             If txtDetalle.Text = "" Then
                 txtDetalle.BackColor = Color.LightCoral
             Else
@@ -881,7 +882,7 @@ Public Class NuevoReintegro
         ToolTip1.SetToolTip(GridViewSubsidios, "Doble click para seleccionar..")
     End Sub
 
-    Private Sub Panel5_Paint(sender As Object, e As PaintEventArgs) Handles Panel5.Paint
+    Private Sub Panel5_Paint(sender As Object, e As PaintEventArgs) Handles panel.Paint
 
     End Sub
 
@@ -894,40 +895,80 @@ Public Class NuevoReintegro
         FormularioImagen.Show()
     End Sub
 
-    'valida el CUIT / CUIL
+
+
+
+
+    Private Sub txtCBU_LostFocus(sender As Object, e As EventArgs) Handles txtCBU.LostFocus
+        If txtCBU.TextLength = 23 Then
+            txtCBU.BackColor = Color.White
+        Else
+            ToolTip1.SetToolTip(txtCBU, "Incompleto..")
+            txtCBU.BackColor = Color.LightCoral
+        End If
+    End Sub
+
     Private Sub txtCUITT_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtCUITT.KeyPress
-        e.Handled = NumericSOLOCUIT(e.KeyChar)
+        Dim texto As String = txtCUITT.Text
+        If (txtCUITT.Text.Length = 2) Or (txtCUITT.Text.Length = 11) Then
+            texto = texto + "-" + e.KeyChar
+            txtCUITT.Text = texto
+            e.Handled = True
+            txtCUITT.Select(txtCUITT.Text.Length, 0)
+        End If
+        'SOLO ADMITE NUMEROS  *******
+        If InStr("0123456789", e.KeyChar) = False Then
+            If (Asc(e.KeyChar)) <> 8 Then
+                e.Handled = True
+            End If
+        End If
         txtCUITT.BackColor = Color.LightCoral
     End Sub
-    Public Function NumericSOLOCUIT(ByVal eChar As Char) As Boolean
-        Dim chkStr As String = "0123456789"
-        If chkStr.IndexOf(eChar) > -1 OrElse eChar = vbBack Then
-            If eChar = Chr(44) And txtCUITT.Text.Contains(" ") Then Return True
-            Return False
-        Else
-            Return True
-        End If
-    End Function
 
-    Private Sub txtCUITT_LostFocus(sender As Object, e As EventArgs) Handles txtCUITT.LostFocus
-        Dim VARCUI As String = txtCUITT.Text
-        mkf_validacuit(VARCUI)
-        If mkf_validacuit(VARCUI) = True Then
-            lblresultadocuit.Text = "(ok)"
-            lblresultadocuit.ForeColor = Color.GreenYellow
-            txtCUITT.BackColor = Color.LightGreen
+    Private Sub txtCUITT_LostFocus(sender As Object, e As System.EventArgs) Handles txtCUITT.LostFocus
+        If txtCUITT.TextLength = 13 Then
+            Dim VARCUI As String = txtCUITT.Text
+            mkf_validacuit(VARCUI)
+            If mkf_validacuit(VARCUI) = True Then
+                lblresultadocuit.Text = "(v)"
+                lblresultadocuit.ForeColor = Color.LightGreen
+                txtCUITT.BackColor = Color.LightGreen
+            Else
+                lblresultadocuit.Text = "(error)"
+                lblresultadocuit.ForeColor = Color.Red
+                txtCUITT.BackColor = Color.LightCoral
+            End If
         Else
-            lblresultadocuit.Text = "(*)"
-            lblresultadocuit.ForeColor = Color.Red
-            txtCUITT.BackColor = Color.LightCoral
+            ToolTip1.SetToolTip(txtCUITT, "Incompleto!")
         End If
     End Sub
 
 
+    Private Sub botonlimpiaCUIT_Click(sender As Object, e As EventArgs) Handles botonlimpiaCUIT.Click
+        botonlimpiaCUIT.Image = My.Resources.escoba
+        txtCUITT.Text = ""
+        txtCUITT.Focus()
+    End Sub
 
+    Private Sub botonlimpiaCUIT_MouseHover(sender As Object, e As EventArgs) Handles botonlimpiaCUIT.MouseHover
+        ToolTip1.SetToolTip(botonlimpiaCUIT, "limpiar CUIT")
+    End Sub
 
+    Private Sub botonlimpiaCUIT_MouseLeave(sender As Object, e As EventArgs) Handles botonlimpiaCUIT.MouseLeave
+        botonlimpiaCUIT.Image = My.Resources.escoba
+    End Sub
 
-    Private Sub txtCUITT_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txtCUITT.MaskInputRejected
+    
+
+    Private Sub botonlimpiaCUIT_MouseMove(sender As Object, e As MouseEventArgs) Handles botonlimpiaCUIT.MouseMove
+        botonlimpiaCUIT.Image = My.Resources.escoba2
+    End Sub
+
+    Private Sub txtCBU_TextChanged(sender As Object, e As EventArgs) Handles txtCBU.TextChanged
+
+    End Sub
+
+    Private Sub txtCUITT_TextChanged(sender As Object, e As EventArgs) Handles txtCUITT.TextChanged
 
     End Sub
 End Class

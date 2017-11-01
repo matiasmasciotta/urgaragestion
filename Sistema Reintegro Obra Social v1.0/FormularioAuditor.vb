@@ -384,8 +384,8 @@ Public Class FormularioAuditor
             varTempCuilPago = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
             varTempTipoCuenta = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
             varTempNombreBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(18).Value
-
             lblReintegroPendiente.Text = varCodigoreintegro
+
             botonAprobar.Visible = True
             botonDesaprobar.Visible = True
 
@@ -432,6 +432,7 @@ Public Class FormularioAuditor
             varTempCuilPago = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
             varTempTipoCuenta = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
             varTempNombreBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(18).Value
+            lblReintegroPendiente.Text = varCodigoreintegro
 
             botonAprobar.Visible = True
             botonDesaprobar.Visible = True
@@ -623,6 +624,12 @@ Public Class FormularioAuditor
         OK.Visible = True
         CANCELA.Visible = True
         txtPorcAM.Visible = True
+
+        panelAuditor.Visible = True
+        lblporcentaje.Visible = True
+        lblporc.Visible = True
+        lblobsam.Visible = True
+
         txtObservacionesAM.Visible = True
         det = "*El Auditor Medico Aprobó el reintegro: "
         txtPorcAM.Focus()
@@ -637,6 +644,7 @@ Public Class FormularioAuditor
         OK.Visible = True
         CANCELA.Visible = True
         txtObservacionesAM.Visible = True
+        lblobsam.Visible = True
         det = "*El Auditor Medico Rechazó el reintegro: "
         txtObservacionesAM.Focus()
     End Sub
@@ -729,6 +737,12 @@ Public Class FormularioAuditor
         txtObservacionesAM.Visible = False
         botonAprobar.Visible = False
         botonDesaprobar.Visible = False
+
+        panelAuditor.Visible = False
+        lblporcentaje.Visible = False
+        lblporc.Visible = False
+        lblobsam.Visible = False
+
         det = ""
     End Sub
 
@@ -747,6 +761,12 @@ Public Class FormularioAuditor
             botonDesaprobar.Visible = False
             OK.Visible = False
             CANCELA.Visible = False
+
+            panelAuditor.Visible = False
+            lblporcentaje.Visible = False
+            lblporc.Visible = False
+            lblobsam.Visible = False
+
             llenarGridCompleto()
             det = ""
         End If

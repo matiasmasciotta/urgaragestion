@@ -113,7 +113,7 @@ Partial Class Historial
         '
         Me.GridDetalleReintegro.AllowUserToAddRows = False
         Me.GridDetalleReintegro.AllowUserToDeleteRows = False
-        Me.GridDetalleReintegro.BackgroundColor = System.Drawing.Color.Tan
+        Me.GridDetalleReintegro.BackgroundColor = System.Drawing.Color.CornflowerBlue
         Me.GridDetalleReintegro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridDetalleReintegro.Location = New System.Drawing.Point(-38, 518)
         Me.GridDetalleReintegro.MultiSelect = False

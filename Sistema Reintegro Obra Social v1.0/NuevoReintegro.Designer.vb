@@ -25,15 +25,15 @@ Partial Class NuevoReintegro
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NuevoReintegro))
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(NuevoReintegro))
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.Panel5 = New System.Windows.Forms.Panel()
+        Me.panel = New System.Windows.Forms.Panel()
+        Me.txtCUITT = New System.Windows.Forms.TextBox()
         Me.lblresultadocuit = New System.Windows.Forms.Label()
-        Me.txtCUITT = New System.Windows.Forms.MaskedTextBox()
         Me.GridViewSubsidios = New System.Windows.Forms.DataGridView()
         Me.txtTipoCuenta = New System.Windows.Forms.ComboBox()
         Me.Label17 = New System.Windows.Forms.Label()
@@ -47,10 +47,7 @@ Partial Class NuevoReintegro
         Me.Label15 = New System.Windows.Forms.Label()
         Me.lblitem = New System.Windows.Forms.Label()
         Me.lblcontadoritems = New System.Windows.Forms.Label()
-        Me.botonQuitarImagen = New System.Windows.Forms.Button()
-        Me.lblPicture = New System.Windows.Forms.PictureBox()
         Me.clbimagen = New System.Windows.Forms.CheckedListBox()
-        Me.botonImagen = New System.Windows.Forms.Button()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtObservacionesCarga = New System.Windows.Forms.TextBox()
@@ -95,19 +92,22 @@ Partial Class NuevoReintegro
         Me.comboTipoBeneficiario = New System.Windows.Forms.ComboBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.clbStrings = New System.Windows.Forms.CheckedListBox()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.lblNumeroReintegro = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.opUrgara = New System.Windows.Forms.CheckBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
-        Me.Panel5.SuspendLayout()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.botonlimpiaCUIT = New System.Windows.Forms.PictureBox()
+        Me.botonQuitarImagen = New System.Windows.Forms.Button()
+        Me.lblPicture = New System.Windows.Forms.PictureBox()
+        Me.botonImagen = New System.Windows.Forms.Button()
+        Me.panel.SuspendLayout()
         CType(Me.GridViewSubsidios, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel2.SuspendLayout()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
@@ -115,6 +115,8 @@ Partial Class NuevoReintegro
         Me.Panel4.SuspendLayout()
         CType(Me.GridViewUltimoReintegro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
+        CType(Me.botonlimpiaCUIT, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label10
@@ -128,43 +130,53 @@ Partial Class NuevoReintegro
         Me.Label10.TabIndex = 23
         Me.Label10.Text = "Datos Para la Solicitud del Nuevo Reintegro"
         '
-        'Panel5
+        'panel
         '
-        Me.Panel5.BackColor = System.Drawing.Color.Transparent
-        Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel5.Controls.Add(Me.lblresultadocuit)
-        Me.Panel5.Controls.Add(Me.txtCUITT)
-        Me.Panel5.Controls.Add(Me.GridViewSubsidios)
-        Me.Panel5.Controls.Add(Me.txtTipoCuenta)
-        Me.Panel5.Controls.Add(Me.Label17)
-        Me.Panel5.Controls.Add(Me.Label19)
-        Me.Panel5.Controls.Add(Me.txtSubsidio)
-        Me.Panel5.Controls.Add(Me.opSubsidio)
-        Me.Panel5.Controls.Add(Me.opReintegro)
-        Me.Panel5.Controls.Add(Me.txtAlias)
-        Me.Panel5.Controls.Add(Me.Label16)
-        Me.Panel5.Controls.Add(Me.txtCBU)
-        Me.Panel5.Controls.Add(Me.Label15)
-        Me.Panel5.Controls.Add(Me.lblitem)
-        Me.Panel5.Controls.Add(Me.lblcontadoritems)
-        Me.Panel5.Controls.Add(Me.botonQuitarImagen)
-        Me.Panel5.Controls.Add(Me.lblPicture)
-        Me.Panel5.Controls.Add(Me.clbimagen)
-        Me.Panel5.Controls.Add(Me.botonImagen)
-        Me.Panel5.Controls.Add(Me.DateTimePicker1)
-        Me.Panel5.Controls.Add(Me.Label3)
-        Me.Panel5.Controls.Add(Me.txtObservacionesCarga)
-        Me.Panel5.Controls.Add(Me.txtFechaSolicitud)
-        Me.Panel5.Controls.Add(Me.txtImporte)
-        Me.Panel5.Controls.Add(Me.txtDetalle)
-        Me.Panel5.Controls.Add(Me.Label13)
-        Me.Panel5.Controls.Add(Me.Label12)
-        Me.Panel5.Controls.Add(Me.Label11)
-        Me.Panel5.Controls.Add(Me.ShapeContainer1)
-        Me.Panel5.Location = New System.Drawing.Point(483, 249)
-        Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(697, 390)
-        Me.Panel5.TabIndex = 24
+        Me.panel.BackColor = System.Drawing.Color.Transparent
+        Me.panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panel.Controls.Add(Me.botonlimpiaCUIT)
+        Me.panel.Controls.Add(Me.txtCUITT)
+        Me.panel.Controls.Add(Me.lblresultadocuit)
+        Me.panel.Controls.Add(Me.GridViewSubsidios)
+        Me.panel.Controls.Add(Me.txtTipoCuenta)
+        Me.panel.Controls.Add(Me.Label17)
+        Me.panel.Controls.Add(Me.Label19)
+        Me.panel.Controls.Add(Me.txtSubsidio)
+        Me.panel.Controls.Add(Me.opSubsidio)
+        Me.panel.Controls.Add(Me.opReintegro)
+        Me.panel.Controls.Add(Me.txtAlias)
+        Me.panel.Controls.Add(Me.Label16)
+        Me.panel.Controls.Add(Me.txtCBU)
+        Me.panel.Controls.Add(Me.Label15)
+        Me.panel.Controls.Add(Me.lblitem)
+        Me.panel.Controls.Add(Me.lblcontadoritems)
+        Me.panel.Controls.Add(Me.botonQuitarImagen)
+        Me.panel.Controls.Add(Me.lblPicture)
+        Me.panel.Controls.Add(Me.clbimagen)
+        Me.panel.Controls.Add(Me.botonImagen)
+        Me.panel.Controls.Add(Me.DateTimePicker1)
+        Me.panel.Controls.Add(Me.Label3)
+        Me.panel.Controls.Add(Me.txtObservacionesCarga)
+        Me.panel.Controls.Add(Me.txtFechaSolicitud)
+        Me.panel.Controls.Add(Me.txtImporte)
+        Me.panel.Controls.Add(Me.txtDetalle)
+        Me.panel.Controls.Add(Me.Label13)
+        Me.panel.Controls.Add(Me.Label12)
+        Me.panel.Controls.Add(Me.Label11)
+        Me.panel.Controls.Add(Me.ShapeContainer1)
+        Me.panel.Location = New System.Drawing.Point(483, 249)
+        Me.panel.Name = "panel"
+        Me.panel.Size = New System.Drawing.Size(697, 390)
+        Me.panel.TabIndex = 24
+        '
+        'txtCUITT
+        '
+        Me.txtCUITT.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCUITT.Location = New System.Drawing.Point(101, 139)
+        Me.txtCUITT.MaxLength = 13
+        Me.txtCUITT.Name = "txtCUITT"
+        Me.txtCUITT.Size = New System.Drawing.Size(96, 20)
+        Me.txtCUITT.TabIndex = 45
         '
         'lblresultadocuit
         '
@@ -177,19 +189,10 @@ Partial Class NuevoReintegro
         Me.lblresultadocuit.TabIndex = 44
         Me.lblresultadocuit.Text = "( * )"
         '
-        'txtCUITT
-        '
-        Me.txtCUITT.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.txtCUITT.Location = New System.Drawing.Point(105, 138)
-        Me.txtCUITT.Mask = "##-########-#"
-        Me.txtCUITT.Name = "txtCUITT"
-        Me.txtCUITT.Size = New System.Drawing.Size(91, 20)
-        Me.txtCUITT.TabIndex = 43
-        '
         'GridViewSubsidios
         '
         Me.GridViewSubsidios.AllowUserToAddRows = False
-        Me.GridViewSubsidios.BackgroundColor = System.Drawing.Color.DarkKhaki
+        Me.GridViewSubsidios.BackgroundColor = System.Drawing.Color.Gray
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -208,7 +211,7 @@ Partial Class NuevoReintegro
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.GridViewSubsidios.DefaultCellStyle = DataGridViewCellStyle2
         Me.GridViewSubsidios.GridColor = System.Drawing.SystemColors.ActiveCaption
-        Me.GridViewSubsidios.Location = New System.Drawing.Point(380, 17)
+        Me.GridViewSubsidios.Location = New System.Drawing.Point(380, 20)
         Me.GridViewSubsidios.MultiSelect = False
         Me.GridViewSubsidios.Name = "GridViewSubsidios"
         Me.GridViewSubsidios.ReadOnly = True
@@ -319,7 +322,7 @@ Partial Class NuevoReintegro
         'lblitem
         '
         Me.lblitem.AutoSize = True
-        Me.lblitem.Location = New System.Drawing.Point(610, 378)
+        Me.lblitem.Location = New System.Drawing.Point(610, 379)
         Me.lblitem.Name = "lblitem"
         Me.lblitem.Size = New System.Drawing.Size(39, 13)
         Me.lblitem.TabIndex = 16
@@ -329,57 +332,22 @@ Partial Class NuevoReintegro
         'lblcontadoritems
         '
         Me.lblcontadoritems.AutoSize = True
-        Me.lblcontadoritems.Location = New System.Drawing.Point(570, 378)
+        Me.lblcontadoritems.Location = New System.Drawing.Point(570, 379)
         Me.lblcontadoritems.Name = "lblcontadoritems"
         Me.lblcontadoritems.Size = New System.Drawing.Size(39, 13)
         Me.lblcontadoritems.TabIndex = 15
         Me.lblcontadoritems.Text = "Label7"
         Me.lblcontadoritems.Visible = False
         '
-        'botonQuitarImagen
-        '
-        Me.botonQuitarImagen.BackColor = System.Drawing.Color.Salmon
-        Me.botonQuitarImagen.Image = CType(resources.GetObject("botonQuitarImagen.Image"), System.Drawing.Image)
-        Me.botonQuitarImagen.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.botonQuitarImagen.Location = New System.Drawing.Point(62, 254)
-        Me.botonQuitarImagen.Name = "botonQuitarImagen"
-        Me.botonQuitarImagen.Size = New System.Drawing.Size(78, 48)
-        Me.botonQuitarImagen.TabIndex = 12
-        Me.botonQuitarImagen.Text = "- Quitar"
-        Me.botonQuitarImagen.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.botonQuitarImagen.UseVisualStyleBackColor = False
-        '
-        'lblPicture
-        '
-        Me.lblPicture.Location = New System.Drawing.Point(498, 167)
-        Me.lblPicture.Name = "lblPicture"
-        Me.lblPicture.Size = New System.Drawing.Size(173, 153)
-        Me.lblPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.lblPicture.TabIndex = 13
-        Me.lblPicture.TabStop = False
-        '
         'clbimagen
         '
-        Me.clbimagen.BackColor = System.Drawing.SystemColors.InactiveCaption
+        Me.clbimagen.BackColor = System.Drawing.SystemColors.ControlDark
         Me.clbimagen.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clbimagen.FormattingEnabled = True
         Me.clbimagen.Location = New System.Drawing.Point(161, 178)
         Me.clbimagen.Name = "clbimagen"
         Me.clbimagen.Size = New System.Drawing.Size(308, 124)
         Me.clbimagen.TabIndex = 12
-        '
-        'botonImagen
-        '
-        Me.botonImagen.BackColor = System.Drawing.Color.DarkTurquoise
-        Me.botonImagen.Image = CType(resources.GetObject("botonImagen.Image"), System.Drawing.Image)
-        Me.botonImagen.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.botonImagen.Location = New System.Drawing.Point(62, 178)
-        Me.botonImagen.Name = "botonImagen"
-        Me.botonImagen.Size = New System.Drawing.Size(78, 59)
-        Me.botonImagen.TabIndex = 11
-        Me.botonImagen.Text = "+Subir Imagen"
-        Me.botonImagen.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.botonImagen.UseVisualStyleBackColor = False
         '
         'DateTimePicker1
         '
@@ -533,7 +501,7 @@ Partial Class NuevoReintegro
         'GridView
         '
         Me.GridView.AllowUserToAddRows = False
-        Me.GridView.BackgroundColor = System.Drawing.Color.DarkKhaki
+        Me.GridView.BackgroundColor = System.Drawing.Color.DimGray
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -859,17 +827,6 @@ Partial Class NuevoReintegro
         Me.clbStrings.TabIndex = 31
         Me.clbStrings.Visible = False
         '
-        'Button2
-        '
-        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
-        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.Location = New System.Drawing.Point(816, 656)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(363, 33)
-        Me.Button2.TabIndex = 35
-        Me.Button2.Text = "Salir"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'lblNumeroReintegro
         '
         Me.lblNumeroReintegro.AutoSize = True
@@ -881,23 +838,11 @@ Partial Class NuevoReintegro
         Me.lblNumeroReintegro.Size = New System.Drawing.Size(125, 14)
         Me.lblNumeroReintegro.TabIndex = 36
         Me.lblNumeroReintegro.Text = "CODIGO USER SOLICITA"
+        Me.lblNumeroReintegro.Visible = False
         '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'Button4
-        '
-        Me.Button4.BackColor = System.Drawing.Color.SpringGreen
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(483, 658)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(333, 31)
-        Me.Button4.TabIndex = 14
-        Me.Button4.Text = "Generar Solicitud!"
-        Me.Button4.UseVisualStyleBackColor = False
         '
         'ProgressBar1
         '
@@ -937,12 +882,79 @@ Partial Class NuevoReintegro
         Me.Panel8.Size = New System.Drawing.Size(117, 45)
         Me.Panel8.TabIndex = 39
         '
+        'Button4
+        '
+        Me.Button4.BackColor = System.Drawing.Color.LightSeaGreen
+        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
+        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button4.Location = New System.Drawing.Point(483, 658)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(333, 31)
+        Me.Button4.TabIndex = 14
+        Me.Button4.Text = "Generar Solicitud!"
+        Me.Button4.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
+        Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Button2.Location = New System.Drawing.Point(816, 656)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(363, 33)
+        Me.Button2.TabIndex = 35
+        Me.Button2.Text = "Salir"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
+        'botonlimpiaCUIT
+        '
+        Me.botonlimpiaCUIT.Image = Global.WindowsApplication1.My.Resources.Resources.escoba
+        Me.botonlimpiaCUIT.Location = New System.Drawing.Point(232, 138)
+        Me.botonlimpiaCUIT.Name = "botonlimpiaCUIT"
+        Me.botonlimpiaCUIT.Size = New System.Drawing.Size(21, 21)
+        Me.botonlimpiaCUIT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.botonlimpiaCUIT.TabIndex = 89
+        Me.botonlimpiaCUIT.TabStop = False
+        '
+        'botonQuitarImagen
+        '
+        Me.botonQuitarImagen.BackColor = System.Drawing.Color.Salmon
+        Me.botonQuitarImagen.Image = CType(resources.GetObject("botonQuitarImagen.Image"), System.Drawing.Image)
+        Me.botonQuitarImagen.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.botonQuitarImagen.Location = New System.Drawing.Point(87, 243)
+        Me.botonQuitarImagen.Name = "botonQuitarImagen"
+        Me.botonQuitarImagen.Size = New System.Drawing.Size(53, 45)
+        Me.botonQuitarImagen.TabIndex = 12
+        Me.botonQuitarImagen.Text = "- Quitar"
+        Me.botonQuitarImagen.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.botonQuitarImagen.UseVisualStyleBackColor = False
+        '
+        'lblPicture
+        '
+        Me.lblPicture.Location = New System.Drawing.Point(498, 167)
+        Me.lblPicture.Name = "lblPicture"
+        Me.lblPicture.Size = New System.Drawing.Size(173, 153)
+        Me.lblPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.lblPicture.TabIndex = 13
+        Me.lblPicture.TabStop = False
+        '
+        'botonImagen
+        '
+        Me.botonImagen.BackColor = System.Drawing.Color.Transparent
+        Me.botonImagen.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.camara
+        Me.botonImagen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.botonImagen.Location = New System.Drawing.Point(87, 192)
+        Me.botonImagen.Name = "botonImagen"
+        Me.botonImagen.Size = New System.Drawing.Size(53, 45)
+        Me.botonImagen.TabIndex = 11
+        Me.botonImagen.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.botonImagen.UseVisualStyleBackColor = False
+        '
         'NuevoReintegro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.AppWorkspace
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackColor = System.Drawing.Color.Silver
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1192, 718)
         Me.Controls.Add(Me.clbStrings)
@@ -958,7 +970,7 @@ Partial Class NuevoReintegro
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Panel5)
+        Me.Controls.Add(Me.panel)
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.Panel7)
         Me.Controls.Add(Me.Panel8)
@@ -966,10 +978,9 @@ Partial Class NuevoReintegro
         Me.Name = "NuevoReintegro"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "+ Nuevo Reintegro"
-        Me.Panel5.ResumeLayout(False)
-        Me.Panel5.PerformLayout()
+        Me.panel.ResumeLayout(False)
+        Me.panel.PerformLayout()
         CType(Me.GridViewSubsidios, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -982,12 +993,14 @@ Partial Class NuevoReintegro
         CType(Me.GridViewUltimoReintegro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
+        CType(Me.botonlimpiaCUIT, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents Panel5 As System.Windows.Forms.Panel
+    Friend WithEvents panel As System.Windows.Forms.Panel
     Friend WithEvents txtFechaSolicitud As System.Windows.Forms.TextBox
     Friend WithEvents txtImporte As System.Windows.Forms.TextBox
     Friend WithEvents txtDetalle As System.Windows.Forms.TextBox
@@ -1060,5 +1073,6 @@ Partial Class NuevoReintegro
     Friend WithEvents lblProximoReintegro As System.Windows.Forms.Label
     Friend WithEvents Panel8 As System.Windows.Forms.Panel
     Friend WithEvents lblresultadocuit As System.Windows.Forms.Label
-    Friend WithEvents txtCUITT As System.Windows.Forms.MaskedTextBox
+    Friend WithEvents txtCUITT As System.Windows.Forms.TextBox
+    Friend WithEvents botonlimpiaCUIT As System.Windows.Forms.PictureBox
 End Class

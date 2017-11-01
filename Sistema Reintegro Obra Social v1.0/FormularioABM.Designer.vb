@@ -22,7 +22,6 @@ Partial Class FormularioABM
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormularioABM))
         Me.GridView = New System.Windows.Forms.DataGridView()
         Me.lblingreso = New System.Windows.Forms.Label()
         Me.txtBusqueda = New System.Windows.Forms.TextBox()
@@ -87,7 +86,7 @@ Partial Class FormularioABM
         'GridView
         '
         Me.GridView.AllowUserToAddRows = False
-        Me.GridView.BackgroundColor = System.Drawing.Color.MediumSeaGreen
+        Me.GridView.BackgroundColor = System.Drawing.Color.DimGray
         Me.GridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GridView.GridColor = System.Drawing.SystemColors.ActiveCaption
         Me.GridView.Location = New System.Drawing.Point(3, 35)
@@ -274,7 +273,7 @@ Partial Class FormularioABM
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Location = New System.Drawing.Point(555, 69)
+        Me.Label3.Location = New System.Drawing.Point(555, 56)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(72, 13)
         Me.Label3.TabIndex = 9
@@ -311,9 +310,9 @@ Partial Class FormularioABM
         Me.Panel4.Controls.Add(Me.txtApellidoNombre)
         Me.Panel4.Controls.Add(Me.Label5)
         Me.Panel4.Controls.Add(Me.Label2)
-        Me.Panel4.Location = New System.Drawing.Point(549, 78)
+        Me.Panel4.Location = New System.Drawing.Point(549, 65)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(480, 421)
+        Me.Panel4.Size = New System.Drawing.Size(480, 573)
         Me.Panel4.TabIndex = 10
         '
         'Label10
@@ -562,7 +561,7 @@ Partial Class FormularioABM
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(719, 608)
+        Me.Button1.Location = New System.Drawing.Point(719, 603)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(145, 30)
         Me.Button1.TabIndex = 15
@@ -580,7 +579,7 @@ Partial Class FormularioABM
         '
         'tempCuil
         '
-        Me.tempCuil.Location = New System.Drawing.Point(663, 57)
+        Me.tempCuil.Location = New System.Drawing.Point(663, 44)
         Me.tempCuil.Name = "tempCuil"
         Me.tempCuil.ReadOnly = True
         Me.tempCuil.Size = New System.Drawing.Size(112, 20)
@@ -623,7 +622,6 @@ Partial Class FormularioABM
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1077, 664)
         Me.Controls.Add(Me.Panel6)

@@ -24,8 +24,8 @@ Partial Class MenuPrincipal
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MenuPrincipal))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ArchivoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IngresarAlSistemaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -59,6 +59,8 @@ Partial Class MenuPrincipal
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.GridViewUsuario = New System.Windows.Forms.DataGridView()
         Me.Label4 = New System.Windows.Forms.Label()
+        Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,7 +69,7 @@ Partial Class MenuPrincipal
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.BackColor = System.Drawing.Color.SteelBlue
+        Me.MenuStrip1.BackColor = System.Drawing.Color.CornflowerBlue
         Me.MenuStrip1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ArchivoToolStripMenuItem, Me.DatosToolStripMenuItem, Me.ReintegrosToolStripMenuItem, Me.PagosToolStripMenuItem, Me.ReportesToolStripMenuItem, Me.AyudaToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
@@ -78,7 +80,7 @@ Partial Class MenuPrincipal
         '
         'ArchivoToolStripMenuItem
         '
-        Me.ArchivoToolStripMenuItem.BackColor = System.Drawing.Color.SteelBlue
+        Me.ArchivoToolStripMenuItem.BackColor = System.Drawing.Color.CornflowerBlue
         Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IngresarAlSistemaToolStripMenuItem, Me.UsersSoloAdminToolStripMenuItem, Me.SalirToolStripMenuItem})
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(60, 20)
@@ -119,7 +121,7 @@ Partial Class MenuPrincipal
         '
         'DatosToolStripMenuItem
         '
-        Me.DatosToolStripMenuItem.BackColor = System.Drawing.Color.SteelBlue
+        Me.DatosToolStripMenuItem.BackColor = System.Drawing.Color.CornflowerBlue
         Me.DatosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ExaminarBeneficiariosToolStripMenuItem, Me.ExaminarSolicitudDeReintegroToolStripMenuItem, Me.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem})
         Me.DatosToolStripMenuItem.Name = "DatosToolStripMenuItem"
         Me.DatosToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
@@ -152,7 +154,7 @@ Partial Class MenuPrincipal
         '
         'ReintegrosToolStripMenuItem
         '
-        Me.ReintegrosToolStripMenuItem.BackColor = System.Drawing.Color.SteelBlue
+        Me.ReintegrosToolStripMenuItem.BackColor = System.Drawing.Color.CornflowerBlue
         Me.ReintegrosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.GenerarSolicitudDeReintegroToolStripMenuItem, Me.ConsultarReintegrosPendientesToolStripMenuItem, Me.ConsultaAuditorMedicoToolStripMenuItem})
         Me.ReintegrosToolStripMenuItem.Name = "ReintegrosToolStripMenuItem"
         Me.ReintegrosToolStripMenuItem.Size = New System.Drawing.Size(65, 20)
@@ -216,7 +218,7 @@ Partial Class MenuPrincipal
         '
         'AyudaToolStripMenuItem
         '
-        Me.AyudaToolStripMenuItem.BackColor = System.Drawing.Color.SteelBlue
+        Me.AyudaToolStripMenuItem.BackColor = System.Drawing.Color.CornflowerBlue
         Me.AyudaToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SoporteToolStripMenuItem})
         Me.AyudaToolStripMenuItem.Name = "AyudaToolStripMenuItem"
         Me.AyudaToolStripMenuItem.Size = New System.Drawing.Size(53, 20)
@@ -227,29 +229,29 @@ Partial Class MenuPrincipal
         Me.SoporteToolStripMenuItem.BackColor = System.Drawing.Color.LightGray
         Me.SoporteToolStripMenuItem.Image = CType(resources.GetObject("SoporteToolStripMenuItem.Image"), System.Drawing.Image)
         Me.SoporteToolStripMenuItem.Name = "SoporteToolStripMenuItem"
-        Me.SoporteToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.SoporteToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SoporteToolStripMenuItem.Text = "Soporte"
         '
         'lblUser
         '
         Me.lblUser.AutoSize = True
-        Me.lblUser.BackColor = System.Drawing.Color.Transparent
-        Me.lblUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblUser.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.lblUser.Location = New System.Drawing.Point(1406, 43)
+        Me.lblUser.BackColor = System.Drawing.Color.White
+        Me.lblUser.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblUser.ForeColor = System.Drawing.Color.Crimson
+        Me.lblUser.Location = New System.Drawing.Point(105, 29)
         Me.lblUser.Name = "lblUser"
-        Me.lblUser.Size = New System.Drawing.Size(97, 16)
+        Me.lblUser.Size = New System.Drawing.Size(90, 15)
         Me.lblUser.TabIndex = 1
         Me.lblUser.Text = "Inicie Sesión"
         '
         'PictureBox1
         '
-        Me.PictureBox1.BackColor = System.Drawing.Color.Transparent
+        Me.PictureBox1.BackColor = System.Drawing.Color.White
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.PictureBox1.Image = Global.WindowsApplication1.My.Resources.Resources.mejoricorojo
-        Me.PictureBox1.Location = New System.Drawing.Point(1307, 46)
+        Me.PictureBox1.Location = New System.Drawing.Point(10, 26)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(29, 26)
+        Me.PictureBox1.Size = New System.Drawing.Size(25, 21)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 2
         Me.PictureBox1.TabStop = False
@@ -272,11 +274,11 @@ Partial Class MenuPrincipal
         '
         Me.segundos.AutoSize = True
         Me.segundos.BackColor = System.Drawing.Color.Transparent
-        Me.segundos.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.segundos.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.segundos.Location = New System.Drawing.Point(1412, 59)
+        Me.segundos.Font = New System.Drawing.Font("LcdD", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.segundos.ForeColor = System.Drawing.Color.Chartreuse
+        Me.segundos.Location = New System.Drawing.Point(79, 52)
         Me.segundos.Name = "segundos"
-        Me.segundos.Size = New System.Drawing.Size(20, 20)
+        Me.segundos.Size = New System.Drawing.Size(17, 16)
         Me.segundos.TabIndex = 4
         Me.segundos.Text = "0"
         '
@@ -284,11 +286,11 @@ Partial Class MenuPrincipal
         '
         Me.horas.AutoSize = True
         Me.horas.BackColor = System.Drawing.Color.Transparent
-        Me.horas.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.horas.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.horas.Location = New System.Drawing.Point(1339, 59)
+        Me.horas.Font = New System.Drawing.Font("LcdD", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.horas.ForeColor = System.Drawing.Color.Chartreuse
+        Me.horas.Location = New System.Drawing.Point(7, 52)
         Me.horas.Name = "horas"
-        Me.horas.Size = New System.Drawing.Size(20, 20)
+        Me.horas.Size = New System.Drawing.Size(17, 16)
         Me.horas.TabIndex = 5
         Me.horas.Text = "0"
         '
@@ -296,11 +298,11 @@ Partial Class MenuPrincipal
         '
         Me.minutos.AutoSize = True
         Me.minutos.BackColor = System.Drawing.Color.Transparent
-        Me.minutos.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.minutos.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.minutos.Location = New System.Drawing.Point(1373, 59)
+        Me.minutos.Font = New System.Drawing.Font("LcdD", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.minutos.ForeColor = System.Drawing.Color.Chartreuse
+        Me.minutos.Location = New System.Drawing.Point(40, 52)
         Me.minutos.Name = "minutos"
-        Me.minutos.Size = New System.Drawing.Size(20, 20)
+        Me.minutos.Size = New System.Drawing.Size(17, 16)
         Me.minutos.TabIndex = 6
         Me.minutos.Text = "0"
         '
@@ -308,11 +310,11 @@ Partial Class MenuPrincipal
         '
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
-        Me.Label2.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.Label2.Location = New System.Drawing.Point(1359, 59)
+        Me.Label2.Font = New System.Drawing.Font("LcdD", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.ForeColor = System.Drawing.Color.Chartreuse
+        Me.Label2.Location = New System.Drawing.Point(26, 52)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(14, 20)
+        Me.Label2.Size = New System.Drawing.Size(12, 16)
         Me.Label2.TabIndex = 7
         Me.Label2.Text = ":"
         '
@@ -320,11 +322,11 @@ Partial Class MenuPrincipal
         '
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
-        Me.Label3.Font = New System.Drawing.Font("LcdD", 15.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.Label3.Location = New System.Drawing.Point(1395, 59)
+        Me.Label3.Font = New System.Drawing.Font("LcdD", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.Chartreuse
+        Me.Label3.Location = New System.Drawing.Point(62, 52)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(14, 20)
+        Me.Label3.Size = New System.Drawing.Size(12, 16)
         Me.Label3.TabIndex = 8
         Me.Label3.Text = ":"
         '
@@ -332,9 +334,9 @@ Partial Class MenuPrincipal
         '
         Me.PictureBox2.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox2.Image = Global.WindowsApplication1.My.Resources.Resources.logoblancourgara
-        Me.PictureBox2.Location = New System.Drawing.Point(647, 702)
+        Me.PictureBox2.Location = New System.Drawing.Point(811, 838)
         Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(472, 134)
+        Me.PictureBox2.Size = New System.Drawing.Size(14, 15)
         Me.PictureBox2.TabIndex = 9
         Me.PictureBox2.TabStop = False
         '
@@ -349,51 +351,71 @@ Partial Class MenuPrincipal
         '
         Me.GridViewUsuario.AllowUserToAddRows = False
         Me.GridViewUsuario.BackgroundColor = System.Drawing.Color.DarkGray
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridViewUsuario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridViewUsuario.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.GridViewUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GridViewUsuario.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GridViewUsuario.DefaultCellStyle = DataGridViewCellStyle4
         Me.GridViewUsuario.GridColor = System.Drawing.SystemColors.ActiveCaption
-        Me.GridViewUsuario.Location = New System.Drawing.Point(738, 103)
+        Me.GridViewUsuario.Location = New System.Drawing.Point(3, 80)
         Me.GridViewUsuario.MultiSelect = False
         Me.GridViewUsuario.Name = "GridViewUsuario"
         Me.GridViewUsuario.ReadOnly = True
         Me.GridViewUsuario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridViewUsuario.Size = New System.Drawing.Size(363, 62)
+        Me.GridViewUsuario.Size = New System.Drawing.Size(102, 16)
         Me.GridViewUsuario.TabIndex = 39
         Me.GridViewUsuario.Visible = False
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.BackColor = System.Drawing.Color.Transparent
-        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.ForeColor = System.Drawing.Color.LightSeaGreen
-        Me.Label4.Location = New System.Drawing.Point(1340, 43)
+        Me.Label4.BackColor = System.Drawing.Color.White
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Crimson
+        Me.Label4.Location = New System.Drawing.Point(42, 29)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(66, 16)
+        Me.Label4.Size = New System.Drawing.Size(61, 15)
         Me.Label4.TabIndex = 40
         Me.Label4.Text = "Usuario:"
+        '
+        'ShapeContainer1
+        '
+        Me.ShapeContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
+        Me.ShapeContainer1.Name = "ShapeContainer1"
+        Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
+        Me.ShapeContainer1.Size = New System.Drawing.Size(1588, 865)
+        Me.ShapeContainer1.TabIndex = 41
+        Me.ShapeContainer1.TabStop = False
+        '
+        'RectangleShape1
+        '
+        Me.RectangleShape1.BackColor = System.Drawing.Color.White
+        Me.RectangleShape1.BorderColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.RectangleShape1.FillColor = System.Drawing.SystemColors.ButtonFace
+        Me.RectangleShape1.FillStyle = Microsoft.VisualBasic.PowerPacks.FillStyle.Solid
+        Me.RectangleShape1.Location = New System.Drawing.Point(0, 24)
+        Me.RectangleShape1.Name = "RectangleShape1"
+        Me.RectangleShape1.Size = New System.Drawing.Size(521, 23)
         '
         'MenuPrincipal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
+        Me.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.finalfondo
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1588, 865)
         Me.Controls.Add(Me.Label4)
@@ -408,6 +430,7 @@ Partial Class MenuPrincipal
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.ShapeContainer1)
         Me.DoubleBuffered = True
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -457,4 +480,6 @@ Partial Class MenuPrincipal
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents ReportesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ConsultarToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
+    Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
 End Class
