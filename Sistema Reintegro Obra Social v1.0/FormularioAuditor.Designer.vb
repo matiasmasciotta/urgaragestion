@@ -154,7 +154,7 @@ Partial Class FormularioAuditor
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(40, 25)
+        Me.Label1.Location = New System.Drawing.Point(30, 25)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(88, 13)
         Me.Label1.TabIndex = 84
@@ -163,7 +163,7 @@ Partial Class FormularioAuditor
         'txtBeneficiario
         '
         Me.txtBeneficiario.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtBeneficiario.Location = New System.Drawing.Point(43, 41)
+        Me.txtBeneficiario.Location = New System.Drawing.Point(33, 41)
         Me.txtBeneficiario.MaxLength = 13
         Me.txtBeneficiario.Name = "txtBeneficiario"
         Me.txtBeneficiario.Size = New System.Drawing.Size(286, 20)
@@ -287,7 +287,7 @@ Partial Class FormularioAuditor
         Me.checkFecha.AutoSize = True
         Me.checkFecha.BackColor = System.Drawing.Color.Transparent
         Me.checkFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.checkFecha.Location = New System.Drawing.Point(12, 78)
+        Me.checkFecha.Location = New System.Drawing.Point(12, 77)
         Me.checkFecha.Name = "checkFecha"
         Me.checkFecha.Size = New System.Drawing.Size(115, 19)
         Me.checkFecha.TabIndex = 18
@@ -488,7 +488,7 @@ Partial Class FormularioAuditor
         Me.opBuscaNumReintegro.AutoSize = True
         Me.opBuscaNumReintegro.BackColor = System.Drawing.Color.Transparent
         Me.opBuscaNumReintegro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.opBuscaNumReintegro.Location = New System.Drawing.Point(344, 30)
+        Me.opBuscaNumReintegro.Location = New System.Drawing.Point(331, 30)
         Me.opBuscaNumReintegro.Name = "opBuscaNumReintegro"
         Me.opBuscaNumReintegro.Size = New System.Drawing.Size(189, 20)
         Me.opBuscaNumReintegro.TabIndex = 109
@@ -501,7 +501,7 @@ Partial Class FormularioAuditor
         Me.opBuscarDNI.AutoSize = True
         Me.opBuscarDNI.BackColor = System.Drawing.Color.Transparent
         Me.opBuscarDNI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.opBuscarDNI.Location = New System.Drawing.Point(344, 48)
+        Me.opBuscarDNI.Location = New System.Drawing.Point(331, 48)
         Me.opBuscarDNI.Name = "opBuscarDNI"
         Me.opBuscarDNI.Size = New System.Drawing.Size(190, 20)
         Me.opBuscarDNI.TabIndex = 108
@@ -513,7 +513,7 @@ Partial Class FormularioAuditor
         '
         Me.txtNumReintegroBusqueda.Enabled = False
         Me.txtNumReintegroBusqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNumReintegroBusqueda.Location = New System.Drawing.Point(537, 40)
+        Me.txtNumReintegroBusqueda.Location = New System.Drawing.Point(523, 40)
         Me.txtNumReintegroBusqueda.MaxLength = 13
         Me.txtNumReintegroBusqueda.Name = "txtNumReintegroBusqueda"
         Me.txtNumReintegroBusqueda.Size = New System.Drawing.Size(121, 20)
@@ -829,7 +829,7 @@ Partial Class FormularioAuditor
         Me.txtuserseccional.BackColor = System.Drawing.SystemColors.Info
         Me.txtuserseccional.Enabled = False
         Me.txtuserseccional.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtuserseccional.Location = New System.Drawing.Point(655, 35)
+        Me.txtuserseccional.Location = New System.Drawing.Point(647, 35)
         Me.txtuserseccional.MaxLength = 13
         Me.txtuserseccional.Name = "txtuserseccional"
         Me.txtuserseccional.Size = New System.Drawing.Size(111, 20)
@@ -839,11 +839,13 @@ Partial Class FormularioAuditor
         '
         Me.opSeccional.AutoSize = True
         Me.opSeccional.BackColor = System.Drawing.Color.Transparent
-        Me.opSeccional.Location = New System.Drawing.Point(649, 17)
+        Me.opSeccional.CheckAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.opSeccional.Location = New System.Drawing.Point(625, 3)
         Me.opSeccional.Name = "opSeccional"
-        Me.opSeccional.Size = New System.Drawing.Size(124, 17)
+        Me.opSeccional.Size = New System.Drawing.Size(147, 31)
         Me.opSeccional.TabIndex = 123
-        Me.opSeccional.Text = "Filtrar por User/Secc"
+        Me.opSeccional.Text = "FILTRO USER/SECCIONAL"
+        Me.opSeccional.TextAlign = System.Drawing.ContentAlignment.TopCenter
         Me.opSeccional.UseVisualStyleBackColor = False
         '
         'botonDesaprobar
@@ -903,7 +905,7 @@ Partial Class FormularioAuditor
         Me.GridViewSeccionales.AllowUserToAddRows = False
         Me.GridViewSeccionales.BackgroundColor = System.Drawing.Color.DimGray
         Me.GridViewSeccionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GridViewSeccionales.Location = New System.Drawing.Point(784, 33)
+        Me.GridViewSeccionales.Location = New System.Drawing.Point(784, 4)
         Me.GridViewSeccionales.MultiSelect = False
         Me.GridViewSeccionales.Name = "GridViewSeccionales"
         Me.GridViewSeccionales.ReadOnly = True
@@ -917,7 +919,7 @@ Partial Class FormularioAuditor
         Me.GridViewSeccionales.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
         Me.GridViewSeccionales.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridViewSeccionales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridViewSeccionales.Size = New System.Drawing.Size(445, 121)
+        Me.GridViewSeccionales.Size = New System.Drawing.Size(445, 181)
         Me.GridViewSeccionales.TabIndex = 131
         Me.GridViewSeccionales.VirtualMode = True
         Me.GridViewSeccionales.Visible = False

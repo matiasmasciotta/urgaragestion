@@ -160,12 +160,6 @@
   <data name="fondo2negrosistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fondo2negrosistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LogoUrgara" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LogoUrgara.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="as" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\as.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Marca OSRGA2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Marca OSRGA2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -202,6 +196,9 @@
   <data name="recnegro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\recnegro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="alta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alta.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="escoba2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\escoba2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -223,14 +220,20 @@
   <data name="unnamed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unnamed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="alta" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\alta.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Marca OSRGA21" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Marca OSRGA21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LogoUrgara" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LogoUrgara.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Salida" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\login-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logoblancourgara2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logoblancourgara2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="recazulss" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\recazulss.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="finalfondo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\finalfondo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,8 +244,8 @@
   <data name="camara" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\camara.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="recazulss" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\recazulss.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="as" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\as.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LOGUIS" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LOGUIS.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,7 +259,7 @@
   <data name="r_14_170423113802" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\r_14_170423113802.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Marca OSRGA21" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Marca OSRGA21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fondo grris" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fondo grris.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

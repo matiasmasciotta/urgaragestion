@@ -453,6 +453,7 @@
     <Content Include="ico3amarillo.ico" />
     <Content Include="icono.ico" />
     <Content Include="logo.ico" />
+    <None Include="Resources\fondo grris.png" />
     <None Include="Resources\Marca OSRGA21.png" />
     <None Include="Resources\Marca URGARA.PNG" />
     <None Include="Resources\Marca OSRGA2.png" />

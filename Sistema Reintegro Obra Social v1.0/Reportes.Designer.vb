@@ -71,7 +71,7 @@ Partial Class Reportes
         Me.GridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.GridView1.Size = New System.Drawing.Size(1254, 441)
+        Me.GridView1.Size = New System.Drawing.Size(1254, 420)
         Me.GridView1.TabIndex = 25
         Me.GridView1.VirtualMode = True
         '
@@ -198,7 +198,7 @@ Partial Class Reportes
         '
         Me.botonExcel.BackColor = System.Drawing.Color.Transparent
         Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel.Location = New System.Drawing.Point(379, 634)
+        Me.botonExcel.Location = New System.Drawing.Point(393, 635)
         Me.botonExcel.Name = "botonExcel"
         Me.botonExcel.Size = New System.Drawing.Size(47, 46)
         Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -209,12 +209,12 @@ Partial Class Reportes
         '
         Me.DataGridSeccionales.BackgroundColor = System.Drawing.SystemColors.Highlight
         Me.DataGridSeccionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridSeccionales.Location = New System.Drawing.Point(277, 9)
+        Me.DataGridSeccionales.Location = New System.Drawing.Point(212, 9)
         Me.DataGridSeccionales.MultiSelect = False
         Me.DataGridSeccionales.Name = "DataGridSeccionales"
         Me.DataGridSeccionales.ReadOnly = True
         Me.DataGridSeccionales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridSeccionales.Size = New System.Drawing.Size(260, 145)
+        Me.DataGridSeccionales.Size = New System.Drawing.Size(325, 146)
         Me.DataGridSeccionales.TabIndex = 83
         Me.DataGridSeccionales.Visible = False
         '
@@ -244,7 +244,7 @@ Partial Class Reportes
         Me.logoURGARA.BackColor = System.Drawing.Color.Transparent
         Me.logoURGARA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_URGARA
         Me.logoURGARA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.logoURGARA.Location = New System.Drawing.Point(41, 107)
+        Me.logoURGARA.Location = New System.Drawing.Point(12, 631)
         Me.logoURGARA.Name = "logoURGARA"
         Me.logoURGARA.Size = New System.Drawing.Size(95, 47)
         Me.logoURGARA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -256,7 +256,7 @@ Partial Class Reportes
         Me.logoOSRGA.BackColor = System.Drawing.Color.Transparent
         Me.logoOSRGA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_OSRGA2
         Me.logoOSRGA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.logoOSRGA.Location = New System.Drawing.Point(143, 107)
+        Me.logoOSRGA.Location = New System.Drawing.Point(118, 627)
         Me.logoOSRGA.Name = "logoOSRGA"
         Me.logoOSRGA.Size = New System.Drawing.Size(95, 47)
         Me.logoOSRGA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -281,6 +281,7 @@ Partial Class Reportes
         Me.Controls.Add(Me.checkFecha)
         Me.Controls.Add(Me.GroupBox1)
         Me.Name = "Reportes"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Reportes"
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)

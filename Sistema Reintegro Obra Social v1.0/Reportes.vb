@@ -116,6 +116,10 @@ Public Class Reportes
         lblfechahasta.Visible = False
     End Sub
 
+    Private Sub Reportes_Click(sender As Object, e As EventArgs) Handles Me.Click
+        DataGridSeccionales.Visible = False
+    End Sub
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         llenarGridCompleto()
