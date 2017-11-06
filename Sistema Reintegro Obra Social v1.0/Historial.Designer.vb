@@ -34,9 +34,13 @@ Partial Class Historial
         Me.lblTitulo = New System.Windows.Forms.Label()
         Me.GridDetalleReintegro = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.logoURGARA = New System.Windows.Forms.PictureBox()
+        Me.logoOSRGA = New System.Windows.Forms.PictureBox()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridDetalleReintegro, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button1
@@ -144,12 +148,38 @@ Partial Class Historial
         Me.Label1.TabIndex = 82
         Me.Label1.Text = "Detalle del Reintegro"
         '
+        'logoURGARA
+        '
+        Me.logoURGARA.BackColor = System.Drawing.Color.Transparent
+        Me.logoURGARA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_URGARA
+        Me.logoURGARA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoURGARA.Location = New System.Drawing.Point(1336, 7)
+        Me.logoURGARA.Name = "logoURGARA"
+        Me.logoURGARA.Size = New System.Drawing.Size(95, 47)
+        Me.logoURGARA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoURGARA.TabIndex = 84
+        Me.logoURGARA.TabStop = False
+        '
+        'logoOSRGA
+        '
+        Me.logoOSRGA.BackColor = System.Drawing.Color.Transparent
+        Me.logoOSRGA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_OSRGA2
+        Me.logoOSRGA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoOSRGA.Location = New System.Drawing.Point(1438, 7)
+        Me.logoOSRGA.Name = "logoOSRGA"
+        Me.logoOSRGA.Size = New System.Drawing.Size(95, 47)
+        Me.logoOSRGA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoOSRGA.TabIndex = 83
+        Me.logoOSRGA.TabStop = False
+        '
         'Historial
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.ClientSize = New System.Drawing.Size(1543, 593)
+        Me.Controls.Add(Me.logoURGARA)
+        Me.Controls.Add(Me.logoOSRGA)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GridDetalleReintegro)
         Me.Controls.Add(Me.lblTitulo)
@@ -163,6 +193,8 @@ Partial Class Historial
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridDetalleReintegro, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -176,4 +208,6 @@ Partial Class Historial
     Friend WithEvents lblTitulo As System.Windows.Forms.Label
     Friend WithEvents GridDetalleReintegro As System.Windows.Forms.DataGridView
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents logoURGARA As System.Windows.Forms.PictureBox
+    Friend WithEvents logoOSRGA As System.Windows.Forms.PictureBox
 End Class

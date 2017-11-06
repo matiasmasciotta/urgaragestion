@@ -100,6 +100,8 @@ Partial Class NuevoReintegro
         Me.Panel7 = New System.Windows.Forms.Panel()
         Me.opUrgara = New System.Windows.Forms.CheckBox()
         Me.Panel8 = New System.Windows.Forms.Panel()
+        Me.logoURGARA = New System.Windows.Forms.PictureBox()
+        Me.logoOSRGA = New System.Windows.Forms.PictureBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.botonlimpiaCUIT = New System.Windows.Forms.PictureBox()
@@ -115,6 +117,8 @@ Partial Class NuevoReintegro
         Me.Panel4.SuspendLayout()
         CType(Me.GridViewUltimoReintegro, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel7.SuspendLayout()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.botonlimpiaCUIT, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -821,9 +825,9 @@ Partial Class NuevoReintegro
         '
         Me.clbStrings.Font = New System.Drawing.Font("Arial Rounded MT Bold", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.clbStrings.FormattingEnabled = True
-        Me.clbStrings.Location = New System.Drawing.Point(1021, 16)
+        Me.clbStrings.Location = New System.Drawing.Point(961, 16)
         Me.clbStrings.Name = "clbStrings"
-        Me.clbStrings.Size = New System.Drawing.Size(158, 34)
+        Me.clbStrings.Size = New System.Drawing.Size(72, 34)
         Me.clbStrings.TabIndex = 31
         Me.clbStrings.Visible = False
         '
@@ -846,7 +850,7 @@ Partial Class NuevoReintegro
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(-1, 705)
+        Me.ProgressBar1.Location = New System.Drawing.Point(-1, 692)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(1206, 11)
         Me.ProgressBar1.TabIndex = 37
@@ -882,13 +886,37 @@ Partial Class NuevoReintegro
         Me.Panel8.Size = New System.Drawing.Size(117, 45)
         Me.Panel8.TabIndex = 39
         '
+        'logoURGARA
+        '
+        Me.logoURGARA.BackColor = System.Drawing.Color.Transparent
+        Me.logoURGARA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_URGARA
+        Me.logoURGARA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoURGARA.Location = New System.Drawing.Point(979, 8)
+        Me.logoURGARA.Name = "logoURGARA"
+        Me.logoURGARA.Size = New System.Drawing.Size(95, 47)
+        Me.logoURGARA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoURGARA.TabIndex = 44
+        Me.logoURGARA.TabStop = False
+        '
+        'logoOSRGA
+        '
+        Me.logoOSRGA.BackColor = System.Drawing.Color.Transparent
+        Me.logoOSRGA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_OSRGA2
+        Me.logoOSRGA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoOSRGA.Location = New System.Drawing.Point(1081, 8)
+        Me.logoOSRGA.Name = "logoOSRGA"
+        Me.logoOSRGA.Size = New System.Drawing.Size(95, 47)
+        Me.logoOSRGA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoOSRGA.TabIndex = 43
+        Me.logoOSRGA.TabStop = False
+        '
         'Button4
         '
         Me.Button4.BackColor = System.Drawing.Color.LightSeaGreen
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button4.Image = CType(resources.GetObject("Button4.Image"), System.Drawing.Image)
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(483, 658)
+        Me.Button4.Location = New System.Drawing.Point(482, 656)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(333, 31)
         Me.Button4.TabIndex = 14
@@ -899,7 +927,7 @@ Partial Class NuevoReintegro
         '
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button2.Location = New System.Drawing.Point(816, 656)
+        Me.Button2.Location = New System.Drawing.Point(816, 655)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(363, 33)
         Me.Button2.TabIndex = 35
@@ -956,7 +984,9 @@ Partial Class NuevoReintegro
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Silver
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1192, 718)
+        Me.ClientSize = New System.Drawing.Size(1192, 703)
+        Me.Controls.Add(Me.logoURGARA)
+        Me.Controls.Add(Me.logoOSRGA)
         Me.Controls.Add(Me.clbStrings)
         Me.Controls.Add(Me.opUrgara)
         Me.Controls.Add(Me.ProgressBar1)
@@ -993,6 +1023,8 @@ Partial Class NuevoReintegro
         CType(Me.GridViewUltimoReintegro, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel7.ResumeLayout(False)
         Me.Panel7.PerformLayout()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.botonlimpiaCUIT, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -1075,4 +1107,6 @@ Partial Class NuevoReintegro
     Friend WithEvents lblresultadocuit As System.Windows.Forms.Label
     Friend WithEvents txtCUITT As System.Windows.Forms.TextBox
     Friend WithEvents botonlimpiaCUIT As System.Windows.Forms.PictureBox
+    Friend WithEvents logoOSRGA As System.Windows.Forms.PictureBox
+    Friend WithEvents logoURGARA As System.Windows.Forms.PictureBox
 End Class

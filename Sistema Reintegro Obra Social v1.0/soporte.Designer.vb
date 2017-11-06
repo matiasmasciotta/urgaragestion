@@ -26,8 +26,12 @@ Partial Class soporte
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox2 = New System.Windows.Forms.PictureBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.logoURGARA = New System.Windows.Forms.PictureBox()
+        Me.logoOSRGA = New System.Windows.Forms.PictureBox()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'PictureBox1
@@ -74,12 +78,38 @@ Partial Class soporte
         Me.Label2.TabIndex = 3
         Me.Label2.Text = "Volver"
         '
+        'logoURGARA
+        '
+        Me.logoURGARA.BackColor = System.Drawing.Color.Transparent
+        Me.logoURGARA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_URGARA
+        Me.logoURGARA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoURGARA.Location = New System.Drawing.Point(291, 309)
+        Me.logoURGARA.Name = "logoURGARA"
+        Me.logoURGARA.Size = New System.Drawing.Size(160, 84)
+        Me.logoURGARA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoURGARA.TabIndex = 46
+        Me.logoURGARA.TabStop = False
+        '
+        'logoOSRGA
+        '
+        Me.logoOSRGA.BackColor = System.Drawing.Color.Transparent
+        Me.logoOSRGA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_OSRGA2
+        Me.logoOSRGA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoOSRGA.Location = New System.Drawing.Point(291, 160)
+        Me.logoOSRGA.Name = "logoOSRGA"
+        Me.logoOSRGA.Size = New System.Drawing.Size(160, 84)
+        Me.logoOSRGA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoOSRGA.TabIndex = 45
+        Me.logoOSRGA.TabStop = False
+        '
         'soporte
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Red
         Me.ClientSize = New System.Drawing.Size(768, 606)
+        Me.Controls.Add(Me.logoURGARA)
+        Me.Controls.Add(Me.logoOSRGA)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.Label1)
@@ -91,6 +121,8 @@ Partial Class soporte
         Me.TransparencyKey = System.Drawing.Color.Red
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -99,4 +131,6 @@ Partial Class soporte
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents PictureBox2 As System.Windows.Forms.PictureBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents logoURGARA As System.Windows.Forms.PictureBox
+    Friend WithEvents logoOSRGA As System.Windows.Forms.PictureBox
 End Class

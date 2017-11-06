@@ -60,7 +60,11 @@ Public Class FormularioAuditor
     Dim varAudMed As Integer
     Dim det As String = ""
     Dim varOPNUMREINTEGRO As String = ""
+    Dim varUserSeccional As String = ""
+    Dim varFILTROSECCIONAL As String = ""
     Dim varOPCUIL As String = ""
+    Dim varSQLSECCIONALES As String = " usuarios_reintegros.codigo_usuario,usuarios_reintegros.apellidonombre,seccionales.descripcion "
+
 
     Private Sub FormularioAuditor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         apagaFecha()
@@ -103,6 +107,19 @@ Public Class FormularioAuditor
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+        'grid de seccionales
+        Try
+            sql = "SELECT " & varSQLSECCIONALES & " from usuarios_reintegros left join seccionales on (usuarios_reintegros.codigo_seccional = seccionales.codigo) "
+            da = New MySqlDataAdapter(sql, Conex)
+            dt = New DataTable
+            da.Fill(dt)
+            GridViewSeccionales.DataSource = dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+
+
     End Sub
 
 
@@ -112,11 +129,11 @@ Public Class FormularioAuditor
         Try
             If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
                 sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Detalle " & _
-                    "LIKE '%" & txtBeneficiario.Text.ToString & "%') AND (Auditor_medico=0) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by reintegros.codigo_reintegro desc"
+                    "LIKE '%" & txtBeneficiario.Text.ToString & "%') AND (Auditor_medico=0) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
             Else
                 sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
                     "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and " & _
-                    "(Auditor_Medico = 0) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by reintegros.codigo_reintegro desc"
+                    "(Auditor_Medico = 0) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -130,11 +147,11 @@ Public Class FormularioAuditor
         Try
             If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
                 sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') and " & _
-                    "(Auditor_medico=1) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varOPCOMISION & varOPPAGADO & " order by reintegros.codigo_reintegro desc"
+                    "(Auditor_medico=1) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varOPCOMISION & varOPPAGADO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
             Else
                 sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
                     "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and " & _
-                    "(Auditor_Medico = 1) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varOPCOMISION & varOPPAGADO & " order by reintegros.codigo_reintegro desc"
+                    "(Auditor_Medico = 1) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varOPCOMISION & varOPPAGADO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -148,11 +165,11 @@ Public Class FormularioAuditor
         Try
             If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
                 sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') and " & _
-                    "(Auditor_medico=2) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by reintegros.codigo_reintegro desc"
+                    "(Auditor_medico=2) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
             Else
                 sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
                     "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and " & _
-                    "(Auditor_Medico = 2) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & " order by reintegros.codigo_reintegro desc"
+                    "(Auditor_Medico = 2) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -792,6 +809,10 @@ Public Class FormularioAuditor
         etiquetear()
     End Sub
 
+    Private Sub botonExcel_MouseLeave(sender As Object, e As EventArgs) Handles botonExcel.MouseLeave
+        botonExcel.Image = WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
+    End Sub
+
     Private Sub botonExcel_MouseMove(sender As Object, e As MouseEventArgs) Handles botonExcel.MouseMove
         botonExcel.Image = WindowsApplication1.My.Resources.Resources.logo2excel
     End Sub
@@ -799,12 +820,20 @@ Public Class FormularioAuditor
     Private Sub botonExcel2_MouseHover(sender As Object, e As EventArgs) Handles botonExcel2.MouseHover
         etiquetear()
     End Sub
+
+    Private Sub botonExcel2_MouseLeave(sender As Object, e As EventArgs) Handles botonExcel2.MouseLeave
+        botonExcel2.Image = WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
+    End Sub
     Private Sub botonExcel2_MouseMove(sender As Object, e As MouseEventArgs) Handles botonExcel2.MouseMove
         botonExcel2.Image = WindowsApplication1.My.Resources.Resources.logo2excel
     End Sub
 
     Private Sub botonExcel3_MouseHover(sender As Object, e As EventArgs) Handles botonExcel3.MouseHover
         etiquetear()
+    End Sub
+
+    Private Sub botonExcel3_MouseLeave(sender As Object, e As EventArgs) Handles botonExcel3.MouseLeave
+        botonExcel3.Image = WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
     End Sub
 
     Private Sub botonExcel3_MouseMove(sender As Object, e As MouseEventArgs) Handles botonExcel3.MouseMove
@@ -1013,5 +1042,42 @@ Public Class FormularioAuditor
 
     Private Sub Label12_Click(sender As Object, e As EventArgs) Handles Label12.Click
 
+    End Sub
+
+
+    Private Sub opSeccional_CheckedChanged(sender As Object, e As EventArgs) Handles opSeccional.CheckedChanged
+        If opSeccional.Checked = True Then
+            GridViewSeccionales.Visible = True
+        Else
+            GridViewSeccionales.Visible = False
+            txtuserseccional.Text = ""
+            BuscarDato()
+        End If
+    End Sub
+
+    Private Sub GridViewSeccionales_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridViewSeccionales.CellContentClick
+        Try
+            txtuserseccional.Text = Me.GridViewSeccionales.Rows(e.RowIndex).Cells(0).Value
+        Catch
+        End Try
+    End Sub
+
+    Private Sub GridViewSeccionales_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridViewSeccionales.CellClick
+        Try
+            txtuserseccional.Text = Me.GridViewSeccionales.Rows(e.RowIndex).Cells(0).Value
+        Catch
+        End Try
+    End Sub
+
+
+    Private Sub txtuserseccional_TextChanged(sender As Object, e As EventArgs) Handles txtuserseccional.TextChanged
+        If txtuserseccional.Text = "" Then
+            varUserSeccional = ""
+            varFILTROSECCIONAL = ""
+        Else
+            varUserSeccional = txtuserseccional.Text
+            varFILTROSECCIONAL = " AND Reintegros.codigo_usuario = '" & varUserSeccional & "' "
+            BuscarDato()
+        End If
     End Sub
 End Class

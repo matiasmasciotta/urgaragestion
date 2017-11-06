@@ -74,6 +74,8 @@ Partial Class FormularioABM
         Me.tempCodigo_Beneficiario = New System.Windows.Forms.TextBox()
         Me.opUrgara = New System.Windows.Forms.CheckBox()
         Me.Panel6 = New System.Windows.Forms.Panel()
+        Me.logoURGARA = New System.Windows.Forms.PictureBox()
+        Me.logoOSRGA = New System.Windows.Forms.PictureBox()
         CType(Me.GridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -81,6 +83,8 @@ Partial Class FormularioABM
         Me.Panel4.SuspendLayout()
         Me.Panel5.SuspendLayout()
         Me.Panel6.SuspendLayout()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView
@@ -141,13 +145,13 @@ Partial Class FormularioABM
         Me.Panel2.Controls.Add(Me.GridView)
         Me.Panel2.Location = New System.Drawing.Point(5, 65)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(525, 573)
+        Me.Panel2.Size = New System.Drawing.Size(525, 532)
         Me.Panel2.TabIndex = 4
         '
         'CANCELAR
         '
         Me.CANCELAR.BackColor = System.Drawing.Color.Chocolate
-        Me.CANCELAR.Location = New System.Drawing.Point(397, 516)
+        Me.CANCELAR.Location = New System.Drawing.Point(397, 486)
         Me.CANCELAR.Name = "CANCELAR"
         Me.CANCELAR.Size = New System.Drawing.Size(123, 38)
         Me.CANCELAR.TabIndex = 9
@@ -158,7 +162,7 @@ Partial Class FormularioABM
         'OK
         '
         Me.OK.BackColor = System.Drawing.Color.MediumSeaGreen
-        Me.OK.Location = New System.Drawing.Point(275, 516)
+        Me.OK.Location = New System.Drawing.Point(275, 493)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(123, 38)
         Me.OK.TabIndex = 8
@@ -289,6 +293,7 @@ Partial Class FormularioABM
         Me.Panel4.Controls.Add(Me.txtProvincia)
         Me.Panel4.Controls.Add(Me.Label24)
         Me.Panel4.Controls.Add(Me.txtLocalidad)
+        Me.Panel4.Controls.Add(Me.Button1)
         Me.Panel4.Controls.Add(Me.Label23)
         Me.Panel4.Controls.Add(Me.txtCelular)
         Me.Panel4.Controls.Add(Me.Label22)
@@ -312,7 +317,7 @@ Partial Class FormularioABM
         Me.Panel4.Controls.Add(Me.Label2)
         Me.Panel4.Location = New System.Drawing.Point(549, 65)
         Me.Panel4.Name = "Panel4"
-        Me.Panel4.Size = New System.Drawing.Size(480, 573)
+        Me.Panel4.Size = New System.Drawing.Size(480, 532)
         Me.Panel4.TabIndex = 10
         '
         'Label10
@@ -561,7 +566,7 @@ Partial Class FormularioABM
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(719, 603)
+        Me.Button1.Location = New System.Drawing.Point(146, 486)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(145, 30)
         Me.Button1.TabIndex = 15
@@ -617,6 +622,30 @@ Partial Class FormularioABM
         Me.Panel6.Size = New System.Drawing.Size(124, 41)
         Me.Panel6.TabIndex = 32
         '
+        'logoURGARA
+        '
+        Me.logoURGARA.BackColor = System.Drawing.Color.Transparent
+        Me.logoURGARA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_URGARA
+        Me.logoURGARA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoURGARA.Location = New System.Drawing.Point(868, 615)
+        Me.logoURGARA.Name = "logoURGARA"
+        Me.logoURGARA.Size = New System.Drawing.Size(95, 47)
+        Me.logoURGARA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoURGARA.TabIndex = 46
+        Me.logoURGARA.TabStop = False
+        '
+        'logoOSRGA
+        '
+        Me.logoOSRGA.BackColor = System.Drawing.Color.Transparent
+        Me.logoOSRGA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_OSRGA2
+        Me.logoOSRGA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoOSRGA.Location = New System.Drawing.Point(970, 615)
+        Me.logoOSRGA.Name = "logoOSRGA"
+        Me.logoOSRGA.Size = New System.Drawing.Size(95, 47)
+        Me.logoOSRGA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoOSRGA.TabIndex = 45
+        Me.logoOSRGA.TabStop = False
+        '
         'FormularioABM
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -624,11 +653,12 @@ Partial Class FormularioABM
         Me.BackColor = System.Drawing.Color.Gainsboro
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1077, 664)
+        Me.Controls.Add(Me.logoURGARA)
+        Me.Controls.Add(Me.logoOSRGA)
         Me.Controls.Add(Me.Panel6)
         Me.Controls.Add(Me.tempCodigo_Beneficiario)
         Me.Controls.Add(Me.tempCuil)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Panel3)
@@ -652,6 +682,8 @@ Partial Class FormularioABM
         Me.Panel5.PerformLayout()
         Me.Panel6.ResumeLayout(False)
         Me.Panel6.PerformLayout()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -708,4 +740,6 @@ Partial Class FormularioABM
     Friend WithEvents txtParentesco As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
     Friend WithEvents Panel6 As System.Windows.Forms.Panel
+    Friend WithEvents logoURGARA As System.Windows.Forms.PictureBox
+    Friend WithEvents logoOSRGA As System.Windows.Forms.PictureBox
 End Class

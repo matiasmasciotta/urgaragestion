@@ -23,10 +23,11 @@ Partial Class FormularioAuditor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormularioAuditor))
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GridView1 = New System.Windows.Forms.DataGridView()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
@@ -39,6 +40,7 @@ Partial Class FormularioAuditor
         Me.txtFechaHasta = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.botonLimpiarFiltroFechas = New System.Windows.Forms.Button()
         Me.txtFechaDesde = New System.Windows.Forms.TextBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.checkFecha = New System.Windows.Forms.CheckBox()
@@ -49,6 +51,7 @@ Partial Class FormularioAuditor
         Me.lblReintegroAprobado = New System.Windows.Forms.Label()
         Me.lblReintegroRechazado = New System.Windows.Forms.Label()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
+        Me.panelAuditor = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.shapePendientes = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.CANCELA = New System.Windows.Forms.Button()
         Me.OK = New System.Windows.Forms.Button()
@@ -75,22 +78,25 @@ Partial Class FormularioAuditor
         Me.opAuditorRechazado = New System.Windows.Forms.CheckBox()
         Me.opPendienteAuditor = New System.Windows.Forms.CheckBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.Panel2 = New System.Windows.Forms.Panel()
         Me.TabControl1 = New System.Windows.Forms.TabControl()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.TabPage5 = New System.Windows.Forms.TabPage()
-        Me.Panel3 = New System.Windows.Forms.Panel()
-        Me.panelAuditor = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
-        Me.botonDesaprobar = New System.Windows.Forms.Button()
-        Me.botonAprobar = New System.Windows.Forms.Button()
-        Me.botonLimpiarFiltroFechas = New System.Windows.Forms.Button()
         Me.botonExcel = New System.Windows.Forms.PictureBox()
+        Me.TabPage4 = New System.Windows.Forms.TabPage()
+        Me.Panel3 = New System.Windows.Forms.Panel()
         Me.botonLimpiarFiltros = New System.Windows.Forms.Button()
         Me.botonExcel2 = New System.Windows.Forms.PictureBox()
+        Me.TabPage5 = New System.Windows.Forms.TabPage()
         Me.botonExcel3 = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblPicture = New System.Windows.Forms.PictureBox()
+        Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.txtuserseccional = New System.Windows.Forms.TextBox()
+        Me.opSeccional = New System.Windows.Forms.CheckBox()
+        Me.botonDesaprobar = New System.Windows.Forms.Button()
+        Me.botonAprobar = New System.Windows.Forms.Button()
+        Me.logoURGARA = New System.Windows.Forms.PictureBox()
+        Me.logoOSRGA = New System.Windows.Forms.PictureBox()
+        Me.GridViewSeccionales = New System.Windows.Forms.DataGridView()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -98,13 +104,17 @@ Partial Class FormularioAuditor
         Me.Panel1.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage3.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
-        Me.TabPage5.SuspendLayout()
         CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage4.SuspendLayout()
         CType(Me.botonExcel2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TabPage5.SuspendLayout()
         CType(Me.botonExcel3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Panel2.SuspendLayout()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GridViewSeccionales, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GridView1
@@ -116,14 +126,14 @@ Partial Class FormularioAuditor
         Me.GridView1.MultiSelect = False
         Me.GridView1.Name = "GridView1"
         Me.GridView1.ReadOnly = True
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridView1.RowHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.GridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridView1.Size = New System.Drawing.Size(748, 307)
@@ -237,6 +247,23 @@ Partial Class FormularioAuditor
         Me.Label2.Text = "Fecha Desde:"
         Me.Label2.Visible = False
         '
+        'botonLimpiarFiltroFechas
+        '
+        Me.botonLimpiarFiltroFechas.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.botonLimpiarFiltroFechas.AutoEllipsis = True
+        Me.botonLimpiarFiltroFechas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.botonLimpiarFiltroFechas.BackColor = System.Drawing.Color.Silver
+        Me.botonLimpiarFiltroFechas.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources._as
+        Me.botonLimpiarFiltroFechas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.botonLimpiarFiltroFechas.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.botonLimpiarFiltroFechas.Location = New System.Drawing.Point(516, 32)
+        Me.botonLimpiarFiltroFechas.Name = "botonLimpiarFiltroFechas"
+        Me.botonLimpiarFiltroFechas.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.botonLimpiarFiltroFechas.Size = New System.Drawing.Size(38, 39)
+        Me.botonLimpiarFiltroFechas.TabIndex = 119
+        Me.botonLimpiarFiltroFechas.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.botonLimpiarFiltroFechas.UseVisualStyleBackColor = False
+        '
         'txtFechaDesde
         '
         Me.txtFechaDesde.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -277,14 +304,14 @@ Partial Class FormularioAuditor
         Me.GridView2.MultiSelect = False
         Me.GridView2.Name = "GridView2"
         Me.GridView2.ReadOnly = True
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridView2.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.GridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridView2.Size = New System.Drawing.Size(751, 276)
@@ -311,14 +338,14 @@ Partial Class FormularioAuditor
         Me.GridView3.MultiSelect = False
         Me.GridView3.Name = "GridView3"
         Me.GridView3.ReadOnly = True
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Maroon
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GridView3.RowHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridView3.RowHeadersDefaultCellStyle = DataGridViewCellStyle3
         Me.GridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
         Me.GridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.GridView3.Size = New System.Drawing.Size(754, 310)
@@ -329,31 +356,34 @@ Partial Class FormularioAuditor
         '
         Me.lblReintegroPendiente.AutoSize = True
         Me.lblReintegroPendiente.BackColor = System.Drawing.Color.Transparent
-        Me.lblReintegroPendiente.Location = New System.Drawing.Point(272, 94)
+        Me.lblReintegroPendiente.Location = New System.Drawing.Point(1115, 499)
         Me.lblReintegroPendiente.Name = "lblReintegroPendiente"
         Me.lblReintegroPendiente.Size = New System.Drawing.Size(28, 13)
         Me.lblReintegroPendiente.TabIndex = 95
         Me.lblReintegroPendiente.Text = "       "
+        Me.lblReintegroPendiente.Visible = False
         '
         'lblReintegroAprobado
         '
         Me.lblReintegroAprobado.AutoSize = True
         Me.lblReintegroAprobado.BackColor = System.Drawing.Color.Transparent
-        Me.lblReintegroAprobado.Location = New System.Drawing.Point(1075, 301)
+        Me.lblReintegroAprobado.Location = New System.Drawing.Point(1072, 463)
         Me.lblReintegroAprobado.Name = "lblReintegroAprobado"
         Me.lblReintegroAprobado.Size = New System.Drawing.Size(28, 13)
         Me.lblReintegroAprobado.TabIndex = 96
         Me.lblReintegroAprobado.Text = "       "
+        Me.lblReintegroAprobado.Visible = False
         '
         'lblReintegroRechazado
         '
         Me.lblReintegroRechazado.AutoSize = True
         Me.lblReintegroRechazado.BackColor = System.Drawing.Color.Transparent
-        Me.lblReintegroRechazado.Location = New System.Drawing.Point(1128, 356)
+        Me.lblReintegroRechazado.Location = New System.Drawing.Point(1104, 476)
         Me.lblReintegroRechazado.Name = "lblReintegroRechazado"
         Me.lblReintegroRechazado.Size = New System.Drawing.Size(28, 13)
         Me.lblReintegroRechazado.TabIndex = 97
         Me.lblReintegroRechazado.Text = "       "
+        Me.lblReintegroRechazado.Visible = False
         '
         'ShapeContainer1
         '
@@ -364,6 +394,13 @@ Partial Class FormularioAuditor
         Me.ShapeContainer1.Size = New System.Drawing.Size(1237, 684)
         Me.ShapeContainer1.TabIndex = 98
         Me.ShapeContainer1.TabStop = False
+        '
+        'panelAuditor
+        '
+        Me.panelAuditor.Location = New System.Drawing.Point(785, 281)
+        Me.panelAuditor.Name = "panelAuditor"
+        Me.panelAuditor.Size = New System.Drawing.Size(433, 128)
+        Me.panelAuditor.Visible = False
         '
         'shapePendientes
         '
@@ -451,7 +488,7 @@ Partial Class FormularioAuditor
         Me.opBuscaNumReintegro.AutoSize = True
         Me.opBuscaNumReintegro.BackColor = System.Drawing.Color.Transparent
         Me.opBuscaNumReintegro.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.opBuscaNumReintegro.Location = New System.Drawing.Point(346, 30)
+        Me.opBuscaNumReintegro.Location = New System.Drawing.Point(344, 30)
         Me.opBuscaNumReintegro.Name = "opBuscaNumReintegro"
         Me.opBuscaNumReintegro.Size = New System.Drawing.Size(189, 20)
         Me.opBuscaNumReintegro.TabIndex = 109
@@ -464,7 +501,7 @@ Partial Class FormularioAuditor
         Me.opBuscarDNI.AutoSize = True
         Me.opBuscarDNI.BackColor = System.Drawing.Color.Transparent
         Me.opBuscarDNI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.opBuscarDNI.Location = New System.Drawing.Point(346, 48)
+        Me.opBuscarDNI.Location = New System.Drawing.Point(344, 48)
         Me.opBuscarDNI.Name = "opBuscarDNI"
         Me.opBuscarDNI.Size = New System.Drawing.Size(190, 20)
         Me.opBuscarDNI.TabIndex = 108
@@ -476,7 +513,7 @@ Partial Class FormularioAuditor
         '
         Me.txtNumReintegroBusqueda.Enabled = False
         Me.txtNumReintegroBusqueda.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtNumReintegroBusqueda.Location = New System.Drawing.Point(540, 40)
+        Me.txtNumReintegroBusqueda.Location = New System.Drawing.Point(537, 40)
         Me.txtNumReintegroBusqueda.MaxLength = 13
         Me.txtNumReintegroBusqueda.Name = "txtNumReintegroBusqueda"
         Me.txtNumReintegroBusqueda.Size = New System.Drawing.Size(121, 20)
@@ -592,7 +629,7 @@ Partial Class FormularioAuditor
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(631, 190)
+        Me.Label14.Location = New System.Drawing.Point(631, 191)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(88, 13)
         Me.Label14.TabIndex = 126
@@ -643,20 +680,10 @@ Partial Class FormularioAuditor
         Me.Panel1.Controls.Add(Me.opReintegro)
         Me.Panel1.Controls.Add(Me.opSubsidio)
         Me.Panel1.Controls.Add(Me.lblPicture)
-        Me.Panel1.Controls.Add(Me.lblReintegroPendiente)
         Me.Panel1.Location = New System.Drawing.Point(8, 96)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(770, 585)
         Me.Panel1.TabIndex = 127
-        '
-        'Panel2
-        '
-        Me.Panel2.BackColor = System.Drawing.Color.Transparent
-        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.Panel2.Location = New System.Drawing.Point(8, 4)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(770, 68)
-        Me.Panel2.TabIndex = 128
         '
         'TabControl1
         '
@@ -680,6 +707,16 @@ Partial Class FormularioAuditor
         Me.TabPage3.Text = "PENDIENTES"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'botonExcel
+        '
+        Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
+        Me.botonExcel.Location = New System.Drawing.Point(357, 1)
+        Me.botonExcel.Name = "botonExcel"
+        Me.botonExcel.Size = New System.Drawing.Size(28, 22)
+        Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.botonExcel.TabIndex = 81
+        Me.botonExcel.TabStop = False
+        '
         'TabPage4
         '
         Me.TabPage4.Controls.Add(Me.Panel3)
@@ -700,17 +737,6 @@ Partial Class FormularioAuditor
         Me.TabPage4.Text = "APROBADOS AUDITOR"
         Me.TabPage4.UseVisualStyleBackColor = True
         '
-        'TabPage5
-        '
-        Me.TabPage5.Controls.Add(Me.GridView3)
-        Me.TabPage5.Controls.Add(Me.botonExcel3)
-        Me.TabPage5.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage5.Name = "TabPage5"
-        Me.TabPage5.Size = New System.Drawing.Size(754, 335)
-        Me.TabPage5.TabIndex = 2
-        Me.TabPage5.Text = "RECHAZADOS AUDITOR"
-        Me.TabPage5.UseVisualStyleBackColor = True
-        '
         'Panel3
         '
         Me.Panel3.BackColor = System.Drawing.Color.Transparent
@@ -718,68 +744,6 @@ Partial Class FormularioAuditor
         Me.Panel3.Name = "Panel3"
         Me.Panel3.Size = New System.Drawing.Size(437, 160)
         Me.Panel3.TabIndex = 129
-        '
-        'panelAuditor
-        '
-        Me.panelAuditor.Location = New System.Drawing.Point(785, 281)
-        Me.panelAuditor.Name = "panelAuditor"
-        Me.panelAuditor.Size = New System.Drawing.Size(433, 128)
-        Me.panelAuditor.Visible = False
-        '
-        'botonDesaprobar
-        '
-        Me.botonDesaprobar.BackColor = System.Drawing.Color.LightGray
-        Me.botonDesaprobar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botonDesaprobar.Image = CType(resources.GetObject("botonDesaprobar.Image"), System.Drawing.Image)
-        Me.botonDesaprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.botonDesaprobar.Location = New System.Drawing.Point(1001, 227)
-        Me.botonDesaprobar.Name = "botonDesaprobar"
-        Me.botonDesaprobar.Size = New System.Drawing.Size(218, 41)
-        Me.botonDesaprobar.TabIndex = 86
-        Me.botonDesaprobar.Text = "Rechazar"
-        Me.botonDesaprobar.UseVisualStyleBackColor = False
-        Me.botonDesaprobar.Visible = False
-        '
-        'botonAprobar
-        '
-        Me.botonAprobar.BackColor = System.Drawing.Color.LightGray
-        Me.botonAprobar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botonAprobar.Image = CType(resources.GetObject("botonAprobar.Image"), System.Drawing.Image)
-        Me.botonAprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.botonAprobar.Location = New System.Drawing.Point(784, 227)
-        Me.botonAprobar.Name = "botonAprobar"
-        Me.botonAprobar.Size = New System.Drawing.Size(219, 41)
-        Me.botonAprobar.TabIndex = 85
-        Me.botonAprobar.Text = "Aprobar"
-        Me.botonAprobar.UseVisualStyleBackColor = False
-        Me.botonAprobar.Visible = False
-        '
-        'botonLimpiarFiltroFechas
-        '
-        Me.botonLimpiarFiltroFechas.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.botonLimpiarFiltroFechas.AutoEllipsis = True
-        Me.botonLimpiarFiltroFechas.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
-        Me.botonLimpiarFiltroFechas.BackColor = System.Drawing.Color.Silver
-        Me.botonLimpiarFiltroFechas.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources._as
-        Me.botonLimpiarFiltroFechas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.botonLimpiarFiltroFechas.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.botonLimpiarFiltroFechas.Location = New System.Drawing.Point(516, 32)
-        Me.botonLimpiarFiltroFechas.Name = "botonLimpiarFiltroFechas"
-        Me.botonLimpiarFiltroFechas.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.botonLimpiarFiltroFechas.Size = New System.Drawing.Size(38, 39)
-        Me.botonLimpiarFiltroFechas.TabIndex = 119
-        Me.botonLimpiarFiltroFechas.TextAlign = System.Drawing.ContentAlignment.BottomCenter
-        Me.botonLimpiarFiltroFechas.UseVisualStyleBackColor = False
-        '
-        'botonExcel
-        '
-        Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel.Location = New System.Drawing.Point(357, 1)
-        Me.botonExcel.Name = "botonExcel"
-        Me.botonExcel.Size = New System.Drawing.Size(28, 22)
-        Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.botonExcel.TabIndex = 81
-        Me.botonExcel.TabStop = False
         '
         'botonLimpiarFiltros
         '
@@ -808,6 +772,17 @@ Partial Class FormularioAuditor
         Me.botonExcel2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.botonExcel2.TabIndex = 106
         Me.botonExcel2.TabStop = False
+        '
+        'TabPage5
+        '
+        Me.TabPage5.Controls.Add(Me.GridView3)
+        Me.TabPage5.Controls.Add(Me.botonExcel3)
+        Me.TabPage5.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage5.Name = "TabPage5"
+        Me.TabPage5.Size = New System.Drawing.Size(754, 335)
+        Me.TabPage5.TabIndex = 2
+        Me.TabPage5.Text = "RECHAZADOS AUDITOR"
+        Me.TabPage5.UseVisualStyleBackColor = True
         '
         'botonExcel3
         '
@@ -838,6 +813,115 @@ Partial Class FormularioAuditor
         Me.lblPicture.TabIndex = 92
         Me.lblPicture.TabStop = False
         '
+        'Panel2
+        '
+        Me.Panel2.BackColor = System.Drawing.Color.Transparent
+        Me.Panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel2.Controls.Add(Me.txtuserseccional)
+        Me.Panel2.Controls.Add(Me.opSeccional)
+        Me.Panel2.Location = New System.Drawing.Point(8, 4)
+        Me.Panel2.Name = "Panel2"
+        Me.Panel2.Size = New System.Drawing.Size(770, 68)
+        Me.Panel2.TabIndex = 128
+        '
+        'txtuserseccional
+        '
+        Me.txtuserseccional.BackColor = System.Drawing.SystemColors.Info
+        Me.txtuserseccional.Enabled = False
+        Me.txtuserseccional.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtuserseccional.Location = New System.Drawing.Point(655, 35)
+        Me.txtuserseccional.MaxLength = 13
+        Me.txtuserseccional.Name = "txtuserseccional"
+        Me.txtuserseccional.Size = New System.Drawing.Size(111, 20)
+        Me.txtuserseccional.TabIndex = 132
+        '
+        'opSeccional
+        '
+        Me.opSeccional.AutoSize = True
+        Me.opSeccional.BackColor = System.Drawing.Color.Transparent
+        Me.opSeccional.Location = New System.Drawing.Point(649, 17)
+        Me.opSeccional.Name = "opSeccional"
+        Me.opSeccional.Size = New System.Drawing.Size(124, 17)
+        Me.opSeccional.TabIndex = 123
+        Me.opSeccional.Text = "Filtrar por User/Secc"
+        Me.opSeccional.UseVisualStyleBackColor = False
+        '
+        'botonDesaprobar
+        '
+        Me.botonDesaprobar.BackColor = System.Drawing.Color.LightGray
+        Me.botonDesaprobar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botonDesaprobar.Image = CType(resources.GetObject("botonDesaprobar.Image"), System.Drawing.Image)
+        Me.botonDesaprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.botonDesaprobar.Location = New System.Drawing.Point(1001, 227)
+        Me.botonDesaprobar.Name = "botonDesaprobar"
+        Me.botonDesaprobar.Size = New System.Drawing.Size(218, 41)
+        Me.botonDesaprobar.TabIndex = 86
+        Me.botonDesaprobar.Text = "Rechazar"
+        Me.botonDesaprobar.UseVisualStyleBackColor = False
+        Me.botonDesaprobar.Visible = False
+        '
+        'botonAprobar
+        '
+        Me.botonAprobar.BackColor = System.Drawing.Color.LightGray
+        Me.botonAprobar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.botonAprobar.Image = CType(resources.GetObject("botonAprobar.Image"), System.Drawing.Image)
+        Me.botonAprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.botonAprobar.Location = New System.Drawing.Point(784, 227)
+        Me.botonAprobar.Name = "botonAprobar"
+        Me.botonAprobar.Size = New System.Drawing.Size(219, 41)
+        Me.botonAprobar.TabIndex = 85
+        Me.botonAprobar.Text = "Aprobar"
+        Me.botonAprobar.UseVisualStyleBackColor = False
+        Me.botonAprobar.Visible = False
+        '
+        'logoURGARA
+        '
+        Me.logoURGARA.BackColor = System.Drawing.Color.Transparent
+        Me.logoURGARA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_URGARA
+        Me.logoURGARA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoURGARA.Location = New System.Drawing.Point(855, 529)
+        Me.logoURGARA.Name = "logoURGARA"
+        Me.logoURGARA.Size = New System.Drawing.Size(140, 72)
+        Me.logoURGARA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoURGARA.TabIndex = 130
+        Me.logoURGARA.TabStop = False
+        '
+        'logoOSRGA
+        '
+        Me.logoOSRGA.BackColor = System.Drawing.Color.Transparent
+        Me.logoOSRGA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_OSRGA2
+        Me.logoOSRGA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.logoOSRGA.Location = New System.Drawing.Point(1006, 528)
+        Me.logoOSRGA.Name = "logoOSRGA"
+        Me.logoOSRGA.Size = New System.Drawing.Size(144, 64)
+        Me.logoOSRGA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.logoOSRGA.TabIndex = 129
+        Me.logoOSRGA.TabStop = False
+        '
+        'GridViewSeccionales
+        '
+        Me.GridViewSeccionales.AllowUserToAddRows = False
+        Me.GridViewSeccionales.BackgroundColor = System.Drawing.Color.DimGray
+        Me.GridViewSeccionales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.GridViewSeccionales.Location = New System.Drawing.Point(784, 33)
+        Me.GridViewSeccionales.MultiSelect = False
+        Me.GridViewSeccionales.Name = "GridViewSeccionales"
+        Me.GridViewSeccionales.ReadOnly = True
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Maroon
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GridViewSeccionales.RowHeadersDefaultCellStyle = DataGridViewCellStyle4
+        Me.GridViewSeccionales.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
+        Me.GridViewSeccionales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.GridViewSeccionales.Size = New System.Drawing.Size(445, 121)
+        Me.GridViewSeccionales.TabIndex = 131
+        Me.GridViewSeccionales.VirtualMode = True
+        Me.GridViewSeccionales.Visible = False
+        '
         'FormularioAuditor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -845,6 +929,10 @@ Partial Class FormularioAuditor
         Me.BackColor = System.Drawing.Color.Silver
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(1237, 684)
+        Me.Controls.Add(Me.GridViewSeccionales)
+        Me.Controls.Add(Me.lblReintegroPendiente)
+        Me.Controls.Add(Me.logoURGARA)
+        Me.Controls.Add(Me.logoOSRGA)
         Me.Controls.Add(Me.checkFecha)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.opAuditorMedicoSI)
@@ -883,14 +971,19 @@ Partial Class FormularioAuditor
         Me.Panel1.PerformLayout()
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
+        CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage4.ResumeLayout(False)
         Me.TabPage4.PerformLayout()
-        Me.TabPage5.ResumeLayout(False)
-        CType(Me.botonExcel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.botonExcel2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TabPage5.ResumeLayout(False)
         CType(Me.botonExcel3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Panel2.ResumeLayout(False)
+        Me.Panel2.PerformLayout()
+        CType(Me.logoURGARA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.logoOSRGA, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GridViewSeccionales, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -959,4 +1052,9 @@ Partial Class FormularioAuditor
     Friend WithEvents TabPage4 As System.Windows.Forms.TabPage
     Friend WithEvents Panel3 As System.Windows.Forms.Panel
     Friend WithEvents TabPage5 As System.Windows.Forms.TabPage
+    Friend WithEvents logoURGARA As System.Windows.Forms.PictureBox
+    Friend WithEvents logoOSRGA As System.Windows.Forms.PictureBox
+    Friend WithEvents GridViewSeccionales As System.Windows.Forms.DataGridView
+    Friend WithEvents opSeccional As System.Windows.Forms.CheckBox
+    Friend WithEvents txtuserseccional As System.Windows.Forms.TextBox
 End Class
