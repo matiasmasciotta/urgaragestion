@@ -17,7 +17,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Matias Masciotta\Desktop\SROSS 31-oct-2017\</PublishUrl>
+    <PublishUrl>C:\Users\Matias Masciotta\Desktop\SROSS 211-noviembre-2017\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,7 +28,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <PublisherName>matias</PublisherName>
-    <ApplicationRevision>12</ApplicationRevision>
+    <ApplicationRevision>18</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -345,9 +345,6 @@
     <None Include="Resources\images.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\descarga.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\images %281%29.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -453,13 +450,16 @@
     <Content Include="ico3amarillo.ico" />
     <Content Include="icono.ico" />
     <Content Include="logo.ico" />
-    <None Include="Resources\fondo grris.png" />
-    <None Include="Resources\Marca OSRGA21.png" />
+    <None Include="Resources\fondo grris2.png" />
+    <None Include="Resources\descarga.jpg" />
     <None Include="Resources\Marca URGARA.PNG" />
     <None Include="Resources\Marca OSRGA2.png" />
+    <None Include="Resources\as.png" />
+    <None Include="Resources\fondo grris.png" />
+    <None Include="Resources\mano.png" />
+    <None Include="Resources\Marca OSRGA21.png" />
     <None Include="Resources\camara.png" />
     <None Include="Resources\finalfondo.jpg" />
-    <None Include="Resources\as.png" />
     <None Include="Resources\escoba2.png" />
     <None Include="Resources\escoba.png" />
     <None Include="Resources\medico.png" />

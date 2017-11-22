@@ -121,6 +121,9 @@ Partial Class ConsultaSolicitudReintegro
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.logoURGARA = New System.Windows.Forms.PictureBox()
         Me.logoOSRGA = New System.Windows.Forms.PictureBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.txtNroCuenta = New System.Windows.Forms.TextBox()
+        Me.txtNroCuentaTEMPO = New System.Windows.Forms.TextBox()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         CType(Me.lblPicture, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -503,7 +506,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label6.Location = New System.Drawing.Point(20, 146)
+        Me.Label6.Location = New System.Drawing.Point(21, 219)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(81, 13)
         Me.Label6.TabIndex = 7
@@ -513,7 +516,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtObservacionesCarga.Enabled = False
         Me.txtObservacionesCarga.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtObservacionesCarga.Location = New System.Drawing.Point(104, 143)
+        Me.txtObservacionesCarga.Location = New System.Drawing.Point(104, 216)
         Me.txtObservacionesCarga.Name = "txtObservacionesCarga"
         Me.txtObservacionesCarga.Size = New System.Drawing.Size(522, 20)
         Me.txtObservacionesCarga.TabIndex = 6
@@ -531,6 +534,11 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.Panel5.BackColor = System.Drawing.Color.Transparent
         Me.Panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel5.Controls.Add(Me.txtNroCuentaTEMPO)
+        Me.Panel5.Controls.Add(Me.txtObservacionesCarga)
+        Me.Panel5.Controls.Add(Me.Label6)
+        Me.Panel5.Controls.Add(Me.Label18)
+        Me.Panel5.Controls.Add(Me.txtNroCuenta)
         Me.Panel5.Controls.Add(Me.Label19)
         Me.Panel5.Controls.Add(Me.txtCuilPago)
         Me.Panel5.Controls.Add(Me.Label17)
@@ -539,10 +547,8 @@ Partial Class ConsultaSolicitudReintegro
         Me.Panel5.Controls.Add(Me.DateTimePicker3)
         Me.Panel5.Controls.Add(Me.lblTipoReintegro)
         Me.Panel5.Controls.Add(Me.Label16)
-        Me.Panel5.Controls.Add(Me.Label6)
         Me.Panel5.Controls.Add(Me.txtCBU)
         Me.Panel5.Controls.Add(Me.Label15)
-        Me.Panel5.Controls.Add(Me.txtObservacionesCarga)
         Me.Panel5.Controls.Add(Me.txtFechaSolicitud)
         Me.Panel5.Controls.Add(Me.txtImporte)
         Me.Panel5.Controls.Add(Me.txtDetalle)
@@ -559,7 +565,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label19.AutoSize = True
         Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label19.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label19.Location = New System.Drawing.Point(11, 172)
+        Me.Label19.Location = New System.Drawing.Point(12, 145)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(89, 13)
         Me.Label19.TabIndex = 68
@@ -569,7 +575,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtCuilPago.Enabled = False
         Me.txtCuilPago.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCuilPago.Location = New System.Drawing.Point(104, 169)
+        Me.txtCuilPago.Location = New System.Drawing.Point(104, 142)
         Me.txtCuilPago.MaxLength = 22
         Me.txtCuilPago.Name = "txtCuilPago"
         Me.txtCuilPago.Size = New System.Drawing.Size(196, 20)
@@ -580,7 +586,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label17.AutoSize = True
         Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label17.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label17.Location = New System.Drawing.Point(30, 198)
+        Me.Label17.Location = New System.Drawing.Point(31, 171)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(68, 13)
         Me.Label17.TabIndex = 69
@@ -590,7 +596,7 @@ Partial Class ConsultaSolicitudReintegro
         '
         Me.txtTipoCuenta.Enabled = False
         Me.txtTipoCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtTipoCuenta.Location = New System.Drawing.Point(104, 195)
+        Me.txtTipoCuenta.Location = New System.Drawing.Point(104, 168)
         Me.txtTipoCuenta.MaxLength = 80
         Me.txtTipoCuenta.Name = "txtTipoCuenta"
         Me.txtTipoCuenta.Size = New System.Drawing.Size(196, 20)
@@ -622,7 +628,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label16.AutoSize = True
         Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label16.Location = New System.Drawing.Point(61, 120)
+        Me.Label16.Location = New System.Drawing.Point(62, 120)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(40, 13)
         Me.Label16.TabIndex = 43
@@ -643,7 +649,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label15.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label15.Location = New System.Drawing.Point(68, 92)
+        Me.Label15.Location = New System.Drawing.Point(69, 92)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(32, 13)
         Me.Label15.TabIndex = 42
@@ -672,7 +678,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label13.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label13.Location = New System.Drawing.Point(3, 67)
+        Me.Label13.Location = New System.Drawing.Point(4, 67)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(98, 13)
         Me.Label13.TabIndex = 2
@@ -683,7 +689,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label12.AutoSize = True
         Me.Label12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label12.Location = New System.Drawing.Point(53, 41)
+        Me.Label12.Location = New System.Drawing.Point(54, 41)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(45, 13)
         Me.Label12.TabIndex = 1
@@ -694,7 +700,7 @@ Partial Class ConsultaSolicitudReintegro
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.Label11.Location = New System.Drawing.Point(53, 17)
+        Me.Label11.Location = New System.Drawing.Point(54, 17)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(43, 13)
         Me.Label11.TabIndex = 0
@@ -905,7 +911,7 @@ Partial Class ConsultaSolicitudReintegro
         'botonExcel
         '
         Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel.Location = New System.Drawing.Point(605, 3)
+        Me.botonExcel.Location = New System.Drawing.Point(605, 2)
         Me.botonExcel.Name = "botonExcel"
         Me.botonExcel.Size = New System.Drawing.Size(30, 26)
         Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -1188,6 +1194,38 @@ Partial Class ConsultaSolicitudReintegro
         Me.logoOSRGA.TabIndex = 90
         Me.logoOSRGA.TabStop = False
         '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.Label18.Location = New System.Drawing.Point(31, 195)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(67, 13)
+        Me.Label18.TabIndex = 71
+        Me.Label18.Text = "Nro. Cuenta:"
+        '
+        'txtNroCuenta
+        '
+        Me.txtNroCuenta.Enabled = False
+        Me.txtNroCuenta.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNroCuenta.Location = New System.Drawing.Point(104, 192)
+        Me.txtNroCuenta.MaxLength = 30
+        Me.txtNroCuenta.Name = "txtNroCuenta"
+        Me.txtNroCuenta.Size = New System.Drawing.Size(196, 20)
+        Me.txtNroCuenta.TabIndex = 70
+        '
+        'txtNroCuentaTEMPO
+        '
+        Me.txtNroCuentaTEMPO.Enabled = False
+        Me.txtNroCuentaTEMPO.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtNroCuentaTEMPO.Location = New System.Drawing.Point(321, 192)
+        Me.txtNroCuentaTEMPO.MaxLength = 30
+        Me.txtNroCuentaTEMPO.Name = "txtNroCuentaTEMPO"
+        Me.txtNroCuentaTEMPO.Size = New System.Drawing.Size(196, 20)
+        Me.txtNroCuentaTEMPO.TabIndex = 72
+        Me.txtNroCuentaTEMPO.Visible = False
+        '
         'ConsultaSolicitudReintegro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1348,4 +1386,7 @@ Partial Class ConsultaSolicitudReintegro
     Friend WithEvents botonExcelAprobadosAM As System.Windows.Forms.PictureBox
     Friend WithEvents logoURGARA As System.Windows.Forms.PictureBox
     Friend WithEvents logoOSRGA As System.Windows.Forms.PictureBox
+    Friend WithEvents Label18 As System.Windows.Forms.Label
+    Friend WithEvents txtNroCuenta As System.Windows.Forms.TextBox
+    Friend WithEvents txtNroCuentaTEMPO As System.Windows.Forms.TextBox
 End Class

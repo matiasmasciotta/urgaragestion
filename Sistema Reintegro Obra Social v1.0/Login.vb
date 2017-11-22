@@ -40,7 +40,7 @@ Public Class Login
             variableUsuario = "00-" & Me.txtUser.Text & "-0"
             variablePass = Me.txtPass.Text
             'Controla si los TEXTBOX coinciden con las columnas correspondientes
-            Dim existe As Boolean = (Me.GridView.Rows.Cast(Of DataGridViewRow).Any(Function(x) CStr(x.Cells("Codigo_Usuario").Value) = variableUsuario)) And (Me.GridView.Rows.Cast(Of DataGridViewRow).Any(Function(x) CStr(x.Cells("Constraseña").Value) = variablePass))
+            Dim existe As Boolean = (Me.GridView.Rows.Cast(Of DataGridViewRow).Any(Function(x) CStr(x.Cells("Codigo_Usuario").Value) = variableUsuario)) And (Me.GridView.Rows.Cast(Of DataGridViewRow).Any(Function(x) CStr(x.Cells("Constrasena").Value) = variablePass))
             Dim cont As Integer = 0
             If Not existe Then
                 MsgBox("Datos Inexistentes, Verifique por favor", vbExclamation)
@@ -84,18 +84,22 @@ Public Class Login
                 '--> es Admin
                 If txtTipoUsuario.Text = 1 Then
                     MenuPrincipal.ExaminarBeneficiariosToolStripMenuItem.Enabled = True
-                    MenuPrincipal.ExaminarSolicitudDeReintegroToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ExaminarSolicitudDeReintegroToolStripMenuItem.Visible = False
                     MenuPrincipal.GenerarSolicitudDeReintegroToolStripMenuItem.Enabled = True
                     MenuPrincipal.ConsultarReintegrosPendientesToolStripMenuItem.Enabled = True
-                    MenuPrincipal.UsersSoloAdminToolStripMenuItem.Visible = True
+                    MenuPrincipal.UsersSoloAdminToolStripMenuItem.Visible = False
                     MenuPrincipal.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.Visible = True
-                    MenuPrincipal.ConsultaAuditorMedicoToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ConsultaAuditorMedicoToolStripMenuItem.Visible = False
+                    MenuPrincipal.ReportesToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ConsultarToolStripMenuItem.Enabled = True
                     labelUserMenuPrincipal()
                 End If
                 '--> es Pagador
                 If txtTipoUsuario.Text = 2 Then
                     'MenuPrincipal.ConsultarReintegrosPendientesToolStripMenuItem.Enabled = True
                     MenuPrincipal.GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ReportesToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ConsultarToolStripMenuItem.Enabled = True
                     labelUserMenuPrincipal()
                 End If
                 '--> es Auditor
@@ -104,9 +108,19 @@ Public Class Login
                     MenuPrincipal.ConsultaAuditorMedicoToolStripMenuItem.Enabled = True
                     labelUserMenuPrincipal()
                 End If
-                '--> es Otro
+                '--> es fulladmin
                 If txtTipoUsuario.Text = 4 Then
                     'nada aún
+                    MenuPrincipal.ExaminarBeneficiariosToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ExaminarSolicitudDeReintegroToolStripMenuItem.Enabled = True
+                    MenuPrincipal.GenerarSolicitudDeReintegroToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ConsultarReintegrosPendientesToolStripMenuItem.Enabled = True
+                    MenuPrincipal.UsersSoloAdminToolStripMenuItem.Visible = True
+                    MenuPrincipal.ExaminarTodasLasSolicitudesSoloAdminToolStripMenuItem.Visible = True
+                    MenuPrincipal.ConsultaAuditorMedicoToolStripMenuItem.Enabled = True
+                    MenuPrincipal.GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ReportesToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ConsultarToolStripMenuItem.Enabled = True
                     labelUserMenuPrincipal()
                 End If
 
@@ -169,7 +183,7 @@ Public Class Login
     Private Sub Login_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Me.TopMost = True
         Try
-            sql = "select Codigo_Usuario,Constraseña,ApellidoNombre,Tipo_Usuario,Codigo_Seccional from usuarios_reintegros"
+            sql = "select Codigo_Usuario,Constraseña as Constrasena,ApellidoNombre,Tipo_Usuario,Codigo_Seccional from usuarios_reintegros"
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
@@ -177,6 +191,8 @@ Public Class Login
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+        'GridView.Columns(0).HeaderText = "Codigo_Usuario"
+        ' GridView.Columns(1).HeaderText = "Constraseña"
         txtUser.Focus()
         txtUser.Focus()
         txtUser.Focus()

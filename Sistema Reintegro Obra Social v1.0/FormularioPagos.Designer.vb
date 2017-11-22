@@ -515,11 +515,13 @@ Partial Class FormularioPagos
         Me.botonDesaprobar.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.botonDesaprobar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.botonDesaprobar.Image = CType(resources.GetObject("botonDesaprobar.Image"), System.Drawing.Image)
+        Me.botonDesaprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.botonDesaprobar.Location = New System.Drawing.Point(410, 387)
         Me.botonDesaprobar.Name = "botonDesaprobar"
         Me.botonDesaprobar.Size = New System.Drawing.Size(130, 34)
         Me.botonDesaprobar.TabIndex = 94
         Me.botonDesaprobar.Text = "RECHAZAR"
+        Me.botonDesaprobar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.botonDesaprobar.UseVisualStyleBackColor = False
         Me.botonDesaprobar.Visible = False
         '
@@ -527,12 +529,14 @@ Partial Class FormularioPagos
         '
         Me.botonAprobar.BackColor = System.Drawing.SystemColors.AppWorkspace
         Me.botonAprobar.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.botonAprobar.Image = CType(resources.GetObject("botonAprobar.Image"), System.Drawing.Image)
+        Me.botonAprobar.Image = Global.WindowsApplication1.My.Resources.Resources.mano
+        Me.botonAprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.botonAprobar.Location = New System.Drawing.Point(410, 333)
         Me.botonAprobar.Name = "botonAprobar"
         Me.botonAprobar.Size = New System.Drawing.Size(130, 40)
         Me.botonAprobar.TabIndex = 93
         Me.botonAprobar.Text = "APROBAR REINTEGRO"
+        Me.botonAprobar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.botonAprobar.UseVisualStyleBackColor = False
         Me.botonAprobar.Visible = False
         '
@@ -654,7 +658,6 @@ Partial Class FormularioPagos
         Me.opBuscaNumReintegro.Name = "opBuscaNumReintegro"
         Me.opBuscaNumReintegro.Size = New System.Drawing.Size(189, 20)
         Me.opBuscaNumReintegro.TabIndex = 124
-        Me.opBuscaNumReintegro.TabStop = True
         Me.opBuscaNumReintegro.Text = "Buscar por N° de Reintegro"
         Me.opBuscaNumReintegro.UseVisualStyleBackColor = False
         '
@@ -662,13 +665,11 @@ Partial Class FormularioPagos
         '
         Me.opBuscarDNI.AutoSize = True
         Me.opBuscarDNI.BackColor = System.Drawing.Color.Transparent
-        Me.opBuscarDNI.Checked = True
         Me.opBuscarDNI.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.opBuscarDNI.Location = New System.Drawing.Point(26, 28)
         Me.opBuscarDNI.Name = "opBuscarDNI"
         Me.opBuscarDNI.Size = New System.Drawing.Size(190, 20)
         Me.opBuscarDNI.TabIndex = 123
-        Me.opBuscarDNI.TabStop = True
         Me.opBuscarDNI.Text = "Buscar por Cuil Beneficiario"
         Me.opBuscarDNI.UseVisualStyleBackColor = False
         '
@@ -717,7 +718,7 @@ Partial Class FormularioPagos
         Me.logoURGARA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.logoURGARA.Location = New System.Drawing.Point(36, 623)
         Me.logoURGARA.Name = "logoURGARA"
-        Me.logoURGARA.Size = New System.Drawing.Size(112, 52)
+        Me.logoURGARA.Size = New System.Drawing.Size(112, 56)
         Me.logoURGARA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.logoURGARA.TabIndex = 127
         Me.logoURGARA.TabStop = False

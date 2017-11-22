@@ -490,6 +490,8 @@ Public Class FormularioAuditor
             VariableGlobalCuilBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
         
             lblReintegroAprobado.Text = varCodigoreintegroAprobado
+            botonAprobar.Visible = False
+            botonDesaprobar.Visible = False
         Catch
         End Try
     End Sub
@@ -526,6 +528,8 @@ Public Class FormularioAuditor
             VariableGlobalCuilBeneficiario = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
           
             lblReintegroAprobado.Text = varCodigoreintegroAprobado
+            botonAprobar.Visible = False
+            botonDesaprobar.Visible = False
         Catch
         End Try
     End Sub
@@ -562,6 +566,8 @@ Public Class FormularioAuditor
             VariableGlobalCuilBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
 
             lblReintegroRechazado.Text = varCodigoreintegroRechazado
+            botonAprobar.Visible = False
+            botonDesaprobar.Visible = False
         Catch
         End Try
     End Sub
@@ -596,6 +602,8 @@ Public Class FormularioAuditor
             varCodigoreintegroRechazado = (Me.GridView3.Rows(e.RowIndex).Cells(1).Value).ToString
             VariableGlobalCuilBeneficiario = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
             lblReintegroRechazado.Text = varCodigoreintegroRechazado
+            botonAprobar.Visible = False
+            botonDesaprobar.Visible = False
         Catch
         End Try
     End Sub
@@ -754,7 +762,10 @@ Public Class FormularioAuditor
         txtObservacionesAM.Visible = False
         botonAprobar.Visible = False
         botonDesaprobar.Visible = False
-
+        OK.Visible = False
+        CANCELA.Visible = False
+        botonAprobar.Visible = False
+        botonDesaprobar.Visible = False
         panelAuditor.Visible = False
         lblporcentaje.Visible = False
         lblporc.Visible = False
@@ -778,6 +789,8 @@ Public Class FormularioAuditor
             botonDesaprobar.Visible = False
             OK.Visible = False
             CANCELA.Visible = False
+            botonAprobar.Visible = False
+            botonDesaprobar.Visible = False
 
             panelAuditor.Visible = False
             lblporcentaje.Visible = False

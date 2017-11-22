@@ -22,6 +22,7 @@ Public Class ConsultaSolicitudReintegro
     Dim rollbackAlias As String
     Dim rollbackCuilPago As String
     Dim rollbackTipoCuenta As String
+    Dim rollbackNroCuenta As String
     Dim varCodigoreintegro As String
     Dim varOPREINTEGRO As String = " "
     Dim varOPAUDITORMEDICO As String = " "
@@ -29,7 +30,7 @@ Public Class ConsultaSolicitudReintegro
     Dim varOPPAGADO As String = " "
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                               "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
-                              "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta,cuil_beneficiario "
+                              "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta,cuil_beneficiario,numero_cuenta "
     Dim tempDETALLE As String
     Dim tempIMPORTE As String
     Dim tempFECHASOL As String
@@ -38,6 +39,7 @@ Public Class ConsultaSolicitudReintegro
     Dim tempOBSCARGA As String
     Dim tempCUILPAGO As String
     Dim tempTIPOCUENTA As String
+    Dim tempNROCUENTA As String
     Dim MODIFICA As Boolean = False
     Dim varCodigoreintegroAprobado As String
     Dim varCodigoreintegroRechazado As String
@@ -318,6 +320,7 @@ Public Class ConsultaSolicitudReintegro
                 If (Me.GridView1.Rows(e.RowIndex).Cells(13).Value) = 2 Then lblTipoReintegro.Text = "ES SUBSIDIO POR FALLECIMIENTO"
             End If
             rollbackCarga = txtObservacionesCarga.Text
+
             txtFechaSolicitud.Text = lblfe2.Text
             txtFechSolicitudTEMPO.Text = txtFechaSolicitud.Text
             rollbackFechaSolicitud = txtFechaSolicitud.Text
@@ -330,6 +333,11 @@ Public Class ConsultaSolicitudReintegro
 
             txtCuil.Text = Me.GridView1.Rows(e.RowIndex).Cells(17).Value
             VariableGlobalCuilBeneficiario = txtCuil.Text
+
+            txtNroCuenta.Text = Me.GridView1.Rows(e.RowIndex).Cells(18).Value
+            VariableGlobalNroCuentaBeneficiario = txtNroCuenta.Text
+            txtNroCuentaTEMPO.Text = txtNroCuenta.Text
+            rollbackNroCuenta = txtNroCuenta.Text
 
             botonModificaSolicitud.Visible = True
             botonModificaSolicitud.Enabled = True
@@ -415,6 +423,11 @@ Public Class ConsultaSolicitudReintegro
             txtCuil.Text = Me.GridView1.Rows(e.RowIndex).Cells(17).Value
             VariableGlobalCuilBeneficiario = txtCuil.Text
 
+            txtNroCuenta.Text = Me.GridView1.Rows(e.RowIndex).Cells(18).Value
+            VariableGlobalNroCuentaBeneficiario = txtNroCuenta.Text
+            txtNroCuentaTEMPO.Text = txtNroCuenta.Text
+            rollbackNroCuenta = txtNroCuenta.Text
+
             botonModificaSolicitud.Visible = True
             botonModificaSolicitud.Enabled = True
             botonEliminarSolicitud.Visible = True
@@ -499,6 +512,9 @@ Public Class ConsultaSolicitudReintegro
 
             txtCuil.Text = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
             VariableGlobalCuilBeneficiario = txtCuil.Text
+
+            txtNroCuenta.Text = Me.GridView2.Rows(e.RowIndex).Cells(18).Value
+            VariableGlobalNroCuentaBeneficiario = txtNroCuenta.Text
 
             botonModificaSolicitud.Visible = False
             'botonModificaSolicitud.Enabled = True
@@ -588,6 +604,9 @@ Public Class ConsultaSolicitudReintegro
             txtCuil.Text = Me.GridView2.Rows(e.RowIndex).Cells(17).Value
             VariableGlobalCuilBeneficiario = txtCuil.Text
 
+            txtNroCuenta.Text = Me.GridView2.Rows(e.RowIndex).Cells(18).Value
+            VariableGlobalNroCuentaBeneficiario = txtNroCuenta.Text
+
             botonModificaSolicitud.Visible = False
             ' botonModificaSolicitud.Enabled = True
             botonEliminarSolicitud.Visible = False
@@ -673,6 +692,9 @@ Public Class ConsultaSolicitudReintegro
             txtCuil.Text = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
             VariableGlobalCuilBeneficiario = txtCuil.Text
 
+            txtNroCuenta.Text = Me.GridView3.Rows(e.RowIndex).Cells(18).Value
+            VariableGlobalNroCuentaBeneficiario = txtNroCuenta.Text
+
             botonModificaSolicitud.Visible = False
             'botonModificaSolicitud.Enabled = True
             botonEliminarSolicitud.Visible = False
@@ -756,6 +778,9 @@ Public Class ConsultaSolicitudReintegro
             txtCuil.Text = Me.GridView3.Rows(e.RowIndex).Cells(17).Value
             VariableGlobalCuilBeneficiario = txtCuil.Text
 
+            txtNroCuenta.Text = Me.GridView3.Rows(e.RowIndex).Cells(18).Value
+            VariableGlobalNroCuentaBeneficiario = txtNroCuenta.Text
+
             botonModificaSolicitud.Visible = False
             'botonModificaSolicitud.Enabled = True
             botonEliminarSolicitud.Visible = False
@@ -823,6 +848,7 @@ Public Class ConsultaSolicitudReintegro
         txtAlias.Enabled = False
         txtCuilPago.Enabled = False
         txtTipoCuenta.Enabled = False
+        txtNroCuenta.Enabled = False
     End Sub
 
     Private Sub EnabledTextOn()
@@ -835,6 +861,7 @@ Public Class ConsultaSolicitudReintegro
         txtAlias.Enabled = True
         txtCuilPago.Enabled = True
         txtTipoCuenta.Enabled = True
+        txtNroCuenta.Enabled = True
     End Sub
 
     Private Sub PrendeBotones()
@@ -891,6 +918,9 @@ Public Class ConsultaSolicitudReintegro
         txtAlias.Text = rollbackAlias
         txtCuilPago.Text = rollbackCuilPago
         txtTipoCuenta.Text = rollbackTipoCuenta
+        txtNroCuenta.Text = rollbackNroCuenta
+
+
     End Sub
 
     Private Sub DateTimePicker3_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker3.ValueChanged
@@ -911,7 +941,7 @@ Public Class ConsultaSolicitudReintegro
             With cmdinsert
                 .Connection = con_insert
                 .CommandType = CommandType.Text
-                .CommandText = "UPDATE `reintegros` SET detalle=?detalle,importe=?importe,Observaciones_Carga=?obscarga,fecha_solicitud=?fecsol,CBU =?cbu,Alias=?alias,Cuil_Pago=?cuilpago,Tipo_Cuenta=?tipcue WHERE codigo_reintegro = ?codre"
+                .CommandText = "UPDATE `reintegros` SET detalle=?detalle,importe=?importe,Observaciones_Carga=?obscarga,fecha_solicitud=?fecsol,CBU =?cbu,Alias=?alias,Cuil_Pago=?cuilpago,Tipo_Cuenta=?tipcue,Numero_Cuenta=?nrocue WHERE codigo_reintegro = ?codre"
                 .Parameters.AddWithValue("?codre", varCodigoreintegro)
                 .Parameters.AddWithValue("?detalle", txtDetalle.Text.ToString)
                 .Parameters.AddWithValue("?importe", varimp)
@@ -921,6 +951,7 @@ Public Class ConsultaSolicitudReintegro
                 .Parameters.AddWithValue("?alias", txtAlias.Text.ToString)
                 .Parameters.AddWithValue("?cuilpago", txtCuilPago.Text.ToString)
                 .Parameters.AddWithValue("?tipcue", txtTipoCuenta.Text.ToString)
+                .Parameters.AddWithValue("?nrocue", txtNroCuenta.Text.ToString)
             End With
             Try
                 con_insert.Open()
@@ -984,6 +1015,7 @@ Public Class ConsultaSolicitudReintegro
         Dim obsc As String = ""
         Dim cui As String = ""
         Dim tipcue As String = ""
+        Dim nrocue As String = ""
 
 
         If txtDetalle.Text <> txtDetalleTEMPO.Text Then
@@ -1029,6 +1061,11 @@ Public Class ConsultaSolicitudReintegro
         End If
 
         If txtTipoCuenta.Text <> txtTipoCuentaTEMPO.Text Then
+            tipcue = " // modificó el tipo de cuenta - ANTES [ " & txtTipoCuentaTEMPO.Text & " ] DESPUÉS --> [ " & txtTipoCuenta.Text & " ]"
+        Else
+            tipcue = ""
+        End If
+        If txtNroCuenta.Text <> txtTipoCuentaTEMPO.Text Then
             tipcue = " // modificó el tipo de cuenta - ANTES [ " & txtTipoCuentaTEMPO.Text & " ] DESPUÉS --> [ " & txtTipoCuenta.Text & " ]"
         Else
             tipcue = ""
@@ -1443,6 +1480,11 @@ Public Class ConsultaSolicitudReintegro
 
     Private Sub botonExcel_Click_1(sender As Object, e As EventArgs) Handles botonExcel.Click
 
+    End Sub
+
+    Private Sub GridView1_LostFocus(sender As Object, e As EventArgs) Handles GridView1.LostFocus
+        botonModificaSolicitud.Visible = False
+        botonEliminarSolicitud.Visible = False
     End Sub
 End Class
 

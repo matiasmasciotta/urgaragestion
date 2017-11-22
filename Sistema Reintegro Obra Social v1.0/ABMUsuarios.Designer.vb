@@ -22,6 +22,7 @@ Partial Class ABMUsuarios
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ABMUsuarios))
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.CANCELAR = New System.Windows.Forms.Button()
         Me.OK = New System.Windows.Forms.Button()
@@ -132,6 +133,7 @@ Partial Class ABMUsuarios
         Me.botonModificaUsuario.TabIndex = 4
         Me.botonModificaUsuario.Text = "Modificar "
         Me.botonModificaUsuario.UseVisualStyleBackColor = False
+        Me.botonModificaUsuario.Visible = False
         '
         'botonAgregaUsuario
         '
@@ -254,6 +256,7 @@ Partial Class ABMUsuarios
         Me.txtPass.Location = New System.Drawing.Point(97, 95)
         Me.txtPass.MaxLength = 16
         Me.txtPass.Name = "txtPass"
+        Me.txtPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPass.Size = New System.Drawing.Size(93, 20)
         Me.txtPass.TabIndex = 16
         Me.txtPass.Visible = False
@@ -273,6 +276,7 @@ Partial Class ABMUsuarios
         Me.txtPass2.Location = New System.Drawing.Point(97, 131)
         Me.txtPass2.MaxLength = 16
         Me.txtPass2.Name = "txtPass2"
+        Me.txtPass2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPass2.Size = New System.Drawing.Size(93, 20)
         Me.txtPass2.TabIndex = 18
         Me.txtPass2.Visible = False
@@ -400,7 +404,7 @@ Partial Class ABMUsuarios
         '
         'botonConfirmaUser
         '
-        Me.botonConfirmaUser.Image = Global.WindowsApplication1.My.Resources.Resources.descarga
+        Me.botonConfirmaUser.Image = CType(resources.GetObject("botonConfirmaUser.Image"), System.Drawing.Image)
         Me.botonConfirmaUser.Location = New System.Drawing.Point(833, 374)
         Me.botonConfirmaUser.Name = "botonConfirmaUser"
         Me.botonConfirmaUser.Size = New System.Drawing.Size(96, 74)

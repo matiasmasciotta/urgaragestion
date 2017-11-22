@@ -65,7 +65,7 @@ Namespace My.Resources
         '''</summary>
         Friend ReadOnly Property _as() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("as", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("_as", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -86,16 +86,6 @@ Namespace My.Resources
         Friend ReadOnly Property apro() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("apro", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property buscar() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("buscar", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -126,16 +116,6 @@ Namespace My.Resources
         Friend ReadOnly Property descarga() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("descarga", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property Disp() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("Disp", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -183,9 +163,9 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property fondo_grris() As System.Drawing.Bitmap
+        Friend ReadOnly Property fondo_grris2() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("fondo grris", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("fondo_grris2", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -323,9 +303,9 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Marca_OSRGA2() As System.Drawing.Bitmap
+        Friend ReadOnly Property mano() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Marca OSRGA2", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("mano", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -333,9 +313,9 @@ Namespace My.Resources
         '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         '''</summary>
-        Friend ReadOnly Property Marca_OSRGA21() As System.Drawing.Bitmap
+        Friend ReadOnly Property Marca_OSRGA2() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Marca OSRGA21", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Marca_OSRGA2", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -345,7 +325,7 @@ Namespace My.Resources
         '''</summary>
         Friend ReadOnly Property Marca_URGARA() As System.Drawing.Bitmap
             Get
-                Dim obj As Object = ResourceManager.GetObject("Marca URGARA", resourceCulture)
+                Dim obj As Object = ResourceManager.GetObject("Marca_URGARA", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -506,16 +486,6 @@ Namespace My.Resources
         Friend ReadOnly Property Salida() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Salida", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property unnamed() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("unnamed", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
