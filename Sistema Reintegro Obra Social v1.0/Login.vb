@@ -100,6 +100,8 @@ Public Class Login
                     MenuPrincipal.GenerarPagoDeReintegroOSubsidioToolStripMenuItem.Enabled = True
                     MenuPrincipal.ReportesToolStripMenuItem.Enabled = True
                     MenuPrincipal.ConsultarToolStripMenuItem.Enabled = True
+                    MenuPrincipal.ExaminarSolicitudDeReintegroToolStripMenuItem.Enabled = True
+                    MenuPrincipal.GenerarSolicitudDeReintegroToolStripMenuItem.Enabled = True
                     labelUserMenuPrincipal()
                 End If
                 '--> es Auditor

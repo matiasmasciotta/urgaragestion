@@ -79,7 +79,7 @@ Partial Class Reportes
         '
         Me.Boton_Salir.Image = CType(resources.GetObject("Boton_Salir.Image"), System.Drawing.Image)
         Me.Boton_Salir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Boton_Salir.Location = New System.Drawing.Point(795, 635)
+        Me.Boton_Salir.Location = New System.Drawing.Point(367, 732)
         Me.Boton_Salir.Name = "Boton_Salir"
         Me.Boton_Salir.Size = New System.Drawing.Size(448, 36)
         Me.Boton_Salir.TabIndex = 26
@@ -175,7 +175,7 @@ Partial Class Reportes
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.txtFechaDesde)
-        Me.GroupBox1.Location = New System.Drawing.Point(566, 22)
+        Me.GroupBox1.Location = New System.Drawing.Point(566, 23)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(694, 109)
         Me.GroupBox1.TabIndex = 24
@@ -187,7 +187,7 @@ Partial Class Reportes
         Me.checkFecha.BackColor = System.Drawing.Color.Transparent
         Me.checkFecha.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.checkFecha.ForeColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.checkFecha.Location = New System.Drawing.Point(568, 9)
+        Me.checkFecha.Location = New System.Drawing.Point(568, 10)
         Me.checkFecha.Name = "checkFecha"
         Me.checkFecha.Size = New System.Drawing.Size(115, 19)
         Me.checkFecha.TabIndex = 23
@@ -198,9 +198,9 @@ Partial Class Reportes
         '
         Me.botonExcel.BackColor = System.Drawing.Color.Transparent
         Me.botonExcel.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
-        Me.botonExcel.Location = New System.Drawing.Point(393, 635)
+        Me.botonExcel.Location = New System.Drawing.Point(1180, 134)
         Me.botonExcel.Name = "botonExcel"
-        Me.botonExcel.Size = New System.Drawing.Size(47, 46)
+        Me.botonExcel.Size = New System.Drawing.Size(45, 43)
         Me.botonExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.botonExcel.TabIndex = 78
         Me.botonExcel.TabStop = False
@@ -244,7 +244,7 @@ Partial Class Reportes
         Me.logoURGARA.BackColor = System.Drawing.Color.Transparent
         Me.logoURGARA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_URGARA
         Me.logoURGARA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.logoURGARA.Location = New System.Drawing.Point(12, 631)
+        Me.logoURGARA.Location = New System.Drawing.Point(12, 732)
         Me.logoURGARA.Name = "logoURGARA"
         Me.logoURGARA.Size = New System.Drawing.Size(95, 47)
         Me.logoURGARA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -256,9 +256,9 @@ Partial Class Reportes
         Me.logoOSRGA.BackColor = System.Drawing.Color.Transparent
         Me.logoOSRGA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_OSRGA2
         Me.logoOSRGA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.logoOSRGA.Location = New System.Drawing.Point(118, 627)
+        Me.logoOSRGA.Location = New System.Drawing.Point(113, 732)
         Me.logoOSRGA.Name = "logoOSRGA"
-        Me.logoOSRGA.Size = New System.Drawing.Size(95, 47)
+        Me.logoOSRGA.Size = New System.Drawing.Size(95, 42)
         Me.logoOSRGA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.logoOSRGA.TabIndex = 84
         Me.logoOSRGA.TabStop = False
@@ -269,7 +269,7 @@ Partial Class Reportes
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackgroundImage = CType(resources.GetObject("$this.BackgroundImage"), System.Drawing.Image)
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1267, 683)
+        Me.ClientSize = New System.Drawing.Size(1267, 791)
         Me.Controls.Add(Me.logoURGARA)
         Me.Controls.Add(Me.logoOSRGA)
         Me.Controls.Add(Me.DataGridSeccionales)

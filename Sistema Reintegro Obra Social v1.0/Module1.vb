@@ -11,6 +11,8 @@ Module Module1
     Public VariableGlobalFechaHOY As String
     Public VariableGlobalHoraHOY As String
     Public VarHistorialReintegro As String
+    Public VariableGlobalCodigoUsuarioReportes As String
+
     Public Sub fechaHoy()
         VariableGlobalFechaHOY = DateTime.Now.Year & "-" & DateTime.Now.Month & "-" & DateTime.Now.Day
         VariableGlobalHoraHOY = DateTime.Now.TimeOfDay.Hours & ":" & DateTime.Now.TimeOfDay.Minutes & ":" & DateTime.Now.TimeOfDay.Seconds

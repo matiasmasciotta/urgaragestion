@@ -15,13 +15,12 @@ Public Class Reportes
     Dim dt As DataTable
     Dim sql As String
     Dim comando As MySqlCommand
-    Dim varSQLCAMPOS As String = "reintegros.codigo_Usuario,usuarios_reintegros.ApellidoNombre,usuarios_reintegros.codigo_seccional,seccionales.Descripcion,sum(reintegros.importe)"
+    Dim varSQLCAMPOS As String = "reintegros.codigo_Usuario as IdUser,usuarios_reintegros.ApellidoNombre as USUARIO,usuarios_reintegros.codigo_seccional as IdSec,seccionales.Descripcion as DelSec,sum(reintegros.importe) as SUMATOTAL "
     '(00)reintegros.codigo_Usuario
     '(01)usuarios_reintegros.ApellidoNombre
     '(02)usuarios_reintegros.codigo_seccional
     '(03)seccionales.Descripcion,
     '(04)sum(reintegros.importe) 
-
 
     'Metodo llena grid boo
     Private Sub llenarGridCompleto() '>>>>>>>>>>>
@@ -49,7 +48,7 @@ Public Class Reportes
                 sql = "SELECT " & varSQLCAMPOS & "FROM reintegros LEFT JOIN usuarios_reintegros ON (reintegros.codigo_usuario = usuarios_reintegros.codigo_usuario) " & _
                 "LEFT JOIN seccionales ON (usuarios_reintegros.Codigo_Seccional=Seccionales.Codigo) WHERE (reintegros.auditor_medico = 1) AND (reintegros.Estado = 1) " & _
                 "AND (reintegros.Pagado = 1) AND " & _
-                    "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') AND (Usuarios_Reintegros.Codigo_seccional " & _
+                    "(Fecha_Reintegro BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') AND (Usuarios_Reintegros.Codigo_seccional " & _
                     "like '%" & txtSeccional.Text & "%') GROUP BY reintegros.codigo_Usuario"
             End If
             da = New MySqlDataAdapter(sql, Conex)
@@ -66,12 +65,16 @@ Public Class Reportes
     Private Sub DateTimePicker1_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker1.ValueChanged
         txtFechaDesde.Text = DateTimePicker1.Value.Year & "-" & DateTimePicker1.Value.Month & "-" & DateTimePicker1.Value.Day
         txtFechaHasta.Text = DateTimePicker2.Value.Year & "-" & DateTimePicker2.Value.Month & "-" & DateTimePicker2.Value.Day
+        ReporteExtendido.lblDesde.Text = txtFechaDesde.Text
+        ReporteExtendido.lblHasta.Text = txtFechaHasta.Text
         'BuscarDato()
     End Sub
 
     Private Sub DateTimePicker2_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DateTimePicker2.ValueChanged
         txtFechaDesde.Text = DateTimePicker1.Value.Year & "-" & DateTimePicker1.Value.Month & "-" & DateTimePicker1.Value.Day
         txtFechaHasta.Text = DateTimePicker2.Value.Year & "-" & DateTimePicker2.Value.Month & "-" & DateTimePicker2.Value.Day
+        ReporteExtendido.lblDesde.Text = txtFechaDesde.Text
+        ReporteExtendido.lblHasta.Text = txtFechaHasta.Text
         'BuscarDato()
     End Sub
     'metodo limpia fecha
@@ -195,5 +198,33 @@ Public Class Reportes
 
     Private Sub Reportes_MouseClick(sender As Object, e As MouseEventArgs) Handles Me.MouseClick
         DataGridSeccionales.Visible = False
+    End Sub
+
+    Private Sub GridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellClick
+        Try
+            VariableGlobalCodigoUsuarioReportes = Me.GridView1.Rows(e.RowIndex).Cells(0).Value
+        Catch
+        End Try
+    End Sub
+
+    Private Sub GridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellContentClick
+        Try
+            VariableGlobalCodigoUsuarioReportes = Me.GridView1.Rows(e.RowIndex).Cells(0).Value
+        Catch
+        End Try
+    End Sub
+
+    Private Sub GridView1_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellContentDoubleClick
+        ReporteExtendido.lblNumReintegro.Text = VariableGlobalCodigoUsuarioReportes.ToString
+        ReporteExtendido.Show()
+    End Sub
+
+    Private Sub GridView1_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView1.CellDoubleClick
+        ReporteExtendido.lblNumReintegro.Text = VariableGlobalCodigoUsuarioReportes.ToString
+        ReporteExtendido.Show()
+    End Sub
+
+    Private Sub botonExcel_MouseMove(sender As Object, e As MouseEventArgs) Handles botonExcel.MouseMove
+
     End Sub
 End Class

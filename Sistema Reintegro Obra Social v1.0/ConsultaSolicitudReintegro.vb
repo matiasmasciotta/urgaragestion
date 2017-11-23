@@ -1478,10 +1478,7 @@ Public Class ConsultaSolicitudReintegro
         ToolTip1.SetToolTip(botonLimpiarFiltros, "Quitar Filtros!")
     End Sub
 
-    Private Sub botonExcel_Click_1(sender As Object, e As EventArgs) Handles botonExcel.Click
-
-    End Sub
-
+    
     Private Sub GridView1_LostFocus(sender As Object, e As EventArgs) Handles GridView1.LostFocus
         botonModificaSolicitud.Visible = False
         botonEliminarSolicitud.Visible = False

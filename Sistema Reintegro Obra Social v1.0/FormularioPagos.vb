@@ -22,11 +22,36 @@ Public Class FormularioPagos
     Dim varOPCUIL As String = ""
     Dim varSQLCAMPOS As String = "reintegros.codigo_usuario,codigo_reintegro,codigo_beneficiario,fecha_solicitud,detalle,importe,observaciones_carga, " & _
                               "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional,reintegros.CBU," & _
-                              "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta,cuil_beneficiario "
+                              "reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado,reintegros.Cuil_Pago,reintegros.tipo_cuenta," & _
+                              "cuil_beneficiario,reintegros.Autorizante,reintegros.Porcentaje_Reintegro_final,reintegros.Observaciones_Comision,reintegros.Valor_Reintegrado "
+    '(00)reintegros.codigo_usuario,
+    '(01)codigo_reintegro,
+    '(02)codigo_beneficiario,
+    '(03)fecha_solicitud,
+    '(04)detalle,
+    '(05)importe,
+    '(06)observaciones_carga,
+    '(07)usuarios_reintegros.ApellidoNombre,
+    '(08)(usuarios_reintegros.tipo_usuario,
+    '(09)usuarios_reintegros.codigo_seccional,
+    '(10)reintegros.CBU,
+    '(11)reintegros.Alias,
+    '(12)reintegros.tipo_reintegro,
+    '(13)reintegros.id_Subsidio,
+    '(14)reintegros.Pagado,
+    '(15)reintegros.Cuil_Pago,
+    '(16)reintegros.tipo_cuenta,
+    '(17)cuil_beneficiario,
+    '(18)reintegros.Autorizante,
+    '(19)reintegros.Porcentaje_Reintegro_final
+    '(20)reintegros.Observaciones_Comision
+    '(21)reintegros.Valor_Reintegrado
+    Dim varCodigoReintegroPAROBADOCDN As String = ""
     Dim varEstado As Integer
     Dim varPagado As Integer
     Dim varACargo As Integer
     Dim det As String = ""
+    Dim det2 As String = ""
     Dim pagaono As Boolean
 
     Dim varFILTROSECCIONAL As String = ""
@@ -400,6 +425,75 @@ Public Class FormularioPagos
 
     '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     '<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    Private Sub update_To_Aprobados() 'Pisa la base productiva "CODIGO QUE ACTUALIZA AL MODIFICAR ALGUN DATO EN LA SOLAPA APROBADOS"
+        Using con_insert As New MySqlConnection(CADENABASE2)
+            Dim cmdinsert As New MySqlCommand
+            With cmdinsert
+                .Connection = con_insert
+                .CommandType = CommandType.Text
+                fechaHoy()
+                Dim plata As Double = Convert.ToDouble(lblIMPORTEaprobados.Text)
+                Dim porcentaje As Double = Convert.ToDouble(txtPORCaprobados.Text)
+                Dim varReintegroFinal As Double = plata * porcentaje / 100
+                '`Estado` int(1) DEFAULT '0',   /* [0]-PENDIENTE / [1]-APROBADO / [2]-RECHAZADO  */
+                '`Observaciones_Comision` varchar(120) NOT NULL DEFAULT 'NO YET' ,
+                '`Autorizante` varchar(60) NOT NULL DEFAULT 'NO YET',
+                '`A_Cargo` int(1) DEFAULT '0',  /*[0]- OBRA SOCIAL / [1]-URGARA */
+                '/*INSTANCIA 4 -PAGO DEL REINTEGRO*/
+                ' `Fecha_Reintegro` date DEFAULT '0000-00-00',  
+                ' `Porcentaje_Reintegro_final` int(3) DEFAULT '0',
+                ' `Valor_Reintegrado` float(8) DEFAULT '0',
+                ' `Pagado` int(1) DEFAULT '0', /* [0]-NO  / [1]-SI */
+                det2 = "$[MODIFICACION - PAGADOS] Por desición de " & txtAUTORIZANTEaprobados.Text & ", el valor a reintegrado es: $" & varReintegroFinal & ", correspondiente al reintegro nº: "
+                .CommandText = "UPDATE `reintegros` SET Autorizante=?aut,Porcentaje_Reintegro_final=?porcfinal,Observaciones_Comision=?obscom,Valor_Reintegrado=?valre WHERE codigo_reintegro = ?codre"
+                .Parameters.AddWithValue("?codre", varCodigoreintegroPagado)
+                .Parameters.AddWithValue("?obscom", txtOBSaprobados.Text)
+                .Parameters.AddWithValue("?aut", txtAUTORIZANTEaprobados.Text)
+                .Parameters.AddWithValue("?porcfinal", txtPORCaprobados.Text)
+                .Parameters.AddWithValue("?valre", varReintegroFinal)
+            End With
+            Try
+                con_insert.Open()
+                cmdinsert.ExecuteNonQuery()
+                con_insert.Close()
+                MessageBox.Show("UPDATE en BD OK", "Actualizacion de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Insert_To_Modificacion_AprobadosCDN()
+            Catch falla As MySqlException
+                MsgBox(falla.Message)
+            End Try
+        End Using
+    End Sub
+
+    Private Sub Insert_To_Modificacion_AprobadosCDN() 'Registra la modificacion que hizo el usuario logueado en la tabla "historial_reintegros"
+        'calcula la fecha y hora de hoy en este preciso momento..
+        fechaHoy()
+        Using con_insert As New MySqlConnection(CADENABASE2)
+            Dim cmdinsert As New MySqlCommand
+            '   Dim varimp As Double = Convert.ToDouble(txtImporte.Text)
+            With cmdinsert
+                .Connection = con_insert
+                .CommandType = CommandType.Text
+                VERIFICA_MODIFICACIONES()
+                .CommandText = "INSERT INTO `historial_reintegros`(`Codigo_Usuario`,`Codigo_Reintegro`,`Codigo_Beneficiario`,`Cuil_Beneficiario`,`Fecha_modificacion`," & _
+                    "`Hora`,`Detalle`) VALUES (?codus,?codre,?codben,?cuilben,?fecmod,?hora,?detalle)"
+                .Parameters.AddWithValue("?codus", VariableGlobalUsuario)
+                .Parameters.AddWithValue("?codre", varCodigoreintegroPagado)
+                .Parameters.AddWithValue("?codben", VariableGlobalBeneficiario)
+                .Parameters.AddWithValue("?cuilben", VariableGlobalCuilBeneficiario)
+                .Parameters.AddWithValue("?fecmod", VariableGlobalFechaHOY)
+                .Parameters.AddWithValue("?hora", VariableGlobalHoraHOY)
+                .Parameters.AddWithValue("?detalle", det2 & varCodigoreintegroPagado)
+            End With
+            Try
+                con_insert.Open()
+                cmdinsert.ExecuteNonQuery()
+                con_insert.Close()
+                MessageBox.Show("Asignado a historial de modificacion..", "Actualizacion de Datos", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Catch falla As MySqlException
+                MsgBox(falla.Message)
+            End Try
+        End Using
+    End Sub
 
     Private Sub update_To() 'Pisa la base productiva "REINTEGROS"
         Using con_insert As New MySqlConnection(CADENABASE2)
@@ -494,6 +588,10 @@ Public Class FormularioPagos
         txtObservacionesAM.Visible = False
         botonAprobar.Visible = False
         botonDesaprobar.Visible = False
+        rectangulo.Visible = False
+        lblPorcentajeReintegro.Visible = False
+        lblObservacionesComision.Visible = False
+        lblAutorizante.Visible = False
         det = ""
         OK.Visible = False
         CANCELA.Visible = False
@@ -515,6 +613,10 @@ Public Class FormularioPagos
             botonDesaprobar.Visible = False
             OK.Visible = False
             CANCELA.Visible = False
+            rectangulo.Visible = False
+            lblPorcentajeReintegro.Visible = False
+            lblObservacionesComision.Visible = False
+            lblAutorizante.Visible = False
             llenarGridCompleto()
             det = ""
         End If
@@ -601,8 +703,9 @@ Public Class FormularioPagos
         Catch
         End Try
     End Sub
-    '****************************************
-
+    '*************************************************************************************************
+    '*************************************************************************************************
+    '*************************************************************************************************
     'CLICK 1 - REINTEGROS PAGADOS Y APROBADOS POR COMISION
     Private Sub GridView4_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView4.CellClick
         clbimagen.Items.Clear()
@@ -633,6 +736,13 @@ Public Class FormularioPagos
             VariableGlobalBeneficiario = Me.GridView4.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroPagado = (Me.GridView4.Rows(e.RowIndex).Cells(1).Value).ToString
             VariableGlobalCuilBeneficiario = Me.GridView4.Rows(e.RowIndex).Cells(17).Value
+            txtAUTORIZANTEaprobados.Text = Me.GridView4.Rows(e.RowIndex).Cells(18).Value
+            txtPORCaprobados.Text = Me.GridView4.Rows(e.RowIndex).Cells(19).Value
+            txtOBSaprobados.Text = Me.GridView4.Rows(e.RowIndex).Cells(20).Value
+            lblValorREINTEGRADO.Text = Me.GridView4.Rows(e.RowIndex).Cells(21).Value
+            lblIMPORTEaprobados.Text = Me.GridView4.Rows(e.RowIndex).Cells(5).Value
+            botonMODIFICARaprobados.Visible = True
+
         Catch
         End Try
     End Sub
@@ -667,10 +777,18 @@ Public Class FormularioPagos
             VariableGlobalBeneficiario = Me.GridView4.Rows(e.RowIndex).Cells(2).Value
             varCodigoreintegroPagado = (Me.GridView4.Rows(e.RowIndex).Cells(1).Value).ToString
             VariableGlobalCuilBeneficiario = Me.GridView4.Rows(e.RowIndex).Cells(17).Value
+            txtAUTORIZANTEaprobados.Text = Me.GridView4.Rows(e.RowIndex).Cells(18).Value
+            txtPORCaprobados.Text = Me.GridView4.Rows(e.RowIndex).Cells(19).Value
+            txtOBSaprobados.Text = Me.GridView4.Rows(e.RowIndex).Cells(20).Value
+            lblValorREINTEGRADO.Text = Me.GridView4.Rows(e.RowIndex).Cells(21).Value
+            lblIMPORTEaprobados.Text = Me.GridView4.Rows(e.RowIndex).Cells(5).Value
+            botonMODIFICARaprobados.Visible = True
         Catch
         End Try
     End Sub
-    '****************************************
+    '*************************************************************************************************
+    '*************************************************************************************************
+    '*************************************************************************************************
 
     Private Sub GridView3_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles GridView3.CellContentDoubleClick
         Try
@@ -821,5 +939,36 @@ Public Class FormularioPagos
 
     Private Sub botonLimpiarFiltros_MouseMove(sender As Object, e As MouseEventArgs) Handles botonLimpiarFiltros.MouseMove
         botonLimpiarFiltros.BackgroundImage = WindowsApplication1.My.Resources.Resources.escoba
+    End Sub
+
+    Private Sub botonExcel_MouseMove(sender As Object, e As MouseEventArgs) Handles botonExcel.MouseMove
+
+    End Sub
+
+    Private Sub botonMODIFICARaprobados_Click(sender As Object, e As EventArgs) Handles botonMODIFICARaprobados.Click
+        txtAUTORIZANTEaprobados.Enabled = True
+        txtPORCaprobados.Enabled = True
+        txtOBSaprobados.Enabled = True
+        botonOKaprobados.Visible = True
+        botonCANCELaprobados.Visible = True
+    End Sub
+
+    Private Sub botonOKaprobados_Click(sender As Object, e As EventArgs) Handles botonOKaprobados.Click
+        txtAUTORIZANTEaprobados.Enabled = False
+        txtPORCaprobados.Enabled = False
+        txtOBSaprobados.Enabled = False
+        botonOKaprobados.Visible = False
+        botonCANCELaprobados.Visible = False
+        update_To_Aprobados() 'metodo update cuando modifico solapa aprobados y pagados cdn
+        llenarGridCompleto() 'actualiza la vista
+    End Sub
+
+    Private Sub botonCANCELaprobados_Click(sender As Object, e As EventArgs) Handles botonCANCELaprobados.Click
+        txtAUTORIZANTEaprobados.Enabled = False
+        txtPORCaprobados.Enabled = False
+        txtOBSaprobados.Enabled = False
+        botonOKaprobados.Visible = False
+        botonCANCELaprobados.Visible = False
+        llenarGridCompleto() 'si no modifique nada, muestra como antes
     End Sub
 End Class

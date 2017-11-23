@@ -24,6 +24,7 @@ Public Class FormularioAuditor
     Dim varTempImporte As String = ""
     Dim varTempUsuarioSolicitante As String = ""
     Dim varTempCBU As String = ""
+    Dim varTempNroCuenta As String = ""
     Dim varTempAlias As String = ""
     Dim varTempCuilPago As String = ""
     Dim varTempTipoCuenta As String = ""
@@ -32,7 +33,7 @@ Public Class FormularioAuditor
                                  "reintegros.fecha_solicitud,reintegros.detalle,reintegros.importe,reintegros.observaciones_carga," & _
                                  "usuarios_reintegros.ApellidoNombre,usuarios_reintegros.tipo_usuario,usuarios_reintegros.codigo_seccional," & _
                                  "reintegros.CBU,reintegros.Alias,reintegros.tipo_reintegro,reintegros.id_Subsidio,reintegros.Pagado," & _
-                                 "reintegros.Cuil_Pago,reintegros.tipo_cuenta,cuil_beneficiario,beneficiarios.ApellidoNombre "
+                                 "reintegros.Cuil_Pago,reintegros.tipo_cuenta,cuil_beneficiario,beneficiarios.ApellidoNombre,reintegros.numero_cuenta "
     '(00)reintegros.codigo_usuario
     '(01)reintegros.codigo_reintegro
     '(02)reintegros.codigo_beneficiario
@@ -52,6 +53,7 @@ Public Class FormularioAuditor
     '(16)reintegros.tipo_cuenta
     '(17)reintegros.cuil_beneficiario 
     '(18)beneficiarios.ApellidoNombre
+    '(19)reintegros.Numero_Cuenta
     Dim varSQLFROM As String = " FROM reintegros "
     Dim varSQLLEFT1 As String = " LEFT JOIN usuarios_reintegros ON (reintegros.CODIGO_USUARIO = usuarios_reintegros.CODIGO_USUARIO) "
     Dim varSQLLEFT2 As String = " LEFT JOIN beneficiarios ON ((reintegros.Codigo_Beneficiario = Beneficiarios.Codigo_Beneficiario) " & _
@@ -88,7 +90,7 @@ Public Class FormularioAuditor
 
         'grid aprobados 
         Try
-            sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Auditor_Medico = 1) order by reintegros.codigo_reintegro desc"
+            sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Auditor_Medico = 1) and (tipo_reintegro = 0) order by reintegros.codigo_reintegro desc"
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
             da.Fill(dt)
@@ -147,11 +149,11 @@ Public Class FormularioAuditor
         Try
             If txtFechaDesde.Text = "" And txtFechaDesde.Text = "" Then
                 sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') and " & _
-                    "(Auditor_medico=1) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varOPCOMISION & varOPPAGADO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
+                    "(Auditor_medico=1) and (tipo_reintegro = 0) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varOPCOMISION & varOPPAGADO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
             Else
                 sql = "SELECT " & varSQLCAMPOS & varSQLFROM & varSQLLEFT1 & varSQLLEFT2 & "WHERE (Detalle LIKE '%" & txtBeneficiario.Text.ToString & "%') AND " & _
                     "(Fecha_Solicitud BETWEEN '" & txtFechaDesde.Text.ToString & "' AND '" & txtFechaHasta.Text.ToString & "') and " & _
-                    "(Auditor_Medico = 1) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varOPCOMISION & varOPPAGADO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
+                    "(Auditor_Medico = 1) and (tipo_reintegro = 0) " & varOPNUMREINTEGRO & varOPCUIL & varOPREINTEGRO & varOPCOMISION & varOPPAGADO & varFILTROSECCIONAL & " order by reintegros.codigo_reintegro desc"
             End If
             da = New MySqlDataAdapter(sql, Conex)
             dt = New DataTable
@@ -401,6 +403,7 @@ Public Class FormularioAuditor
             varTempCuilPago = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
             varTempTipoCuenta = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
             varTempNombreBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(18).Value
+            varTempNroCuenta = Me.GridView1.Rows(e.RowIndex).Cells(19).Value
             lblReintegroPendiente.Text = varCodigoreintegro
 
             botonAprobar.Visible = True
@@ -449,6 +452,7 @@ Public Class FormularioAuditor
             varTempCuilPago = Me.GridView1.Rows(e.RowIndex).Cells(15).Value
             varTempTipoCuenta = Me.GridView1.Rows(e.RowIndex).Cells(16).Value
             varTempNombreBeneficiario = Me.GridView1.Rows(e.RowIndex).Cells(18).Value
+            varTempNroCuenta = Me.GridView1.Rows(e.RowIndex).Cells(19).Value
             lblReintegroPendiente.Text = varCodigoreintegro
 
             botonAprobar.Visible = True
@@ -707,7 +711,7 @@ Public Class FormularioAuditor
                              "'" & varTempNombreBeneficiario.ToString & "'<br />" & "CUIL: '" & VariableGlobalCuilBeneficiario.ToString & "'<br />" & "SOLICITA: " & _
                              "'" & varTempDetalle.ToString & "'<br />" & "<strong> IMPORTE: $" & varTempImporte.ToString & "</strong> <br />" & "<br />" & "Datos para el Pago:  <br />" & _
                              "CBU: " & varTempCBU & " <br /> CUIL TITULAR CUENTA: " & varTempCuilPago & " <br /> ALIAS: " & varTempAlias & "<br /> " & _
-                             "TIPO: " & varTempTipoCuenta & " <br /> <br /> A sus efectos, muchas gracias!", "Nuevo Rentegro Aprobado A.M. " & _
+                             "TIPO: " & varTempTipoCuenta & "<br /> SUC-NROCTA: " & varTempNroCuenta & "  <br /> <br /> A sus efectos, muchas gracias!", "Nuevo Rentegro Aprobado A.M. " & _
                              "Cod: [" & varCodigoreintegro.ToString & "] - Usuario: " & varTempUsuarioSolicitante.ToString & ", SROSS (NO RESPONDER " & _
                              "ESTE MENSAJE)", "matiasmasciotta@urgara.org.ar")
 
@@ -1092,5 +1096,9 @@ Public Class FormularioAuditor
             varFILTROSECCIONAL = " AND Reintegros.codigo_usuario = '" & varUserSeccional & "' "
             BuscarDato()
         End If
+    End Sub
+
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
     End Sub
 End Class

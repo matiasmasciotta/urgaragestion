@@ -17,7 +17,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Matias Masciotta\Desktop\SROSS 211-noviembre-2017\</PublishUrl>
+    <PublishUrl>C:\Users\Matias Masciotta\Desktop\SROSS 23-noviembre-2017\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,7 +28,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <PublisherName>matias</PublisherName>
-    <ApplicationRevision>18</ApplicationRevision>
+    <ApplicationRevision>19</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -151,6 +151,12 @@
     <Compile Include="ConsultaTotal.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ReporteExtendido.Designer.vb">
+      <DependentUpon>ReporteExtendido.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteExtendido.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes.Designer.vb">
       <DependentUpon>Reportes.vb</DependentUpon>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConsultaTotal.resx">
       <DependentUpon>ConsultaTotal.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteExtendido.resx">
+      <DependentUpon>ReporteExtendido.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes.resx">
       <DependentUpon>Reportes.vb</DependentUpon>

@@ -47,7 +47,7 @@ Partial Class FormularioPagos
         Me.txtFechaDesde = New System.Windows.Forms.TextBox()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.GridView2 = New System.Windows.Forms.DataGridView()
-        Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.rectangulo = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.lblObservacionesComision = New System.Windows.Forms.Label()
         Me.lblPorcentajeReintegro = New System.Windows.Forms.Label()
@@ -85,6 +85,19 @@ Partial Class FormularioPagos
         Me.lblPicture = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.botonLimpiarFiltros = New System.Windows.Forms.Button()
+        Me.txtAUTORIZANTEaprobados = New System.Windows.Forms.TextBox()
+        Me.txtPORCaprobados = New System.Windows.Forms.TextBox()
+        Me.txtOBSaprobados = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.botonMODIFICARaprobados = New System.Windows.Forms.Button()
+        Me.botonOKaprobados = New System.Windows.Forms.Button()
+        Me.botonCANCELaprobados = New System.Windows.Forms.Button()
+        Me.lblIMPORTEaprobados = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.lblValorREINTEGRADO = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridViewSeccionales, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -336,11 +349,11 @@ Partial Class FormularioPagos
         Me.GridView2.TabIndex = 89
         Me.GridView2.VirtualMode = True
         '
-        'RectangleShape1
+        'rectangulo
         '
-        Me.RectangleShape1.Location = New System.Drawing.Point(590, 330)
-        Me.RectangleShape1.Name = "RectangleShape1"
-        Me.RectangleShape1.Size = New System.Drawing.Size(535, 83)
+        Me.rectangulo.Location = New System.Drawing.Point(590, 330)
+        Me.rectangulo.Name = "rectangulo"
+        Me.rectangulo.Size = New System.Drawing.Size(535, 83)
         '
         'Label9
         '
@@ -545,7 +558,7 @@ Partial Class FormularioPagos
         Me.ShapeContainer2.Location = New System.Drawing.Point(3, 3)
         Me.ShapeContainer2.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer2.Name = "ShapeContainer2"
-        Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
+        Me.ShapeContainer2.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.rectangulo})
         Me.ShapeContainer2.Size = New System.Drawing.Size(1163, 421)
         Me.ShapeContainer2.TabIndex = 95
         Me.ShapeContainer2.TabStop = False
@@ -597,6 +610,19 @@ Partial Class FormularioPagos
         '
         'TabPage3
         '
+        Me.TabPage3.Controls.Add(Me.lblValorREINTEGRADO)
+        Me.TabPage3.Controls.Add(Me.Label11)
+        Me.TabPage3.Controls.Add(Me.lblIMPORTEaprobados)
+        Me.TabPage3.Controls.Add(Me.Label10)
+        Me.TabPage3.Controls.Add(Me.botonCANCELaprobados)
+        Me.TabPage3.Controls.Add(Me.botonOKaprobados)
+        Me.TabPage3.Controls.Add(Me.botonMODIFICARaprobados)
+        Me.TabPage3.Controls.Add(Me.Label7)
+        Me.TabPage3.Controls.Add(Me.Label5)
+        Me.TabPage3.Controls.Add(Me.Label4)
+        Me.TabPage3.Controls.Add(Me.txtOBSaprobados)
+        Me.TabPage3.Controls.Add(Me.txtPORCaprobados)
+        Me.TabPage3.Controls.Add(Me.txtAUTORIZANTEaprobados)
         Me.TabPage3.Controls.Add(Me.botonExcelPagados)
         Me.TabPage3.Controls.Add(Me.GridView4)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
@@ -716,7 +742,7 @@ Partial Class FormularioPagos
         Me.logoURGARA.BackColor = System.Drawing.Color.Transparent
         Me.logoURGARA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_URGARA
         Me.logoURGARA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.logoURGARA.Location = New System.Drawing.Point(36, 623)
+        Me.logoURGARA.Location = New System.Drawing.Point(2, 679)
         Me.logoURGARA.Name = "logoURGARA"
         Me.logoURGARA.Size = New System.Drawing.Size(112, 56)
         Me.logoURGARA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
@@ -728,9 +754,9 @@ Partial Class FormularioPagos
         Me.logoOSRGA.BackColor = System.Drawing.Color.Transparent
         Me.logoOSRGA.BackgroundImage = Global.WindowsApplication1.My.Resources.Resources.Marca_OSRGA2
         Me.logoOSRGA.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.logoOSRGA.Location = New System.Drawing.Point(163, 623)
+        Me.logoOSRGA.Location = New System.Drawing.Point(119, 679)
         Me.logoOSRGA.Name = "logoOSRGA"
-        Me.logoOSRGA.Size = New System.Drawing.Size(111, 52)
+        Me.logoOSRGA.Size = New System.Drawing.Size(111, 50)
         Me.logoOSRGA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.logoOSRGA.TabIndex = 126
         Me.logoOSRGA.TabStop = False
@@ -739,9 +765,9 @@ Partial Class FormularioPagos
         '
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(22, 694)
+        Me.Button1.Location = New System.Drawing.Point(351, 676)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(608, 30)
+        Me.Button1.Size = New System.Drawing.Size(333, 35)
         Me.Button1.TabIndex = 116
         Me.Button1.Text = "Salir"
         Me.Button1.UseVisualStyleBackColor = True
@@ -776,7 +802,7 @@ Partial Class FormularioPagos
         Me.botonLimpiarFiltros.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.botonLimpiarFiltros.Cursor = System.Windows.Forms.Cursors.Hand
         Me.botonLimpiarFiltros.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.botonLimpiarFiltros.Location = New System.Drawing.Point(1001, 9)
+        Me.botonLimpiarFiltros.Location = New System.Drawing.Point(1001, 12)
         Me.botonLimpiarFiltros.Name = "botonLimpiarFiltros"
         Me.botonLimpiarFiltros.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.botonLimpiarFiltros.Size = New System.Drawing.Size(36, 37)
@@ -784,13 +810,142 @@ Partial Class FormularioPagos
         Me.botonLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.botonLimpiarFiltros.UseVisualStyleBackColor = False
         '
+        'txtAUTORIZANTEaprobados
+        '
+        Me.txtAUTORIZANTEaprobados.Enabled = False
+        Me.txtAUTORIZANTEaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAUTORIZANTEaprobados.Location = New System.Drawing.Point(305, 353)
+        Me.txtAUTORIZANTEaprobados.MaxLength = 13
+        Me.txtAUTORIZANTEaprobados.Name = "txtAUTORIZANTEaprobados"
+        Me.txtAUTORIZANTEaprobados.Size = New System.Drawing.Size(175, 20)
+        Me.txtAUTORIZANTEaprobados.TabIndex = 135
+        '
+        'txtPORCaprobados
+        '
+        Me.txtPORCaprobados.Enabled = False
+        Me.txtPORCaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPORCaprobados.Location = New System.Drawing.Point(305, 378)
+        Me.txtPORCaprobados.MaxLength = 13
+        Me.txtPORCaprobados.Name = "txtPORCaprobados"
+        Me.txtPORCaprobados.Size = New System.Drawing.Size(175, 20)
+        Me.txtPORCaprobados.TabIndex = 136
+        '
+        'txtOBSaprobados
+        '
+        Me.txtOBSaprobados.Enabled = False
+        Me.txtOBSaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtOBSaprobados.Location = New System.Drawing.Point(305, 403)
+        Me.txtOBSaprobados.MaxLength = 13
+        Me.txtOBSaprobados.Name = "txtOBSaprobados"
+        Me.txtOBSaprobados.Size = New System.Drawing.Size(175, 20)
+        Me.txtOBSaprobados.TabIndex = 137
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(236, 356)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(60, 13)
+        Me.Label4.TabIndex = 138
+        Me.Label4.Text = "Autorizante"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(223, 381)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(76, 13)
+        Me.Label5.TabIndex = 139
+        Me.Label5.Text = "% Reintegrado"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(221, 406)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(78, 13)
+        Me.Label7.TabIndex = 140
+        Me.Label7.Text = "Observaciones"
+        '
+        'botonMODIFICARaprobados
+        '
+        Me.botonMODIFICARaprobados.Location = New System.Drawing.Point(523, 359)
+        Me.botonMODIFICARaprobados.Name = "botonMODIFICARaprobados"
+        Me.botonMODIFICARaprobados.Size = New System.Drawing.Size(100, 27)
+        Me.botonMODIFICARaprobados.TabIndex = 141
+        Me.botonMODIFICARaprobados.Text = "Modificar"
+        Me.botonMODIFICARaprobados.UseVisualStyleBackColor = True
+        Me.botonMODIFICARaprobados.Visible = False
+        '
+        'botonOKaprobados
+        '
+        Me.botonOKaprobados.BackColor = System.Drawing.Color.LightSeaGreen
+        Me.botonOKaprobados.Location = New System.Drawing.Point(523, 387)
+        Me.botonOKaprobados.Name = "botonOKaprobados"
+        Me.botonOKaprobados.Size = New System.Drawing.Size(52, 27)
+        Me.botonOKaprobados.TabIndex = 142
+        Me.botonOKaprobados.Text = "OK"
+        Me.botonOKaprobados.UseVisualStyleBackColor = False
+        Me.botonOKaprobados.Visible = False
+        '
+        'botonCANCELaprobados
+        '
+        Me.botonCANCELaprobados.BackColor = System.Drawing.Color.OrangeRed
+        Me.botonCANCELaprobados.Location = New System.Drawing.Point(574, 387)
+        Me.botonCANCELaprobados.Name = "botonCANCELaprobados"
+        Me.botonCANCELaprobados.Size = New System.Drawing.Size(49, 27)
+        Me.botonCANCELaprobados.TabIndex = 143
+        Me.botonCANCELaprobados.Text = "CANC"
+        Me.botonCANCELaprobados.UseVisualStyleBackColor = False
+        Me.botonCANCELaprobados.Visible = False
+        '
+        'lblIMPORTEaprobados
+        '
+        Me.lblIMPORTEaprobados.AutoSize = True
+        Me.lblIMPORTEaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIMPORTEaprobados.Location = New System.Drawing.Point(132, 357)
+        Me.lblIMPORTEaprobados.Name = "lblIMPORTEaprobados"
+        Me.lblIMPORTEaprobados.Size = New System.Drawing.Size(15, 16)
+        Me.lblIMPORTEaprobados.TabIndex = 145
+        Me.lblIMPORTEaprobados.Text = "1"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(7, 357)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(129, 16)
+        Me.Label10.TabIndex = 144
+        Me.Label10.Text = "Importe Solicitado: $"
+        '
+        'lblValorREINTEGRADO
+        '
+        Me.lblValorREINTEGRADO.AutoSize = True
+        Me.lblValorREINTEGRADO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblValorREINTEGRADO.Location = New System.Drawing.Point(148, 387)
+        Me.lblValorREINTEGRADO.Name = "lblValorREINTEGRADO"
+        Me.lblValorREINTEGRADO.Size = New System.Drawing.Size(15, 16)
+        Me.lblValorREINTEGRADO.TabIndex = 147
+        Me.lblValorREINTEGRADO.Text = "1"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(7, 387)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(144, 16)
+        Me.Label11.TabIndex = 146
+        Me.Label11.Text = "Importe Reintegrado: $"
+        '
         'FormularioPagos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Silver
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(1197, 728)
+        Me.ClientSize = New System.Drawing.Size(1197, 735)
         Me.Controls.Add(Me.botonLimpiarFiltros)
         Me.Controls.Add(Me.logoURGARA)
         Me.Controls.Add(Me.logoOSRGA)
@@ -818,6 +973,7 @@ Partial Class FormularioPagos
         CType(Me.botonExcelRechazados, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout()
         CType(Me.botonExcelPagados, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView4, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
@@ -846,7 +1002,7 @@ Partial Class FormularioPagos
     Friend WithEvents botonExcel As System.Windows.Forms.PictureBox
     Friend WithEvents botonDesaprobar As System.Windows.Forms.Button
     Friend WithEvents botonAprobar As System.Windows.Forms.Button
-    Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
+    Friend WithEvents rectangulo As Microsoft.VisualBasic.PowerPacks.RectangleShape
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents lblObservacionesComision As System.Windows.Forms.Label
     Friend WithEvents lblPorcentajeReintegro As System.Windows.Forms.Label
@@ -885,4 +1041,17 @@ Partial Class FormularioPagos
     Friend WithEvents opSeccional As System.Windows.Forms.CheckBox
     Friend WithEvents txtuserseccional As System.Windows.Forms.TextBox
     Friend WithEvents botonLimpiarFiltros As System.Windows.Forms.Button
+    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents txtOBSaprobados As System.Windows.Forms.TextBox
+    Friend WithEvents txtPORCaprobados As System.Windows.Forms.TextBox
+    Friend WithEvents txtAUTORIZANTEaprobados As System.Windows.Forms.TextBox
+    Friend WithEvents botonCANCELaprobados As System.Windows.Forms.Button
+    Friend WithEvents botonOKaprobados As System.Windows.Forms.Button
+    Friend WithEvents botonMODIFICARaprobados As System.Windows.Forms.Button
+    Friend WithEvents lblIMPORTEaprobados As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents lblValorREINTEGRADO As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
 End Class
