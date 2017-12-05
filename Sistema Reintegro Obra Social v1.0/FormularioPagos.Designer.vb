@@ -71,6 +71,19 @@ Partial Class FormularioPagos
         Me.botonExcelRechazados = New System.Windows.Forms.PictureBox()
         Me.GridView3 = New System.Windows.Forms.DataGridView()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.lblValorREINTEGRADO = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.lblIMPORTEaprobados = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.botonCANCELaprobados = New System.Windows.Forms.Button()
+        Me.botonOKaprobados = New System.Windows.Forms.Button()
+        Me.botonMODIFICARaprobados = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.txtOBSaprobados = New System.Windows.Forms.TextBox()
+        Me.txtPORCaprobados = New System.Windows.Forms.TextBox()
+        Me.txtAUTORIZANTEaprobados = New System.Windows.Forms.TextBox()
         Me.botonExcelPagados = New System.Windows.Forms.PictureBox()
         Me.GridView4 = New System.Windows.Forms.DataGridView()
         Me.txtNumReintegroBusqueda = New System.Windows.Forms.TextBox()
@@ -85,19 +98,6 @@ Partial Class FormularioPagos
         Me.lblPicture = New System.Windows.Forms.PictureBox()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.botonLimpiarFiltros = New System.Windows.Forms.Button()
-        Me.txtAUTORIZANTEaprobados = New System.Windows.Forms.TextBox()
-        Me.txtPORCaprobados = New System.Windows.Forms.TextBox()
-        Me.txtOBSaprobados = New System.Windows.Forms.TextBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.botonMODIFICARaprobados = New System.Windows.Forms.Button()
-        Me.botonOKaprobados = New System.Windows.Forms.Button()
-        Me.botonCANCELaprobados = New System.Windows.Forms.Button()
-        Me.lblIMPORTEaprobados = New System.Windows.Forms.Label()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.lblValorREINTEGRADO = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GridViewSeccionales, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -632,6 +632,135 @@ Partial Class FormularioPagos
         Me.TabPage3.Text = "APROBADOS C.D.N. Y PAGADOS"
         Me.TabPage3.UseVisualStyleBackColor = True
         '
+        'lblValorREINTEGRADO
+        '
+        Me.lblValorREINTEGRADO.AutoSize = True
+        Me.lblValorREINTEGRADO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblValorREINTEGRADO.Location = New System.Drawing.Point(148, 387)
+        Me.lblValorREINTEGRADO.Name = "lblValorREINTEGRADO"
+        Me.lblValorREINTEGRADO.Size = New System.Drawing.Size(15, 16)
+        Me.lblValorREINTEGRADO.TabIndex = 147
+        Me.lblValorREINTEGRADO.Text = "1"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(7, 387)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(144, 16)
+        Me.Label11.TabIndex = 146
+        Me.Label11.Text = "Importe Reintegrado: $"
+        '
+        'lblIMPORTEaprobados
+        '
+        Me.lblIMPORTEaprobados.AutoSize = True
+        Me.lblIMPORTEaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblIMPORTEaprobados.Location = New System.Drawing.Point(132, 357)
+        Me.lblIMPORTEaprobados.Name = "lblIMPORTEaprobados"
+        Me.lblIMPORTEaprobados.Size = New System.Drawing.Size(15, 16)
+        Me.lblIMPORTEaprobados.TabIndex = 145
+        Me.lblIMPORTEaprobados.Text = "1"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.Location = New System.Drawing.Point(7, 357)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(129, 16)
+        Me.Label10.TabIndex = 144
+        Me.Label10.Text = "Importe Solicitado: $"
+        '
+        'botonCANCELaprobados
+        '
+        Me.botonCANCELaprobados.BackColor = System.Drawing.Color.OrangeRed
+        Me.botonCANCELaprobados.Location = New System.Drawing.Point(574, 387)
+        Me.botonCANCELaprobados.Name = "botonCANCELaprobados"
+        Me.botonCANCELaprobados.Size = New System.Drawing.Size(49, 27)
+        Me.botonCANCELaprobados.TabIndex = 143
+        Me.botonCANCELaprobados.Text = "CANC"
+        Me.botonCANCELaprobados.UseVisualStyleBackColor = False
+        Me.botonCANCELaprobados.Visible = False
+        '
+        'botonOKaprobados
+        '
+        Me.botonOKaprobados.BackColor = System.Drawing.Color.LightSeaGreen
+        Me.botonOKaprobados.Location = New System.Drawing.Point(523, 387)
+        Me.botonOKaprobados.Name = "botonOKaprobados"
+        Me.botonOKaprobados.Size = New System.Drawing.Size(52, 27)
+        Me.botonOKaprobados.TabIndex = 142
+        Me.botonOKaprobados.Text = "OK"
+        Me.botonOKaprobados.UseVisualStyleBackColor = False
+        Me.botonOKaprobados.Visible = False
+        '
+        'botonMODIFICARaprobados
+        '
+        Me.botonMODIFICARaprobados.Location = New System.Drawing.Point(523, 359)
+        Me.botonMODIFICARaprobados.Name = "botonMODIFICARaprobados"
+        Me.botonMODIFICARaprobados.Size = New System.Drawing.Size(100, 27)
+        Me.botonMODIFICARaprobados.TabIndex = 141
+        Me.botonMODIFICARaprobados.Text = "Modificar"
+        Me.botonMODIFICARaprobados.UseVisualStyleBackColor = True
+        Me.botonMODIFICARaprobados.Visible = False
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(221, 406)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(78, 13)
+        Me.Label7.TabIndex = 140
+        Me.Label7.Text = "Observaciones"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(223, 381)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(76, 13)
+        Me.Label5.TabIndex = 139
+        Me.Label5.Text = "% Reintegrado"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(236, 356)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(60, 13)
+        Me.Label4.TabIndex = 138
+        Me.Label4.Text = "Autorizante"
+        '
+        'txtOBSaprobados
+        '
+        Me.txtOBSaprobados.Enabled = False
+        Me.txtOBSaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtOBSaprobados.Location = New System.Drawing.Point(305, 403)
+        Me.txtOBSaprobados.MaxLength = 13
+        Me.txtOBSaprobados.Name = "txtOBSaprobados"
+        Me.txtOBSaprobados.Size = New System.Drawing.Size(175, 20)
+        Me.txtOBSaprobados.TabIndex = 137
+        '
+        'txtPORCaprobados
+        '
+        Me.txtPORCaprobados.Enabled = False
+        Me.txtPORCaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtPORCaprobados.Location = New System.Drawing.Point(305, 378)
+        Me.txtPORCaprobados.MaxLength = 13
+        Me.txtPORCaprobados.Name = "txtPORCaprobados"
+        Me.txtPORCaprobados.Size = New System.Drawing.Size(175, 20)
+        Me.txtPORCaprobados.TabIndex = 136
+        '
+        'txtAUTORIZANTEaprobados
+        '
+        Me.txtAUTORIZANTEaprobados.Enabled = False
+        Me.txtAUTORIZANTEaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAUTORIZANTEaprobados.Location = New System.Drawing.Point(305, 353)
+        Me.txtAUTORIZANTEaprobados.MaxLength = 13
+        Me.txtAUTORIZANTEaprobados.Name = "txtAUTORIZANTEaprobados"
+        Me.txtAUTORIZANTEaprobados.Size = New System.Drawing.Size(175, 20)
+        Me.txtAUTORIZANTEaprobados.TabIndex = 135
+        '
         'botonExcelPagados
         '
         Me.botonExcelPagados.Image = Global.WindowsApplication1.My.Resources.Resources.logoexcelsistemaa
@@ -765,9 +894,9 @@ Partial Class FormularioPagos
         '
         Me.Button1.Image = CType(resources.GetObject("Button1.Image"), System.Drawing.Image)
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(351, 676)
+        Me.Button1.Location = New System.Drawing.Point(369, 671)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(333, 35)
+        Me.Button1.Size = New System.Drawing.Size(315, 40)
         Me.Button1.TabIndex = 116
         Me.Button1.Text = "Salir"
         Me.Button1.UseVisualStyleBackColor = True
@@ -809,135 +938,6 @@ Partial Class FormularioPagos
         Me.botonLimpiarFiltros.TabIndex = 134
         Me.botonLimpiarFiltros.TextAlign = System.Drawing.ContentAlignment.BottomCenter
         Me.botonLimpiarFiltros.UseVisualStyleBackColor = False
-        '
-        'txtAUTORIZANTEaprobados
-        '
-        Me.txtAUTORIZANTEaprobados.Enabled = False
-        Me.txtAUTORIZANTEaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAUTORIZANTEaprobados.Location = New System.Drawing.Point(305, 353)
-        Me.txtAUTORIZANTEaprobados.MaxLength = 13
-        Me.txtAUTORIZANTEaprobados.Name = "txtAUTORIZANTEaprobados"
-        Me.txtAUTORIZANTEaprobados.Size = New System.Drawing.Size(175, 20)
-        Me.txtAUTORIZANTEaprobados.TabIndex = 135
-        '
-        'txtPORCaprobados
-        '
-        Me.txtPORCaprobados.Enabled = False
-        Me.txtPORCaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtPORCaprobados.Location = New System.Drawing.Point(305, 378)
-        Me.txtPORCaprobados.MaxLength = 13
-        Me.txtPORCaprobados.Name = "txtPORCaprobados"
-        Me.txtPORCaprobados.Size = New System.Drawing.Size(175, 20)
-        Me.txtPORCaprobados.TabIndex = 136
-        '
-        'txtOBSaprobados
-        '
-        Me.txtOBSaprobados.Enabled = False
-        Me.txtOBSaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtOBSaprobados.Location = New System.Drawing.Point(305, 403)
-        Me.txtOBSaprobados.MaxLength = 13
-        Me.txtOBSaprobados.Name = "txtOBSaprobados"
-        Me.txtOBSaprobados.Size = New System.Drawing.Size(175, 20)
-        Me.txtOBSaprobados.TabIndex = 137
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(236, 356)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(60, 13)
-        Me.Label4.TabIndex = 138
-        Me.Label4.Text = "Autorizante"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(223, 381)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(76, 13)
-        Me.Label5.TabIndex = 139
-        Me.Label5.Text = "% Reintegrado"
-        '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(221, 406)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(78, 13)
-        Me.Label7.TabIndex = 140
-        Me.Label7.Text = "Observaciones"
-        '
-        'botonMODIFICARaprobados
-        '
-        Me.botonMODIFICARaprobados.Location = New System.Drawing.Point(523, 359)
-        Me.botonMODIFICARaprobados.Name = "botonMODIFICARaprobados"
-        Me.botonMODIFICARaprobados.Size = New System.Drawing.Size(100, 27)
-        Me.botonMODIFICARaprobados.TabIndex = 141
-        Me.botonMODIFICARaprobados.Text = "Modificar"
-        Me.botonMODIFICARaprobados.UseVisualStyleBackColor = True
-        Me.botonMODIFICARaprobados.Visible = False
-        '
-        'botonOKaprobados
-        '
-        Me.botonOKaprobados.BackColor = System.Drawing.Color.LightSeaGreen
-        Me.botonOKaprobados.Location = New System.Drawing.Point(523, 387)
-        Me.botonOKaprobados.Name = "botonOKaprobados"
-        Me.botonOKaprobados.Size = New System.Drawing.Size(52, 27)
-        Me.botonOKaprobados.TabIndex = 142
-        Me.botonOKaprobados.Text = "OK"
-        Me.botonOKaprobados.UseVisualStyleBackColor = False
-        Me.botonOKaprobados.Visible = False
-        '
-        'botonCANCELaprobados
-        '
-        Me.botonCANCELaprobados.BackColor = System.Drawing.Color.OrangeRed
-        Me.botonCANCELaprobados.Location = New System.Drawing.Point(574, 387)
-        Me.botonCANCELaprobados.Name = "botonCANCELaprobados"
-        Me.botonCANCELaprobados.Size = New System.Drawing.Size(49, 27)
-        Me.botonCANCELaprobados.TabIndex = 143
-        Me.botonCANCELaprobados.Text = "CANC"
-        Me.botonCANCELaprobados.UseVisualStyleBackColor = False
-        Me.botonCANCELaprobados.Visible = False
-        '
-        'lblIMPORTEaprobados
-        '
-        Me.lblIMPORTEaprobados.AutoSize = True
-        Me.lblIMPORTEaprobados.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblIMPORTEaprobados.Location = New System.Drawing.Point(132, 357)
-        Me.lblIMPORTEaprobados.Name = "lblIMPORTEaprobados"
-        Me.lblIMPORTEaprobados.Size = New System.Drawing.Size(15, 16)
-        Me.lblIMPORTEaprobados.TabIndex = 145
-        Me.lblIMPORTEaprobados.Text = "1"
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(7, 357)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(129, 16)
-        Me.Label10.TabIndex = 144
-        Me.Label10.Text = "Importe Solicitado: $"
-        '
-        'lblValorREINTEGRADO
-        '
-        Me.lblValorREINTEGRADO.AutoSize = True
-        Me.lblValorREINTEGRADO.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblValorREINTEGRADO.Location = New System.Drawing.Point(148, 387)
-        Me.lblValorREINTEGRADO.Name = "lblValorREINTEGRADO"
-        Me.lblValorREINTEGRADO.Size = New System.Drawing.Size(15, 16)
-        Me.lblValorREINTEGRADO.TabIndex = 147
-        Me.lblValorREINTEGRADO.Text = "1"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(7, 387)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(144, 16)
-        Me.Label11.TabIndex = 146
-        Me.Label11.Text = "Importe Reintegrado: $"
         '
         'FormularioPagos
         '
